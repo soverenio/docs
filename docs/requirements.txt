@@ -1,0 +1,7 @@
+# sphinxcontrib-golangdomain
+sphinx>=2
+sphinx-tabs
+sphinxcontrib-plantuml
+sphinx-copybutton
+sphinxcontrib-contentui
+sphinx-panels
