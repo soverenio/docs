@@ -6,4 +6,4 @@ Soveren documentation
 
 Welcome to Soveren documentation.
 
-.. note:: Documentation is being developed. Updates are coming soon.
+.. note:: Documentation is being developed. Updates are coming soon
