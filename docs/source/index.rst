@@ -61,6 +61,8 @@ You can create a Privacy Portal for each your Soveren account providing customer
 A Privacy Portal also allows customers to read your company's privacy policy in full.
 
 
+
+
 Data privacy compliance
 ^^^^^^^^^^^^^^^^^^^^^^^
 A great benefit the suite offers to the company is compliance with modern data privacy regulations.

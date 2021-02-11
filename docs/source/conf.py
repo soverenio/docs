@@ -106,7 +106,7 @@ html_theme_options = {
      "navigation_with_keys": True,
      "sidebar_hide_name": True,
      "light_logo": "logo-soveren-dark.svg",
-     "dark_logo": "logo-soveren-light.svg"
+     "dark_logo": "logo-soveren-dark.svg"
 
  }
 
