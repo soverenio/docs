@@ -36,7 +36,8 @@ extensions = [
 	'sphinx_tabs.tabs',
 	'sphinxcontrib.plantuml',
 	'sphinx_copybutton',
-    'sphinx_panels'
+    'sphinx_panels',
+    'furo'
 #    'hoverxref.extension'
 #	'sphinxcontrib.contentui'
 ]

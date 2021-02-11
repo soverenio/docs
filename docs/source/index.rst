@@ -23,7 +23,7 @@ Overview
 Data privacy is a growing issue in today's world and it concerns all companies, small or big.
 Soveren Privacy Suite makes it easy for any company to meet modern data privacy standards.
 
-Soveren Privacy Suite — a set of tools that implements services critical for data privacy compliance.
+Soveren Privacy Suite is a set of tools that implements services critical for data privacy compliance.
 
 The suite is marketed to on-staff and independent data privacy officers, or DPOs, and allows them to:
 
