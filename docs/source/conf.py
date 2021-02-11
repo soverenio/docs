@@ -13,6 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import furo
 
 
 # -- Project information -----------------------------------------------------
@@ -36,9 +37,8 @@ extensions = [
 	'sphinx_tabs.tabs',
 	'sphinxcontrib.plantuml',
 	'sphinx_copybutton',
-    'sphinx_panels',
-    'furo'
-#    'hoverxref.extension'
+    'sphinx_panels'
+#   'hoverxref.extension'
 #	'sphinxcontrib.contentui'
 ]
 
