@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Soveren'
-copyright = '2020, Soveren'
+copyright = '2021, Soveren'
 author = 'Soveren team'
 
 # The full version, including alpha/beta/rc tags
@@ -49,13 +49,13 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-def setup(app):
-    app.add_css_file('custom.css')
+#def setup(app):
+#    app.add_css_file('custom.css')
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+#exclude_patterns = []
 
 # Sphinx uses html_extra_path option to add static files to the output (like
 # robots.txt file).
@@ -67,7 +67,7 @@ html_extra_path = ['_public']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -78,45 +78,55 @@ html_static_path = ['_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-html_css_files = [
-    'css/custom.css',
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-]
+#    'css/custom.css',
+#    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+#]
 
-# html_logo = 'imgs/Logo_DarkBG_Transparent.png'
 
-# html_favicon = 'imgs/favicon2.png'
+#html_logo = 'imgs/logo-soveren-dark.svg'
+
+html_favicon = 'images/favicon1.png'
 
 html_theme_options = {
-    'display_version': True,
-    'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
-    'display_version': True,
-    'style_nav_header_background': '#343131',
-    'logo_only': True,
-    # Toc options
-    'collapse_navigation': False,
-    'sticky_navigation': True,
-    'navigation_depth': 4,
-    'includehidden': True,
-    'titles_only': False
-}
+# Customization options for Read the Docs theme
+#    'display_version': True,
+#    'prev_next_buttons_location': 'bottom',
+#    'style_external_links': False,
+#    'display_version': True,
+#    'style_nav_header_background': '#FFFFFF',
+#    'logo_only': True,
+#    # Toc options
+#    'collapse_navigation': False,
+#    'sticky_navigation': True,
+#    'navigation_depth': 4,
+#    'includehidden': True,
+#    'titles_only': False
 
-html_show_sphinx = False
+# Customizatio options for Furo theme
+     "navigation_with_keys": True,
+     "sidebar_hide_name": True,
+     "light_logo": "logo-soveren-dark.svg",
+     "dark_logo": "logo-soveren-light.svg"
 
-latex_elements = {
+ }
+
+
+
+#html_show_sphinx = False
+
+#latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-    'papersize': 'letterpaper',
+#    'papersize': 'letterpaper',
 
 # The font size ('10pt', '11pt' or '12pt').
-    'pointsize': '11pt',
+#    'pointsize': '11pt',
 
 # Additional stuff for the LaTeX preamble.
-    'preamble': r'''
-        \usepackage{charter}
-        \usepackage[defaultsans]{lato}
-        \usepackage{inconsolata}
-    ''',
-}
+ #   'preamble': r'''
+ #       \usepackage{charter}
+ #       \usepackage[defaultsans]{lato}
+ #       \usepackage{inconsolata}
+ #   ''',
+#}
 
 latex_logo = 'imgs/Logo_color@2x.png'
