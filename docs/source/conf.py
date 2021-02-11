@@ -70,7 +70,7 @@ html_extra_path = ['_public']
 
 html_theme = "furo"
 
-html_theme_path = ["_themes/furo"]
+html_theme_path = ['./furo.zip']
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
