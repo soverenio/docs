@@ -5,3 +5,4 @@ sphinxcontrib-plantuml
 sphinx-copybutton
 sphinxcontrib-contentui
 sphinx-panels
+furo
