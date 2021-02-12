@@ -2,13 +2,15 @@
    :hidden:
    :caption: DPO Portal
 
-   dpo-portal-registering
+   register-dpo-account
+   sign-in-to-dpo-account
+   recover-password
 
 .. toctree::
    :hidden:
    :caption: Privacy Portal
 
-   privacy-portal-filing-a-request
+   file-data-subject-request
 
 
 
