@@ -49,8 +49,8 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-#def setup(app):
-#    app.add_css_file('css/custom_furo.css')
+def setup(app):
+    app.add_css_file('css/custom_furo.css')
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
