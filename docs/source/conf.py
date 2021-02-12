@@ -80,12 +80,8 @@ html_static_path = ['_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-html_css_files = [
-    'css/custom.css'
+html_css_files = [ 'css/custom_furo.css' ]
 #    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-]
-
-# html_style = './_static/css/custom.css'  
 
 #html_logo = 'imgs/logo-soveren-dark.svg'
 
