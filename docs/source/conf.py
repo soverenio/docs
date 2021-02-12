@@ -49,8 +49,9 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-#def setup(app):
-#    app.add_css_file('custom.css')
+def setup(app):
+    app.add_css_file('custom_furo.css')
+
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -80,8 +81,9 @@ html_static_path = ['_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-html_css_files = [ 'css/custom_furo.css' ]
+# html_css_files = [ 'css/custom_furo.css' ]
 #    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+
 
 #html_logo = 'imgs/logo-soveren-dark.svg'
 
