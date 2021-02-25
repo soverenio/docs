@@ -23,7 +23,7 @@ To deploy a Privacy Center instance for your company:
 
 .. |profile_completion_instructions| raw:: html
 
-   <a href="https://docs.soveren.io/profile.html" target="_blank">Read how to complete your company infortion</a>
+   <a href="https://docs.soveren.io/profile.html" target="_blank">Read how to complete your company information</a>
 
 3. Once the company information is set, enter your company name in the the **Your domain name** field.
 
