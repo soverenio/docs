@@ -1,5 +1,5 @@
-Registering an account
-======================
+Signing up for an account
+=========================
 
 To register a DPO account on Soveren's DPO Portal:
 
