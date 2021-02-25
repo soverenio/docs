@@ -10,14 +10,15 @@
    automate-data-source
    add-custom-data-source
    automate-custom-data-source
-
+   create-privacy-center
 
 
 .. toctree::
    :hidden:
    :caption: Privacy Center
 
-   file-data-subject-request
+   create-data-subject-request
+
 
 .. toctree::
    :hidden:
