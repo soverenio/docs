@@ -5,10 +5,11 @@ Data sources are systems your company uses to store and process customer data.
 
 Adding a data source allows you to automate interaction with it while processing data subject requests.
 
-| In other words, you won't have process data manually in each data source. Soveren Privacy Suite will do it for you.
-|
-|
-| To automate a custom data source:
+In other words, you won't have process data manually in each data source. Soveren Privacy Suite will do it for you.
+
+------------
+
+To automate a custom data source:
 
 1. Contact us at support@soveren.io to request a questionnaire.
 

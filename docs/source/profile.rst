@@ -2,7 +2,10 @@ Completing an account
 =====================
 
 Your Soveren account contains information vital for proper functioning of our services.
+
 Complete your account to start fully using Soveren's DPO Portal and be able to set up a Privacy Center.
+
+------------
 
 To complete your account:
 

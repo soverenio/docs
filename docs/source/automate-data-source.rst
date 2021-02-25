@@ -5,10 +5,11 @@ Data sources are systems your company uses to store and process customer data.
 
 Adding a data source allows you to automate interaction with it while processing data subject requests.
 
-| In other words, you won't have process data manually in each data source. Soveren Privacy Suite will do it for you.
-|
-|
-| Once you added a data source, you can automate data processing with it.
+In other words, you won't have process data manually in each data source. Soveren Privacy Suite will do it for you.
+
+------------
+
+Once you added a data source, you can automate data processing with it.
 
 1. Automate interaction with the source by connecting to the source one of the following ways:
 

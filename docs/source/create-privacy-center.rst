@@ -3,6 +3,8 @@ Creating a Privacy Center
 
 Privacy Center is a single point for customer to visit and create data subject requests.
 
+------------
+
 To deploy a Privacy Center instance for your company:
 
 1. Click **Privacy Center** in the left navigation menu on any DPO Portal page.
