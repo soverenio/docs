@@ -33,7 +33,7 @@ To sign in to a registered DPO account on Soveren's DPO Portal:
 
 .. |password_recovery_instructions| raw:: html
 
-   <a href="https://docs.soveren.io/" target="_blank">Read how to recover your password</a>
+   <a href="https://docs.soveren.io/recover-password.html" target="_blank">Read how to recover your password</a>
 
 
 

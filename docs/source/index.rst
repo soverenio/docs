@@ -6,6 +6,8 @@
    sign-in
    recover-password
    profile
+   add-data-source
+   automate-data-source
 
 .. toctree::
    :hidden:
@@ -16,8 +18,6 @@
 .. toctree::
    :hidden:
    :caption: Tutorials
-
-   file-data-subject-request
 
 
 
