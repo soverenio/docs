@@ -8,6 +8,10 @@
    profile
    add-data-source
    automate-data-source
+   add-custom-data-source
+   automate-custom-data-source
+
+
 
 .. toctree::
    :hidden:
