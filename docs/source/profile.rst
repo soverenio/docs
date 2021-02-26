@@ -17,6 +17,8 @@ To complete your account:
 
 .. tab:: Profile information
 
+   To complete your profile information:
+
    1. Navigate to the profile tab:
 
       * Click your email at the top-right corner of any DPO Portal page and then click **Profile**.
@@ -35,6 +37,8 @@ To complete your account:
 
 
 .. tab:: Company information
+
+   To complete your company information:
 
    1. Navigate to the company tab:
 
@@ -58,6 +62,8 @@ To complete your account:
 
 
 .. tab:: Billing information
+
+   To complete your company billing information:
 
    1. Navigate to the billing tab:
 
