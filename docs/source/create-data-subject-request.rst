@@ -10,7 +10,7 @@ Once the request is processed, you will receive an official report from said off
 
 Soveren allows you to create different types of data subject requests:
 
-* Access requests to learn what personal data a company hold on you.
+* Access requests to learn what personal data a company holds on you.
 
 * Delete requests to delete your personal data from a company.
 
