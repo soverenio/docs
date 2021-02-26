@@ -40,9 +40,9 @@ Soveren distinguishes between standard and custom data sources:
 
       Source name shows up in reports to your data subject. We recommend you use the official data source name and add additional information if you have multiple source of the same type.
 
-       For example, "HubSpot for sales" or "HubSpot for marketing".
+      For example, "HubSpot for sales" or "HubSpot for marketing".
 
-       Source name shows up in reports to your data subject. We recommend you describe in short detail what the source does. For example, "platform for marketing, sales, customer service, and CRM software" for HubSpot.
+      Source name shows up in reports to your data subject. We recommend you describe in short detail what the source does. For example, "platform for marketing, sales, customer service, and CRM software" for HubSpot.
 
       If this particular source has specific limits, state it. For example, "platform for marketing" for the data source "HubSpot for marketing".
 
