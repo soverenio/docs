@@ -65,7 +65,7 @@ Once you added a data source, you can automate data processing with it.
 
    3. Send us the filled out questionnaire to support@soveren.io.
 
-   4. Wait till we contact you and arrange a timeslot to deploy an instance of Soveren agent for your company and set up conection between the agant and your Soveren account.
+   4. Wait till we contact you and arrange a timeslot to deploy an instance of Soveren agent for your company and set up conection between the agent and your Soveren account.
 
    5. Enable automation of data processing for the source.
 
