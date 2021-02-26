@@ -1,4 +1,4 @@
-Automating data processing in a standard data source
+Automate data processing in a standard data source
 ====================================================
 
 Data sources are systems your company uses to store and process customer data.

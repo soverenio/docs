@@ -1,4 +1,4 @@
-Creating a data subject request
+Create a data subject request
 ===============================
 
 As a customer, you can visit company's Privacy Center and create a data subject request to exercise your data privacy rights.

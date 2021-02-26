@@ -1,4 +1,4 @@
-Adding a custom data source
+Add a custom data source
 ==================================================
 
 Data sources are systems your company uses to store and process customer data.

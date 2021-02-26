@@ -1,4 +1,4 @@
-Creating a Privacy Center
+Create a Privacy Center
 =========================
 
 Privacy Center is a single point for customer to visit and create data subject requests.

@@ -1,4 +1,4 @@
-Adding a standard data source
+Add a standard data source
 =============================
 
 Data sources are systems your company uses to store and process customer data.

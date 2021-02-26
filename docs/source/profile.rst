@@ -1,4 +1,4 @@
-Completing an account
+Complete an account
 =====================
 
 Your Soveren account contains information vital for proper functioning of our services.
