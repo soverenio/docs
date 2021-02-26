@@ -107,6 +107,7 @@ Soveren allows you to create different types of data subject requests:
       * First name — your first name (in some countries, name).
       * Last name — your last name (in some countries, surname).
       * Username — username you use for your account at this company if any.
+      * Description — describe what you want the company to do with your data.
 
    6. On the next page, read the message and click **OK** to return to the index page of the Privacy Center.
 
