@@ -1,4 +1,4 @@
-Add a standard data source
+Add a data source
 =============================
 
 Data sources are systems your company uses to store and process customer data.
@@ -9,42 +9,88 @@ In other words, you won't have process data manually in each data source. Sovere
 
 ------------
 
-To add a data source:
+Soveren distinguishes between standard and custom data sources:
 
-1. Click **Data sources** in the left navigation menu on any DPO Portal page.
+* A standard data source is normally a SaaS system, such as Mailgun, HubSpot, ZenDesk, etc.
 
-2. Click **Add new data source**.
+* A custom data source is normally an on-premise company solution for storing data, such as a relational database like MySQL or PostgreSQL.
 
-3. Complete he following information about the source on the **Basic info** tab and click **Create**:
+.. tab:: Add a data source
 
-   * Type of the source.
-   * Official name of the source.
-   * Location.
-   * Name of the person resposible for managing the source — owner's name.
-   * Additional information about the source.
-   * Type of data stored in the source.
-   * If the source shares stored information with a third party.
-   * Type of the source: controller or processor.
-   * What the source is primarily used for — its purpose.
-   * What the source does with te data: collects, stores, transforms, retains.
+   To add a data source:
 
-.. tip::
+   1. Click **Data sources** in the left navigation menu on any DPO Portal page.
 
-   Source name shows up in reports to your data subject. We recommend you use the official data source name and add additional information if you have multiple source of the same type.
+   2. Click **Add new data source**.
 
-   For example, "HubSpot for sales" or "HubSpot for marketing".
+   3. Complete he following information about the source on the **Basic info** tab and click **Create**:
 
-   Source name shows up in reports to your data subject. We recommend you describe in short detail what the source does. For example, "platform for marketing, sales, customer service, and CRM software" for HubSpot.
+      * Type of the source.
+      * Official name of the source.
+      * Location.
+      * Name of the person resposible for managing the source — owner's name.
+      * Additional information about the source.
+      * Type of data stored in the source.
+      * If the source shares stored information with a third party.
+      * Type of the source: controller or processor.
+      * What the source is primarily used for — its purpose.
+      * What the source does with te data: collects, stores, transforms, retains.
 
-   If this particular source has specific limits, state it. For example, "platform for marketing" for the data source "HubSpot for marketing".
+   .. tip::
 
-.. Tip::
+      Source name shows up in reports to your data subject. We recommend you use the official data source name and add additional information if you have multiple source of the same type.
 
-   Already added a data source? |automate_data_source|.
+       For example, "HubSpot for sales" or "HubSpot for marketing".
 
-.. |automate_data_source| raw:: html
+       Source name shows up in reports to your data subject. We recommend you describe in short detail what the source does. For example, "platform for marketing, sales, customer service, and CRM software" for HubSpot.
 
-   <a href="https://docs.soveren.io/automate-data-source.html" target="_blank">Read how to automate data processing in it</a>
+      If this particular source has specific limits, state it. For example, "platform for marketing" for the data source "HubSpot for marketing".
+
+   .. tip::
+
+      Already added a data source? |automate_data_source|.
+
+   .. |automate_data_source| raw:: html
+
+      <a href="https://docs.soveren.io/automate-data-source.html" target="_blank">Read how to automate data processing in it</a>
+
+.. tab:: Add a custom data source
+
+   To add a custom data source:
+
+   1. Click **Data sources** in the left navigation menu on any DPO Portal page.
+
+   2. Click **Add new data source**.
+
+   3. Complete he following information about the source on the **Basic info** tab and click **Create**:
+
+      * Type of the source.
+      * Official name of the source.
+      * Location.
+      * Name of the person resposible for managing the source — owner's name.
+      * Additional information about the source.
+      * Type of data stored in the source.
+      * If the source shares stored information with a third party.
+      * Type of the source: controller or processor.
+      * What the source is primarily used for — its purpose.
+      * What the source does with te data: collects, stores, transforms, retains.
+
+   .. tip::
+
+      Source name shows up in reports to your data subject. We recommend you use the official data source name and add additional information if you have multiple source of the same type.
+
+      For example, "PostgreSQL for sales" or "MySQL for marketing".
+
+      Source name shows up in reports to your data subject. We recommend you describe in short detail what the source does. For example, "database for customers".
+
+   .. tip::
+
+      Already added a custom data source? |automate_custom_data_source|.
+
+
+   .. |automate_custom_data_source| raw:: html
+
+      <a href="https://docs.soveren.io/automate-custom-data-source.html" target="_blank">Read how to automate data processing in it</a>
 
 
 

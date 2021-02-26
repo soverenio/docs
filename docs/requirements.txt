@@ -1,6 +1,6 @@
 # sphinxcontrib-golangdomain
 sphinx>=2
-sphinx-tabs
+sphinx-inline-tabs
 sphinxcontrib-plantuml
 sphinx-copybutton
 sphinxcontrib-contentui

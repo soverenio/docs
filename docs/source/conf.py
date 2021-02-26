@@ -33,7 +33,7 @@ version = 'latest'
 # ones.
 extensions = [
 #	'sphinxcontrib.golangdomain',
-	'sphinx_tabs.tabs',
+	'sphinx_inline_tabs',
 	'sphinxcontrib.plantuml',
 	'sphinx_copybutton',
     'sphinx_panels'
