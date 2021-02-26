@@ -14,7 +14,7 @@ Soveren allows you to create different types of data subject requests:
 
 * Delete requests to delete your personal data from a company.
 
-* Custom requests to tailor a complex of procedures with your personal data.
+* Custom requests to tailor a complex set of procedures with your personal data.
 
 .. tab:: Access request
 
