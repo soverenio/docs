@@ -15,7 +15,7 @@ Soveren distinguishes between standard and custom data sources:
 
 * A custom data source is normally an on-premise company solution for storing data, such as a relational database like MySQL or PostgreSQL.
 
-.. tab:: Add a data source
+.. tab:: Add data source
 
    To add a data source:
 
@@ -54,7 +54,7 @@ Soveren distinguishes between standard and custom data sources:
 
       <a href="https://docs.soveren.io/automate-data-source.html" target="_blank">Read how to automate data processing in it</a>
 
-.. tab:: Add a custom data source
+.. tab:: Add custom data source
 
    To add a custom data source:
 

@@ -8,7 +8,7 @@ To recover password to a DPO account on Soveren's DPO Portal:
 .. image:: images/dpo-portal/forgot-password-link.png
    :width: 450px
 
-2. Type in the email you registered with and click **Continue**.
+2. Enter the email you registered with and click **Continue**.
 
 .. image:: images/dpo-portal/password-recovery-type-in-email.png
    :width: 450px

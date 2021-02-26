@@ -8,9 +8,9 @@ To sign in to a registered DPO account on Soveren's DPO Portal:
 .. image:: images/dpo-portal/dpo-portal-sign-in-button.png
    :width: 250px
 
-2. Type in the email you registered with.
+2. Enter the email you registered with.
 
-3. Type in your current password.
+3. Enter your current password.
 
 .. tip::
 

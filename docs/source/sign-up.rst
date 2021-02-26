@@ -8,7 +8,7 @@ To register a DPO account on Soveren's DPO Portal:
 .. image:: images/dpo-portal/dpo-portal-registration-button.png
    :width: 250px
 
-2. Type in your work email.
+2. Enter your work email.
 
 .. tip::
    If you're an independent DPO and have contracts with multiple companies, use the email you normally use for business interactions.

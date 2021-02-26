@@ -17,7 +17,7 @@ Soveren distinguishes between standard and custom data sources:
 
 Once you added a data source, you can automate data processing with it.
 
-.. tab:: Automate a data source
+.. tab:: Automate data source
 
    1. Automate interaction with the source by connecting to the source one of the following ways:
 
@@ -55,7 +55,7 @@ Once you added a data source, you can automate data processing with it.
 
       The toggles from the **Automate data processing** section only apply when the **Automation** toggle is on.
 
-.. tab:: Automate a custom data source
+.. tab:: Automate custom data source
 
    To automate a custom data source:
 

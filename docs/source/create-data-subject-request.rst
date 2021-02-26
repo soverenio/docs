@@ -8,38 +8,121 @@ Once the request is processed, you will receive an official report from said off
 
 -------------
 
-To create a data subject request:
+Soveren allows you to create different types of data subject requests:
 
-1. Visit the company's website to find the link to the Privacy Center.
+* Access requests to learn what personal data a company hold on you.
 
-2. Once found, use the link to access the Privacy Center.
+* Delete requests to delete your personal data from a company.
 
-3. Get acquainted with the company's privacy policy.
+* Custom requests to tailor a custom procedure with your personal data.
 
-4. Choose what type of request you would like to create and click on the appropriate button on the screen.
+.. tab:: Access request
 
-   For example, click **Access** to create an access data subject request.
+   To create an access data subject request:
 
-5. Complete the request with the following information and click **Submit**:
+   1. Visit the company's website to find the link to the Privacy Center.
 
-   * Location — country of your residence.
-   * Email — a working email that a Privacy Officer can use to contact you.
-   * First name — your first name (in some countries, name).
-   * Last name — your last name (in some countries, surname).
-   * Username — username you use for your account at this company if any.
+   2. Once found, use the link to access the Privacy Center.
 
-6. On the next page, read the message and click **OK** to return to the index page of the Privacy Center.
+   3. Get acquainted with the company's privacy policy.
 
-7. Confirm your identity by going to your email inbox and clicking the confirmation link in the letter.
+   4. Click **Access**.
 
-.. tip::
-    Identity confirmation prevents spamming Privacy Officers with fake data subject requests.
+   5. Complete the request with the following information and click **Submit**:
 
-Your request will be processed within the officially defined time limit.
+      * Location — country of your residence.
+      * Email — a working email that a Privacy Officer can use to contact you.
+      * First name — your first name (in some countries, name).
+      * Last name — your last name (in some countries, surname).
+      * Username — username you use for your account at this company if any.
 
-.. tip::
-   In case of GDPR, under Article 12 of the General Data Protection Regulation, data controllers must respond to a subject request "without undue delay" and "in any event within one month of receipt of the request".
+   6. On the next page, read the message and click **OK** to return to the index page of the Privacy Center.
 
+   7. Confirm your identity by going to your email inbox and clicking the confirmation link in the letter.
+
+   .. warning::
+
+      Confirm your identity within 24 hours following the request. All unverified requests become stale and are not processed.
+
+   .. tip::
+       Identity confirmation prevents spamming Privacy Officers with fake data subject requests.
+
+   Your request will be processed within the officially defined time limit.
+
+   .. tip::
+      In case of GDPR, under Article 12 of the General Data Protection Regulation, data controllers must respond to a subject request "without undue delay" and "in any event within one month of receipt of the request".
+
+.. tab:: Delete request
+
+   To create a delete data subject request:
+
+   1. Visit the company's website to find the link to the Privacy Center.
+
+   2. Once found, use the link to access the Privacy Center.
+
+   3. Get acquainted with the company's privacy policy.
+
+   4. Click **Delete**.
+
+   5. Complete the request with the following information and click **Submit**:
+
+      * Location — country of your residence.
+      * Email — a working email that a Privacy Officer can use to contact you.
+      * First name — your first name (in some countries, name).
+      * Last name — your last name (in some countries, surname).
+      * Username — username you use for your account at this company if any.
+
+   6. On the next page, read the message and click **OK** to return to the index page of the Privacy Center.
+
+   7. Confirm your identity by going to your email inbox and clicking the confirmation link in the letter.
+
+   .. warning::
+
+      Confirm your identity within 24 hours following the request. All unverified requests become stale and are not processed.
+
+   .. tip::
+      Identity confirmation prevents spamming Privacy Officers with fake data subject requests.
+
+      Your request will be processed within the officially defined time limit.
+
+   .. tip::
+      In case of GDPR, under Article 12 of the General Data Protection Regulation, data controllers must respond to a subject request "without undue delay" and "in any event within one month of receipt of the request".
+
+.. tab:: Custom request
+
+   To create a custom data subject request:
+
+   1. Visit the company's website to find the link to the Privacy Center.
+
+   2. Once found, use the link to access the Privacy Center.
+
+   3. Get acquainted with the company's privacy policy.
+
+   4. Click **Custom**.
+
+   5. Complete the request with the following information and click **Submit**:
+
+      * Location — country of your residence.
+      * Email — a working email that a Privacy Officer can use to contact you.
+      * First name — your first name (in some countries, name).
+      * Last name — your last name (in some countries, surname).
+      * Username — username you use for your account at this company if any.
+
+   6. On the next page, read the message and click **OK** to return to the index page of the Privacy Center.
+
+   7. Confirm your identity by going to your email inbox and clicking the confirmation link in the letter.
+
+   .. warning::
+
+      Confirm your identity within 24 hours following the request. All unverified requests become stale and are not processed.
+
+   .. tip::
+      Identity confirmation prevents spamming Privacy Officers with fake data subject requests.
+
+      Your request will be processed within the officially defined time limit.
+
+   .. tip::
+      In case of GDPR, under Article 12 of the General Data Protection Regulation, data controllers must respond to a subject request "without undue delay" and "in any event within one month of receipt of the request".
 
 
 

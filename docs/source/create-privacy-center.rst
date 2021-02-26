@@ -31,7 +31,7 @@ To deploy a Privacy Center instance for your company:
 
 .. warning::
 
-   You can only set the name from #3 once. Make sure the name is not too long, is readable, and familiar to your customers.
+   You can only set the domain name once. Make sure the name is not too long, is readable, and familiar to your customers.
 
    We recommend you stick to the name used for your company website. For example, github.soveren.io for GitHub rather than anything else.
 
