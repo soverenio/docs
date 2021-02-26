@@ -1,7 +1,7 @@
 Create a data subject request
 ===============================
 
-As a customer, you can visit company's Privacy Center and create a data subject request to exercise your data privacy rights.
+As a customer, you can visit a company's Privacy Center and create a data subject request to exercise your data privacy rights.
 
 Your request will surface at the DPO Portal where a Privacy Officer working for the company can process it within the officialy defined time limit.
 Once the request is processed, you will receive an official report from said officer.
