@@ -1,4 +1,4 @@
-Signing in to an account
+Sign in to an account
 ========================
 
 To sign in to a registered DPO account on Soveren's DPO Portal:
