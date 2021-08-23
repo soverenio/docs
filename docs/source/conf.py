@@ -4,15 +4,19 @@
 # list see the documentation:
 # http://www.sphinx-doc.org/en/master/config
 
+
+
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
+
+import os, sys
 # sys.path.insert(0, os.path.abspath('.'))
+
+
+
 
 
 # -- Project information -----------------------------------------------------
@@ -24,6 +28,10 @@ author = 'Soveren team'
 # The full version, including alpha/beta/rc tags
 release = '1.0'
 version = 'latest'
+
+
+
+
 
 
 # -- General configuration ---------------------------------------------------
@@ -44,6 +52,10 @@ extensions = [
 plantuml_output_format = 'svg'
 plantuml_latex_output_format = 'png'
 
+# The suffix of source filenames.
+source_suffix = ".rst"
+
+# The master toctree document.
 master_doc = 'index'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -62,14 +74,18 @@ def setup(app):
 # https://docs.readthedocs.io/en/stable/faq.html#how-can-i-avoid-search-results-having-a-deprecated-version-of-my-docs
 html_extra_path = ['_public']
 
+
+
+
+
+
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
 
 html_theme = "furo"
-
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -82,7 +98,6 @@ html_static_path = ['_static']
 # or fully qualified paths (eg. https://...)
 # html_css_files = [ 'css/custom_furo.css' ]
 #    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-
 
 #html_logo = 'imgs/logo-soveren-dark.svg'
 
@@ -103,15 +118,19 @@ html_theme_options = {
 #    'includehidden': True,
 #    'titles_only': False
 
-# Customizatio options for Furo theme
+# Customization options for Furo theme
      "navigation_with_keys": True,
      "sidebar_hide_name": True,
      "light_logo": "Logo-dark-L.svg",
      "dark_logo": "Logo-dark-L.svg"
-
  }
 
 
+
+
+
+
+# -- Options for LaTeX output -------------------------------------------------
 
 #html_show_sphinx = False
 
