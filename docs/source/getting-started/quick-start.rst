@@ -36,7 +36,7 @@ Configure and deploy
 Livecheck
 ^^^^^^^^^
 
-Log in to your Soveren account and check tha Soveren proxy is on.
+Log in to your Soveren account and check that Soveren gateway is on.
 
 
 Reroute your traffic
