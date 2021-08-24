@@ -74,17 +74,3 @@ Currently, Soveren supports detection of the following PII types:
    * Email
    * Phone number
    * Home address
-
-
-
-
-
-
-
-
-
-
-
-
-
-
