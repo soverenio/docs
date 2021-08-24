@@ -7,7 +7,7 @@ Quick start
 Deployment
 ----------
 
-Soveren gateway supports Kubernetes and Docker Compose for deployment.
+Soveren gateway supports Kubernetes for deployment.
 
 Requirements
 ^^^^^^^^^^^^
