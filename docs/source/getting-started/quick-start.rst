@@ -1,7 +1,9 @@
 Quick start
 ===========
 
-To get started with Soveren, take a look at the `basic concepts <concepts.html>`_ if needed, then go through the simple installation process below.
+Soveren consists of two parts: Soveren gateway that lives on prem and Soveren cloud that lives in the cloud. If you need information on that, read the `solution details <concepts.html>`_.
+When ready, go through the simple installation process below.
+
 
 Installation
 ------------
