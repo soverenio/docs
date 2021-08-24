@@ -9,34 +9,45 @@ Deployment
 
 Soveren gateway supports Kubernetes and Docker Compose for deployment.
 
-.. tab:: Docker Compose
+Requirements
+^^^^^^^^^^^^
 
-   **Prerequisites**
+1. `Kubernetes <hhttps://kubernetes.io/docs/setup/>`_.
+2. Soveren token to set up Soveren gateway.
 
-   1. `Docker <https://docs.docker.com/get-docker/>`_ and `Docker Compose <https://docs.docker.com/compose/install/>`_.
-   2. Soveren API key. If you don't have a Soveren account, `visit and register <https://soveren.io/sign-up>`_.
+.. admonition:: Tip
+   :class: tip
 
-   **Configure and deploy**
+   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `get one <https://soveren.io/sign-up>`_.
 
-   1. Download the manifest file to the machine you want to deploy Soveren at and switch to the directory with it: ``wget  -O /path_to_folder_to_download_manifest "path_to_manifest_file&cd path_to_folder_to_download_manifest"``
-   2. Add your API key from #2 in **Prerequisites** either via the .env file in the or via the local environment at the server where you want to deploy Soveren.
-   3. `Configure Soveren proxy <https://doc.traefik.io/traefik/>`_ to make it ready to receive requests and proxy them to the backend services.
-   4. Run ``docker-compose up -d``.
+Configure and deploy
+^^^^^^^^^^^^^^^^^^^^
 
-   **Livecheck**
+1. Add your Soveren token to your Kubernetes cluster.
+   ``kubectl create secret generic soveren-proxy-token --from-literal=token=123e4567-e89b-12d3-a456-426655440000``
 
-   Log in to your Soveren account and check tha Soveren proxy is on.
+2. Set up your upstream: configure Soveren Gateway to proxy traffic to your services.
+
+3. Set up Soveren gateway using our manifest file.
+   ``kubectl apply -f https://github.com/soverenio/smat/…``
+
+4. Run a livecheck and reroute your traffic.
+
+Livecheck
+^^^^^^^^^
+
+Log in to your Soveren account and check tha Soveren proxy is on.
 
 
-Redirect your traffic
-^^^^^^^^^^^^^^^^^^^^^
+Reroute your traffic
+^^^^^^^^^^^^^^^^^^^^
 
-To redirect your traffic:
+Route traffic from your services to Soveren Gateway.
 
-1. Configure the frontend to address the proxy.
-2. If you have an edge proxy, configure it to address the Soveren proxy instance.
+.. admonition:: Tip
+   :class: tip
 
-Refer to `Deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter.
+   Refer to `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
 
 
 
