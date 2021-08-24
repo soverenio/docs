@@ -52,7 +52,7 @@ Soveren cloud
 
 The statistical service receives analysis metadata from the box, stores it, and communicates with the frontend to send data to the user dashboard.
 
-The authentication service authenticates the user **(on the frontend or for the box as well??!)**.
+The authentication service authenticates Soveren gateway in Soveren cloud.
 
 The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, APIs, subsystems, receive notifications on important events, and read how to mitigate possible weak points.
 
