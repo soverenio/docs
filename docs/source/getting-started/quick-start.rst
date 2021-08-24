@@ -1,7 +1,8 @@
 Quick start
 ===========
 
-Soveren consists of two parts: Soveren gateway that lives on prem and Soveren cloud that lives in the cloud. If you need information on that, read the `solution details <concepts.html>`_.
+Soveren consists of two parts: Soveren gateway that lives on prem and Soveren cloud that lives in the cloud. If you need more information on that, read the `solution details <concepts.html>`_.
+
 When ready, go through the simple installation process below.
 
 
