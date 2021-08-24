@@ -1,12 +1,12 @@
 Quick start
 ===========
 
-To get started with Soveren, take a look at `basic concepts <concepts.html>`_ if needed, then go through the simple installation process below.
+To get started with Soveren, take a look at the `basic concepts <concepts.html>`_ if needed, then go through the simple installation process below.
 
 Installation
 ------------
 
-Soveren gateway supports Kubernetes for deployment.
+You need to install Soveren gateway within your perimeter. Soveren gateway supports Kubernetes.
 
 Requirements
 ^^^^^^^^^^^^
@@ -17,16 +17,16 @@ Requirements
 .. admonition:: Tip
    :class: tip
 
-   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `get one <https://soveren.io/sign-up>`_.
+   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `register one <https://soveren.io/sign-up>`_.
 
-Configure, install, and deploy
+Configure, install, and set up
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Add your Soveren token to your Kubernetes cluster:
 
    ``kubectl create secret generic soveren-proxy-token --from-literal=token=123e4567-e89b-12d3-a456-426655440000``
 
-2. Set up your upstream: configure Soveren Gateway to proxy traffic for your services.
+2. Set up your upstream: configure Soveren gateway to proxy traffic for your services.
 
 3. Install and set up Soveren gateway using our manifest file:
 
@@ -35,7 +35,7 @@ Configure, install, and deploy
 Reroute your traffic
 ^^^^^^^^^^^^^^^^^^^^
 
-Route traffic from your services to Soveren Gateway.
+Route traffic from your services to Soveren gateway.
 
 .. admonition:: Tip
    :class: tip
