@@ -54,7 +54,7 @@ The statistical service receives analysis metadata from the box, stores it, and 
 
 The authentication service authenticates Soveren gateway in Soveren cloud.
 
-The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, APIs, subsystems, receive notifications on important events, and read how to mitigate possible weak points.
+The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, see APIs and subsystems, receive notifications on important events, and read how to mitigate possible weak points.
 
 
 Supported PII types
