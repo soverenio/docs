@@ -38,7 +38,7 @@ The proxy is a cloud-native application proxy and extends `Traefik <https://doc.
 
 The PII detection service receives data prepared by the URL clustering service and detects PIIs in it.
 
-The URL clustering and metadata relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. Besides, URL clustering, it reads the traffic routed via the proxy, prepares data in motion for PII detection, and sends metadata obtained after PII detection to Soveren cloud.
+The URL clustering and metadata relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. Besides URL clustering, it reads the traffic routed via the proxy, prepares data in motion for PII detection, and sends metadata obtained after PII detection to Soveren cloud.
 
 
 Soveren cloud
