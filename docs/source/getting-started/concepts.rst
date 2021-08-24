@@ -36,7 +36,7 @@ Soveren gateway is a box solution that lives within your premises, is deployed b
 
 The proxy is a cloud-native application proxy and extends `Traefik <https://doc.traefik.io/>`_ functionality. The proxy is the point to channel your traffic to, and effectively serves as an edge router: door to your platform that intercepts and routes every incoming request.
 
-The PII detection service
+The PII detection service receives data prepared by the URL clustering service and detects PIIs in it.
 
 The URL clustering and metadata relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. Besides, URL clustering, it reads the traffic routed via the proxy, prepares data in motion for PII detection, and sends metadata obtained after PII detection to Soveren cloud.
 

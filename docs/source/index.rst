@@ -4,8 +4,6 @@
    getting-started/index
 
 
-.. _welcome:
-
 Welcome
 =======
 
@@ -20,7 +18,7 @@ What sets Soveren apart from other data privacy solutions:
 
 All this makes you better prepared for GDPR/CCPA audits, certification, and landing new partners.
 
-Soveren supports such major cluster technologies as Kubernetes and Docker.
+Soveren supports Kubernetes.
 
 Our goal is to make Soveren simple and practical, so the users can enjoy using it.
 
