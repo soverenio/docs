@@ -41,13 +41,3 @@ Route traffic from your services to Soveren gateway.
    :class: tip
 
    Read `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
-
-
-
-
-
-
-
-
-
-
