@@ -19,8 +19,6 @@ What sets Soveren apart from other data privacy solutions:
 
 * It offers actionable, real-time insights to better manage systems with collected PIIs, assess associated risks, and mitigate privacy and security issues that may cause internal or external breaches.
 
-All this makes you better prepared for GDPR/CCPA audits, certification, and landing new partners.
-
 Our goal is to make Soveren simple and practical, so the users can enjoy using it.
 
 .. admonition:: Early Adopter Program
