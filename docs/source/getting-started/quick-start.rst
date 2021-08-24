@@ -47,7 +47,7 @@ Route traffic from your services to Soveren Gateway.
 .. admonition:: Tip
    :class: tip
 
-   Refer to `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
+   Read `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
 
 
 
