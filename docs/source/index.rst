@@ -2,6 +2,7 @@
    :hidden:
 
    getting-started/index
+   administration/index
 
 
 Welcome
@@ -10,6 +11,9 @@ Welcome
 Soveren is a data privacy solution that makes handling personal information and complying with CCPA/GDRP easy.
 It receives requests and responses from/to your systems, detects personally identifiable information (PII) in them, and stores analysis metadata in Soveren cloud to give you monitoring and analytics when you need them.
 
+.. image:: images/dashboard/pii-types-overview.png
+   :width: 800
+
 What sets Soveren apart from other data privacy solutions:
 
 * It solves the problem of visibility into the sources and PIIs, and answers such questions as what PII types are collected, which are the most important ones, what internal and 3rd party systems have access to this data.
@@ -17,8 +21,6 @@ What sets Soveren apart from other data privacy solutions:
 * It offers actionable, real-time insights to better manage systems with collected PIIs, assess associated risks, and mitigate privacy and security issues that may cause internal or external breaches.
 
 All this makes you better prepared for GDPR/CCPA audits, certification, and landing new partners.
-
-Soveren supports Kubernetes.
 
 Our goal is to make Soveren simple and practical, so the users can enjoy using it.
 
