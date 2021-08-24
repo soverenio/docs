@@ -1,7 +1,7 @@
 Administration
 ==============
 
-*Administration* gives you what you need to maintain Soveren and resolve issues.
+*Administration* gives you what you need to maintain and troubleshoot Soveren.
 
 What to read here
 ^^^^^^^^^^^^^^^^^
