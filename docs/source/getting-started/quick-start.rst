@@ -30,7 +30,7 @@ Configure, install, and set up
 
 3. Install and set up Soveren gateway using our manifest file:
 
-   ``kubectl apply -f https://github.com/soverenio/smat/<link_to_the_manifest_file>``
+   ``kubectl apply -f https://github.com/soverenio/smat/<path_to_the_manifest_file>``
 
 Reroute your traffic
 ^^^^^^^^^^^^^^^^^^^^
