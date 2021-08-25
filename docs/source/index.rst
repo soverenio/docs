@@ -3,6 +3,7 @@
 
    getting-started/index
    administration/index
+   pii-detection/index
 
 
 Welcome

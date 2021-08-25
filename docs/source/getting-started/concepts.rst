@@ -30,9 +30,9 @@ Soveren gateway
 
 Soveren gateway is a box solution that lives within your premises, is deployed by you, and implements:
 
-* `Proxy <https://github.com/soverenio/traefik>`_
-* `PII detection service <https://github.com/soverenio/detection-tool>`_
-* `Service <https://github.com/soverenio/boxy>`_ for URL clustering and relaying the analysis metadata to Soveren cloud
+* Proxy
+* PII detection service
+* Service for URL clustering and relaying the analysis metadata to Soveren cloud
 
 The proxy is a cloud-native application proxy and extends `Traefik <https://doc.traefik.io/>`_ functionality. The proxy is the point to channel your traffic to, and effectively serves as an edge router: door to your platform that intercepts and routes every incoming request.
 
@@ -55,22 +55,3 @@ The authentication service authenticates Soveren gateway in Soveren cloud.
 The statistical service receives analysis metadata from the Soveren gateway, stores it, and communicates with the frontend to provide data for the user dashboard.
 
 The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, see APIs and subsystems, receive notifications on important events, and read how to mitigate possible weak points.
-
-
-Supported PII types
-^^^^^^^^^^^^^^^^^^^
-Currently, Soveren supports detection of the following PII types:
-
-* Personal information
-   * First Name
-   * Last Name
-   * Date of birth
-   * Gender
-* National IDs
-   * Driver license
-   * SSN
-* Card numbers
-* Contact information
-   * Email
-   * Phone number
-   * Home address
