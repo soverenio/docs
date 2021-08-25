@@ -15,35 +15,35 @@ Classification model roughly has the following sensitivity levels:
 Standalone PIIs
 ---------------
 
-Standalone PIIs have the following sensitivity levels at Soveren:
+Soveren assigns standalone PIIs have the following sensitivity levels:
 
-* Personal information
-   * First Name — medium
-   * Last Name — medium
-   * Middle name (if any) — medium
-   * Date of birth — low
-   * Gender — low
-* National IDs
-   * Driver license — high
-   * SSN — high
-   * National ID — high
-   * Travel passport — high
-* Financial information
-   * Card numbers — high
-   * IBAN — low
-* Contact information
-   * Email — medium
-   * Phone number — medium
-   * Home address — high
-* Medical license — low
-* NRP — high
-
+* Low
+   * Date of birth
+   * Gender
+   * IBAN
+   * Medical license
+* Medium
+   * First Name
+   * Last Name
+   * Middle name (if any)
+   * Email
+   * Phone number
+* High
+   * Driver license
+   * SSN
+   * National ID
+   * Travel passport
+   * Card numbers
+   * Home address
+   * NRP (person's ntionality, religious or political group)
 
    
+Combinations of PIIs
+--------------------
 
+Soveren assigns combinations of PIIs the following sensitivity levels:
 
-
-
+Work in progress...
 
 
 

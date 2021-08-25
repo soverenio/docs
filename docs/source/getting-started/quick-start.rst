@@ -14,7 +14,7 @@ You need to install Soveren gateway within your perimeter. Soveren gateway suppo
 Requirements
 ^^^^^^^^^^^^
 
-1. `Kubernetes <hhttps://kubernetes.io/docs/setup/>`_.
+1. `Kubernetes <https://kubernetes.io/docs/setup/>`_.
 2. Soveren token to set up Soveren gateway.
 
 .. admonition:: Tip
@@ -43,4 +43,4 @@ Route traffic from your services to Soveren gateway.
 .. admonition:: Tip
    :class: tip
 
-   Read `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
+   Read about the` fallback plan <fallback.html>`_. in case Soveren gateway fails and you need to reroute your traffic on the spot.

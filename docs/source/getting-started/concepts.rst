@@ -21,7 +21,7 @@ Solution details
 
 Soveren consists of two parts: Soveren gateway and Soveren cloud.
 
-.. image:: ../images/architecture/architecture-concept.png
+.. image:: ../images/architecture/architecture-concept-detailed.png
    :width: 800
 
 
@@ -31,14 +31,17 @@ Soveren gateway
 Soveren gateway is a box solution that lives within your premises, is deployed by you, and implements:
 
 * Proxy
+* Messaging system
 * PII detection service
 * Service for URL clustering and relaying the analysis metadata to Soveren cloud
 
-The proxy is a cloud-native application proxy and extends `Traefik <https://doc.traefik.io/>`_ functionality. The proxy is the point to channel your traffic to, and effectively serves as an edge router: door to your platform that intercepts and routes every incoming request.
+The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality. It intercepts and routes incoming requests to your system, effectively serving as an edge router.
 
-The PII detection service receives data prepared by the URL clustering service and detects PIIs in it.
+For the messaging system, Soveren uses `Apache Kafka <https://kafka.apache.org/documentation/>`_. It streams intercepted requests to other Soveren gateway components.
 
-The URL clustering and metadata relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. Besides URL clustering, it reads the traffic routed via the proxy, prepares data in motion for PII detection, and sends metadata obtained after PII detection to Soveren cloud.
+The PII detection service is based on `Presidio <https://microsoft.github.io/presidio/>`_ heavily extending its functionality with new features. It detects PIIs in the intercepted requests.
+
+The URL clustering and metadaya relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. It reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren cloud.
 
 
 Soveren cloud
@@ -50,8 +53,24 @@ Soveren cloud
 * Statistical service
 * Frontend with user account, stats and metrics
 
-The authentication service authenticates Soveren gateway in Soveren cloud.
-
-The statistical service receives analysis metadata from the Soveren gateway, stores it, and communicates with the frontend to provide data for the user dashboard.
-
 The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, see APIs and subsystems, receive notifications on important events, and read how to mitigate possible weak points.
+
+
+How Soveren works
+^^^^^^^^^^^^^^^^^
+
+First, the proxy intercepts requests coming to your system.
+
+Then the proxy sends them to the messaging system.
+
+The URL clustering and metadata relaying service reads messages containing requests from the messaging system, prepares them for PII detection, and sends the prepared data to the PII detection service.
+
+The PII detection service receives the prepared data, detects PIIs in it, and sends back metadata containing PII detection results.
+
+The URL clustering service receives the metadata and sends it to Soveren cloud, namely to the statistical service.
+
+The authentication service authenticates the URL clustering service in Soveren cloud.
+
+The statistical service receives the metadata from the the URL clustering service and stores it in the metadata storage.
+
+The frontend asks the statistical service for data to populate the user dashboard whenever a user logs into their user account and views stats and metrics.
