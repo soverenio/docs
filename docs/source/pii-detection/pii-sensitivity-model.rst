@@ -15,7 +15,7 @@ Classification model roughly has the following sensitivity levels:
 Standalone PIIs
 ---------------
 
-Soveren assigns standalone PIIs have the following sensitivity levels:
+Soveren assigns standalone PIIs the following sensitivity levels:
 
 * Low
    * Date of birth
