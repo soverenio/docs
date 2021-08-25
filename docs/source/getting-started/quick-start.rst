@@ -27,7 +27,7 @@ Configure, install, and set up
 
 1. Add your Soveren token to your Kubernetes cluster:
 
-   ``kubectl create secret generic soveren-proxy-token --from-literal=token=123e4567-e89b-12d3-a456-426655440000``
+   ``kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren_token_from_your_account_on_soveren.io>``
 
 2. Set up your upstream: configure Soveren gateway to proxy traffic for your services.
 
@@ -38,9 +38,9 @@ Configure, install, and set up
 Reroute your traffic
 ^^^^^^^^^^^^^^^^^^^^
 
-Route traffic from your services to Soveren gateway.
+Route traffic from your services to Soveren gateway. You know the best your infrastructure and can decide how to position Soveren gateway against your system services and edge router/proxy if you have one.
 
 .. admonition:: Tip
    :class: tip
 
-   Read about the` fallback plan <fallback.html>`_. in case Soveren gateway fails and you need to reroute your traffic on the spot.
+   Read `auto live check and fallback plan <fallback.html>`_. in case Soveren gateway fails and you need to reroute your traffic on the spot.
