@@ -1,8 +1,8 @@
-Deployment and fallback
+Positioning and fallback
 =======================
 
-Deployment
-----------
+Positioning
+-----------
 You know the best your infrastructure and can decide how to position Soveren gateway against your system services and edge router/proxy if you have one.
 
 We're striving to make Soveren stable and available at all times, but any pieces of software can fail from time to time.
