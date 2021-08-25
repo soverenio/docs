@@ -10,14 +10,14 @@ Read `Concepts <concepts.html>`_ to understand how Soveren is built and what eac
 
 Read `Quick start <quick-start.html>`_ to learn how to install, set up and run Soveren.
 
-Read `Deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter when installing.
+Read `Deployment and fallback <fallback.html>`_ to give you an idea of a fallback plan.
 
 .. toctree::
    :hidden:
 
    concepts
    quick-start
-   deployment-options
+   fallback
 
 
 
