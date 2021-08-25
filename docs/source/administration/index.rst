@@ -6,10 +6,12 @@ Administration
 What to read here
 ^^^^^^^^^^^^^^^^^
 
+Read `Troubleshooting <throubleshooting.html>`_ to understand how to solve possible problems and maintain Soveren.
+
 .. toctree::
    :hidden:
 
-   throublshooting
+   throubleshooting
 
 
 
