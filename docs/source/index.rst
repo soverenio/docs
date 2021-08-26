@@ -24,7 +24,7 @@ What sets Soveren apart from other data privacy solutions:
 
 * It highlights risks and helps engineering and security leaders make informed security and privacy decisions.
 
-* Soveren doesn't modify proxied requests and sends only metadata to Soveren Cloud.
+* It doesn't modify proxied traffic and sends only metadata to Soveren Cloud.
 
 * Proxied traffic isn't delayed by PII detection, and Soveren doesn't increase latency in any significant way.
 
