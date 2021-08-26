@@ -47,7 +47,7 @@ Architecture-wise, it Soveren Gateway includes:
 Soveren Cloud
 -------------
 
-`Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS.
+Soveren Cloud is a SaaS.
 
 It provides dashboards with insights into all sorts of data privacy related stats and metrics, including compound risk score, information about PII types and system APIs.
 
