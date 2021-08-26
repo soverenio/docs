@@ -55,7 +55,7 @@ Configure, install, and set up Soveren Gateway
 
       You can add multiple instances of the same service adding more lines with the ``url`` parameter.
 
-      For routing incoming traffic to multiple service of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
+      For routing incoming traffic to multiple services of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
 
 6. Reroute your traffic
 
