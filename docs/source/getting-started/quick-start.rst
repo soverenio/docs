@@ -1,7 +1,7 @@
 Quick start
 ===========
 
-Soveren consists of two parts: Soveren Gateway that lives on prem and Soveren Cloud that lives in the cloud. If you need more information on that, read `Soveren overview <concepts.html>`_.
+Soveren consists of two parts: Soveren Gateway that lives on prem and Soveren Cloud that lives in the cloud. If you need more information on that, read `Soveren overview <overview.html>`_.
 
 When ready, go through the simple installation process below.
 
@@ -15,8 +15,7 @@ For other deployment options contact us at mailto: support@soveren.io.
 Requirements
 ^^^^^^^^^^^^
 
-1. `Kubernetes <https://kubernetes.io/docs/setup/>`_.
-2. Soveren token to set up Soveren Gateway.
+`Kubernetes <https://kubernetes.io/docs/setup/>`_.
 
 Configure, install, and set up
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

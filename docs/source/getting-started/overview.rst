@@ -38,7 +38,7 @@ Soveren Cloud
 
 `Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives in the cloud, is deployed by Soveren, and implements, besides other services, Soveren frontend.
 
-The frontend implements the user account and dashboard to see a compound risk score, PIIs, APIs and subsystems.
+There you can manage your Soveren account and see a dashboard with compound risk score and various statistical data on detected PIIs, APIs and subsystems.
 
 
 How Soveren works
@@ -54,10 +54,8 @@ The PII detection service receives the prepared data, detects PIIs in it, and se
 
 The URL clustering service receives the metadata and sends it to Soveren Cloud.
 
-The frontend uses the received data to populate the user dashboard whenever a user logs into their user account and views stats and metrics.
 
-
-What technologies Soveren uses
+Other projects Soveren applies
 ------------------------------
 
 The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality.
