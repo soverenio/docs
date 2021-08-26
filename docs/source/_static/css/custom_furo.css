@@ -660,7 +660,7 @@ html {
 
 .content {
 	padding: 0 3em;
-	width: 46em;
+	width: 60em;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between

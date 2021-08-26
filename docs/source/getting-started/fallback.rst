@@ -10,13 +10,6 @@ Below you can see one of the deployment schemes for Soveren Gateway. Mind this i
 .. image:: ../images/architecture/positioning.png
    :width: 800
 
-Live check
-----------
-
-We're striving to make Soveren stable and available at all times, but any pieces of software can fail from time to time.
-
-It's a good idea to implement some automatic live check to check if the proxy part of Soveren Gateway is up and proxies incoming traffic for your system.
-
 
 Fallback
 --------
