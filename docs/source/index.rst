@@ -33,7 +33,7 @@ Our goal is to make Soveren simple and practical so the users can enjoy using it
 .. admonition:: Early Adopter Program
    :class: seealso
 
-   We're heading to our MVP and welcome you to `test it and see the value <https://soveren.io/sign-up>`_.
+   We're heading to our MVP and welcome you to test it and see the value.
 
 
 
