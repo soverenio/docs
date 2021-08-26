@@ -36,7 +36,7 @@ Configure, install, and set up Soveren Gateway
 
    ::
 
-        ``kubectl edit cm replicator``
+        kubectl edit cm replicator
 
    ``replicator`` ConfigMap example:
 
