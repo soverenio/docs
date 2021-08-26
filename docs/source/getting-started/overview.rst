@@ -21,7 +21,7 @@ The on prem part, *Soveren Gateway*, parses structured HTTP JSON traffic, extrac
 The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into different PII-related and system-related statistical data and metrics.
 
 .. image:: ../images/architecture/deployment-scheme.png
-   :width: 800
+   :width: 900
 
 
 Soveren Gateway
