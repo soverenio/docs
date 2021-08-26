@@ -6,8 +6,8 @@
    pii-detection/index
 
 
-Welcome
-=======
+Soveren documentation
+=====================
 
 .. image:: /images/architecture/architecture-concept.png
    :width: 800
