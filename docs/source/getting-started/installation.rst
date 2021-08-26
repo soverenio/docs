@@ -57,9 +57,7 @@ Configure, install, and set up Soveren Gateway
 
       For routing incoming traffic to multiple services of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
 
-6. Reroute your traffic
-
-   Route traffic from your services to Soveren Gateway. Decide where to deploy Soveren Gateway against your system services and edge router if you have one.
+6. Configure your service to route traffic to Soveren Gateway.
 
    .. admonition:: Tip
       :class: tip
