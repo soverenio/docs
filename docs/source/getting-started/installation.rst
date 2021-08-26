@@ -1,7 +1,7 @@
 Installation
 ============
 
-Soveren consists of two parts: Soveren Gateway that lives on prem and Soveren Cloud that lives in the cloud. More information on that in `Soveren overview <overview.html>`_.
+`As you learned <../index.html>`_, Soveren consists of two parts: Soveren Gateway that lives on prem and Soveren Cloud that lives in the cloud.
 
 You need to install Soveren Gateway within your perimeter.
 
