@@ -1,34 +1,45 @@
 Soveren overview
 ================
 
-Soveren consists of two parts: Soveren Gateway and Soveren Cloud.
+What is Soveren
+---------------
 
-.. image:: ../images/architecture/architecture-concept-detailed-latest.png
+Soveren is a data privacy solution that helps uncover personal information (PII) in structured API flows.
+Modern companies have a lot of services and heavy on prem traffic flow without much information what PIIs flow between what systems.
+
+Sensitivity of personal information varies depending on many factors. Soveren determines PII sensitivity both for standalone PIIs and combination of different types.
+
+It provides means to assess company risks related to personal information.
+
+How Soveren works
+-----------------
+
+Soveren has a hybrid architecture combining on prem and cloud.
+
+The on prem part, *Soveren Gateway*, parses structured HTTP JSON traffic, extracts PIIs, and sends metadata to the cloud.
+
+The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into different PII-related and system-related statistical data and metrics.
+
+.. image:: ../images/architecture/deployment-scheme.png
    :width: 800
 
 
-Soveren Gateway
----------------
+Soveren Gateway (on prem)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Soveren Gateway is a box solution that lives within your premises, is deployed by you, and implements:
+Soveren Gateway is a box solution that within customer's perimeter in a K8s cluster.
 
-* Proxy
-* Messaging system
-* PII detection service
-* Service for URL clustering and relaying the analysis metadata to Soveren Cloud
+It gets part of the traffic and detects PIIs in it. Detecting PIIs, it forms metadata with all request details except the actual request payload data.
 
-The proxy intercepts and routes incoming requests to your system, effectively serving as an edge router.
+Architecture-wise, it Soveren Gateway includes:
 
-The messaing system streams intercepted requests to other Soveren Gateway components.
-
-The PII detection service detects PIIs in the intercepted requests.
-
-Service for URL clustering service reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren Cloud.
+* A proxy
+* A messaging system
+* A PII detection service
+* A service for URL clustering and relaying the metadata to Soveren Cloud
 
 .. admonition:: Note
    :class: note
-
-   Soveren Gateway doesn't modify proxied requests and sends only metadata to Soveren Cloud.
 
    Proxied traffic isn't delayed by PII detection, and Soveren Gateway doesn't increase latency in any significant way.
 
@@ -36,30 +47,8 @@ Service for URL clustering service reads queued requests from Kafka, prepares da
 Soveren Cloud
 -------------
 
-`Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives in the cloud, is deployed by Soveren, and implements, besides other services, Soveren frontend.
+`Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS.
 
-There you can manage your Soveren account and see a dashboard with compound risk score and various statistical data on detected PIIs, APIs and subsystems.
+It provides dashboards with insights into all sorts of data privacy related stats and metrics, including compound risk score, information about PII types and system APIs.
 
-
-How Soveren works
------------------
-
-First, the proxy intercepts requests coming to your system.
-
-Then the proxy sends them to the messaging system.
-
-The URL clustering and metadata relaying service reads messages containing requests from the messaging system, prepares them for PII detection, and sends the prepared data to the PII detection service.
-
-The PII detection service receives the prepared data, detects PIIs in it, and sends back metadata containing PII detection results.
-
-The URL clustering service receives the metadata and sends it to Soveren Cloud.
-
-
-Other projects Soveren applies
-------------------------------
-
-The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality.
-
-For the messaging system, Soveren uses `Apache Kafka <https://kafka.apache.org/documentation/>`_.
-
-The PII detection service is based on `Presidio <https://microsoft.github.io/presidio/>`_ heavily extending its functionality with new features.
+Next, proceed with the Installation guide`<installation.html>`_.

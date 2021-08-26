@@ -16,7 +16,7 @@ Read `Deployment and fallback <fallback.html>`_ to get an idea of a fallback pla
    :hidden:
 
    overview
-   quick-start
+   installation
    fallback
 
 
