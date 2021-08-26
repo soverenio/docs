@@ -44,6 +44,9 @@ Service for URL clustering service reads queued requests from Kafka, prepares da
 
    Soveren gateway doesn't modify proxied requests and sends only metadata to Soveren cloud.
 
+   Proxied traffic isn't delayed by PII detection, and Soveren gateway doesn't increase latency in any significant way.
+   
+
 Soveren cloud
 ^^^^^^^^^^^^^
 
