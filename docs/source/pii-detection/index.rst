@@ -6,6 +6,10 @@ PII detection
 What to read here
 ^^^^^^^^^^^^^^^^^
 
+Read what `PII types Soveren can currently recognize <pii-types.html>`_.
+
+Read about `PII sensitivity model <pii-sensitivity-model>`_.
+
 .. toctree::
    :hidden:
 
