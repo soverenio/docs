@@ -27,20 +27,42 @@ Configure, install, and set up
 
 1. Add your Soveren token to your Kubernetes cluster:
 
-   ``kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren_token_from_your_account_on_soveren.io>``
+   ``kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>``
 
-2. Set up your upstream: configure Soveren gateway to proxy traffic for your services.
+2. Сonfigure Soveren gateway to proxy traffic for your services. Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service.
+
+   ::
+
+          # Add the service
+          services:
+            test-service:
+              loadBalancer:
+                servers:
+                  - url: http://address-of-your-service:port/
+
+   One of the ways to edit the ``replicator`` is via CLI:
+
+   ``kubectl edit cm replicator``
+
+   .. admonition:: Tip
+      :class: tip
+
+      ``services`` is an array of arbitrary size. You can add multiple instances of the same service adding more lines with the ``url`` parameter.
+
+      For routing incoming traffic to multiple service of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
+
+
 
 3. Install and set up Soveren gateway using our manifest file:
 
-   ``kubectl apply -f https://github.com/soverenio/smat/<path_to_the_manifest_file>``
+   ``kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>``
 
 Reroute your traffic
 ^^^^^^^^^^^^^^^^^^^^
 
-Route traffic from your services to Soveren gateway. You know the best your infrastructure and can decide how to position Soveren gateway against your system services and edge router/proxy if you have one.
+Route traffic from your services to Soveren gateway. You know your infrastructure the best and can decide how to position Soveren gateway against your system services and edge router if you have one.
 
 .. admonition:: Tip
    :class: tip
 
-   Read `auto live check and fallback plan <fallback.html>`_. in case Soveren gateway fails and you need to reroute your traffic on the spot.
+   Read `auto live check and fallback plan <fallback.html>`_. in case Soveren gateway fails and you need to reroute your traffic on the go.

@@ -7,13 +7,9 @@ Personally identifiable information (PII) — any representation of information 
 
 PII is gaining importance, and regulations appear that set new standards on how PII should be handled and protected, such as GDPR or CCPA.
 
-`General Data Protection Regulation <https://gdpr-info.eu/>`_ (GDPR) — a regulation in EU law on data protection and privacy in the European Union and the European Economic Area.
-
-`California Consumer Privacy Act <https://oag.ca.gov/privacy/ccpa>`_ (CCPA) — a state statute intended to enhance privacy rights and consumer protection for residents of California, United States.
-
 Naturally, we see new emerging data privacy solutions.
 
-Data privacy solution — a complex system to protect client's systems from data breaches, prevent unauthorized access to PIIs, discover and categorize PIIs, assess potential PII-associated risks, and give actionable information to mitigate risks, improve security and help comply with the regulations.
+Data privacy solution — a complex system to protect client's systems from data breaches, prevent unauthorized access to PIIs, discover and categorize PIIs, assess potential PII-associated risks, and give actionable information to mitigate risks, and improve security.
 
 
 Solution details

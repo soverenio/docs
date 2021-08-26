@@ -35,7 +35,7 @@ Soveren assigns standalone PIIs the following sensitivity levels:
    * Travel passport
    * Card numbers
    * Home address
-   * NRP (person's ntionality, religious or political group)
+   * NRP (person's nationality, religious or political group)
 
    
 Combinations of PIIs
