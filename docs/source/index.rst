@@ -27,9 +27,6 @@ What sets Soveren apart from other data privacy solutions:
 
 * Proxied traffic isn't delayed by PII detection, and Soveren doesn't increase latency in any significant way.
 
-
-
-
 Our goal is to make Soveren simple and practical so the users can enjoy using it.
 
 .. admonition:: Early Adopter Program

@@ -52,7 +52,7 @@ Soveren Cloud
 
 `Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives in the cloud, is deployed by Soveren, and implements, besides other services, Soveren frontend.
 
-The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, see APIs and subsystems, receive notifications on important events, and read how to mitigate possible weak points.
+The frontend implements the user account and dashboard to see a compound risk score, PIIs, APIs and subsystems.
 
 
 How Soveren works
