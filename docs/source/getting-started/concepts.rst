@@ -23,7 +23,7 @@ The messaing system streams intercepted requests to other Soveren Gateway compon
 
 The PII detection service detects PIIs in the intercepted requests.
 
-Service for URL clustering service reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren cloud.
+Service for URL clustering service reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren Cloud.
 
 .. admonition:: Note
    :class: note

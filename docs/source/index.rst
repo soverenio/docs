@@ -13,7 +13,7 @@ Soveren documentation
    :width: 800
 
 Soveren is a data privacy solution that makes handling personal information easy.
-It receives requests and responses from/to your systems, detects personally identifiable information (PII) in them, and stores analysis metadata in Soveren cloud to give you monitoring and analytics when you need them.
+It receives requests and responses from/to your systems, detects personally identifiable information (PII) in them, and stores analysis metadata in Soveren Cloud to give you monitoring and analytics when you need them.
 
 What sets Soveren apart from other data privacy solutions:
 
@@ -23,7 +23,7 @@ What sets Soveren apart from other data privacy solutions:
 
 * It highlights risks and helps engineering and security leaders make informed security and privacy decisions.
 
-* Soveren doesn't modify proxied requests and sends only metadata to Soveren cloud.
+* Soveren doesn't modify proxied requests and sends only metadata to Soveren Cloud.
 
 * Proxied traffic isn't delayed by PII detection, and Soveren doesn't increase latency in any significant way.
 
