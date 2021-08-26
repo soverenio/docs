@@ -59,11 +59,11 @@ Configure, install, and set up Soveren Gateway
 
 6. Reroute your traffic
 
-   Route traffic from your services to Soveren Gateway. You know your infrastructure the best and can decide where to deploy Soveren Gateway against your system services and edge router if you have one.
+   Route traffic from your services to Soveren Gateway. Decide where to deploy Soveren Gateway against your system services and edge router if you have one.
 
    .. admonition:: Tip
       :class: tip
 
-      Read `Deployment and fallback <fallback.html>`_ for emergency cases.
+      Read `Deployment and fallback <fallback.html>`_ for a deployment scheme example and fallback plan.
 
 7. `Go to the dashboard <link-to-soveren-dashboard>`_ and check the PIIs detected in your traffic and your compound risk score.
