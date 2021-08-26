@@ -1,5 +1,28 @@
+PII types and sensitivity
+=========================
+
+Supported PII types
+-------------------
+Currently, Soveren supports detection of the following PII types:
+
+* Personal information
+   * First Name
+   * Last Name
+   * Middle name (if any)
+   * Date of birth
+   * Gender
+* National IDs
+   * Driver license
+   * SSN
+* Financial information
+   * Card numbers
+* Contact information
+   * Email
+   * Phone number
+   * Home address
+
 PII sensitivity model
-=====================
+---------------------
 
 Soveren assigns different weight to PIIs depending on various factors:
 
@@ -13,7 +36,7 @@ Classification model roughly has the following sensitivity levels:
 * High — high possibility of person identification.
 
 Standalone PIIs
----------------
+^^^^^^^^^^^^^^^
 
 Soveren assigns standalone PIIs the following sensitivity levels:
 
@@ -37,13 +60,22 @@ Soveren assigns standalone PIIs the following sensitivity levels:
    * Home address
    * NRP (person's nationality, religious or political group)
 
-   
+
 Combinations of PIIs
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Soveren assigns combinations of PIIs the following sensitivity levels:
 
 Work in progress...
+
+
+
+
+
+
+
+
+
 
 
 

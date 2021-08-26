@@ -4,8 +4,7 @@
    getting-started/installation
    getting-started/fallback
    administration/throubleshooting
-   pii-detection/pii-types
-   pii-detection/pii-sensitivity-model
+   pii-detection/pii-types-and-sensitivity
 
 
 What is Soveren
