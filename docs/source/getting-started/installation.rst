@@ -32,7 +32,7 @@ Configure, install, and set up Soveren Gateway
         kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
 
 
-5. Сonfigure Soveren Gateway to proxy traffic for your services: edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service.
+5. Сonfigure Soveren Gateway to proxy traffic for your services: edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
 
    ::
 
