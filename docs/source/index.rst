@@ -1,9 +1,12 @@
 .. toctree::
    :hidden:
 
-   getting-started/index
-   administration/index
-   pii-detection/index
+   getting-started/overview
+   getting-started/installation
+   getting-started/fallback
+   administration/throubleshooting
+   pii-detection/pii-types
+   pii-detection/pii-sensitivity-model
 
 
 Soveren documentation
