@@ -5,7 +5,7 @@ Soveren consists of two parts: Soveren Gateway that lives on prem and Soveren Cl
 
 You need to install Soveren Gateway within your perimeter.
 
-Currently, Soveren gateway available for installation in your Kubernetes cluster. For other deployment options contact us at mailto: support@soveren.io.
+Currently, Soveren gateway available for installation in your Kubernetes cluster. For other deployment options contact us at support@soveren.io.
 
 Requirements
 ------------
