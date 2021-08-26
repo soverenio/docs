@@ -20,7 +20,7 @@ Requirements
 .. admonition:: Tip
    :class: tip
 
-   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `register one <https://soveren.io/sign-up>`_.
+   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `create one <https://soveren.io/sign-up>`_.
 
 Configure, install, and set up
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

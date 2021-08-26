@@ -1,20 +1,6 @@
 Soveren overview
 ================
 
-Basic concepts
---------------
-Personally identifiable information (PII) — any representation of information that permits the identity of an individual to whom the information applies to be reasonably inferred by either direct or indirect means.
-
-PII is gaining importance, and regulations appear that set new standards on how PII should be handled and protected, such as GDPR or CCPA.
-
-Naturally, we see new emerging data privacy solutions.
-
-Data privacy solution — a complex system to protect client's systems from data breaches, prevent unauthorized access to PIIs, discover and categorize PIIs, assess potential PII-associated risks, and give actionable information to mitigate risks, and improve security.
-
-
-Solution details
-----------------
-
 Soveren consists of two parts: Soveren Gateway and Soveren Cloud.
 
 .. image:: ../images/architecture/architecture-concept-detailed-latest.png
@@ -22,7 +8,7 @@ Soveren consists of two parts: Soveren Gateway and Soveren Cloud.
 
 
 Soveren Gateway
-^^^^^^^^^^^^^^^
+---------------
 
 Soveren Gateway is a box solution that lives within your premises, is deployed by you, and implements:
 
@@ -48,7 +34,7 @@ Service for URL clustering service reads queued requests from Kafka, prepares da
 
 
 Soveren Cloud
-^^^^^^^^^^^^^
+-------------
 
 `Soveren Cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives in the cloud, is deployed by Soveren, and implements, besides other services, Soveren frontend.
 
@@ -56,7 +42,7 @@ The frontend implements the user account and dashboard to see a compound risk sc
 
 
 How Soveren works
-^^^^^^^^^^^^^^^^^
+-----------------
 
 First, the proxy intercepts requests coming to your system.
 
@@ -72,7 +58,7 @@ The frontend uses the received data to populate the user dashboard whenever a us
 
 
 What technologies Soveren uses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality.
 
