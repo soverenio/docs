@@ -31,7 +31,7 @@ Soveren has a hybrid architecture combining on prem and cloud.
 
 The on prem part, *Soveren Gateway*, parses structured HTTP JSON traffic, extracts PIIs, and sends metadata to the cloud.
 
-The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into different PII-related and system-related statistical data and metrics.
+The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 .. image:: /images/architecture/deployment-scheme.png
    :width: 900
