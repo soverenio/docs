@@ -31,13 +31,13 @@ Soveren gateway is a box solution that lives within your premises, is deployed b
 * PII detection service
 * Service for URL clustering and relaying the analysis metadata to Soveren cloud
 
-The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality. It intercepts and routes incoming requests to your system, effectively serving as an edge router.
+The proxy intercepts and routes incoming requests to your system, effectively serving as an edge router.
 
-For the messaging system, Soveren uses `Apache Kafka <https://kafka.apache.org/documentation/>`_. It streams intercepted requests to other Soveren gateway components.
+The messaing system streams intercepted requests to other Soveren gateway components.
 
-The PII detection service is based on `Presidio <https://microsoft.github.io/presidio/>`_ heavily extending its functionality with new features. It detects PIIs in the intercepted requests.
+The PII detection service detects PIIs in the intercepted requests.
 
-The URL clustering and metadaya relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. It reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren cloud.
+Service for URL clustering service reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren cloud.
 
 .. admonition:: Note
    :class: note
@@ -66,3 +66,15 @@ The PII detection service receives the prepared data, detects PIIs in it, and se
 The URL clustering service receives the metadata and sends it to Soveren cloud.
 
 The frontend uses the received data to populate the user dashboard whenever a user logs into their user account and views stats and metrics.
+
+
+What technologies Soveren uses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality.
+
+For the messaging system, Soveren uses `Apache Kafka <https://kafka.apache.org/documentation/>`_.
+
+The PII detection service is based on `Presidio <https://microsoft.github.io/presidio/>`_ heavily extending its functionality with new features.
+
+The URL clustering and metadaya relaying service extends `Digger <https://doc.traefik.io/>`_ functionality.
