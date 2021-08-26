@@ -57,11 +57,11 @@ Configure, install, and set up Soveren Gateway
 
       For routing incoming traffic to multiple services of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
 
-6. Configure your service to route traffic to Soveren Gateway.
+6. Configure your service(s) to route traffic to Soveren Gateway.
 
    .. admonition:: Tip
       :class: tip
 
-      Read `Deployment and fallback <fallback.html>`_ for a deployment scheme example and fallback plan.
+      Read `Deployment and fallback <fallback.html>`_ for a deployment scheme example and a fallback plan.
 
 7. `Go to the dashboard <link-to-soveren-dashboard>`_ and check the PIIs detected in your traffic and your compound risk score.
