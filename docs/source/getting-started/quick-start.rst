@@ -65,4 +65,4 @@ Route traffic from your services to Soveren Gateway. You know your infrastructur
 .. admonition:: Tip
    :class: tip
 
-   Read `positioning and fallback plan <fallback.html>`_. in case Soveren Gateway fails and you need to reroute your traffic on the go.
+   Read `Deployment and fallback <fallback.html>`_. in case Soveren Gateway fails and you need to reroute your traffic on the go.

@@ -1,11 +1,11 @@
-Positioning and fallback
+Deployment and fallback
 ========================
 
-Positioning
------------
-You know the best your infrastructure and can decide how to position Soveren Gateway against your system services and edge router/proxy if you have one.
+Deployment scheme
+-----------------
+You know the best your infrastructure and can decide where to deploy Soveren Gateway against your system services and edge router/proxy if you have one.
 
-Below you can see one of the positioning options for Soveren Gateway. Mind this is only one of the various options and doesn't include your service layout, so take only as a visual example.
+Below you can see one of the deployment schemes for Soveren Gateway. Mind this is only one of the various options and doesn't include your service layout, so take only as a visual example.
 
 .. image:: ../images/architecture/positioning.png
    :width: 800
@@ -20,4 +20,4 @@ It's a good idea to implement some automatic live check to check if the proxy pa
 
 Fallback
 --------
-Besides a live check, it's a good idea for you to make a fallback plan to automatically reroute your incoming traffic back from the proxy part of Soveren Gateway directly to your services. Use the positioning diagram example above for reference.
+Besides a live check, it's a good idea for you to make a fallback plan to automatically reroute your incoming traffic back from the proxy part of Soveren Gateway directly to your services. Use the deployment scheme example above for reference.
