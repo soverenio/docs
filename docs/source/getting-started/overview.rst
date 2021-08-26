@@ -24,8 +24,8 @@ The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into dif
    :width: 800
 
 
-Soveren Gateway (on prem)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Soveren Gateway
+^^^^^^^^^^^^^^^
 
 Soveren Gateway is a box solution that within customer's perimeter in a K8s cluster.
 
@@ -45,9 +45,9 @@ Architecture-wise, it Soveren Gateway includes:
 
 
 Soveren Cloud
--------------
+^^^^^^^^^^^^^
 
-Soveren Cloud is a SaaS.
+Soveren Cloud is a SaaS hosted in the cloud.
 
 It provides dashboards with insights into all sorts of data privacy related stats and metrics, including compound risk score, information about PII types and system APIs.
 
