@@ -62,6 +62,6 @@ Configure, install, and set up Soveren Gateway
    .. admonition:: Tip
       :class: tip
 
-      Read `Deployment and fallback <fallback.html>`_ for a deployment scheme example and a fallback plan.
+      Read `Deployment and fallback <fallback.html>`_ for a deployment scheme example and fallback plan.
 
 7. `Go to the dashboard <link-to-soveren-dashboard>`_ and check the PIIs detected in your traffic and your compound risk score.
