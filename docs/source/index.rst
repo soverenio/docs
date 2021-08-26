@@ -1,7 +1,6 @@
 .. toctree::
    :hidden:
 
-   getting-started/overview
    getting-started/installation
    getting-started/fallback
    administration/throubleshooting
@@ -65,7 +64,7 @@ Soveren Cloud is a SaaS hosted in the cloud.
 
 It provides dashboards with insights into all sorts of data privacy related stats and metrics, including compound risk score, information about PII types and system APIs.
 
-Next, proceed with the `installation guide <installation.html>`_.
+Next, proceed with the `installation guide <getting-started/installation.html>`_.
 
 
 
