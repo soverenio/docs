@@ -31,7 +31,7 @@ Soveren Gateway is a box solution that is deployed within customer's perimeter, 
 
 It gets part of the traffic and detects PIIs in it. Detecting PIIs, it forms metadata with all request details except the actual request payload data.
 
-Architecture-wise, it Soveren Gateway includes:
+Architecture-wise, Soveren Gateway includes:
 
 * A proxy
 * A messaging system
