@@ -63,5 +63,3 @@ The proxy extends `Traefik <https://doc.traefik.io/>`_ functionality.
 For the messaging system, Soveren uses `Apache Kafka <https://kafka.apache.org/documentation/>`_.
 
 The PII detection service is based on `Presidio <https://microsoft.github.io/presidio/>`_ heavily extending its functionality with new features.
-
-The URL clustering and metadata relaying service is our own creation.
