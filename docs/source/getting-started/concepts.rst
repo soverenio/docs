@@ -39,15 +39,15 @@ The PII detection service is based on `Presidio <https://microsoft.github.io/pre
 
 The URL clustering and metadaya relaying service extends `Digger <https://doc.traefik.io/>`_ functionality. It reads queued requests from Kafka, prepares data in motion for PII detection, sends it to the PII detection service, receives back metadata containing PII detection results, and sends it to Soveren cloud.
 
+.. admonition:: Note
+   :class: note
+
+   Soveren gateway doesn't modify proxied requests and sends only metadata to Soveren cloud.
 
 Soveren cloud
 ^^^^^^^^^^^^^
 
-`Soveren cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives, unsurprisingly, in the cloud, is deployed by Soveren, and implements:
-
-* Authentication service
-* Statistical service
-* Frontend with user account, stats and metrics
+`Soveren cloud <https://github.com/soverenio/saassylives>`_ is a SaaS that lives in the cloud, is deployed by Soveren, and implements, besides other services, Soveren frontend.
 
 The frontend implements the user account and dashboard to see a compound risk score, manage PIIs, see APIs and subsystems, receive notifications on important events, and read how to mitigate possible weak points.
 
@@ -63,10 +63,6 @@ The URL clustering and metadata relaying service reads messages containing reque
 
 The PII detection service receives the prepared data, detects PIIs in it, and sends back metadata containing PII detection results.
 
-The URL clustering service receives the metadata and sends it to Soveren cloud, namely to the statistical service.
+The URL clustering service receives the metadata and sends it to Soveren cloud.
 
-The authentication service authenticates the URL clustering service in Soveren cloud.
-
-The statistical service receives the metadata from the the URL clustering service and stores it in the metadata storage.
-
-The frontend asks the statistical service for data to populate the user dashboard whenever a user logs into their user account and views stats and metrics.
+The frontend uses the received data to populate the user dashboard whenever a user logs into their user account and views stats and metrics.

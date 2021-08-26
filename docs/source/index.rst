@@ -17,9 +17,11 @@ It receives requests and responses from/to your systems, detects personally iden
 
 What sets Soveren apart from other data privacy solutions:
 
-* It solves the problem of visibility into the sources and PIIs, and answers such questions as what PII types are collected, which are the most important ones, what internal and 3rd party systems have access to this data.
+* It solves the problem of visibility and data discovery and classification by identifying and classifying personal data in motion with a proxy gateway in the customer’s environment.
 
-* It offers actionable, real-time insights to better manage systems with collected PIIs, assess associated risks, and mitigate privacy and security issues that may cause internal or external breaches.
+* It provides actionable, real-time analytics into personal data-related risks: data sensitivity, where it is coming from, how it is consumed, and which services are involved.
+
+* It highlights risks and helps engineering and security leaders make informed security and privacy decisions.
 
 Our goal is to make Soveren simple and practical so the users can enjoy using it.
 
