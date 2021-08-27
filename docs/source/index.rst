@@ -30,9 +30,9 @@ Soveren has a hybrid architecture:
 Soveren Gateway
 ^^^^^^^^^^^^^^^
 Soveren Gateway is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests.
-The Gateway then processes those requests asynchronously, and extracts PII from the payloads.
-Metadata about the requests is then collected and sent to the Soveren Cloud.
-The metadata contains information about how the payload was structured (what the fields were), what sorts of PIIs were detected, what services were involved in the communication.
+The Gateway then processes those requests asynchronously and extracts PII from the payloads.
+Metadata about the requests is collected and sent to Soveren Cloud.
+The metadata contains information about how the payload was structured (what fields), what sorts of PIIs were detected, what services were involved in the communication.
 No part of actual payload contents is included into the metadata.
 Technically, the Gateway consists of a standard proxy (`Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Kafka <https://kafka.apache.org/documentation/>`_) and analytics component which detects PII based on custom machine learning algorithms.
 
