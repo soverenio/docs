@@ -2,7 +2,7 @@
    :hidden:
 
    getting-started/quick-start
-   getting-started/deployment-scheme
+   getting-started/deployment
    administration/throubleshooting
    dashboards/dashboards
 

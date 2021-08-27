@@ -64,7 +64,7 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Configure your service(s) to route traffic to Soveren Gateway.
 
-Refer to the `deployment scheme <deployment-scheme.html>`_ for more details on how the deployment is structured.
+Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
 7. Check the dashboard
 ^^^^^^^^^^^^^^^^^^^^^^
