@@ -26,7 +26,7 @@ Soveren has a hybrid architecture:
 * Soveren Gateway is installed on premise, in the client’s perimeter. It parses structured HTTP JSON traffic, extracts PIIs and sends metadata to the cloud.
 * Soveren Cloud provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
-.. image:: /images/architecture/architecture-concept.png
+.. image:: /images/architecture/architecture-diagram-small.jpg
    :width: 900
 
 
