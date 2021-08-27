@@ -53,4 +53,4 @@ Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section `
 
 7. That's it! `Go to the dashboards <https://soveren.io/dashboard>`_ and start getting insights.
 
-Check the `description of available dashboards <../dashboards/dashboards.html>`_.
+   Check the `description of available dashboards <../dashboards/dashboards.html>`_.
