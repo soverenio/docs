@@ -1,7 +1,7 @@
 Dashboards
 ==========
 
-Soveren provides dashboards that give you insights based PII-related metrics and analytics.
+Soveren provides dashboards that give you insights on:
 
 * Detected PII types
 * System APIs involved in PII exchange
