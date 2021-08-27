@@ -55,7 +55,7 @@ Here’s what you need to get started with Soveren:
 
       Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
-7. That's it! `Go to the dashboards <https://soveren.io/dashboard>`_ and start getting insights.
+7. That's it! `Go to the dashboards <https://app.soveren.io/>`_ and start getting insights.
 
    .. admonition:: Tip
       :class: tip
