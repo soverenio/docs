@@ -9,7 +9,7 @@ Here’s what you need to get started with Soveren:
 
 3. Add the Soveren token to your Kubernetes cluster.
 
-Currently, Soveren only supports Kubernetes deployments. For other deployment options contact us at support@soveren.io.
+   Currently, Soveren only supports Kubernetes deployments. For other deployment options contact us at support@soveren.io.
 
 ::
 
