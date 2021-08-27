@@ -6,7 +6,7 @@ Soveren provides dashboards that give you insights on:
 * Detected PII types
 * System APIs involved in PII exchange
 
-To access the dashboards, `log into your Soveren account <https://soveren.io/sign-in>`_.
+To access the dashboards, `log in to your Soveren account <https://soveren.io/sign-in>`_.
 
 Supported PII types
 -------------------
