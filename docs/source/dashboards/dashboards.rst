@@ -1,6 +1,12 @@
 Soveren dashboards
 ==================
 
+Soveren dashboards
+------------------
+Soveren provides the following dashboards:
+
+* PII types
+* System APIs involved in PII exchange
 
 
 Supported PII types
