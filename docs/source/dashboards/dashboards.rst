@@ -1,4 +1,4 @@
-Soveren dashboards
+Dashboards
 ==================
 
 Soveren dashboards
