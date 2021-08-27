@@ -35,7 +35,7 @@ Metadata about the requests is collected and sent to Soveren Cloud.
 The metadata contains information about how the payload was structured (what fields), what sorts of PIIs were detected, what services were involved in the communication.
 No part of actual payload contents is included into the metadata.
 
-Technically, the Gateway consists of a standard proxy (`Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Kafka <https://kafka.apache.org/documentation/>`_) and analytics component which detects PII based on custom machine learning algorithms.
+Technically, the Gateway consists of a standard proxy (a `Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Apache Kafka <https://kafka.apache.org/documentation/>`_) and analytics component which detects PII based on custom machine learning algorithms.
 
 .. admonition:: Note
    :class: note
@@ -50,7 +50,7 @@ Soveren Cloud
 
 Soveren Cloud is a SaaS service managed by Soveren.
 It offers a set of dashboards that provide various views into the metadata collected by Soveren Gateway.
-Examples are statistics on what PIIs have been observed and how sensitive they were, what services were involved, what were the potential caveats in the API structure from the privacy standpoint.
+That includes analytics and stats on what PIIs have been observed and how sensitive they were, what services were involved, what were the potential caveats in the API structure from the privacy standpoint.
 
 
 
