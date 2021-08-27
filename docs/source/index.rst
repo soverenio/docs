@@ -10,11 +10,9 @@
 What is Soveren?
 ----------------
 
-Soveren is a data privacy solution that helps uncover personal data in structured API flows.
+Soveren helps uncover personal data in structured API flows. Soveren parses the traffic between services and identifies personal data along with its sensitivity, meaning the consequences that might arise if that data was leaked or used inappropriately.
+Preconfigured dashboards provide a view into a company's risks related to personal data, so that engineering and security leaders could make informed security and privacy decisions.
 
-Modern companies have a lot of services and heavy on prem traffic flow without much information what personal data flows between what systems. Sensitivity of this data varies depending on many factors.
-
-Soveren solves the problem of visibility and data discovery and classification by identifying and classifying personal data in motion with a proxy gateway in the customer’s environment.
 
 It detects where personal data, or PII, is coming from, how it is consumed, and which services are involved.
 
@@ -26,13 +24,12 @@ It provides means to assess company's risks related to personal data and helps e
 How Soveren works
 -----------------
 
-Soveren has a hybrid architecture combining on prem and cloud.
+Soveren has a hybrid architecture:
 
-The on prem part, *Soveren Gateway*, parses structured HTTP JSON traffic, extracts PIIs, and sends metadata to the cloud.
+* Soveren Gateway is installed on premise, in the client’s perimeter. It parses structured HTTP JSON traffic, extracts PII and sends metadata to the cloud
+* Soveren Cloud provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
-The cloud part, *Soveren Cloud*, provides dashboards to gain visibility into different PII-related statistical data and metrics.
-
-.. image:: /images/architecture/deployment-scheme.png
+.. image:: /images/architecture/architecture-concept.png
    :width: 900
 
 
@@ -54,6 +51,8 @@ Architecture-wise, Soveren Gateway includes:
    :class: note
 
    Proxied traffic isn't delayed by PII detection, and Soveren Gateway doesn't increase latency in any significant way.
+
+   Currently, Soveren supports PII detection in JSON traffic.
 
 
 Soveren Cloud

@@ -7,6 +7,10 @@ You need to install Soveren Gateway within your perimeter.
 
 Currently, Soveren gateway available for installation in your Kubernetes cluster. For other deployment options contact us at support@soveren.io.
 
+.. image:: ../images/architecture/deployment-scheme.png
+   :width: 800
+
+
 Requirements
 ------------
 
@@ -57,11 +61,16 @@ Configure, install, and set up Soveren Gateway
 
       For routing incoming traffic to multiple services of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
 
-6. Configure your service(s) to route traffic to Soveren Gateway.
+6. Configure your service(s) to route traffic to Soveren Gateway. Nobody knows your infrastructure like you.
+
+   Decide where to deploy Soveren Gateway against your system services and edge router/proxy if you have one. Take the example deployment scheme below as a reference and remember this is only one of the various options and doesn't include your service layout.
 
    .. admonition:: Tip
       :class: tip
 
-      Read `Deployment and fallback <fallback.html>`_ for deployment scheme and fallback examples.
+      Read `Fallback plan <fallback.html>`_ for a fallback example.
 
 7. `Go to the dashboard <link-to-soveren-dashboard>`_ and check the PIIs detected in your traffic and your compound risk score.
+
+   .. image:: ../images/dashboard/pii-types-overview.png
+      :width: 800
