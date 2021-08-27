@@ -47,36 +47,6 @@ Sensitivity model implements the following levels:
 
 These sensitivity levels are applied both to individual PII types in the summary statistics and to combinations of PII types collected by services and available through APIs.
 
-Standalone PIIs
-^^^^^^^^^^^^^^^
-
-Soveren assigns standalone PIIs the following sensitivity levels:
-
-* Low
-   * Date of birth
-   * Gender
-* Medium
-   * First Name
-   * Last Name
-   * Middle name (if any)
-   * Email
-   * Phone number
-* High
-   * Driver license
-   * SSN
-   * National ID
-   * Travel passport
-   * Card numbers
-   * Home address
-
-
-Combinations of PIIs
-^^^^^^^^^^^^^^^^^^^^
-
-Soveren assigns combinations of PIIs the following sensitivity levels:
-
-Work in progress...
-
 
 
 
