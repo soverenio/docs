@@ -5,7 +5,7 @@ Here’s what you need to get started with Soveren:
 
 1. Register a new `Soveren account <https://soveren.io/sign-up>`_.
 
-2. Go to your `account settings <https://soveren.io/account/api-key>`_, find and copy your Soveren token.
+2. Go to your `account settings <https://app.soveren.io/account/token>`_, find and copy your Soveren token.
 
 3. Add the Soveren token to your Kubernetes cluster.
 
