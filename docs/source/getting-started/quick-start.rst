@@ -3,11 +3,10 @@ Quick start guide
 
 Here’s what you need to get started with Soveren:
 
-.. admonition:: Tip
-   :class: tip
+.. admonition:: Note
+   :class: note
 
    Currently, Soveren gateway available for installation in your Kubernetes cluster. For other deployment options contact us at support@soveren.io.
-
 
 1. Register
 ^^^^^^^^^^^
@@ -26,7 +25,6 @@ Add the token key to the Kubernetes cluster:
 
      kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
-
 4. Apply configuration
 ^^^^^^^^^^^^^^^^^^^^^^
 Apply Soveren Gateway configuration using the preconfigured manifest file:
@@ -34,7 +32,6 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
 ::
 
      kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
-
 
 5. Сonfigure Soveren Gateway to proxy traffic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,13 +58,14 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
 
    You can add multiple instances of the same service adding more lines with the ``url`` parameter.
 
-   For routing incoming traffic to multiple services of different types, read the `routing section of Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_.
+   Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+   That includes routing incoming traffic to multiple services of different types.
 
 6. Configure your service(s)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Configure your service(s) to route traffic to Soveren Gateway.
 
-Nobody knows your infrastructure like you. Decide where to deploy Soveren Gateway against your system services and edge router/proxy if you have one. Take the example deployment scheme below as a reference and remember this is only one of the various options and doesn't include your service layout.
+Refer to `Deployment scheme <fallback.html>`_ for more details on how the deployment is structured.
 
 .. admonition:: Tip
    :class: tip
@@ -77,7 +75,7 @@ Nobody knows your infrastructure like you. Decide where to deploy Soveren Gatewa
 7. Check the dashboard
 ^^^^^^^^^^^^^^^^^^^^^^
 
-`Go to the dashboard <link-to-soveren-dashboard>`_ and check the PIIs detected in your traffic and your compound risk score.
+That's it! `Go to the dashboards <https://soveren.io/dashboard>`_ and start getting insights.
 
 .. image:: ../images/dashboard/pii-types-overview.png
    :width: 800
