@@ -3,9 +3,9 @@ Dashboards
 
 Soveren dashboards
 ------------------
-Soveren provides the following dashboards:
+Soveren provides dashboards that show metrics and analytics on:
 
-* PII types
+* Detected PII types their flow
 * System APIs involved in PII exchange
 
 
