@@ -45,7 +45,7 @@ Here’s what you need to get started with Soveren:
    .. admonition:: Tip
       :class: tip
 
-      Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+      Soveren Gateway is based on Traefik. Refer the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
 6. Configure your services to route traffic to Soveren Gateway.
 
