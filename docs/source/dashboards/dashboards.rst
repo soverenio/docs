@@ -5,7 +5,7 @@ Soveren provides dashboards that give you insights based PII-related metrics and
 
 Detected PII types their flow:
 
-.. image:: ../images/dashboard/pii-types-overview.png
+.. image:: ../images/dashboards/pii-types-overview.png
    :width: 800
 
 System APIs involved in PII exchange:
