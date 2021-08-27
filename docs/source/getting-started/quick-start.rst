@@ -11,41 +11,40 @@ Here’s what you need to get started with Soveren:
 
    Currently, Soveren only supports Kubernetes deployments. For other deployment options contact us at support@soveren.io.
 
-::
+   ::
 
-     kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
+        kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
 4. Apply the Soveren Gateway manifest:
 
-::
+   ::
 
-     kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
+        kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
 
 5. Сonfigure Soveren Gateway to proxy the traffic for your services
-Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
+   Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
 
-::
+   ::
 
-     kubectl edit cm replicator
+        kubectl edit cm replicator
 
-``replicator`` ConfigMap example:
+   ``replicator`` ConfigMap example:
 
-::
+   ::
 
-       # Add the service
-       services:
-         test-service:
-           loadBalancer:
-             servers:
-               - url: http://address-of-your-service:port/
+          # Add the service
+          services:
+            test-service:
+              loadBalancer:
+                servers:
+                  - url: http://address-of-your-service:port/
 
+   .. admonition:: Tip
+      :class: tip
 
-.. admonition:: Tip
-   :class: tip
+      You can add multiple instances of the same service adding more lines with the ``url`` parameter.
 
-   You can add multiple instances of the same service adding more lines with the ``url`` parameter.
-
-   Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+      Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
 6. Configure your services to route traffic to Soveren Gateway.
 
