@@ -45,8 +45,6 @@ Here’s what you need to get started with Soveren:
    .. admonition:: Tip
       :class: tip
 
-      You can add multiple instances of the same service adding more lines with the ``url`` parameter.
-
       Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
 6. Configure your services to route traffic to Soveren Gateway.
