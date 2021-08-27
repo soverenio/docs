@@ -12,7 +12,7 @@ What is Soveren?
 
 Soveren helps uncover personal information (PII) in structured API flows.
 It monitors and parses traffic between the services, and identifies personal information along with its sensitivity, meaning the consequences that might arise if that information was leaked or used inappropriately.
-Preconfigured dashboards provide a view into company's risks related to PII, so that engineering and security leaders could make informed security and privacy decisions.
+Preconfigured dashboards provide a view into company's risks related to PII so that engineering and security leaders could make informed security and privacy decisions.
 
 
 How Soveren works
