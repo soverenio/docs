@@ -1,8 +1,6 @@
 Dashboards
 ==========
 
-Soveren dashboards
-------------------
 Soveren provides dashboards that show metrics and analytics on:
 
 * Detected PII types their flow
