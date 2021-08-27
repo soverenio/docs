@@ -19,15 +19,13 @@ Go to your `account settings <https://soveren.io/account/api-key>`_, find and co
 
 3. Add token to K8s cluster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Add the token key to the Kubernetes cluster:
-
 ::
 
      kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
 4. Apply configuration
 ^^^^^^^^^^^^^^^^^^^^^^
-Apply Soveren Gateway configuration using the preconfigured manifest file:
+Apply the configuration using the preconfigured manifest file:
 
 ::
 
@@ -35,7 +33,7 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
 
 5. Сonfigure Soveren Gateway to proxy traffic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Сonfigure Soveren Gateway to proxy traffic for your services: edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
+Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
 
 ::
 
@@ -60,9 +58,9 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
 
    Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
-6. Configure your service(s)
+6. Configure your services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Configure your service(s) to route traffic to Soveren Gateway.
+Configure them to route traffic to Soveren Gateway.
 
 Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
