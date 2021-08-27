@@ -3,12 +3,8 @@ Dashboards
 
 Soveren provides dashboards that give you insights based PII-related metrics and analytics.
 
-Detected PII types their flow:
-
-.. image:: ../images/dashboards/pii-types-overview.png
-   :width: 800
-
-System APIs involved in PII exchange:
+* Detected PII types
+* System APIs involved in PII exchange
 
 To access the dashboards, `log into your Soveren account <https://soveren.io/sign-in>`_.
 
