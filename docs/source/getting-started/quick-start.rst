@@ -59,18 +59,12 @@ Apply Soveren Gateway configuration using the preconfigured manifest file:
    You can add multiple instances of the same service adding more lines with the ``url`` parameter.
 
    Soveren Gateway is based on Traefik. Refer the `Traefik routing section <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
-   That includes routing incoming traffic to multiple services of different types.
 
 6. Configure your service(s)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Configure your service(s) to route traffic to Soveren Gateway.
 
-Refer to `Deployment scheme <fallback.html>`_ for more details on how the deployment is structured.
-
-.. admonition:: Tip
-   :class: tip
-
-   Read `Fallback plan <fallback.html>`_ for emergency cases.
+Refer to the `deployment scheme <deployment-scheme.html>`_ for more details on how the deployment is structured.
 
 7. Check the dashboard
 ^^^^^^^^^^^^^^^^^^^^^^

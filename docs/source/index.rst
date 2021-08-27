@@ -2,9 +2,9 @@
    :hidden:
 
    getting-started/quick-start
-   getting-started/fallback
+   getting-started/deployment-scheme
    administration/throubleshooting
-   pii-detection/pii-types-and-sensitivity
+   dashboards/dashboards
 
 
 What is Soveren?
