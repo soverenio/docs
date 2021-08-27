@@ -3,8 +3,9 @@
 
    getting-started/quick-start
    getting-started/deployment
-   administration/throubleshooting
    dashboards/dashboards
+   administration/throubleshooting
+
 
 
 What is Soveren?
