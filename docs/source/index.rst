@@ -40,14 +40,6 @@ No part of actual payload contents is included into the metadata.
 
 Technically, the Gateway consists of a standard proxy (a `Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Apache Kafka <https://kafka.apache.org/documentation/>`_) and analytics component which detects PII based on custom machine learning algorithms.
 
-.. admonition:: Note
-   :class: note
-
-   As the Gateway interacts with the client's system asynchronously, proxied traffic isn't delayed by PII detection, and Soveren Gateway doesn't increase latency in any significant way.
-
-   Currently, Soveren supports PII detection only in JSON traffic.
-
-
 Soveren Cloud
 ^^^^^^^^^^^^^
 
