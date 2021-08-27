@@ -121,8 +121,8 @@ html_theme_options = {
 # Customization options for Furo theme
      "navigation_with_keys": True,
      "sidebar_hide_name": True,
-     "light_logo": "Logo-dark-L.svg",
-     "dark_logo": "Logo-dark-L.svg"
+     "light_logo": "Logo-dark-L-new.svg",
+     "dark_logo": "Logo-dark-L-new.svg"
  }
 
 
