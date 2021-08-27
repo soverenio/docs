@@ -71,5 +71,4 @@ Refer to the `deployment scheme <deployment.html>`_ for more details on how the 
 
 That's it! `Go to the dashboards <https://soveren.io/dashboard>`_ and start getting insights.
 
-.. image:: ../images/dashboard/pii-types-overview.png
-   :width: 800
+Check the `description of available dashboards <../dashboards/dashboards.html>`_.

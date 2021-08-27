@@ -6,6 +6,8 @@ Soveren provides dashboards that show metrics and analytics on:
 * Detected PII types their flow
 * System APIs involved in PII exchange
 
+.. image:: ../images/dashboard/pii-types-overview.png
+   :width: 800
 
 Supported PII types
 -------------------
