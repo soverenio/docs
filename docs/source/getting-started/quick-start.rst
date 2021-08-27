@@ -24,7 +24,8 @@ Here’s what you need to get started with Soveren:
 
         kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
 
-5. Сonfigure Soveren Gateway to proxy the traffic for your services
+5. Сonfigure Soveren Gateway to proxy the traffic for your services.
+
    Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
 
    ::
