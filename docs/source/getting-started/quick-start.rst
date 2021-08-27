@@ -9,8 +9,8 @@ Here’s what you need to get started with Soveren:
 
 3. Add the Soveren token to your Kubernetes cluster.
 
-   .. admonition:: Tip
-      :class: tip
+   .. admonition:: Note
+      :class: note
 
       Currently, Soveren only supports Kubernetes deployments. For other deployment options contact us at support@soveren.io.
 
@@ -49,8 +49,14 @@ Here’s what you need to get started with Soveren:
 
 6. Configure your services to route traffic to Soveren Gateway.
 
-   Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
+   .. admonition:: Tip
+      :class: tip
+
+      Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
 7. That's it! `Go to the dashboards <https://soveren.io/dashboard>`_ and start getting insights.
 
-   Check the `description of available dashboards <../dashboards/dashboards.html>`_.
+   .. admonition:: Tip
+      :class: tip
+
+      Check the `description of available dashboards <../dashboards/dashboards.html>`_.
