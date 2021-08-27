@@ -3,9 +3,9 @@ Quick start guide
 
 Here’s what you need to get started with Soveren:
 
-1. Register a new `Soveren account <https://soveren.io/sign-up>`_.
+1. Register a new `Soveren account <https://app.soveren.io/sign-up>`_.
 
-2. Go to your `account settings <https://app.soveren.io/account/token>`_, find and copy your Soveren token.
+2. Go to your `account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token.
 
 3. Add the Soveren token to your Kubernetes cluster.
 
@@ -55,7 +55,7 @@ Here’s what you need to get started with Soveren:
 
       Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
-7. That's it! `Go to the dashboards <https://app.soveren.io/>`_ and start getting insights.
+7. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
 
    .. admonition:: Tip
       :class: tip

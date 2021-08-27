@@ -12,7 +12,7 @@ Soveren provides a number of dashboards that address the following questions:
 * Which PII data are revealed in the calls?
 
 
-To access the dashboards, `log in to your Soveren account <https://app.soveren.io/>`_.
+To access the dashboards, `log in to your Soveren account <hhttps://app.soveren.io/pii-types>`_.
 
 Addressed PII types
 -------------------
