@@ -1,14 +1,20 @@
 Dashboards
 ==========
 
-Soveren provides dashboards that give you insights on:
+Soveren provides a number of dashboards that address the following questions:
 
-* Detected PII types
-* System APIs involved in PII exchange
+* What PII data types are collected?
+* Which ones are the most important?
+* Which systems collect the PII data?
+* What data collections are the most risky / sensitive?
+* How exactly is the PII data exposed?
+* Which systems access the PII data?
+* Which PII data are revealed in the calls?
+
 
 To access the dashboards, `log in to your Soveren account <https://soveren.io/sign-in>`_.
 
-Supported PII types
+Addressed PII types
 -------------------
 Currently, Soveren dashboards show you the following PII types:
 
@@ -31,16 +37,15 @@ Currently, Soveren dashboards show you the following PII types:
 PII sensitivity model
 ---------------------
 
-Soveren assigns different weight to PIIs depending on various factors:
+Soveren considers both individual PII fields and their combinations, because sensitivity of the combined data set can be significantly higher than that of any individual field.
 
-* Standalone PIIs
-* Combination of different PII types
-
-Classification model roughly has the following sensitivity levels:
+Sensitivity model implements the following levels:
 
 * Low — very low possibility of person identification.
 * Medium — fair possibility of person identification.
 * High — high possibility of person identification.
+
+These sensitivity levels are applied both to individual PII types in the summary statistics and to combinations of PII types collected by services and available through APIs.
 
 Standalone PIIs
 ^^^^^^^^^^^^^^^
@@ -50,8 +55,6 @@ Soveren assigns standalone PIIs the following sensitivity levels:
 * Low
    * Date of birth
    * Gender
-   * IBAN
-   * Medical license
 * Medium
    * First Name
    * Last Name
@@ -65,7 +68,6 @@ Soveren assigns standalone PIIs the following sensitivity levels:
    * Travel passport
    * Card numbers
    * Home address
-   * NRP (person's nationality, religious or political group)
 
 
 Combinations of PIIs
