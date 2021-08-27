@@ -10,12 +10,11 @@ Detected PII types their flow:
 
 System APIs involved in PII exchange:
 
-
-
+To access the dashboards, `log into your Soveren account <https://soveren.io/sign-in>`_.
 
 Supported PII types
 -------------------
-Currently, Soveren supports detection of the following PII types:
+Currently, Soveren dashboards show you the following PII types:
 
 * Personal information
    * First Name
