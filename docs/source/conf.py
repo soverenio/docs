@@ -13,6 +13,9 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 import os, sys
+import errno
+import sphinx.util.osutil
+sphinx.util.osutil.ENOENT = errno.ENOENT
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -42,7 +45,7 @@ version = 'latest'
 extensions = [
 #	'sphinxcontrib.golangdomain',
 	'sphinx_inline_tabs',
-#	'sphinxcontrib.plantuml',
+	'sphinxcontrib.plantuml',
 	'sphinx_copybutton',
     'sphinx_panels'
 #   'hoverxref.extension'
