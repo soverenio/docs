@@ -420,7 +420,9 @@ body {
 }
 
 article {
-	line-height: 1.5
+	line-height: 1.5;
+	font-size: 0.93em
+
 }
 
 h1 {
@@ -786,7 +788,7 @@ article {
 
 @media (min-width:97em) {
 	html {
-		font-size: 104%
+		font-size: 100%
 	}
 }
 
