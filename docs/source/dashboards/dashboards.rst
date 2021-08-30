@@ -9,7 +9,7 @@ Soveren provides a number of dashboards that address the following questions:
 * What data collections are the most risky / sensitive?
 * How exactly is the PII data exposed?
 * Which systems access the PII data?
-* Which PII data are revealed in the calls?
+* Which PII data is revealed in the calls?
 
 
 To access the dashboards, `log in to your Soveren account <hhttps://app.soveren.io/pii-types>`_.
@@ -41,9 +41,9 @@ Soveren considers both individual PII fields and their combinations, because sen
 
 Sensitivity model implements the following levels:
 
-* Low — very low possibility of person identification.
-* Medium — fair possibility of person identification.
-* High — high possibility of person identification.
+* Low — very low possibility of of identifying the person.
+* Medium — fair possibility of of identifying the person.
+* High — high possibility of of identifying the person.
 
 These sensitivity levels are applied both to individual PII types in the summary statistics and to combinations of PII types collected by services and available through APIs.
 
