@@ -2,7 +2,7 @@
 
 ## Style settings in `./docs/source/static/css/custom_furo.css`
 
-1. Article text size: 
+1. Text size for the central text frame: 
 
 ```
 article {
