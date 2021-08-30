@@ -12,7 +12,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-import os, sys
+# import os, sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -42,7 +42,7 @@ version = 'latest'
 extensions = [
 #	'sphinxcontrib.golangdomain',
 	'sphinx_inline_tabs',
-	'sphinxcontrib.plantuml',
+#	'sphinxcontrib.plantuml',
 	'sphinx_copybutton',
     'sphinx_panels'
 #   'hoverxref.extension'
@@ -61,8 +61,8 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-def setup(app):
-    app.add_css_file('css/custom_furo.css')
+# def setup(app):
+#    app.add_css_file('css/custom_furo.css')
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
