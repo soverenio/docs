@@ -16,6 +16,28 @@ Soveren helps uncover personally identifiable information, also known as PII or 
 It monitors and parses traffic between the services, and identifies personal information along with its sensitivity, meaning the consequences that might arise if that information was leaked or used inappropriately.
 Preconfigured dashboards provide a view into company's risks related to PII so that engineering and security leaders could make informed security and privacy decisions.
 
+.. panels::
+    :card: shadow
+
+    .. link-button:: getting-started/quick-start
+       :type: ref
+       :text: Quick start
+       :classes: btn-link stretched-link font-weight-bold
+
+    .. div:: text-muted
+
+        :opticon:`book` Configure and deploy Soveren Gateway in 10 minutes
+
+    ---
+
+    .. link-button:: getting-started/deployment
+        :type: ref
+        :text: Deployment scheme
+        :classes: btn-link stretched-link font-weight-bold
+
+    .. div:: text-muted
+
+        :opticon:`book` Learn how to fit Soveren Gateway in your perimeter
 
 How Soveren works
 -----------------

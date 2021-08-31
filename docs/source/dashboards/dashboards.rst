@@ -3,14 +3,15 @@ Dashboards
 
 Soveren provides a number of dashboards that address the following questions:
 
-* What PII data types are collected?
-* Which ones are the most important?
-* Which systems collect the PII data?
-* What data collections are the most risky / sensitive?
-* How exactly is the PII data exposed?
-* Which systems access the PII data?
-* Which PII data is revealed in the calls?
 
+* What personal data types are collected?
+* Which data types are the most important?
+* What data collections are the most risky/sensitive?
+* Which systems collect the data?
+* Where the personal data is in the API schema?
+* Which services have access to personal data?
+* Which APIs provide access to personal data?
+* Which data is revealed in the calls?
 
 To access the dashboards, `log in to your Soveren account <hhttps://app.soveren.io/pii-types>`_.
 
