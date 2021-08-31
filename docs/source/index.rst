@@ -21,7 +21,7 @@ Preconfigured dashboards provide a view into company's risks related to PII so t
 
     .. link-button:: getting-started/quick-start
        :type: ref
-       :text: Quick start
+       :text: Quick start guide
        :classes: btn-link stretched-link font-weight-bold
 
     .. div:: text-muted
@@ -32,7 +32,7 @@ Preconfigured dashboards provide a view into company's risks related to PII so t
 
     .. link-button:: getting-started/deployment
         :type: ref
-        :text: Deployment scheme
+        :text: Deployment
         :classes: btn-link stretched-link font-weight-bold
 
     .. div:: text-muted
