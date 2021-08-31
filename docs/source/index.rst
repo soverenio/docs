@@ -26,7 +26,7 @@ Preconfigured dashboards provide a view into company's risks related to PII so t
 
     .. div:: text-muted
 
-        :opticon:`book` Configure and deploy Soveren Gateway in 10 minutes
+        :opticon:`book` Configure and deploy Soveren Gateway in 5 minutes
 
     ---
 
