@@ -26,7 +26,7 @@ Here’s what you need to get started with Soveren:
    .. admonition:: Note
       :class: note
 
-      Currently, Soveren only supports Kubernetes deployments. For other deployment options contact us at support@soveren.io.
+      Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io.
 
    ::
 
@@ -60,7 +60,7 @@ Here’s what you need to get started with Soveren:
    .. admonition:: Tip
       :class: tip
 
-      Soveren Gateway is based on Traefik. Refer the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+      Soveren Gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
 6. Configure your services to route traffic to Soveren Gateway.
 
