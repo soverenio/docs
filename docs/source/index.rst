@@ -80,7 +80,7 @@ Soveren Cloud
 
 Soveren Cloud is a SaaS. It is deployed in the cloud by Soveren.
 It offers a set of dashboards that provide various views into the metadata collected by Soveren Gateway.
-That includes analytics and stats on which PIIs have been observed and how sensitive they were, what services were involved, what were the potential caveats in the API structure from the privacy standpoint.
+That includes analytics and stats on which PIIs have been observed and how sensitive they are, what services are involved, and what are the potential limitations in the API structure from the privacy standpoint.
 
 
 
