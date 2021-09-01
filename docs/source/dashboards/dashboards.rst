@@ -56,7 +56,7 @@ Soveren considers both individual PII fields and their combinations, because sen
 
 The sensitivity model implements the following levels:
 
-* Low — very low possibility of of identifying the person
+* Low — low possibility of of identifying the person
 * Medium — fair possibility of of identifying the person
 * High — high possibility of of identifying the person
 
