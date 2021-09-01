@@ -104,7 +104,7 @@ html_static_path = ['_static']
 
 #html_logo = 'imgs/logo-soveren-dark.svg'
 
-html_favicon = 'images/favicon1.png'
+html_favicon = 'images/favicon/favicon-app-light.svg'
 
 html_theme_options = {
 # Customization options for Read the Docs theme
@@ -124,8 +124,8 @@ html_theme_options = {
 # Customization options for Furo theme
      "navigation_with_keys": True,
      "sidebar_hide_name": True,
-     "light_logo": "Logo-dark-L-new.svg",
-     "dark_logo": "Logo-dark-L-new.svg"
+     "light_logo": "Logo-light-L.svg",
+     "dark_logo": "Logo-dark-L.svg"
  }
 
 

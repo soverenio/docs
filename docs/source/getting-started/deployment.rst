@@ -17,7 +17,7 @@ Deployment
 
 Here’s the reference architecture of Soveren deployment:
 
-.. image:: ../images/architecture/deployment-scheme-latest.jpg
+.. image:: ../images/architecture/deployment-scheme.jpg
    :width: 900
 
 .. admonition:: Note
