@@ -32,7 +32,7 @@ Here’s what you need to get started with Soveren:
 
    ::
 
-        kubectl apply -f https://github.com/soverenio/smat/<path-to-the-manifest-file>
+        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/install.yaml
 
 5. Сonfigure Soveren Gateway to proxy the traffic for your services.
 
@@ -48,7 +48,7 @@ Here’s what you need to get started with Soveren:
 
           # Add the service
           services:
-            test-service:
+            upstream:
               loadBalancer:
                 servers:
                   - url: http://address-of-your-service:port/
