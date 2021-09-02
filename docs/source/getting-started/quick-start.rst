@@ -31,7 +31,7 @@ Quick start guide
 
    ::
 
-        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/install.yaml
+        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/replicator-configmap.yaml
 
 3. Сonfigure Soveren Gateway to proxy the traffic for your services.
 
