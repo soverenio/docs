@@ -11,7 +11,7 @@
 Quick start guide
 =================
 
-First, `register a Soveren account <https://app.soveren.io/sign-up>`_. When done, get started with Soveren:
+`Register a Soveren account <https://app.soveren.io/sign-up>`_, then get started with Soveren:
 
 1. Add the Soveren token to your Kubernetes cluster.
 
