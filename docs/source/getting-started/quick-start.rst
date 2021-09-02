@@ -27,21 +27,21 @@ Quick start guide
 
          Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
 
-2. Apply the Soveren Gateway manifests:
+2. Apply the Soveren Gateway manifest and configmap:
 
    ::
 
-        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/v0.1-beta/replicator-configmap.yaml
+        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
 
 3. Сonfigure Soveren Gateway to proxy the traffic for your services.
 
-   Edit the ``replicator`` ConfigMap and set the ``url`` parameter in the section ``services`` to point to your service:
+   Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
 
    ::
 
         kubectl edit cm replicator
 
-   ``replicator`` ConfigMap example:
+   ``replicator`` configmap example:
 
    ::
 
