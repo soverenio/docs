@@ -55,7 +55,7 @@
             			border-radius: 6px;
             			box-shadow: none!important;
                   		transition-duration: 200ms;
-                  		transition-timing-funtion: ease-out;
+                  		transition-timing-function: ease-out;
                   		transition-property: box-shadow, background-color, border-color;
             		}
     	</style>
