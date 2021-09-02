@@ -81,7 +81,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. div:: text-muted
 
-        Learn how to fit Soveren Gateway in your perimeter
+        Learn how to fit Soveren Gateway into your perimeter
 
 How Soveren works
 -----------------
