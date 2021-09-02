@@ -27,7 +27,7 @@ Quick start guide
 
          Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
 
-2. Apply the Soveren Gateway manifest:
+2. Apply the Soveren Gateway manifests:
 
    ::
 
