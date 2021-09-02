@@ -15,7 +15,7 @@ Quick start guide
 
 1. Add the Soveren token to your Kubernetes cluster.
 
-   Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token, and run the following command:
+   Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token, and run:
 
    ::
 
