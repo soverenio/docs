@@ -49,6 +49,15 @@
             	margin-left: -8px;
             	margin-right: -8px;
             }
+            .card.shadow.docutils {
+            			background-color: transparent!important;
+            			border: 1px solid #e5e9ef;
+            			border-radius: 6px;
+            			box-shadow: none!important;
+                  		transition-duration: 200ms;
+                  		transition-timing-funtion: ease-out;
+                  		transition-property: box-shadow, background-color, border-color;
+            		}
     	</style>
 
 
