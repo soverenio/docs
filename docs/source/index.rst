@@ -45,6 +45,10 @@
     		.card.shadow.docutils a.btn:hover {
     			text-decoration: none;
     		}
+    		.row.docutils {
+            	margin-left: -8px;
+            	margin-right: -8px;
+            }
     	</style>
 
 
