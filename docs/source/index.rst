@@ -16,6 +16,37 @@
     })(window,document,'script','dataLayer','GTM-TCK46V7');</script>
     <!-- End Google Tag Manager -->
 
+    <style>
+    		.card.shadow.docutils {
+    			background-color: transparent!important;
+    			border: 1px solid #e5e9ef;
+    			border-radius: 6px;
+    			box-shadow: none!important;
+    		}
+
+    		.card.shadow.docutils:hover {
+    			box-shadow: 0px 4px 40px rgba(10, 39, 99, 0.08), 0px 16px 24px rgba(10, 39, 99, 0.02), 0px 2px 8px rgba(10, 39, 99, 0.04), 0px 0px 1px rgba(10, 39, 99, 0.04) !important;
+    			border-color: transparent;
+    		}
+
+    		.card.shadow.docutils .card-body {
+    			padding: 24px 32px;
+    		}
+
+    		.card.shadow.docutils a.btn {
+    			font-style: normal;
+    			font-weight: normal!important;
+    			font-size: 18px;
+    			line-height: 24px;
+    			color: #232C40;
+    			padding: 0;
+    		}
+
+    		.card.shadow.docutils a.btn:hover {
+    			text-decoration: none;
+    		}
+    	</style>
+
 
 Introduction
 -------------
@@ -35,7 +66,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. div:: text-muted
 
-        :opticon:`book` Configure and deploy Soveren Gateway in 5 minutes
+        Configure and deploy Soveren Gateway in 5 minutes
 
     ---
 
@@ -46,7 +77,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. div:: text-muted
 
-        :opticon:`book` Learn how to fit Soveren Gateway in your perimeter
+        Learn how to fit Soveren Gateway in your perimeter
 
 How Soveren works
 -----------------
