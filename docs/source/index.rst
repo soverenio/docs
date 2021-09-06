@@ -16,50 +16,74 @@
     })(window,document,'script','dataLayer','GTM-TCK46V7');</script>
     <!-- End Google Tag Manager -->
 
-    <style>
-    		.card.shadow.docutils {
-    			background-color: transparent!important;
-    			border: 1px solid #e5e9ef;
-    			border-radius: 6px;
-    			box-shadow: none!important;
-    		}
+.. raw:: html
 
-    		.card.shadow.docutils:hover {
-    			box-shadow: 0px 4px 40px rgba(10, 39, 99, 0.08), 0px 16px 24px rgba(10, 39, 99, 0.02), 0px 2px 8px rgba(10, 39, 99, 0.04), 0px 0px 1px rgba(10, 39, 99, 0.04) !important;
-    			border-color: transparent;
-    		}
+  <style>
+    .row.docutils {
+      margin-left: -8px;
+      margin-right: -8px;
+    }
 
-    		.card.shadow.docutils .card-body {
-    			padding: 24px 32px;
-    		}
+    .card.shadow.docutils {
+      background-color: transparent !important;
+      border: 1px solid #e5e9ef; /* Rock light 50 */
+      border-radius: 6px;
+      box-shadow: none !important;
+      transition-duration: 200ms;
+      transition-timing-function: ease-out;
+      transition-property: box-shadow, background-color, border-color;
+    }
 
-    		.card.shadow.docutils a.btn {
-    			font-style: normal;
-    			font-weight: normal!important;
-    			font-size: 18px;
-    			line-height: 24px;
-    			color: #232C40;
-    			padding: 0;
-    		}
+    .card.shadow.docutils:hover {
+      box-shadow: 0px 4px 40px rgba(10, 39, 99, 0.08),
+        0px 16px 24px rgba(10, 39, 99, 0.02), 0px 2px 8px rgba(10, 39, 99, 0.04),
+        0px 0px 1px rgba(10, 39, 99, 0.04) !important;
+      border-color: transparent;
+    }
 
-    		.card.shadow.docutils a.btn:hover {
-    			text-decoration: none;
-    		}
-    		.row.docutils {
-            	margin-left: -8px;
-            	margin-right: -8px;
-            }
-            .card.shadow.docutils {
-            			background-color: transparent!important;
-            			border: 1px solid #e5e9ef;
-            			border-radius: 6px;
-            			box-shadow: none!important;
-                  		transition-duration: 200ms;
-                  		transition-timing-function: ease-out;
-                  		transition-property: box-shadow, background-color, border-color;
-            		}
-    	</style>
+    .card.shadow.docutils .card-body {
+      padding: 24px 32px;
+    }
 
+    .card.shadow.docutils a.btn {
+      font-style: normal;
+      font-weight: normal !important;
+      font-size: 18px;
+      line-height: 24px;
+      color: #232c40; /* Rock light 800 */
+      padding: 0;
+    }
+
+    .card.shadow.docutils a.btn:hover {
+      text-decoration: none;
+    }
+
+    .card.shadow.docutils .card-text {
+      margin-bottom: 4px;
+    }
+
+    .card.shadow.docutils .text-muted {
+      color: #6a768f !important; /* Rock light 400 */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .card.shadow.docutils {
+        border-color: #192131; /* Rock dark 50 */
+      }
+
+      .card.shadow.docutils:hover {
+        background-color: #131a28 !important; /* Rock dark 25 */
+      }
+
+      .card.shadow.docutils a.btn {
+        color: #d7dadf; /* Rock dark 800 */
+      }
+
+      .card.shadow.docutils .text-muted {
+        color: #6f7c96 !important; /* Rock dark 400 */
+      }
+    }
+  </style>
 
 Introduction
 -------------
