@@ -67,22 +67,39 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      .card.shadow.docutils {
+      [data-theme=auto] .card.shadow.docutils {
         border-color: #192131; /* Rock dark 50 */
       }
 
-      .card.shadow.docutils:hover {
+      [data-theme=auto] .card.shadow.docutils:hover {
         background-color: #131a28 !important; /* Rock dark 25 */
       }
 
-      .card.shadow.docutils a.btn {
+      [data-theme=auto] .card.shadow.docutils a.btn {
         color: #d7dadf; /* Rock dark 800 */
       }
 
-      .card.shadow.docutils .text-muted {
+      [data-theme=auto] .card.shadow.docutils .text-muted {
         color: #6f7c96 !important; /* Rock dark 400 */
       }
     }
+
+    [data-theme=dark] .card.shadow.docutils {
+      border-color: #192131; /* Rock dark 50 */
+    }
+
+    [data-theme=dark] .card.shadow.docutils:hover {
+      background-color: #131a28 !important; /* Rock dark 25 */
+    }
+
+    [data-theme=dark] .card.shadow.docutils a.btn {
+      color: #d7dadf; /* Rock dark 800 */
+    }
+
+    [data-theme=dark] .card.shadow.docutils .text-muted {
+      color: #6f7c96 !important; /* Rock dark 400 */
+    }
+
   </style>
 
 Introduction
