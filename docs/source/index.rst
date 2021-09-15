@@ -79,7 +79,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. div:: text-muted
 
-        Configure and deploy Soveren Gateway in 5 minutes
+        Configure and deploy Soveren gateway in 5 minutes
 
     ---
 
@@ -90,36 +90,36 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. div:: text-muted
 
-        Learn how to fit Soveren Gateway into your perimeter
+        Learn how to fit Soveren gateway into your perimeter
 
 How Soveren works
 -----------------
 
 Soveren has a hybrid architecture:
 
-* Soveren Gateway is a box solution installed in the client’s perimeter. It parses structured HTTP JSON traffic, extracts PIIs, and sends metadata to the cloud.
-* Soveren Cloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
+* Soveren gateway is a box solution installed in the client’s perimeter. It parses structured HTTP JSON traffic, extracts PIIs, and sends metadata to the cloud.
+* Soveren cloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 .. image:: /images/architecture/architecture-concept.jpg
    :width: 900
 
 
-Soveren Gateway
+Soveren gateway
 ^^^^^^^^^^^^^^^
-Soveren Gateway is a box solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
+Soveren gateway is a box solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
 The Gateway then processes those requests and responses asynchronously and extracts PII from the payloads.
 
-Metadata about the requests is collected and sent to Soveren Cloud.
+Metadata about the requests is collected and sent to Soveren cloud.
 The metadata contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
 No part of the actual payload contents is included in the metadata.
 
 Technically, the Gateway consists of a standard proxy (a `Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Apache Kafka <https://kafka.apache.org/documentation/>`_), and analytics component which detects PII based on custom machine learning algorithms.
 
-Soveren Cloud
+Soveren cloud
 ^^^^^^^^^^^^^
 
-Soveren Cloud is a SaaS. It is deployed in the cloud by Soveren.
-It offers a set of dashboards that provide various views into the metadata collected by Soveren Gateway.
+Soveren cloud is a SaaS. It is deployed in the cloud by Soveren.
+It offers a set of dashboards that provide various views into the metadata collected by Soveren gateway.
 That includes analytics and stats on which PIIs have been observed and how sensitive they are, what services are involved, and what are the potential limitations in the API structure from the privacy standpoint.
 
 
