@@ -13,6 +13,9 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 import os, sys
+import errno
+import sphinx.util.osutil
+sphinx.util.osutil.ENOENT = errno.ENOENT
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -61,9 +64,6 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-def setup(app):
-    app.add_css_file('css/custom_furo.css')
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -91,6 +91,9 @@ html_theme = "furo"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 
+def setup(app):
+    app.add_css_file('css/custom_furo.css')
+
 # These folders are copied to the documentation's HTML output
 html_static_path = ['_static']
 
@@ -101,7 +104,7 @@ html_static_path = ['_static']
 
 #html_logo = 'imgs/logo-soveren-dark.svg'
 
-html_favicon = 'images/favicon1.png'
+html_favicon = 'images/favicon/favicon-app-light.svg'
 
 html_theme_options = {
 # Customization options for Read the Docs theme
@@ -121,7 +124,7 @@ html_theme_options = {
 # Customization options for Furo theme
      "navigation_with_keys": True,
      "sidebar_hide_name": True,
-     "light_logo": "Logo-dark-L.svg",
+     "light_logo": "Logo-light-L.svg",
      "dark_logo": "Logo-dark-L.svg"
  }
 
