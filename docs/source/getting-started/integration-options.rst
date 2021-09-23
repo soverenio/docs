@@ -16,7 +16,7 @@ And to install it, you need to understand where you want to integrate it — whi
 
 Here are possible points where you can integrate Soveren gateway into your perimeter:
 
-.. image:: ../images/architecture/integration-options.jpg
+.. image:: ../images/architecture/Integration-options.jpg
    :width: 900
 
 Before integrating, learn some important caveats:
