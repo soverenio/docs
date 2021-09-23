@@ -13,60 +13,66 @@ Quick start
 
 `Register an account <https://app.soveren.io/sign-up>`_, then get started with Soveren:
 
-1. Add the Soveren token to your Kubernetes cluster.
+.. tab:: Kubernetes
 
-   Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token, and run:
+    1. Add the Soveren token to your Kubernetes cluster.
 
-   ::
+       Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token, and run:
 
-        kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
+       ::
+
+            kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
 
-   .. admonition:: Note
-         :class: note
+       .. admonition:: Note
+             :class: note
 
-         Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
+             Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
 
-2. Apply the Soveren gateway manifest and configmap:
+    2. Apply the Soveren gateway manifest and configmap:
 
-   ::
+       ::
 
-        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
+            kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
 
-3. Сonfigure Soveren gateway to proxy the traffic for your services.
+    3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
-   Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
+       Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
 
-   ::
+       ::
 
-        kubectl edit cm replicator
+            kubectl edit cm replicator
 
-   ``replicator`` configmap example:
+       ``replicator`` configmap example:
 
-   ::
+       ::
 
-          # Add the service
-          services:
-            upstream:
-              loadBalancer:
-                servers:
-                  - url: http://address-of-your-service:port/
+              # Add the service
+              services:
+                upstream:
+                  loadBalancer:
+                    servers:
+                      - url: http://address-of-your-service:port/
 
-   .. admonition:: Tip
-      :class: tip
+       .. admonition:: Tip
+          :class: tip
 
-      Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+          Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
-4. Configure your services to route traffic to Soveren gateway.
+    4. Configure your services to route traffic to Soveren gateway.
 
-   .. admonition:: Tip
-      :class: tip
+       .. admonition:: Tip
+          :class: tip
 
-      Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
+          Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
-5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
+    5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
 
-   .. admonition:: Tip
-      :class: tip
+       .. admonition:: Tip
+          :class: tip
 
-      Check the `description of available dashboards <../dashboards/dashboards.html>`_.
+          Check the `description of available dashboards <../dashboards/dashboards.html>`_.
+
+.. tab:: Docker Compose
+
+   Work in progress...
