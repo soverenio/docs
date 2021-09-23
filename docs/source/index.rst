@@ -2,9 +2,12 @@
    :hidden:
 
    getting-started/quick-start
-   getting-started/deployment
+   getting-started/integration-options
+   administration/failover
+   administration/administration
+   administration/troubleshooting
    dashboards/dashboards
-   administration/throubleshooting
+   miscellaneous/release-notes
 
 .. raw:: html
 
@@ -115,7 +118,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     .. link-button:: getting-started/quick-start
        :type: ref
-       :text: Quick start guide
+       :text: Quick start
        :classes: btn-link stretched-link font-weight-bold
 
     .. div:: text-muted
@@ -124,9 +127,9 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
     ---
 
-    .. link-button:: getting-started/deployment
+    .. link-button:: getting-started/integration-options
         :type: ref
-        :text: Deployment
+        :text: Integration options
         :classes: btn-link stretched-link font-weight-bold
 
     .. div:: text-muted

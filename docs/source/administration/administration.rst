@@ -4,9 +4,50 @@ Administration
 Logs
 ----
 
+Logging is enabled by default for Soveren gateway components, at the ``INFO`` level, including information, warning, error, and critical error events.
 
-Metrics
--------
+You may want to unload logs to check the following:
+    * Proxy:
+       * Proxied traffic
+       * Proxy configuration errors
+       * Received Apache Kafka events
+    * Digger:
+       * Soveren token validity, to send analysis metadata to Soveren cloud
+       * Errors preparing the proxied traffic for the PII detection service
+    * PII detection service:
+       * Prepared traffic received for PII analysis
+       * PII analysis errors
+
+To unload logs, run:
+
+.. tab:: Kubernetes
+
+   Proxy:
+
+   ::
+
+          kubectl -n boxy logs service/traefik-proxy > traefik-proxy.log
+
+.. tab:: Docker Compose
+
+   Digger:
+
+   ::
+
+          docker-compose logs digger > digger.log
+
+   Proxy:
+
+   ::
+
+          docker-compose logs traefik > traefik-proxy.log
+
+   Kafka:
+
+   ::
+
+          docker-compose logs digger > kafka.log
+
 
 Proxy settings
 --------------
@@ -24,18 +65,15 @@ The proxy supports HTTPS protocol over an encrypted SSL/TLS connection.
 You  can enable SSL termination adding a TLS certificate, even when the proxy is already running, to the dynamic configuration in the [[tls.certificates]] section.
 
 For example:
+::
 
-# Dynamic configuration
-
-   ::
-
-          tls:
-            certificates:
-              - certFile: /path/to/domain.cert
-                keyFile: /path/to/domain.key
-              - certFile: /path/to/other-domain.cert
-                keyFile: /path/to/other-domain.key
-
+       # Dynamic configuration
+        tls:
+          certificates:
+            - certFile: /path/to/domain.cert
+              keyFile: /path/to/domain.key
+            - certFile: /path/to/other-domain.cert
+              keyFile: /path/to/other-domain.key
 
 
 

@@ -30,7 +30,7 @@ Before integrating, learn some important caveats:
 
 When integrated, Soveren gateway interacts with Soveren cloud where you can see metrics, analytics and gateway status.
 
-.. image:: ../images/architecture/user-soveren-interaction.jpg
+.. image:: ../images/architecture/interaction-simplified.jpg
    :width: 900
 
 .. admonition:: Note
