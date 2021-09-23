@@ -1,60 +1,72 @@
+.. raw:: html
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TCK46V7');</script>
+    <!-- End Google Tag Manager -->
+
 Quick start
 ===========
 
-...Work in progress
+`Register an account <https://app.soveren.io/sign-up>`_, then get started with Soveren:
+
+1. Add the Soveren token to your Kubernetes cluster.
+
+   Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token, and run:
+
+   ::
+
+        kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
 
-Deployment
-----------
+   .. admonition:: Note
+         :class: note
 
-Soveren gateway supports Kubernetes for deployment.
+         Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
 
-Requirements
-^^^^^^^^^^^^
+2. Apply the Soveren gateway manifest and configmap:
 
-1. `Kubernetes <hhttps://kubernetes.io/docs/setup/>`_.
-2. Soveren token to set up Soveren gateway.
+   ::
 
-.. admonition:: Tip
-   :class: tip
+        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
 
-   You can find your Soveren token in your Soveren account. If you don't yet have a Soveren account, `get one <https://soveren.io/sign-up>`_.
+3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
-Configure and deploy
-^^^^^^^^^^^^^^^^^^^^
+   Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
 
-1. Add your Soveren token to your Kubernetes cluster.
-   ``kubectl create secret generic soveren-proxy-token --from-literal=token=123e4567-e89b-12d3-a456-426655440000``
+   ::
 
-2. Set up your upstream: configure Soveren Gateway to proxy traffic to your services.
+        kubectl edit cm replicator
 
-3. Set up Soveren gateway using our manifest file.
-   ``kubectl apply -f https://github.com/soverenio/smat/…``
+   ``replicator`` configmap example:
 
-4. Run a livecheck and reroute your traffic.
+   ::
 
-Livecheck
-^^^^^^^^^
+          # Add the service
+          services:
+            upstream:
+              loadBalancer:
+                servers:
+                  - url: http://address-of-your-service:port/
 
-Log in to your Soveren account and check tha Soveren proxy is on.
+   .. admonition:: Tip
+      :class: tip
 
+      Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
 
-Reroute your traffic
-^^^^^^^^^^^^^^^^^^^^
+4. Configure your services to route traffic to Soveren gateway.
 
-Route traffic from your services to Soveren Gateway.
+   .. admonition:: Tip
+      :class: tip
 
-.. admonition:: Tip
-   :class: tip
+      Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
 
-   Read `deployment options <deployment-options.html>`_ to understand the best way to integrate Soveren gateway into your perimeter and reroute your traffic.
+5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
 
+   .. admonition:: Tip
+      :class: tip
 
-
-
-
-
-
-
-
-
+      Check the `description of available dashboards <../dashboards/dashboards.html>`_.
