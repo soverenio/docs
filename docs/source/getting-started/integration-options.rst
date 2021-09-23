@@ -14,7 +14,7 @@ Integration options
 To start solving PII-related problems with Soveren, you need to install Soveren gateway in your perimeter.
 And to install it, you need to understand where you want to integrate it — which points in your system you want to monitor and analyze.
 
-Here are possible points where you can integrate Soveren gateway into your perimeter:
+Here are possible points to integrate Soveren gateway into your perimeter:
 
 .. image:: ../images/architecture/Integration-options.jpg
    :width: 900
