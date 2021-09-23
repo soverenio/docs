@@ -85,11 +85,10 @@ For example:
             - certFile: /path/to/other-domain.cert
               keyFile: /path/to/other-domain.key
 
+Update process
+--------------
 
-
-
-
-
+Work in progress...
 
 
 

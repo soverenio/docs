@@ -14,7 +14,7 @@ Release notes
 General information
 -------------------
 
-Soveren cloud supports only the latest version of Soveren gateway. Once a new version of Soveren gateway is released, you need to update to it.
+Soveren cloud supports only the latest version of Soveren gateway. Once a new version of Soveren gateway is released, you need to update your version to it.
 
 .. admonition:: Tip
    :class: note
