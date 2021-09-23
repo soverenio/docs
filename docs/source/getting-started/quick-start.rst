@@ -64,7 +64,7 @@ Quick start
        .. admonition:: Tip
           :class: tip
 
-          Refer to the `deployment scheme <deployment.html>`_ for more details on how the deployment is structured.
+          Refer to `Integration options <integration-options.html>`_ for more details on how the deployment is structured.
 
     5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
 
