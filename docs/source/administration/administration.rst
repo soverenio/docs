@@ -76,7 +76,7 @@ Otherwise, your old version may lose connection with Soveren cloud that supports
 .. admonition:: Tip
    :class: tip
 
-   At the early adopter stage, we personally let our adopters know when a new Soveren gateway version is out.
+   At the early adopters stage, we personally let our adopters know when a new Soveren gateway version is out.
 
 
 .. tab:: Kubernetes
