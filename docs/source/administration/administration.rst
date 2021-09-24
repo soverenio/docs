@@ -68,6 +68,8 @@ For example:
 Update process
 --------------
 
+Soveren gateway
+^^^^^^^^^^^^^^^
 Once you know the update is out, we recommend you update Soveren gateway to the latest version.
 Otherwise, your old version may lose connection with Soveren cloud that supports only the latest Soveren gateway version.
 
@@ -101,6 +103,17 @@ Otherwise, your old version may lose connection with Soveren cloud that supports
       ::
 
            docker-compose up -d
+
+
+Soveren cloud
+^^^^^^^^^^^^^
+
+Soveren cloud is managed by the Soveren team and doesn't require updates from the user side.
+
+.. admonition:: Tip
+   :class: tip
+
+   Soveren cloud supports only the latest Soveren gateway version. Learn how to update Soveren gateway above to avoid possible incompatibility problems.
 
 
 
