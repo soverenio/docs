@@ -17,7 +17,7 @@ Proxy settings
 The proxy is part of Soveren gateway and serves as an edge router for client's traffic.
 Technically, it is a a `Traefik <https://doc.traefik.io/traefik/>`_ fork with an added middleware.
 
-Here's how what you need to know to set up the proxy.
+Here's what you need to know to customize the proxy within the Gateway.
 
 
 SSL termination
@@ -71,7 +71,7 @@ Update process
 Soveren gateway
 ^^^^^^^^^^^^^^^
 Once you know the update is out, we recommend you update Soveren gateway to the latest version.
-Otherwise, your old version may lose connection with Soveren cloud that supports only the latest Soveren gateway version.
+Otherwise, your old version may lose connection to Soveren cloud, as the Cloud supports only the latest Gateway version.
 
 .. admonition:: Tip
    :class: tip
