@@ -27,7 +27,7 @@ Quick start
        .. admonition:: Note
              :class: note
 
-             Currently, Soveren only supports Kubernetes deployments. For other deployment options, contact us at support@soveren.io
+             Currently, Soveren only supports Kubernetes and Docker Compose deployments. For other deployment options, contact us at support@soveren.io
 
     2. Apply the Soveren gateway manifest and configmap:
 
@@ -75,4 +75,62 @@ Quick start
 
 .. tab:: Docker Compose
 
-   Work in progress...
+   1. Clone the repo containing the configuration files:
+
+      ::
+
+           git clone https://github.com/soverenio/deployment
+
+      .. admonition:: Note
+         :class: note
+
+         Currently, Soveren only supports Kubernetes and Docker Compose deployments.
+
+   2. Add the Soveren token to Docker.
+
+      Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token. Then run:
+
+      ::
+
+           export token=‘<soveren-token-from-your-account-on-soveren.io>’
+
+   3. Сonfigure Soveren gateway to proxy the traffic for your services.
+
+      Edit the ``configs/traefik_configs/conf.d/20-replicator.yaml`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
+
+      ``20-replicator`` configmap example:
+
+      ::
+
+             # Add the service
+             http:
+               services:
+                 upstream:
+                   loadBalancer:
+                     servers:
+                       - url: http://address-of-your-service:port/
+
+      .. admonition:: Tip
+         :class: tip
+
+         Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+
+   2. Apply the Soveren gateway manifest running the command below in the ``compose`` repo folder:
+
+      ::
+
+           docker-compose up -d
+
+   4. Configure your services to route traffic to Soveren gateway.
+
+      .. admonition:: Tip
+         :class: tip
+
+         Refer to `Integration options <integration-options.html>`_ for more details on how the deployment is structured.
+
+   5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
+
+      .. admonition:: Tip
+         :class: tip
+
+         Check the `description of available dashboards <../dashboards/dashboards.html>`_.

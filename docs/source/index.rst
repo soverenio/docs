@@ -7,7 +7,6 @@
    administration/administration
    administration/troubleshooting
    dashboards/dashboards
-   miscellaneous/release-notes
 
 .. raw:: html
 

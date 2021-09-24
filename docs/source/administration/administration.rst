@@ -11,59 +11,11 @@
 Administration
 ==============
 
-Logs
-----
-
-Logging is enabled by default for Soveren gateway components, at the ``INFO`` level, including information, warning, error, and critical error events.
-
-You may want to unload logs to check the following:
-    * Proxy:
-       * Proxied traffic
-       * Proxy configuration errors
-       * Received Apache Kafka events
-    * Digger:
-       * Soveren token validity, to send analysis metadata to Soveren cloud
-       * Errors preparing the proxied traffic for the PII detection service
-    * PII detection service:
-       * Prepared traffic received for PII analysis
-       * PII analysis errors
-
-To unload logs, run:
-
-.. tab:: Kubernetes
-
-   Proxy:
-
-   ::
-
-          kubectl -n boxy logs service/traefik-proxy > traefik-proxy.log
-
-.. tab:: Docker Compose
-
-   Digger:
-
-   ::
-
-          docker-compose logs digger > digger.log
-
-   Proxy:
-
-   ::
-
-          docker-compose logs traefik > traefik-proxy.log
-
-   Kafka:
-
-   ::
-
-          docker-compose logs digger > kafka.log
-
-
 Proxy settings
 --------------
 
 The proxy is part of Soveren gateway and serves as an edge router for client's traffic.
-Technically, it is a Traefik fork with an added middleware.
+Technically, it is a a `Traefik <https://doc.traefik.io/traefik/>`_ fork with an added middleware.
 
 Here's how what you need to know to set up the proxy.
 
@@ -72,25 +24,83 @@ SSL termination
 ^^^^^^^^^^^^^^^
 
 The proxy supports HTTPS protocol over an encrypted SSL/TLS connection.
-You  can enable SSL termination adding a TLS certificate, even when the proxy is already running, to the dynamic configuration in the [[tls.certificates]] section.
+You  can enable SSL termination by adding a TLS certificate, even when the proxy is already running, to the dynamic configuration in the ``tls {}`` section.
 
 For example:
 ::
 
-       # Dynamic configuration
-        tls:
-          certificates:
-            - certFile: /path/to/domain.cert
-              keyFile: /path/to/domain.key
-            - certFile: /path/to/other-domain.cert
-              keyFile: /path/to/other-domain.key
+       http:
+         routers:
+           defaults:
+             entryPoints:
+               - web
+             rule: PathPrefix(`/`)
+             middlewares:
+               - soveren
+             service: upstream
+             tls: {}
+
+.. admonition:: Tip
+   :class: tip
+
+   To learn specific ``tls{}`` parameters fitting your case, and other encryption options, refer to `TLS <https://doc.traefik.io/traefik/https/tls/>`_ in Traeik documentation.
+   To learn more about routing options in the context of SSL termination, refer to `Routers <https://doc.traefik.io/traefik/routing/routers/#tls>`_ in Traeik documentation.
+
+.. tab:: Kubernetes
+
+   To add a TLS certificate, edit the ``replicator`` configmap:
+
+   ::
+
+        kubectl edit cm replicator
+
+.. tab:: Docker Compose
+
+   1. Clone the repo containing the configuration files:
+
+      ::
+
+           git clone https://github.com/soverenio/deployment
+
+   2. Edit the ``configs/traefik_configs/conf.d/30-routers.yaml`` configmap.
+
 
 Update process
 --------------
 
-Work in progress...
+Once you know the update is out, we recommend you update Soveren gateway to the latest version.
+Otherwise, your old version may lose connection with Soveren cloud that supports only the latest Soveren gateway version.
+
+.. admonition:: Tip
+   :class: tip
+
+   At the early adopter stage, we personally let our adopters know when a new Soveren gateway version is out.
 
 
+.. tab:: Kubernetes
+
+   To update Soveren gateway, apply the Soveren gateway manifest:
+
+   ::
+
+       kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml
+
+
+.. tab:: Docker Compose
+
+   To update Soveren gateway:
+
+   1. Clone the repo containing the configuration files:
+
+      ::
+
+           git clone https://github.com/soverenio/deployment
+
+   2. Apply the Soveren gateway manifest running the command below in the ``compose`` repo folder:
+
+      ::
+
+           docker-compose up -d
 
 
 
