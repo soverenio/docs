@@ -113,7 +113,7 @@ Soveren cloud is managed by the Soveren team and doesn't require updates from th
 .. admonition:: Tip
    :class: tip
 
-   Soveren cloud supports only the latest Soveren gateway version. Learn how to update Soveren gateway above to avoid possible incompatibility problems.
+   Soveren cloud supports only the latest Soveren gateway version. Learn how to update Soveren gateway above to avoid any incompatibility issues.
 
 
 
