@@ -164,9 +164,3 @@ Soveren сloud
 Soveren сloud is a SaaS. It is deployed in the cloud by Soveren.
 It offers a set of dashboards that provide various views into the metadata collected by Soveren gateway.
 That includes analytics and stats on which PIIs have been observed and how sensitive they are, what services are involved, and what are the potential limitations in the API structure from the privacy standpoint.
-
-
-
-
-
-
