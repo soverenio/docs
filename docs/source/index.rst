@@ -143,6 +143,7 @@ It may be deployed at different places in the client's perimeter.
 .. image:: /images/architecture/integration-options.jpg
    :width: 900
 
+
 Soveren сloud
 ^^^^^^^^^^^^^
 
