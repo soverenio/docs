@@ -140,7 +140,7 @@ No part of the actual payload contents is included in the metadata.
 Technically, the Gateway consists of a standard proxy (a `Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Apache Kafka <https://kafka.apache.org/documentation/>`_), and analytics component which detects PII based on custom machine learning algorithms.
 It may be deployed at different places in the client's perimeter.
 
-.. image:: /images/architecture/integration-options.jpg
+.. image:: /images/architecture/integration.jpg
    :width: 900
 
 
