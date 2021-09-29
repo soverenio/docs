@@ -2,7 +2,6 @@
    :hidden:
 
    getting-started/quick-start
-   getting-started/integration-options
    administration/failover
    administration/administration
    administration/troubleshooting
