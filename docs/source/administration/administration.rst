@@ -43,8 +43,8 @@ For example:
 .. admonition:: Tip
    :class: tip
 
-   To learn specific ``tls{}`` parameters fitting your case, and other encryption options, refer to `TLS <https://doc.traefik.io/traefik/https/tls/>`_ in Traeik documentation.
-   To learn more about routing options in the context of SSL termination, refer to `Routers <https://doc.traefik.io/traefik/routing/routers/#tls>`_ in Traeik documentation.
+   To learn specific ``tls{}`` parameters fitting your case, and other encryption options, refer to `TLS <https://doc.traefik.io/traefik/https/tls/>`_ in Traefik documentation.
+   To learn more about routing options in the context of SSL termination, refer to `Routers <https://doc.traefik.io/traefik/routing/routers/#tls>`_ in Traefik documentation.
 
 .. tab:: Kubernetes
 

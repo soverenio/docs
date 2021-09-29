@@ -112,7 +112,7 @@ Soveren monitors and parses traffic between the services, identifying personal i
 Preconfigured dashboards provide a view into risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
 
-.. image:: /images/dashboards/PII-types.jpg
+.. image:: /images/dashboards/pii-types-overview-cropped.png
    :width: 900
 
 
@@ -140,7 +140,7 @@ No part of the actual payload contents is included in the metadata.
 Technically, the Gateway consists of a standard proxy (a `Traefik <https://doc.traefik.io/traefik/>`_ fork), messaging system (`Apache Kafka <https://kafka.apache.org/documentation/>`_), and analytics component which detects PII based on custom machine learning algorithms.
 It may be deployed at different places in the client's perimeter.
 
-.. image:: /images/architecture/Integration-options.jpg
+.. image:: /images/architecture/integration-options.jpg
    :width: 900
 
 Soveren сloud
