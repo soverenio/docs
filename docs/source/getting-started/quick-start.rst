@@ -96,7 +96,7 @@ Quick start
 
    3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
-      Edit the ``configs/traefik_configs/conf.d/20-replicator.yaml`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
+      Edit the ``configs/traefik_configs/conf.d/20-replicator.yaml`` config and set the ``url`` parameter in the section ``services`` to point to your service:
 
       ``20-replicator`` configmap example:
 
