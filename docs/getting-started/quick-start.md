@@ -36,7 +36,7 @@
 
           <div class="admonition tip">
           <p class="admonition-title">Tip</p>
-          <p>Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.</p>
+          <p>Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options.</p>
           </div>
           
 
@@ -44,48 +44,47 @@
 
           <div class="admonition note">
           <p class="admonition-title">Tip</p>
-          <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not anaylyzed.</p>
+          <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not analyzed.</p>
           </div>
           
 
-    5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
+    5. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
 
           <div class="admonition tip">
           <p class="admonition-title">Tip</p>
-          <p>Check the [description of available dashboards](../dashboards/dashboards.html).</p>
+          <p>Check the [description of available dashboards](/../dashboards/overview).</p>
           </div>
 
           
 
-.. tab:: Docker Compose
+=== "Docker Compose"
 
-   1. Clone the repo containing the configuration files:
+    1. Clone the repo containing the configuration files:
+          ```
+          git clone https://github.com/soverenio/deployment
+          ```
+          
+          <div class="admonition note">
+          <p class="admonition-title">Tip</p>
+          <p>Currently, Soveren only supports Kubernetes and Docker Compose deployments.</p>
+          </div>
 
-      ::
+         
 
-           git clone https://github.com/soverenio/deployment
+    2. Add the Soveren token to Docker.
 
-      .. admonition:: Note
-         :class: note
+          Go to your [Soveren account settings](https://app.soveren.io/get-started), find and copy your Soveren token. Then run:
+          
+          ```
+          export token=‘<soveren-token-from-your-account-on-soveren.io>’
+          ```
+          
+    3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
-         Currently, Soveren only supports Kubernetes and Docker Compose deployments.
+          Edit the `configs/traefik_configs/conf.d/20-replicator.yaml` config and set the `url` parameter in the section `services` to point to your service:
 
-   2. Add the Soveren token to Docker.
-
-      Go to your `Soveren account settings <https://app.soveren.io/get-started>`_, find and copy your Soveren token. Then run:
-
-      ::
-
-           export token=‘<soveren-token-from-your-account-on-soveren.io>’
-
-   3. Сonfigure Soveren gateway to proxy the traffic for your services.
-
-      Edit the ``configs/traefik_configs/conf.d/20-replicator.yaml`` config and set the ``url`` parameter in the section ``services`` to point to your service:
-
-      ``20-replicator`` configmap example:
-
-      ::
-
+          `20-replicator` configmap example:
+       
              # Add the service
              http:
                services:
@@ -94,27 +93,27 @@
                      servers:
                        - url: http://address-of-your-service:port/
 
-      .. admonition:: Tip
-         :class: tip
+          <div class="admonition tip">
+          <p class="admonition-title">Tip</p>
+          <p>Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options.</p>
+          </div>
 
-         Soveren gateway is based on Traefik. Refer to the `Traefik docs <https://doc.traefik.io/traefik/routing/overview/>`_ if you need more routing options.
+    4. Apply the Soveren gateway manifest running the command below in the `compose` repo folder:
 
-   2. Apply the Soveren gateway manifest running the command below in the ``compose`` repo folder:
+          ```
+          docker-compose up -d
+          ```         
 
-      ::
+    5. Configure your services to route traffic to Soveren gateway.
 
-           docker-compose up -d
+          <div class="admonition note">
+          <p class="admonition-title">Tip</p>
+          <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not analyzed.</p>
+          </div>
+         
+    6. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
 
-   4. Configure your services to route traffic to Soveren gateway.
-
-      .. admonition:: Tip
-         :class: tip
-
-         The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not anaylyzed
-
-   5. That's it! `Go to the dashboards <https://app.soveren.io/pii-types>`_ and start getting insights.
-
-      .. admonition:: Tip
-         :class: tip
-
-         Check the `description of available dashboards <../dashboards/dashboards.html>`_.
+          <div class="admonition tip">
+          <p class="admonition-title">Tip</p>
+          <p>Check the [description of available dashboards](../dashboards/dashboards).</p>
+          </div>       
