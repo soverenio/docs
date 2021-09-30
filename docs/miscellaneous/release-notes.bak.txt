@@ -5,7 +5,7 @@
 Soveren cloud supports only the latest version of Soveren gateway. Once a new version of Soveren gateway is released, you need to update your version to it.
 
 !!! tip
-    Read how to [update Soveren gateway](../administration/updating-soveren).
+    Read how to [update Soveren gateway](../../administration/updating-soveren).
 
 
 ## Latest Soveren gateway version

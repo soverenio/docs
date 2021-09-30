@@ -52,7 +52,7 @@
 
           <div class="admonition tip">
           <p class="admonition-title">Tip</p>
-          <p>Check the [description of available dashboards](/../dashboards/overview).</p>
+          <p>Check the [description of available dashboards](../../dashboards/overview).</p>
           </div>
 
           
@@ -115,5 +115,5 @@
 
           <div class="admonition tip">
           <p class="admonition-title">Tip</p>
-          <p>Check the [description of available dashboards](../dashboards/dashboards).</p>
+          <p>Check the [description of available dashboards](../../dashboards/dashboards).</p>
           </div>       
