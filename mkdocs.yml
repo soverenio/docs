@@ -14,6 +14,7 @@ nav:
   - Dahboards:
       - Overview: 'dashboards/overview.md'
       - PII model: 'dashboards/pii-model.md'
+
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
   name: material
