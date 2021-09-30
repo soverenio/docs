@@ -83,7 +83,7 @@
 
           Edit the `configs/traefik_configs/conf.d/20-replicator.yaml` config and set the `url` parameter in the section `services` to point to your service:
 
-          `20-replicator` configmap example:
+          `20-replicator` config example:
        
              # Add the service
              http:
