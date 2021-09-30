@@ -127,6 +127,8 @@ Soveren has a hybrid architecture:
 .. image:: /images/architecture/architecture-concept.jpg
    :width: 900
 
+.. _soveren gateway:
+
 Soveren gateway
 ^^^^^^^^^^^^^^^
 Soveren gateway is a box solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
