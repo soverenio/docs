@@ -30,7 +30,6 @@ Otherwise, your old version may lose connection to Soveren cloud, as the Cloud s
            ```
            docker-compose up -d
            ```
-
 ## Soveren cloud
 
 Soveren cloud is managed by the Soveren team and doesn't require updates from the user side.
