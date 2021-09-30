@@ -1,0 +1,6 @@
+site_name: My Docs
+site_url: https://docs.soveren.io
+nav:
+    - Home: index.md
+    - About: about.md
+theme: material
