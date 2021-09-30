@@ -5,7 +5,7 @@ Soveren helps uncover personally identifiable information, also known as PII or 
 Soveren monitors and parses traffic between the services, identifying personal information along with its sensitivity, with sensitivity graded in accordance with the consequences that might arise if that information was leaked or used inappropriately.
 Preconfigured dashboards provide a view into risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
-<img src="/img/dashboards/pii-types-overview-cropped.png" alt="PII overview dashboard" width="870" />
+<img src="img/dashboards/pii-types-overview-cropped.png" alt="PII overview dashboard" width="870" />
 
 ## How Soveren works
 
@@ -14,7 +14,7 @@ Soveren has a hybrid architecture:
 * Soveren gateway is a box solution installed in the client’s perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
-<img src="/img/architecture/architecture-concept.jpg" alt="Architecture concept" width="870" />
+<img src="img/architecture/architecture-concept.jpg" alt="Architecture concept" width="870" />
 
 ### Soveren gateway
 
@@ -28,7 +28,7 @@ No part of the actual payload contents is included in the metadata.
 Technically, the Gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and analytics component which detects PII based on custom machine learning algorithms.
 It may be deployed at different places in the client's perimeter.
 
-<img src="/img/architecture/integration.jpg" alt="Integration options" width="870" />
+<img src="img/architecture/integration.jpg" alt="Integration options" width="870" />
 
 ### Soveren сloud
 
