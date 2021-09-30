@@ -1,6 +1,7 @@
 .. toctree::
    :hidden:
 
+   self
    getting-started/quick-start
    administration/failover
    administration/administration
