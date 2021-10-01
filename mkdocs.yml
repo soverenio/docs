@@ -34,7 +34,7 @@ theme:
         name: Switch to light mode
       primary: deep purple
       accent: deep purple
-  logo: img/favicons/favicon-app-light.svg
+  logo: img/logos/Logo-simple-L-dark.svg
   favicon: img/favicons/favicon-app-light.svg
   features:
     - navigation.indexes
