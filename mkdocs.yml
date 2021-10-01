@@ -9,7 +9,7 @@ nav:
   - Quick start: getting-started/quick-start.md
   - Administration:
       - Failover: 'administration/failover.md'
-      - Proxy settings: 'administration/proxy-settings.md'
+  #    - Proxy settings: 'administration/proxy-settings.md'
       - Updating: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dahboards:
