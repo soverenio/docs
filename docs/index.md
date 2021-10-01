@@ -18,7 +18,7 @@ Soveren has a hybrid architecture:
 
 ### Soveren gateway
 
-Soveren gateway is a box solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
+Soveren gateway is an off the shelf solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
 The Gateway then processes those requests and responses asynchronously and gathers metadata about PII from the payloads.
 
 Metadata about the requests and responses is collected and sent to Soveren сloud.
