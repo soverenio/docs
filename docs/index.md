@@ -18,7 +18,7 @@ Soveren has a hybrid architecture:
 
 ### Soveren gateway
 
-Soveren gateway is an off the shelf solution. It is deployed on premise as a pre-packaged container and configured to receive the relevant part of inter-service HTTP API requests and responses.
+Soveren gateway is a pre-packaged container deployed on premise and configured to receive the relevant part of inter-service HTTP API requests and responses.
 The Gateway then processes those requests and responses asynchronously and gathers metadata about PII from the payloads.
 
 Metadata about the requests and responses is collected and sent to Soveren сloud.
@@ -32,6 +32,6 @@ It may be deployed at different places in the client's perimeter.
 
 ### Soveren сloud
 
-Soveren сloud is a SaaS. It is deployed in the cloud by Soveren.
+Soveren сloud is a SaaS managed by Soveren.
 It offers a set of dashboards that provide various views into the metadata collected by Soveren gateway.
 That includes analytics and stats on which PIIs have been observed and how sensitive they are, what services are involved, and what are the potential limitations in the API structure from the privacy standpoint.
