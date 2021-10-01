@@ -35,7 +35,7 @@ theme:
       primary: deep purple
       accent: deep purple
   logo: img/logos/logo-simple-white.svg
-  favicon: img/favicons/favicon-app-light.svg
+  favicon: img/favicons/favicon-app-black.svg
   features:
     - navigation.indexes
     # Tabs allow horizontal nav menu: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
