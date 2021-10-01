@@ -1,7 +1,7 @@
 # General MkDocs project settings
 site_name: Soveren
 site_description: Soveren is a real-time personal data usage and risk monitoring tool for data protection
-site_url: https://docs.soveren.io
+site_url: https://docs.soveren.io/
 
 # Navigation tree
 nav:
