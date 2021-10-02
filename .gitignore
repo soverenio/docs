@@ -12,3 +12,4 @@ out
 
 # Local doc build directory
 /docs/build
+/site
