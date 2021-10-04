@@ -4,7 +4,7 @@
 
     1. Add the Soveren token to your Kubernetes cluster.
 
-         [Register an account](https://app.soveren.io/sign-up), copy Soveren token from the **Let's get started** page, and run:
+         [Register an account](https://app.soveren.io/sign-up), copy the Soveren token from the **Let's get started** page, and run:
       
             kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
@@ -73,7 +73,7 @@
 
     2. Add the Soveren token to Docker.
 
-          [Register an account](https://app.soveren.io/sign-up), copy Soveren token from the **Let's get started** page, and run:
+          [Register an account](https://app.soveren.io/sign-up), copy the Soveren token from the **Let's get started** page, and run:
           
           ```
           export token=‘<soveren-token-from-your-account-on-soveren.io>’
