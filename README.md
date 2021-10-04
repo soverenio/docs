@@ -61,8 +61,8 @@ To start with Soveren, follow these steps.
 4. Create and edit doc source files:
    
    * Create new `.md` files inside the `docs` folder.  
-   * Create new subfolders to group the source files if needed. Apply common sense.   
-   * The source files use the [Markdown](https://www.markdownguide.org/cheat-sheet/) syntax.
+   * Create new subfolders to group the files if needed. Apply common sense.   
+   * The files use the [Markdown](https://www.markdownguide.org/cheat-sheet/) syntax.
             
 5. Build and deploy.
     
