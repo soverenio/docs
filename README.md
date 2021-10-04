@@ -17,13 +17,13 @@ To start with Soveren, follow these steps.
 
 1. Install Material theme for MkDocs:
 
-   `pip install mkdocs-material` or `python3 pip -m mkdocs-material`
+   ```pip install mkdocs-material``` or ```python3 pip -m mkdocs-material```
 
    MkDocs and other other required packages are installed automatically as dependencies. 
  
 2. Clone the repo:
 
-   `git clone https://github.com/soverenio/docs.git`
+   ```git clone https://github.com/soverenio/docs.git```
 
 3. Learn the structure:
 
