@@ -37,7 +37,7 @@ To start with Soveren, follow these steps.
 
    ``` sh
    .
-   ├─ customize/                          # Customized templates to override Material theme templates
+   ├─ customize/                          # Customized templates to override the Material theme templates
    ├─ docs/
    │  ├─ administration/                  # Group of doc pages related to Soveren administration
    │  ├─ dashboards/                      # Group of doc pages related Soveren cloud dashboards
