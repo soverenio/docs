@@ -20,9 +20,7 @@ To start with Soveren, follow these steps.
    ```
    pip install mkdocs-material
    ``` 
-   
-   or 
-   
+   or   
    ```
    python3 pip -m mkdocs-material
    ```
