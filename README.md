@@ -79,7 +79,7 @@ To start with Soveren, follow these steps.
    Current process:
       
    1. Develop and refactor in the `dev` branch.
-   2. Ask the subject matter experts to review and approve it — material, grammar and style. 
+   2. Ask the subject matter experts to review — material, grammar and style. 
    3. When approved, merge the `dev` into the `v1` branch. The `v1` branch is set to `stable` version of the docs — the default version you see on https://docs.soveren.io.
    
    
