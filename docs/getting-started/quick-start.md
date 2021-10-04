@@ -1,20 +1,20 @@
 # Quick start
 
-[Register an account](https://app.soveren.io/sign-up), then get started with Soveren:
-
 === "Kubernetes"
 
     1. Add the Soveren token to your Kubernetes cluster.
 
-         Go to your [Soveren account settings](https://app.soveren.io/get-started), find and copy your Soveren token, and run:
+         [Register an account](https://app.soveren.io/sign-up), copy Soveren token from the **Let's get started** page, and run:
       
             kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
          <div class="admonition tip">
          <p class="admonition-title">Tip</p>
-         <p>Currently, Soveren only supports Kubernetes and Docker Compose deployments. For other deployment options, contact us at [support@soveren.io](mailto:support@soveren.io).</p>
+         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and get back to Step #1.
+         
+         Currently, Soveren only supports Kubernetes and Docker Compose deployments. For other deployment options, contact us at [support@soveren.io](mailto:support@soveren.io).</p>
          </div>
-        
+
     2. Apply the Soveren gateway manifest and configmap:     
 
             kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
@@ -43,7 +43,7 @@
     4. Configure your services to route traffic to Soveren gateway.
 
           <div class="admonition note">
-          <p class="admonition-title">Tip</p>
+          <p class="admonition-title">Note</p>
           <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not analyzed.</p>
           </div>
           
@@ -65,19 +65,24 @@
           ```
           
           <div class="admonition note">
-          <p class="admonition-title">Tip</p>
-          <p>Currently, Soveren only supports Kubernetes and Docker Compose deployments.</p>
+          <p class="admonition-title">Note</p>
+          <p>Currently, Soveren only supports Kubernetes and Docker Compose deployments. For other deployment options, contact us at [support@soveren.io](mailto:support@soveren.io).</p>
           </div>
 
          
 
     2. Add the Soveren token to Docker.
 
-          Go to your [Soveren account settings](https://app.soveren.io/get-started), find and copy your Soveren token. Then run:
+          [Register an account](https://app.soveren.io/sign-up), copy Soveren token from the **Let's get started** page, and run:
           
           ```
           export token=‘<soveren-token-from-your-account-on-soveren.io>’
           ```
+         
+         <div class="admonition tip">
+         <p class="admonition-title">Tip</p>
+         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and get back to Step #1.</p>
+         </div>          
           
     3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
@@ -107,7 +112,7 @@
     5. Configure your services to route traffic to Soveren gateway.
 
           <div class="admonition note">
-          <p class="admonition-title">Tip</p>
+          <p class="admonition-title">Note</p>
           <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not analyzed.</p>
           </div>
          
