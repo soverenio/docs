@@ -6,7 +6,7 @@ Soveren provides a number of dashboards that address the following questions:
 
 * What personal data types are collected?
 * Which data types are the most important?
-* What data collections are the most risky/sensitive?
+* Which data collections are the most risky/sensitive?
 * Which systems collect the data?
 * Where is personal data in the API schema?
 * Which services have access to personal data?
