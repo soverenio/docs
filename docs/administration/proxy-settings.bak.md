@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 The proxy is part of Soveren gateway and serves as an edge router for client's traffic.
 Technically, it is a a [Traefik](https://doc.traefik.io/traefik/) fork with an added middleware.
 
-Here's what you need to know to customize the proxy within the Gateway.
+Here's what you need to know to customize the proxy within the gateway.
 
 ## SSL termination
 
@@ -33,7 +33,7 @@ For example:
 
 !!! tip
    
-    To learn specific `tls{}` parameters fitting your case, and other encryption options, refer to [TLS](https://doc.traefik.io/traefik/https/tls/) in Traefik documentation.
+    To learn about specific `tls{}` parameters specific to your setup, and other encryption options, refer to [TLS](https://doc.traefik.io/traefik/https/tls/) in Traefik documentation.
     
     To learn more about routing options in the context of SSL termination, refer to [Routers](https://doc.traefik.io/traefik/routing/routers/#tls) in Traefik documentation.
 
