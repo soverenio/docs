@@ -2,7 +2,7 @@
 
 ## PII types
 
-Currently, Soveren dashboards show you the following PII types:
+Currently, Soveren dashboards show you the following types of PII:
 
 * Personal information
     * First name
@@ -26,9 +26,9 @@ Soveren considers both individual PII fields and their combinations, because sen
 
 The sensitivity model implements the following levels:
 
-* Low — very low possibility of of identifying the person
-* Medium — fair possibility of of identifying the person
-* High — high possibility of of identifying the person
+* Low — very low possibility of identifying the person
+* Medium — fair possibility of identifying the person
+* High — high possibility of identifying the person
 
 These sensitivity levels are applied both to individual PII types in the summary statistics and to combinations of PII types collected by services and available through APIs.
 
