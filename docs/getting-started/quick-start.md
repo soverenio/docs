@@ -10,7 +10,7 @@
 
          <div class="admonition tip">
          <p class="admonition-title">Tip</p>
-         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and get back to Step #1.
+         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.
          
          Currently, Soveren only supports Kubernetes and Docker Compose deployments. For other deployment options, contact us at [support@soveren.io](mailto:support@soveren.io).</p>
          </div>
@@ -44,7 +44,7 @@
 
           <div class="admonition note">
           <p class="admonition-title">Note</p>
-          <p>The gateway analyzes only JSON-formatted data in requests/responses body. Other data formats are proxied but not analyzed.</p>
+          <p>The gateway analyzes only JSON-formatted data in request/response body. Other data formats are proxied but not analyzed.</p>
           </div>
           
 
@@ -81,7 +81,7 @@
          
          <div class="admonition tip">
          <p class="admonition-title">Tip</p>
-         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and get back to Step #1.</p>
+         <p>You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.</p>
          </div>          
           
     3. Сonfigure Soveren gateway to proxy the traffic for your services.
