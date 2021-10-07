@@ -25,7 +25,7 @@ To start with Soveren, follow these steps.
    python3 pip -m mkdocs-material
    ```
 
-   MkDocs and other other required packages are installed automatically as dependencies. 
+   MkDocs and other required packages are installed automatically as dependencies. 
  
 2. Clone the repo:
 
