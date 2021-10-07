@@ -1,7 +1,7 @@
 # Soveren documentation
 
 Soveren documentation describes [Soveren](https://soveren.io) for its target audience, that is DevOps, Devs, and CTOs. 
-It explains what Soveren is, how it works, how to install, use, administrate, troubleshoot it, and various other usage-related questions.
+It explains what Soveren is, how it works, how to install, use, administrate, troubleshoot it, and answers various other usage-related questions.
  
 ## Quick start 
 
