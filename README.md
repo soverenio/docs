@@ -69,8 +69,8 @@ To start with Soveren, follow these steps.
    As the repo is integrated with the CI/CD tool and the hosting provider, the pipeline is simple:
    
    1. Push you commit to the branch of your choice.
-   2. Visit [Read the Docs](https://readthedocs.org/) and wait ~1 min to let it finish building the artifacts.
-   3. Open the respective doc version on https://docs.soveren.io to see the result.
+   2. Visit [Read the Docs](https://readthedocs.org/) to check the building process if needed. 
+   3. Once the process is finished, that is usually ~1 min, open the respective doc version on https://docs.soveren.io to see the result.
 
    *Test your artifacts locally before making a commit!*
    
