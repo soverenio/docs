@@ -76,7 +76,7 @@ To start with Soveren, follow these steps.
    
 6. Follow a Gitflow of your choice. 
    
-   Current process:
+   Current Gitflow:
       
    1. Develop and refactor in the `dev` branch.
    2. Ask the subject matter experts to review — material, grammar and style. 
