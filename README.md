@@ -50,7 +50,7 @@ To start with Soveren, follow these steps.
    │  ├─ index.html                       # Main doc page
    │  └─ requirements.txt                 # Dependencies to install when building the project via a CI/CD tool
    ├─ .readthedocs.yaml                   # Read the Docs configuration file — the CI/CD tool
-   ├─ mkdocs.yml                          # MkDocs configuration
+   ├─ mkdocs.yml                          # MkDocs configuration file
    └─ README.md                           # Project readme
    ```
 
