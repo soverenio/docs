@@ -12,7 +12,7 @@ nav:
   #    - Proxy settings: 'administration/proxy-settings.md'
       - Updating: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
-  - Dahboards:
+  - Dashboards:
       - Overview: 'dashboards/overview.md'
       - PII model: 'dashboards/pii-model.md'
 
