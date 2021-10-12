@@ -64,7 +64,7 @@ extra_css:
   - stylesheets/extra.css
 
 # Custom JS scripts
-extra_javascript:
+#extra_javascript:
 #  - js/analytics.js
 
 # Disable the "Build with MkDocs Material" line in the footer
