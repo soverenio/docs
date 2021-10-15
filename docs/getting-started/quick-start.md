@@ -8,7 +8,7 @@
       
             kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
 
-         You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.         
+         You only see your Soveren token once, when creating a gateway. If you missed the moment and cannot find the token, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.         
          
     2. Apply the Soveren gateway manifest and configmap:     
 
@@ -62,7 +62,7 @@
           export token=‘<soveren-token-from-your-account-on-soveren.io>’
           ```
           
-         You only see your Soveren token once, on the **Let's get started** page. If you missed it, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.
+         You only see your Soveren token once, when creating a gateway. If you missed the moment and cannot find the token, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.
          
           
     3. Сonfigure Soveren gateway to proxy the traffic for your services.
