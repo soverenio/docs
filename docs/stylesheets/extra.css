@@ -80,3 +80,9 @@
 [data-theme=dark] .card.shadow.docutils .text-muted {
     color: #6f7c96 !important; /* Rock dark 400 */
 }
+
+code,
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+} /* To wrap long lines of code — make them appear multiline for readability*/
