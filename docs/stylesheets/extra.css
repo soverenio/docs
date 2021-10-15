@@ -83,6 +83,8 @@
 
 code,
 pre {
+    /* To wrap long lines of code — make them appear multiline, for readability*/
     white-space: pre-wrap;
+    /* To break long lines in addition to wrapping — make them appear fit the frame, for readability*/
     word-wrap: break-word;
-} /* To wrap long lines of code — make them appear multiline for readability*/
+}
