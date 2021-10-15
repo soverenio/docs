@@ -18,7 +18,7 @@
 
           Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
 
-             kubectl edit cm replicator
+            kubectl edit cm replicator
 
           `replicator` configmap example:
 
