@@ -4,11 +4,9 @@
 
     1. Add the Soveren token to your Kubernetes cluster.
 
-         [Register an account](https://app.soveren.io/sign-up), copy the Soveren token from the **Let's get started** page, and run:
+         [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
       
-            kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-from-your-account-on-soveren.io>
-
-         You only see your Soveren token once, when creating a gateway. If you missed the moment and cannot find the token, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.         
+            kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-for-the-gateway>    
          
     2. Apply the Soveren gateway manifest and configmap:     
 
@@ -56,15 +54,12 @@
 
     2. Add the Soveren token to Docker.
 
-          [Register an account](https://app.soveren.io/sign-up), copy the Soveren token from the **Let's get started** page, and run:
+          [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
           
           ```
           export token=‘<soveren-token-from-your-account-on-soveren.io>’
           ```
-          
-         You only see your Soveren token once, when creating a gateway. If you missed the moment and cannot find the token, [create a new gateway](https://app.soveren.io/gateways) and return to Step #1.
-         
-          
+                                   
     3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
           Edit the `configs/traefik_configs/conf.d/20-replicator.yaml` config and set the `url` parameter in the section `services` to point to your service:

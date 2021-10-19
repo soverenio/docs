@@ -1,3 +1,11 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TCK46V7');</script>
+<!-- End Google Tag Manager --> 
+    
 # Failover
 
 As part of its fault-tolerance policy, Soveren gateway launches several proxy instances running simultaneously when deployed with Kubernetes. When deployed with Docker Compose, you can set the number of instances.

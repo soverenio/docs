@@ -8,9 +8,10 @@ nav:
   - Introduction: index.md
   - Quick start: getting-started/quick-start.md
   - Administration:
-      - Failover: 'administration/failover.md'
+      - Failover options: 'administration/failover.md'
   #    - Proxy settings: 'administration/proxy-settings.md'
-      - Updating: 'administration/updating-soveren.md'
+      - Managing gateways: 'administration/managing-gateways.md'
+      - Updating Soveren: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
       - Overview: 'dashboards/overview.md'
