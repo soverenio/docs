@@ -1,8 +1,1 @@
-# sphinxcontrib-golangdomain
-sphinx>=2
-sphinx-inline-tabs
-sphinxcontrib-plantuml
-sphinx-copybutton
-sphinxcontrib-contentui
-sphinx-panels
-furo
+mkdocs-material
