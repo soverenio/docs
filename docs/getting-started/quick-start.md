@@ -34,7 +34,7 @@
 
     4. Configure your services to route traffic to Soveren gateway.
 
-          Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection.
+          Soveren gateway only analyzes traffic with the `application/json content type. All other content types just pass through the gateway without any personal data detection.
           
 
     5. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
@@ -84,7 +84,7 @@
 
     5. Configure your services to route traffic to Soveren gateway.
 
-          Soveren gateway only analyzes traffic with the `application/json content type. All other content types just pass through the gateway without any personal data detection. 
+          Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection. 
 
     6. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
 
