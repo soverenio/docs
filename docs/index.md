@@ -11,22 +11,22 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
 Soveren has a hybrid architecture:
 
-* Soveren gateway is a box solution installed in the client’s perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
+* Soveren gateway is a pre-packaged container installed in the client’s perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 ![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
 
 ### Soveren gateway
 
-Soveren gateway is a pre-packaged container deployed on premise and configured to receive the relevant part of inter-service HTTP API requests and responses.
+Soveren gateway is a pre-packaged container deployed on premise and configured to receive the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. 
 The gateway then processes those requests and responses asynchronously and gathers metadata about PII from the payloads.
 
 Metadata about the requests and responses is collected and sent to Soveren сloud.
 The metadata contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
 No part of the actual payload contents is included in the metadata.
 
-Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and analytics component which detects PII based on custom machine-learning algorithms.
-It may be deployed at different places in the client's perimeter.
+Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
+It can be deployed at different places in the client's perimeter and may receive traffic from services that are deployed on any platform. 
 
 ![Integration options](img/architecture/integration.jpg "Integration options")
 
