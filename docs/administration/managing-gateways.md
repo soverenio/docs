@@ -3,7 +3,9 @@
 Soveren allows you to manage multiple gateways. 
 You may want to create more than one gateway if you need to monitor groups of services separately and for analysis sustainability.
 
-You can see and manage all your gateways on the [gateways page](https://app.soveren.io/gateways).
+You can see and manage your gateways from the [gateways page](https://app.soveren.io/gateways).
+
+![Gateways](../../img/dashboards/Gateways.png "Gateways")
 
 ## Create a gateway
 

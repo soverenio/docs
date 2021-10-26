@@ -2,12 +2,11 @@
 
 ## Soveren gateway
 
-Once you know there is an update available, we recommend you update Soveren gateway to the latest version without delay.
-Otherwise, your old version may lose connection to Soveren cloud, as the cloud supports only the latest version of the gateway.
+Soveren gateway updates bring improvements and new features. However, at the early adopters stage, we're trying to speed up our release cycle. 
+ 
+To ensure backward compatibility as much as possible, Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
 
-
-At this stage, we personally let our early adopters know when a new version of Soveren gateway is available.
-
+In case of a major cloud update that requires the latest gateway version, we will inform you well ahead so you can plan for it.
 
 === "Kubernetes"
 
@@ -33,10 +32,6 @@ At this stage, we personally let our early adopters know when a new version of S
 ## Soveren cloud
 
 Soveren cloud is managed by the Soveren team and doesn't require updates from the user.
-
-!!! tip
-    Soveren cloud supports only the latest Soveren gateway version. Update Soveren gateway with the latest version to avoid any incompatibility issues.
-
 
 
 
