@@ -5,7 +5,7 @@ It explains what Soveren is, how it works, how to install, use, administrate, tr
  
 ## Quick start 
 
-To start with Soveren, follow these steps.
+To start with Soveren documentation, follow these steps.
 
 ### Prerequisites
 
