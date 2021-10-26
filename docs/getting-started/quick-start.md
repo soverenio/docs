@@ -1,6 +1,6 @@
 # Quick start
 
-Currently, Soveren gateway supports deployment with Kubernetes and Docker Compose. If you're eager to test the gateway using a different technology or having problems using the listed ones, contact us at [support@soveren.io](mailto:support@soveren.io).
+Currently, Soveren gateway supports deployment with Kubernetes and Docker Compose. If you're eager to test the gateway using a different technology or having problems using the ones listed here, contact us at [support@soveren.io](mailto:support@soveren.io).
 
 Using Kubernetes gives you the benefits of a Kubernetes cluster, while using Docker Compose allows you to deploy a gateway image directly on any server.
 
