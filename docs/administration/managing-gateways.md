@@ -1,9 +1,9 @@
 # Managing gateways
 
-Soveren allows you to manage multiple gateways. 
-You may want to create more than one gateway if you need to monitor groups of services separately and for analysis sustainability.
+Soveren allows you to deploy multiple gateways. 
+You may want to create more than one gateway if you need to monitor groups of services separately and increase performance and availability.
 
-You can see and manage your gateways from the [gateways page](https://app.soveren.io/gateways).
+You can browse and manage your gateways from the [gateways page](https://app.soveren.io/gateways).
 
 ![Gateways](../../img/dashboards/Gateways.png "Gateways")
 
@@ -17,9 +17,7 @@ To create a gateway:
 
 ## Set up a gateway
 
-To set up a gateway immediately after creating it, follow the instructions on the slide-in popup. Don't close the page or click outside the popup not to lose it.
-
-If you lost the slide-in popup, refer to the [quick start](../../getting-started/quick-start/) to set up your gatetway.
+To set up a gateway immediately after creating it, follow the instructions on the slide-in popup or refer to the [quick start](../../getting-started/quick-start/). 
 
 ## Rename a gateway
 
