@@ -2,18 +2,17 @@
 
 ## Soveren gateway
 
-Once you know there is an update available, we recommend you update Soveren gateway to the latest version without delay.
-Otherwise, your old version may lose connection to Soveren cloud, as the cloud supports only the latest version of the gateway.
+Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
 
+Versions of Soveren gateway components are explicitly stated in the manifest file, with no background auto-updates.
 
-At this stage, we personally let our early adopters know when a new version of Soveren gateway is available.
-
+In case of a major cloud update that requires the latest gateway version, we will inform you well ahead so you can plan for it.
 
 === "Kubernetes"
 
     To update Soveren gateway, apply the Soveren gateway manifest:   
 
-        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml
+        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml  
 
 === "Docker Compose"
 
@@ -30,13 +29,10 @@ At this stage, we personally let our early adopters know when a new version of S
            ```
            docker-compose up -d
            ```
+
 ## Soveren cloud
 
 Soveren cloud is managed by the Soveren team and doesn't require updates from the user.
-
-!!! tip
-    Soveren cloud supports only the latest Soveren gateway version. Update Soveren gateway with the latest version to avoid any incompatibility issues.
-
 
 
 

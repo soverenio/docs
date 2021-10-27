@@ -1,5 +1,7 @@
 # Quick start
 
+Currently, Soveren gateway supports deployment with Kubernetes and Docker Compose. If you're eager to test the gateway using a different technology or having any problems, contact us at [support@soveren.io](mailto:support@soveren.io).
+
 === "Kubernetes"
 
     1. Add the Soveren token to your Kubernetes cluster.
@@ -52,7 +54,7 @@
           git clone https://github.com/soverenio/deployment
           ```
 
-    2. Add the Soveren token to Docker.
+    2. Add the Soveren token to Docker Compose.
 
           [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
           

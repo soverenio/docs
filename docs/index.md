@@ -14,12 +14,12 @@ Soveren has a hybrid architecture:
 * Soveren gateway is a pre-packaged container installed in the client’s perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
-![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
+![Soveren architecture simplified](img/architecture/architecture-concept.png "Soveren architecture simplified")
 
 ### Soveren gateway
 
-Soveren gateway is a pre-packaged container deployed on premise and configured to receive the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. 
-The gateway then processes those requests and responses asynchronously and gathers metadata about PII from the payloads.
+Soveren gateway is a pre-packaged container deployed on premise and configured to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. 
+The gateway processes them asynchronously and gathers metadata about PII from the payloads.
 
 Metadata about the requests and responses is collected and sent to Soveren сloud.
 The metadata contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
