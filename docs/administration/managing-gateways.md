@@ -35,6 +35,8 @@ To delete a gateway:
 
 1. Visit the [gateways page](https://app.soveren.io/gateways).
 2. Click the recycle bin button next to a gateway.
+3. Enter the gateway name to confirm the deletion.
+4. Click "Delete".
    
 
 
