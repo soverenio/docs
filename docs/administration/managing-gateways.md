@@ -34,8 +34,7 @@ No additional actions or configuration changes required when renaming a gateway.
 To delete a gateway:
 
 1. Visit the [gateways page](https://app.soveren.io/gateways).
-2. Click the ··· menu button next to a gateway.
-3. Click "Delete".
+2. Click the recycle bin button next to a gateway.
    
 
 
