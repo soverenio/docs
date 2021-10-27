@@ -2,9 +2,7 @@
 
 ## Soveren gateway
 
-Soveren gateway updates bring improvements and new features. However, at the early adopters stage, we're trying to speed up our release cycle. 
- 
-To ensure backward compatibility as much as possible, Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
+Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
 
 In case of a major cloud update that requires the latest gateway version, we will inform you well ahead so you can plan for it.
 

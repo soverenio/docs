@@ -19,7 +19,7 @@ Soveren has a hybrid architecture:
 ### Soveren gateway
 
 Soveren gateway is a pre-packaged container deployed on premise and configured to receive the relevant part of inter-service HTTP API requests and responses. 
-Those that have the `application/json` content type, the gateway processes asynchronously and gathers metadata about PII from their payloads.  
+The gateway processes them asynchronously and gathers metadata about PII from the payloads.  
 
 Metadata about the requests and responses is collected and sent to Soveren сloud.
 The metadata contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
