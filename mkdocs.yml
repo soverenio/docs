@@ -1,0 +1,82 @@
+# General MkDocs project settings
+site_name: Soveren
+site_description: Soveren is a real-time personal data usage and risk monitoring tool for data protection
+site_url: https://docs.soveren.io/en/stable/
+
+# Navigation tree
+nav:
+  - Introduction: index.md
+  - Quick start: getting-started/quick-start.md
+  - Administration:
+  #    - Failover: 'administration/failover.md'
+  #    - Proxy settings: 'administration/proxy-settings.md'
+      - Managing gateways: 'administration/managing-gateways.md'
+      - Updating Soveren: 'administration/updating-soveren.md'
+  - Troubleshooting: 'troubleshooting/troubleshooting.md'
+  - Dashboards:
+      - Overview: 'dashboards/overview.md'
+      - PII model: 'dashboards/pii-model.md'
+
+# Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+theme:
+  name: material
+  # Override default theme templates; so far removed the prev-next buttons frame from the footer.
+  custom_dir: customize
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: deep purple
+      accent: deep purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: deep purple
+      accent: deep purple
+  logo: img/logos/logo-simple-white.svg
+  favicon: img/favicons/favicon-app-black.svg
+  features:
+    - navigation.indexes
+    # Tabs allow horizontal nav menu: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
+    #  - navigation.tabs
+    - navigation.top
+
+# Extensions
+markdown_extensions:
+  # Hover-overs for abbreviation for context-like glossary
+  - abbr
+  # Notes, tips, warnings, etc.
+  - admonition
+  # Make admnitions collapsable
+  - pymdownx.details
+  # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  - pymdownx.superfences:
+  # Content tabs
+  - pymdownx.tabbed
+  # Highlight code blocks; to highlight, refer to https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlight
+  - pymdownx.highlight
+  # Highlight inline code blocks in text:
+  - pymdownx.inlinehilite
+
+# Redefining the theme and other elements, like panels, via custom .css styles
+extra_css:
+  - stylesheets/extra.css
+
+# Custom JS scripts
+extra_javascript:
+  - js/analytics.js
+
+# Disable the "Build with MkDocs Material" line in the footer
+extra:
+  generator: false
+
+# Copyright text in the footer
+copyright: Copyright &copy; 2021 — Soveren, Inc.
+
+
+# Good MkDocs config file references:
+# 1. https://facelessuser.github.io/pymdown-extensions/extensions/superfences/ > https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml
+# 2. https://fastapi.tiangolo.com/ > https://github.com/tiangolo/fastapi/blob/master/docs/en/mkdocs.yml (multilanguage included)
+
