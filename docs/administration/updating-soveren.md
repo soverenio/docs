@@ -2,9 +2,9 @@
 
 ## Soveren gateway
 
-Soveren gateway component version are explicitly stated in the manifest, with no background auto-updates.
+Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
 
-Also, Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
+Versions of Soveren gateway components are explicitly stated in the manifest file, with no background auto-updates.
 
 In case of a major cloud update that requires the latest gateway version, we will inform you well ahead so you can plan for it.
 
