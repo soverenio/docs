@@ -1,6 +1,6 @@
 # Proxy settings
 
-The proxy is part of Soveren gateway and serves as an edge router for client's traffic.
+The proxy is part of Soveren gateway and serves as an edge router for your traffic.
 Technically, it is a a [Traefik](https://doc.traefik.io/traefik/) fork with an added middleware.
 
 Here's what you need to know to customize the proxy within the gateway.
