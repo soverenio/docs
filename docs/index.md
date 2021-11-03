@@ -12,7 +12,7 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
 Soveren has a hybrid architecture:
 
-* Soveren gateway is a pre-packaged container installed in the your perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
+* Soveren gateway is a pre-packaged container installed in your perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 ![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
@@ -27,7 +27,7 @@ The metadata contains information about how the payload was structured (what fie
 No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
-As shown in the diagram below, it can be deployed at different places in the your perimeter and can receive traffic from services that are deployed on any platform. 
+As shown in the diagram below, it can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform. 
 
 ![Integration options](img/architecture/integration.png "Integration options")
 
