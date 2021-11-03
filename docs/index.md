@@ -27,7 +27,8 @@ The metadata contains information about how the payload was structured (what fie
 No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
-As shown in the diagram below, it can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform. 
+
+As shown in the diagram below, the gateway can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform. 
 
 ![Integration options](img/architecture/integration.png "Integration options")
 
