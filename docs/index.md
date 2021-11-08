@@ -32,10 +32,10 @@ No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
 
-As shown in the diagram below, the gateway can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform.
+As shown in the diagram below, the gateway can be deployed at different places in your perimeter and can receive traffic from services that are deployed on any platform.
  
 
-![Integration options](img/architecture/integration-2.png "Integration options")
+![Integration options](img/architecture/integration-4.png "Integration options")
 <div style="text-align: center; font-style: italic;">Figure 3: Possible places for Soveren gateway in your perimeter</div>
 
 
