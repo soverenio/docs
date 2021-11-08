@@ -5,7 +5,10 @@ Soveren helps uncover personally identifiable information, also known as PII or 
 Soveren monitors and parses traffic between the services, identifying personal information along with its sensitivity, with sensitivity graded in accordance with the consequences that might arise if that information was leaked or used inappropriately.
 Preconfigured dashboards provide a view into risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
+
 ![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard")
+<div style="text-align: center; font-style: italic;">Figure 1: Soveren dashboards</div>
+
 
 ## How Soveren works
 
@@ -15,6 +18,8 @@ Soveren has a hybrid architecture:
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 ![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
+<div style="text-align: center; font-style: italic;">Figure 2: Soveren architecture</div>
+
 
 ### Soveren gateway
 
@@ -27,9 +32,13 @@ No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
 
-As shown in the diagram below, the gateway can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform. 
+As shown in the diagram below, the gateway can be deployed at different locations in your perimeter and can receive traffic from services that are deployed on any platform.
+ 
 
-![Integration options](img/architecture/integration.png "Integration options")
+![Integration options](img/architecture/integration-2.png "Integration options")
+<div style="text-align: center; font-style: italic;">Figure 3: Possible places for Soveren gateway in your perimeter</div>
+
+
 
 ### Soveren сloud
 

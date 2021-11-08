@@ -59,6 +59,10 @@ markdown_extensions:
   - pymdownx.highlight
   # Highlight inline code blocks in text:
   - pymdownx.inlinehilite
+  # Add HTML attributes and CSS classes to any Markdown element
+  - attr_list
+  # Write Markdown inside HTML
+  - md_in_html
 
 # Redefining the theme and other elements, like panels, via custom .css styles
 extra_css:
