@@ -7,7 +7,6 @@ Preconfigured dashboards provide a view into risks related to PII so that engine
 
 
 ![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard")
-<div style="text-align: center; font-style: italic;">Figure 1: Soveren dashboards</div>
 
 
 ## How Soveren works
@@ -18,7 +17,6 @@ Soveren has a hybrid architecture:
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 ![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
-<div style="text-align: center; font-style: italic;">Figure 2: Soveren architecture</div>
 
 
 ### Soveren gateway
@@ -36,7 +34,6 @@ As shown in the diagram below, the gateway can be deployed at different places i
  
 
 ![Integration options](img/architecture/integration-4.png "Integration options")
-<div style="text-align: center; font-style: italic;">Figure 3: Possible places for Soveren gateway in your perimeter</div>
 
 
 

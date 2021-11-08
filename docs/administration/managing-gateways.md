@@ -6,7 +6,6 @@ You may want to create more than one gateway if you need to monitor groups of se
 You can browse and manage your gateways from the [gateways page](https://app.soveren.io/gateways).
 
 ![Gateways](../../img/dashboards/Gateways.png "Gateways")
-<div style="text-align: center; font-style: italic;">Figure 1: Gateways page</div>
 
 ## Create a gateway
 
