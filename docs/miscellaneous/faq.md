@@ -1,6 +1,6 @@
 # FAQ
 
-We collected the most frequently asked questions about Soveren, its tech and usage, and compiled a FAQ. If you have a question, the answer is probably on this page.
+We collected frequently asked questions about Soveren, its tech, and usage, and compiled a FAQ. If you have a question, the answer is probably on this page.
 
 ??? faq-question "What is Soveren gateway? What is a gateway instance?"
     
