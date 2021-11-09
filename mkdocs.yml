@@ -16,6 +16,7 @@ nav:
   - Dashboards:
       - Overview: 'dashboards/overview.md'
       - PII model: 'dashboards/pii-model.md'
+  - FAQ: 'miscellaneous/faq.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
@@ -49,7 +50,7 @@ markdown_extensions:
   - abbr
   # Notes, tips, warnings, etc.
   - admonition
-  # Make admnitions collapsable
+  # Make admonitions collapsable
   - pymdownx.details
   # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
   - pymdownx.superfences:
@@ -78,6 +79,7 @@ extra:
 
 # Copyright text in the footer
 copyright: Copyright &copy; 2021 — Soveren, Inc.
+
 
 
 # Good MkDocs config file references:
