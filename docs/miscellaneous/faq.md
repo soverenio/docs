@@ -44,7 +44,7 @@ You can log in to a single control plane in Soveren cloud and observe all the in
 ### How do I troubleshoot the gateway? What do I do if the gateway does not work?
     
 While running, a gateway instance produces logs as any other component that can be run with Docker or Kubernetes. 
-You may want to check your logs and contact us for help if anything surprising happens.
+You may want to check your logs and contact us for help at [support@soveren.io](mailto:support@soveren.io) if anything surprising happens.
 You can also leverage your Kubernetes or Docker monitoring tools.
     
 
