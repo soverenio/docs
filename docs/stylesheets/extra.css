@@ -108,3 +108,7 @@ pre {
     -webkit-mask-image: var(--md-admonition-icon--faq-question);
     mask-image: var(--md-admonition-icon--faq-question);
 }
+
+.md-nav--secondary .md-nav__item {
+    padding: 0.2rem 0.6rem;
+}

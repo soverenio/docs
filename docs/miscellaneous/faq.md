@@ -52,7 +52,7 @@ You can also leverage your Kubernetes or Docker monitoring tools.
 
 The gateway consists of a proxy (a Traefik fork), asynchronous messaging system (Apache Kafka), and custom detection component which discovers PII. 
 The proxy extracts payloads from each request and response and sends those payloads to the detection component through the messaging system. 
-Along with that, the proxy passes each request or response pair straight away to its proper destination, without any modification. 
+Along with that, the proxy passes each request or response straight away to its proper destination, without any modification. 
 
 The PII detection happens on the payloads, independently from proxying the traffic. 
 Thus, the latency the gateway introduces is comparable to usual proxying and is negligible.
@@ -77,11 +77,6 @@ All that matters is you being able to point the gateway in the services’ direc
 Can be any cloud provider both for services and the gateway, in any combination.
 
 
-### 12. I'm afraid of a slowdown/non-responsiveness in my core value stream due to a high throughput of my systems. And also of latency introduced by the gateway. 
-
-The gateway does not introduce any noticeable latency, as the traffic goes straight through without any interruption. 
-PII analysis is done asynchronously and doesn't impede the traffic going through.
- 
 
 
 
