@@ -47,27 +47,6 @@ While running, a gateway instance produces logs as any other component that can 
 You may want to check your logs and contact us for help at [support@soveren.io](mailto:support@soveren.io) if anything surprising happens.
 You can also leverage your Kubernetes or Docker monitoring tools.
 
-### Can I deploy Soveren gateway in AWS / Azure / Google Cloud / any other cloud?
-
-You can deploy Soveren gateway in any cloud of your choice, or in your own data center. 
-What you need is either Docker or Kubernetes running in your environment, those are the deployment options Soveren supports right now.
-
-###  If I deploy Soveren gateway in my K8s cluster, does it mean that all the services that the gateway monitors must be in the same K8s cluster?
-
-You can monitor services that are located anywhere on the internet, provided that the Soveren gateway instance you deployed can reach them. 
-More specifically, the URLs that you configure (see the [quick start](../../getting-started/quick-start)) must be reachable from where you placed the gateway.
-
-For example, the gateway and services may be even on different cloud providers, if you can point the gateway in the services’ direction and the calls pass through.
-
-### If I deploy Soveren gateway in Cloud X (e.g. AWS), does it mean that all the services that the gateway monitors must also be in the same Cloud X? 
-
-All that matters is you being able to point the gateway in the services’ direction and their calls passing through it. 
-Can be any cloud provider both for services and the gateway, in any combination.
-
-### I'm afraid of a slowdown/non-responsiveness in my core value stream due to a high throughput of my systems. And also of latency introduced by the gateway. 
-
-The gateway does not introduce any noticeable latency, as the traffic goes straight through without any interruption. 
-PII analysis is done asynchronously and doesn't impede the traffic going through.
  
 
 
