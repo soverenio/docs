@@ -22,7 +22,7 @@ To start with Soveren documentation, follow the steps below.
    ``` 
    or   
    ```
-   python3 pip -m mkdocs-material
+   pip3 install mkdocs-material
    ```
 
    MkDocs and other required packages are installed automatically as dependencies. 
