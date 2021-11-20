@@ -8,7 +8,7 @@ Currently, Soveren dashboards show you the following types of PII:
     * First name
     * Last name
     * Middle name (if any)
-    * Date of birth
+    * Birth date
     * Gender
 * National IDs
     * Driver's license

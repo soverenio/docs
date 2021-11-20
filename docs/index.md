@@ -5,16 +5,19 @@ Soveren helps uncover personally identifiable information, also known as PII or 
 Soveren monitors and parses traffic between the services, identifying personal information along with its sensitivity, with sensitivity graded in accordance with the consequences that might arise if that information was leaked or used inappropriately.
 Preconfigured dashboards provide a view into risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
+
 ![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard")
+
 
 ## How Soveren works
 
 Soveren has a hybrid architecture:
 
-* Soveren gateway is a pre-packaged container installed in the client’s perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
+* Soveren gateway is a pre-packaged container installed in your perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
 * Soveren сloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
-![Soveren architecture simplified](img/architecture/architecture-concept.png "Soveren architecture simplified")
+![Soveren architecture simplified](img/architecture/architecture-concept.jpg "Soveren architecture simplified")
+
 
 ### Soveren gateway
 
@@ -26,9 +29,13 @@ It contains information about how the payload was structured (what fields), whic
 No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
-It can be deployed at different places in the client's perimeter and can receive traffic from services that are deployed on any platform. 
 
-![Integration options](img/architecture/integration.png "Integration options")
+As shown in the diagram below, the gateway can be deployed at different places in your perimeter and can receive traffic from services that are deployed on any platform.
+ 
+
+![Integration options](img/architecture/integration-4.png "Integration options")
+
+
 
 ### Soveren сloud
 
