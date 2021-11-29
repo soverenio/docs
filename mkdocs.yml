@@ -53,9 +53,10 @@ markdown_extensions:
   # Make admonitions collapsable
   - pymdownx.details
   # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  - pymdownx.superfences:
+  - pymdownx.superfences
   # Content tabs
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   # Highlight code blocks; to highlight, refer to https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlight
   - pymdownx.highlight
   # Highlight inline code blocks in text:

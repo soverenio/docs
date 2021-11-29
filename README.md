@@ -16,7 +16,7 @@ To start with Soveren documentation, follow the steps below.
 ### Install and use
 
 1. Install the Material theme for MkDocs:
-  
+
    ```
    pip3 install mkdocs-material
    ```
