@@ -18,12 +18,15 @@ In case of a major cloud update that requires the latest gateway version, we wil
 
     To update Soveren gateway:
 
-    1. Clone the repo containing the configuration files:
+    1. If you deployed Soveren with Docker Compose, you still have the configuration repo cloned locally to run Soveren.
+        Switch to the repo and pull the latest manifest update:
           
           ```
-          git clone https://github.com/soverenio/deployment
+          git pull --rebase --autostash
           ```
           
+        The command allows you to keep the local changes you made while initially configuring Soveren.
+        
     2. Apply the Soveren gateway manifest running the command below in the ``compose`` repo folder:
            
            ```
