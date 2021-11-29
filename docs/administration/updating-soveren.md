@@ -18,7 +18,7 @@ In case of a major cloud update that requires the latest gateway version, we wil
 
     To update Soveren gateway:
 
-    1. If you deployed Soveren with Docker Compose, you still have the configuration repo cloned locally to run it.
+    1. If you deployed Soveren with Docker Compose, you still have the [configuration repo](https://docs.soveren.io/en/stable/getting-started/quick-start/) cloned and changed locally to run it.
         
         Switch to the repo. Save the local changes you made while initally configuring Soveren. 
 
