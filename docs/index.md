@@ -24,8 +24,8 @@ Soveren has a hybrid architecture:
 Soveren gateway is a pre-packaged container deployed on premise and configured to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. 
 The gateway processes them asynchronously and gathers metadata about PII from the payloads.
 
-Metadata about the requests and responses is collected and sent to Soveren сloud.
-The metadata contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
+The collected metadata is sent to Soveren сloud. 
+It contains information about how the payload was structured (what fields), which PII types were detected, and which services were involved in the communication.
 No part of the actual payload contents is included in the metadata.
 
 Technically, the gateway consists of a standard proxy (a [Traefik](https://doc.traefik.io/traefik/) fork), messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)), and detection component, which discovers PII based on custom machine learning algorithms.
