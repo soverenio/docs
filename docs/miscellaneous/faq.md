@@ -81,6 +81,15 @@ Can be any cloud provider both for services and the gateway, in any combination.
 The gateway does not introduce any noticeable latency or performance penalty, as the traffic goes straight through without any interruption. 
 PII analysis is done asynchronously and doesn't impede the traffic going through.
 
+### 13. What exactly is a data source?
+You configure one or multiple upstreams for your gateway instance. 
+That boils down to defining particular URLs with applications or services which live in the upstreams. 
+Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
+
+So, a data source is an application or a service that you add to an upstream and Soveren gateways monitors.
+
+For example, you might have /some/client/service/get_basic_info?parameters and /some/client/service/get_contacts?parameters, and also /some/order/service/get_order?parameters. 
+Specific data sources in this case are /some/client/service/ and /some/order/service/.
 
 
     
