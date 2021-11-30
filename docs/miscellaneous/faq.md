@@ -86,10 +86,29 @@ You configure one or multiple upstreams for your gateway instance.
 That boils down to defining particular URLs with applications or services which live in the upstreams. 
 Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
 
-So, a data source is an application or a service that you add to an upstream and Soveren gateways monitors.
+We refer to those applications and  services as "data sources", meaning that they provide actual data which Soveren gateway monitors.
 
 For example, you might have `/some/client/service/get_basic_info?parameters` and `/some/client/service/get_contacts?parameters`, and also `/some/order/service/get_order?parameters`. 
 Specific data sources in this case are `/some/client/service/` and `/some/order/service/`.
+
+
+### 14. What exactly Soveren charges for?
+
+We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
+
+Moreover, we do not charge per API, but only per data source which provides that API.
+For example, you might have `/some/client/service/get_basic_info?parameters`, `/some/client/service/get_contacts?parameters`, and `/some/order/service/get_order?parameters`.
+We would charge for these two data sources: `/some/client/service/` and `/some/order/service/`; and only if they are actually receiving requests.
+
+To expand, look at `/some/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
+If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
+
+### 15. What personal data types does the gateway support? Can we configure our own data types?
+
+The current version supports only a [limited set of data types](../../dashboards/overview/#pii-types), but the list is constantly updated. 
+
+We intend to free our users of any manual configuration, so Soveren should detect any personal data automatically out of the box.
+If it doesn't or you have some highly specific data types, please drop us a line at [support@soveren.io](mailto:support@soveren.io).
 
 
     
