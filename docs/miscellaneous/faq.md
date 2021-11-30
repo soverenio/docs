@@ -76,7 +76,7 @@ For example, the gateway and services may be even on different cloud providers, 
 All that matters is you being able to point the gateway in the services’ direction and their calls passing through it. 
 Can be any cloud provider both for services and the gateway, in any combination.
 
-
+### 12. 
 
 
 
