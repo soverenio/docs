@@ -76,8 +76,10 @@ For example, the gateway and services may be even on different cloud providers, 
 All that matters is you being able to point the gateway in the services’ direction and their calls passing through it. 
 Can be any cloud provider both for services and the gateway, in any combination.
 
-### 12. 
+### 12. What is the performance penalty introduced by the gateway? I am conscious of any potential slowdowns.
 
+The gateway does not introduce any noticeable latency or performance penalty, as the traffic goes straight through without any interruption. 
+PII analysis is done asynchronously and doesn't impede the traffic going through.
 
 
 
