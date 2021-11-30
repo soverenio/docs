@@ -98,7 +98,7 @@ We charge for the data sources that are involved in actual data transmissions. W
 
 Moreover, we do not charge per API, but only per data source which provides that API.
 For example, you might have `/some/client/service/get_basic_info?parameters`, `/some/client/service/get_contacts?parameters`, and `/some/order/service/get_order?parameters`.
-We would charge for these two data sources: `/some/client/service/` and `/some/order/service/`, if they are actually receiving requests.
+We would charge for these two data sources: `/some/client/service/` and `/some/order/service/` if they are actually receiving requests.
 
 To expand, look at `/some/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
 If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
