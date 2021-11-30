@@ -88,8 +88,8 @@ Applications or services in turn provide one or several APIs that can be called 
 
 So, a data source is an application or a service that you add to an upstream and Soveren gateways monitors.
 
-For example, you might have /some/client/service/get_basic_info?parameters and /some/client/service/get_contacts?parameters, and also /some/order/service/get_order?parameters. 
-Specific data sources in this case are /some/client/service/ and /some/order/service/.
+For example, you might have `/some/client/service/get_basic_info?parameters` and `/some/client/service/get_contacts?parameters`, and also `/some/order/service/get_order?parameters`. 
+Specific data sources in this case are `/some/client/service/` and `/some/order/service/`.
 
 
     
