@@ -94,7 +94,7 @@ Specific data sources in this case are `/some/client/service/` and `/some/order/
 
 ### 14. What exactly Soveren charges for?
 
-We charge for the data sources that are involved in actual data transmissions. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
+We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
 
 Moreover, we do not charge per API, but only per data source which provides that API.
 For example, you might have `/some/client/service/get_basic_info?parameters`, `/some/client/service/get_contacts?parameters`, and `/some/order/service/get_order?parameters`.
