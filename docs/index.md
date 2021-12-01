@@ -1,9 +1,9 @@
 # Introduction
 
-Soveren helps uncover personally identifiable information, also known as PII or personal data, in structured API flows. Throughout this documentation, we will be using PII and personal data interchangeably.
+Soveren discovers personally identifiable information, also known as PII or personal data, in structured API flows. Throughout this documentation, we will be using PII and personal data interchangeably.
 
 Soveren monitors and parses traffic between the services, identifying personal information along with its sensitivity, with sensitivity graded in accordance with the consequences that might arise if that information was leaked or used inappropriately.
-Preconfigured dashboards provide a view into risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
+Preconfigured dashboards provide a view into privacy incidents and risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
 
 ![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard")
