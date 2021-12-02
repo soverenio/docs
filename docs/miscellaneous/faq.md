@@ -18,22 +18,31 @@ It provides you with dashboards and configuration means to work with the detecte
 You deploy the gateway yourself, in your controlled environment of choice. 
 The installation is managed fully by you. Soveren does not have or require any access to the gateway.
     
-    
-### 4. What data does the gateway send out of my perimeter? What exactly is "metadata"?
-    
+
+### 4. What types of traffic does Soveren monitor?
+
+Presently, we monitor HTTP(S) calls with the `application/json` content type. The gateway allows other types of traffic to pass through without doing anything with it.
+
+
+### 5. Can I use Soveren to check encrypted traffic?
+
+Soveren can work with SSL. The gateway's proxy component is based on [Traefik](https://traefik.io) which supports [SSL termination](https://doc.traefik.io/traefik/routing/routers/#tls) out of the box.
+
+### 6. What data does the gateway send out of my perimeter? What exactly is "metadata"?
+
 The gateway only communicates with Soveren cloud and only sends the metadata about the communication it observed.  
     
 For example, service A sent a request to Service B. There were certain data types in the response, such as *name* and/or *email*. 
 None of your actual values are sent anywhere outside your perimeter, just the *metadata* — facts about what data types were observed and what services were engaged in communication.
 
 
-### 5. What is a Soveren token? What do I need a Soveren token for? 
+### 7. What is a Soveren token? What do I need a Soveren token for? 
 
 Soveren token is a token used in the communication between the gateway instance and the cloud. 
 You need a token for Soveren cloud to correctly identify the matching gateway instance. 
 
 
-### 6. Can I deploy several instances of Soveren gateway?
+### 8. Can I deploy several instances of Soveren gateway?
 
 You can deploy as many instances of Soveren gateway as you need, for example, for scalability reasons or to cover different places in the environment. 
 
@@ -41,14 +50,19 @@ All those instances contribute to the single unified user interface in Soveren c
 You can log in to a single control plane in Soveren cloud and observe all the information collected by all Soveren gateways deployed in your environment.
 
 
-### 7. How do I troubleshoot the gateway? What do I do if the gateway does not work?
+### 9. If I deploy multiple gateways at different places in my system, do I need several accounts or dashboards?
+
+No, you don't. You can deploy as many instances of Soveren gateway as you need and you will still see the results on the [single unified dashboard](https://app.soveren.io/) in your Soveren account.
+
+
+### 10. How do I troubleshoot the gateway? What do I do if the gateway does not work?
     
 While running, a gateway instance produces logs as any other component that can be run with Docker or Kubernetes. 
 You may want to check your logs and contact us for help at [support@soveren.io](mailto:support@soveren.io) if anything surprising happens.
 You can also leverage your Kubernetes or Docker monitoring tools.
 
 
-### 8. What does asynchronous PII detection mean?
+### 11. What does asynchronous PII detection mean?
 
 The gateway consists of a proxy (a Traefik fork), asynchronous messaging system (Apache Kafka), and custom detection component which discovers PII. 
 The proxy extracts payloads from each request and response and sends those payloads to the detection component through the messaging system. 
@@ -57,13 +71,13 @@ Along with that, the proxy passes each request or response straight away to its 
 The PII detection happens on the payloads, independently from proxying the traffic. 
 Thus, the latency the gateway introduces is comparable to usual proxying and is negligible.
 
-### 9. Can I deploy Soveren gateway in AWS / Azure / Google Cloud / any other cloud?
+### 12. Can I deploy Soveren gateway in AWS / Azure / Google Cloud / any other cloud?
 
 You can deploy Soveren gateway in any cloud of your choice, or in your own data center. 
 What you need is either Docker or Kubernetes running in your environment, those are the deployment options Soveren supports right now.
 
 
-###  10. If I deploy Soveren gateway in my K8s cluster, does it mean that all the services that the gateway monitors must be in the same K8s cluster?
+###  13. If I deploy Soveren gateway in my K8s cluster, does it mean that all the services that the gateway monitors must be in the same K8s cluster?
 
 You can monitor services that are located anywhere on the internet, provided that the Soveren gateway instance you deployed can reach them. 
 More specifically, the URLs that you configure (see the [quick start](../../getting-started/quick-start)) must be reachable from where you placed the gateway.
@@ -71,39 +85,39 @@ More specifically, the URLs that you configure (see the [quick start](../../gett
 For example, the gateway and services may be even on different cloud providers, if you can point the gateway in the services’ direction and the calls pass through.
 
 
-### 11. If I deploy Soveren gateway in Cloud X (e.g. AWS), does it mean that all the services that the gateway monitors must also be in the same Cloud X? 
+### 14. If I deploy Soveren gateway in Cloud X (e.g. AWS), does it mean that all the services that the gateway monitors must also be in the same Cloud X? 
 
 All that matters is you being able to point the gateway in the services’ direction and their calls passing through it. 
 Can be any cloud provider both for services and the gateway, in any combination.
 
-### 12. What is the performance penalty introduced by the gateway? I am conscious of any potential slowdowns.
+### 15. What is the performance penalty introduced by the gateway? I am conscious of any potential slowdowns.
 
 The gateway does not introduce any noticeable latency or performance penalty, as the traffic goes straight through without any interruption. 
 PII analysis is done asynchronously and doesn't impede the traffic going through.
 
-### 13. What exactly is a data source?
+### 16. What exactly is a data source?
 You configure one or multiple upstreams for your gateway instance. 
 That boils down to defining particular URLs with applications or services which live in the upstreams. 
 Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
 
-We refer to those applications and  services as "data sources", meaning that they provide actual data which Soveren gateway monitors.
+We refer to those applications and services as "data sources" meaning that they provide actual data which Soveren gateway monitors.
 
-For example, you might have `/some/client/service/get_basic_info?parameters` and `/some/client/service/get_contacts?parameters`, and also `/some/order/service/get_order?parameters`. 
-Specific data sources in this case are `/some/client/service/` and `/some/order/service/`.
+For example, you might have `/api/v1/client/service/get_info` and `api/v1/client/service/get_contacts`, and also `/api/v1/order/service/get_order`. 
+`/api/v1/client/service/` and `/api/v1/order/service/` represent two individual services or data sources.
 
 
-### 14. What exactly Soveren charges for?
+### 17. What exactly Soveren charges for?
 
 We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
 
 Moreover, we do not charge per API, but only per data source which provides that API.
-For example, you might have `/some/client/service/get_basic_info?parameters`, `/some/client/service/get_contacts?parameters`, and `/some/order/service/get_order?parameters`.
-We would charge for these two data sources: `/some/client/service/` and `/some/order/service/`; and only if they are actually receiving requests.
+For example, you might have `/api/v1/client/service/get_info`, `api/v1/client/service/get_contacts`, and `/api/v1/order/service/get_order`.
+We would charge for these two data sources: `/api/v1/client/service/` and `/api/v1/order/service/`; and only if they are actually receiving requests.
 
-To expand, look at `/some/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
+To expand, look at `/api/v1/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
 If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
 
-### 15. What personal data types does the gateway support? Can we configure our own data types?
+### 18. What personal data types does the gateway support? Can we configure our own data types?
 
 The current version supports only a [limited set of data types](../../dashboards/overview/#pii-types), but the list is constantly updated. 
 
