@@ -21,11 +21,10 @@ The installation is managed fully by you. Soveren does not have or require any a
 
 ### 4. What types of traffic does Soveren monitor?
 
-At present, we cover HTTP(S) calls with the `application/json` content type. Other types of traffic, the gateway simply proxies without doing anything else with it.
+Presently, we monitor HTTP(S) calls with the `application/json` content type. The gateway allows other types of traffic to pass through without doing anything with it.
 
 
 ### 5. Can I use Soveren to check encrypted traffic?
-
 
 Soveren can work with SSL. The gateway's proxy component is based on [Traefik](https://traefik.io) which supports [SSL termination](https://doc.traefik.io/traefik/routing/routers/#tls) out of the box.
 
@@ -101,10 +100,10 @@ You configure one or multiple upstreams for your gateway instance.
 That boils down to defining particular URLs with applications or services which live in the upstreams. 
 Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
 
-We refer to those applications and  services as "data sources", meaning that they provide actual data which Soveren gateway monitors.
+We refer to those applications and services as "data sources" meaning that they provide actual data which Soveren gateway monitors.
 
-For example, you might have `/some/client/service/get_basic_info?parameters` and `/some/client/service/get_contacts?parameters`, and also `/some/order/service/get_order?parameters`. 
-Specific data sources in this case are `/some/client/service/` and `/some/order/service/`.
+For example, you might have `/api/v1/client/service/get_info` and `api/v1/client/service/get_contacts`, and also `/api/v1/order/service/get_order`. 
+`/api/v1/client/service/` and `/api/v1/order/service/` represent two individual services or data sources.
 
 
 ### 17. What exactly Soveren charges for?
@@ -112,10 +111,10 @@ Specific data sources in this case are `/some/client/service/` and `/some/order/
 We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
 
 Moreover, we do not charge per API, but only per data source which provides that API.
-For example, you might have `/some/client/service/get_basic_info?parameters`, `/some/client/service/get_contacts?parameters`, and `/some/order/service/get_order?parameters`.
-We would charge for these two data sources: `/some/client/service/` and `/some/order/service/`; and only if they are actually receiving requests.
+For example, you might have `/api/v1/client/service/get_info`, `api/v1/client/service/get_contacts`, and `/api/v1/order/service/get_order`.
+We would charge for these two data sources: `/api/v1/client/service/` and `/api/v1/order/service/`; and only if they are actually receiving requests.
 
-To expand, look at `/some/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
+To expand, look at `/api/v1/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
 If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
 
 ### 18. What personal data types does the gateway support? Can we configure our own data types?
