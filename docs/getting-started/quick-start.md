@@ -2,6 +2,8 @@
 
 Currently, Soveren gateway supports deployment with Kubernetes and Docker Compose. If you're eager to test the gateway using a different technology or having any problems, contact us at [support@soveren.io](mailto:support@soveren.io).
 
+
+
 === "Kubernetes"
 
     1. Add the Soveren token to your Kubernetes cluster.
@@ -49,19 +51,24 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
 
 === "Docker Compose"
 
+    <div class="admonition info">
+    <p class="admonition-title">Requirements</p>
+    <p>Soveren gateway supports Docker Compose v1.27.0 or higher.</p>
+    </div>
+
     1. Clone the repo containing the configuration files:
           ```
           git clone https://github.com/soverenio/deployment
           ```
 
-    2. Add the Soveren token to Docker Compose.
+    2. Add the Soveren token to Docker Compose. 
 
           [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
           
           ```
           export token=‘<soveren-token-from-your-account-on-soveren.io>’
           ```
-                                   
+
     3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
           Edit the `configs/traefik_configs/conf.d/20-replicator.yaml` config and set the `url` parameter in the section `services` to point to your service:
