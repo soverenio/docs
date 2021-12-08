@@ -51,7 +51,10 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
 
 === "Docker Compose"
 
-    *Soveren gateway supports Docker Compose v1.27.0 or higher.*
+    <div class="admonition info">
+    <p class="admonition-title">Requirements</p>
+    <p>Soveren gateway supports Docker Compose v1.27.0 or higher.</p>
+    </div>
 
     1. Clone the repo containing the configuration files:
           ```
