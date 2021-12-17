@@ -124,6 +124,9 @@ The current version supports only a [limited set of data types](../../dashboards
 We intend to free our users of any manual configuration, so Soveren should detect any personal data automatically out of the box.
 If it doesn't or you have some highly specific data types, please drop us a line at [support@soveren.io](mailto:support@soveren.io).
 
+### 19. What port in Soveren gateway do I route my traffic to?
+
+You need to route your traffic to port 8090. This is the port the gateway listens on for incoming traffic.
 
     
 

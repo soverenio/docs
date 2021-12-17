@@ -109,6 +109,7 @@ pre {
     mask-image: var(--md-admonition-icon--faq-question);
 }
 
+/* Padding to visually separate items ToC nav menu; 0.3rem looks too much on 27"+ monitors, 0.2rem is just the lesser evil */
 .md-nav--secondary .md-nav__item {
     padding: 0.2rem 0.6rem;
 }
