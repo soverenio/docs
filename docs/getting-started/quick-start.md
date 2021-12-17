@@ -36,7 +36,7 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
           
           
 
-    4. Configure your services to route traffic to Soveren gateway. The port the gateway listen on for incoming traffic is 8090.
+    4. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
 
           Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection.
           
@@ -91,7 +91,7 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
           docker-compose up -d
           ```         
 
-    5. Configure your services to route traffic to Soveren gateway. The port the gateway listen on for incoming traffic is 8090.
+    5. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
 
           Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection. 
 
