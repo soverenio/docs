@@ -30,7 +30,7 @@ Important details about the content that you may see on the dashboards:
 * Soveren gateway does not send any personal data outside your environment, so everything you see on the dashboards is just metadata about the data analyzed in your environment.
 * The dashboards give you an overview of the last 7 days. Data older than 7 days is discarded.
 * Sometimes you may see calls to hosts and endpoints that don't actually exist in your environment, resulting in response codes 4xx or 5xx. These are made by robots crawling the internet or by hackers trying to find vulnerabilities in the internet resources.
-* In API call details, you may see an empty request or response, or both if the detection component failed to find any personal data or if masking the found data failed. You may also see empty JSON body {} for the requests and/or responses with the content-type not supported by Soveren gateway (currently, everything other than application/json). 
+* In API call details, you may see an empty request or response, or both if the detection component failed to find any personal data or if masking the found data failed. You may also see empty JSON body `{}` for the requests and/or responses with the content-type not supported by Soveren gateway (currently, everything other than `application/json`). 
 
 
 
