@@ -19,7 +19,7 @@ The gateway status next to your account name shows how many gateways you created
 
 The tabs are dashboard groups that give you a deeper view into the data grouping it by:
 
-* *PII types* detected in your environment. See the currently supported types.
+* *PII types* detected in your environment. See the [currently supported types](../../dashboards/pii-model/).
 * *Endpoints* represent all events with a unique combination of a Host header, URL, and HTTP request method.
 * *Hosts* that host the endpoints; determined by the Host header value in a request or response.
 * *Consumers* that call the endpoints for data. A consumer is determined by the client's IP address in the header.
