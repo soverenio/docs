@@ -32,7 +32,7 @@ Soveren can work with SSL. The gateway's proxy component is based on [Traefik](h
 
 The gateway only communicates with Soveren cloud and only sends the metadata about the communication it observed.  
     
-For example, service A sent a request to Service B. There were certain data types in the response, such as *name* and/or *email*. 
+For example, Service A sent a request to Service B. There were certain data types in the response, such as *name* and/or *email*. 
 None of your actual values are sent anywhere outside your perimeter, just the *metadata* — facts about what data types were observed and what services were engaged in communication.
 
 
