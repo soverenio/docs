@@ -95,36 +95,36 @@ Can be any cloud provider both for services and the gateway, in any combination.
 The gateway does not introduce any noticeable latency or performance penalty, as the traffic goes straight through without any interruption. 
 PII analysis is done asynchronously and doesn't impede the traffic going through.
 
-### 16. What exactly is a data source?
-You configure one or multiple upstreams for your gateway instance. 
-That boils down to defining particular URLs with applications or services which live in the upstreams. 
-Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
+[comment]: # ### 16. What exactly is a data source?
+[comment]: # You configure one or multiple upstreams for your gateway instance. 
+[comment]: # That boils down to defining particular URLs with applications or services which live in the upstreams. 
+[comment]: # Applications or services in turn provide one or several APIs that can be called and will be monitored by our gateway.
+[comment]: # 
+[comment]: # We refer to those applications and services as "data sources" meaning that they provide actual data which Soveren gateway monitors.
+[comment]: # 
+[comment]: # For example, you might have `/api/v1/client/service/get_info` and `api/v1/client/service/get_contacts`, and also `/api/v1/order/service/get_order`. 
+[comment]: # `/api/v1/client/service/` and `/api/v1/order/service/` represent two individual services or data sources.
+[comment]: # 
+[comment]: # 
+[comment]: # ### 17. What exactly Soveren charges for?
+[comment]: # 
+[comment]: # We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so [comment]: # only they contribute to the bill.
+[comment]: # 
+[comment]: # Moreover, we do not charge per API, but only per data source which provides that API.
+[comment]: # For example, you might have `/api/v1/client/service/get_info`, `api/v1/client/service/get_contacts`, and `/api/v1/order/service/get_order`.
+[comment]: # We would charge for these two data sources: `/api/v1/client/service/` and `/api/v1/order/service/`; and only if they are actually receiving requests.
+[comment]: # 
+[comment]: # To expand, look at `/api/v1/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
+[comment]: # If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
 
-We refer to those applications and services as "data sources" meaning that they provide actual data which Soveren gateway monitors.
-
-For example, you might have `/api/v1/client/service/get_info` and `api/v1/client/service/get_contacts`, and also `/api/v1/order/service/get_order`. 
-`/api/v1/client/service/` and `/api/v1/order/service/` represent two individual services or data sources.
-
-
-### 17. What exactly Soveren charges for?
-
-We charge for the data sources that are involved in the actual data transmission. We monitor only those data sources which you actually use, not just configure, so only they contribute to the bill.
-
-Moreover, we do not charge per API, but only per data source which provides that API.
-For example, you might have `/api/v1/client/service/get_info`, `api/v1/client/service/get_contacts`, and `/api/v1/order/service/get_order`.
-We would charge for these two data sources: `/api/v1/client/service/` and `/api/v1/order/service/`; and only if they are actually receiving requests.
-
-To expand, look at `/api/v1/client/service/`: it might be called at `get_basic_info` or `get_contacts`, or at both. 
-If none of these two endpoints is called, you will not be charged for `/some/client/service/`.
-
-### 18. What personal data types does the gateway support? Can we configure our own data types?
+### 16. What personal data types does the gateway support? Can we configure our own data types?
 
 The current version supports only a [limited set of data types](../../dashboards/overview/#pii-types), but the list is constantly updated. 
 
 We intend to free our users of any manual configuration, so Soveren should detect any personal data automatically out of the box.
 If it doesn't or you have some highly specific data types, please drop us a line at [support@soveren.io](mailto:support@soveren.io).
 
-### 19. What port in Soveren gateway do I route my traffic to?
+### 17. What port in Soveren gateway do I route my traffic to?
 
 You need to route your traffic to port 8090. This is the port the gateway listens on for incoming traffic.
 
