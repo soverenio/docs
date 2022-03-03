@@ -6,17 +6,32 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
 
 === "Kubernetes"
 
-    1. Add the Soveren token to your Kubernetes cluster.
-
-         [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
+    1. [Create a new Soveren gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it and have it handy for the following steps.
+    
+    2. Define a namespace of your Kubernetes cluster that you want to monitor.
+    
+    3. Make sure you have two environment variables set up for the values of `TOKEN` and `NAMESPACE`:
+    
+            export NAMESPACE="<namespace-for-the-gateway-to-monitor>"
+            export TOKEN="<soveren-token-for-the-gateway>"
+    
+    4. Add the Soveren token to your Kubernetes cluster.
       
-            kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-for-the-gateway>    
-         
-    2. Apply the Soveren gateway manifest and configmap:     
+            kubectl -n ${NAMESPACE:?} create secret generic soveren-proxy-token --from-literal=token=${TOKEN:?}
+    
+    5. Create a new service account:
+    
+            kubectl -n ${NAMESPACE:?} create serviceaccount soveren-digger
+
+    6. Bind the created service account to the viewing role:
+    
+            kubectl create clusterrolebinding soveren-digger-view --clusterrole=view --serviceaccount=${NAMESPACE:?}:soveren-digger
+
+    7. Apply the Soveren gateway manifest and configmap:     
 
             kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
     
-    3. Сonfigure Soveren gateway to proxy the traffic for your services. <a name="configure-soveren"></a>
+    8. Сonfigure Soveren gateway to proxy the traffic for your services. <a name="configure-soveren"></a>
 
           Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
 
@@ -36,12 +51,12 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
           
           
 
-    4. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
+    9. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
 
           Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection.
           
 
-    5. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
+    10. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
 
 
           Also, check the [description of available dashboards](../../dashboards/overview).
