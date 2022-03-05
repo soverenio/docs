@@ -25,7 +25,7 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
 
     6. Grant viewing rights to the created service account.
     
-            This binding allows the Soveren gateway to discover information available from Kubernetes, for example the request source.
+        This binding allows the Soveren gateway to discover information available from Kubernetes, for example about the request source.
     
             kubectl create clusterrolebinding soveren-digger-view --clusterrole=view --serviceaccount=${NAMESPACE:?}:soveren-digger
 
