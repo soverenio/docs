@@ -23,7 +23,7 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
     
             kubectl -n ${NAMESPACE:?} create serviceaccount soveren-digger
 
-    6. Bind the created service account to the viewing role:
+    6. Grant viewing rights to the created service account so that it could discover information about the request source and other details available from Kubernetes:
     
             kubectl create clusterrolebinding soveren-digger-view --clusterrole=view --serviceaccount=${NAMESPACE:?}:soveren-digger
 
@@ -47,17 +47,15 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
                        - url: http://address-of-your-service:port/
 
 
-          Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options.
-          
-          
+          Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options. 
 
-    9. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
-
+    9. Configure your services to route traffic to Soveren gateway.
+    
+          The gateway is available at `traefik-proxy:8090`. This is defined in the [manifest](https://github.com/soverenio/deployment/blob/master/gateway/kubernetes/install.yaml).
+          
           Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection.
-          
 
     10. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
-
 
           Also, check the [description of available dashboards](../../dashboards/overview).
 
