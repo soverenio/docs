@@ -8,7 +8,7 @@ Currently, Soveren gateway supports deployment with Kubernetes and Docker Compos
 
     1. [Create a new Soveren gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it and have it handy for the following steps.
     
-    2. Define a namespace of your Kubernetes cluster that you want to monitor.
+    2. Define the namespace that you want to monitor in your Kubernetes cluster.
     
     3. Make sure you have two environment variables set up for the values of `TOKEN` and `NAMESPACE`:
     
