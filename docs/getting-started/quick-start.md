@@ -14,7 +14,7 @@ Installing Soveren is really simple:
     kubectl apply -k https://github.com/soverenio/deployment.git/interceptor/base
     ```
 
-4. Add the Soveren token to your Kubernetes cluster.
+4. Add the Soveren token to your Kubernetes cluster:
     ```shell
     kubectl -n soveren-interceptor create secret generic soveren-token --from-literal=token=${TOKEN:?}
     ```
