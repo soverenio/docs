@@ -3,7 +3,7 @@
 Installing Soveren is really simple:
 
 
-1. [Create a new Soveren token](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it and have it handy for the following steps.
+1. [Create a new Soveren token](../../administration/managing-gateways#create-a-gateway) and have it handy for the following steps.
  
 2. Make sure you export the `TOKEN` as an environment variable:
 
