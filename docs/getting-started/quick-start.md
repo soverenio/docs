@@ -29,11 +29,11 @@ Installing Soveren is really simple:
 
 There are several things which happen automatically in the cluster when you apply the manifest.
 
-1. First, the namespace `soveren-interceptor` is created.
-2. Then, Soveren Interceptors are deployed into that namespace.
+1. First, the namespace `soveren-interceptor` is created
+2. Then, Soveren Interceptors are deployed into that namespace
 3. For Soveren Interceptors to be able to gather the traffic:
-   1. A dedicated `ServiceAccount` is created,
-   2. This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods.
+   * A dedicated `ServiceAccount` is created
+   * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
 4. Finally, the Personal Data Detector is deployed:
-   1. A dedicated `ServiceAccount` is created as well, so that the Detector is able to listen to the Interceptors,
-   2. This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to `view` in the `soveren-interceptor` namespace.
+   * A dedicated `ServiceAccount` is created as well, so that the Detector is able to listen to the Interceptors
+   * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to `view` in the `soveren-interceptor` namespace
