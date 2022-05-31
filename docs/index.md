@@ -6,8 +6,9 @@ Soveren monitors and parses traffic between the services, identifying personal i
 Preconfigured dashboards provide a view into privacy incidents and risks related to PII so that engineering and security leaders can make informed security and privacy decisions.
 
 
-![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard")
+![PII dashboard](img/dashboards/overview-dashboard.png "PII dashboard")
 
+[ ![PII dashboard](img/dashboards/pii-types-overview-cropped.png "PII dashboard") ]: #
 
 ## How Soveren works
 
