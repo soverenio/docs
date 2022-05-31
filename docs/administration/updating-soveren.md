@@ -1,41 +1,9 @@
-# Updating Soveren
+# Updating the Soveren Agent
 
-## Soveren gateway
+Versions of the Soveren Agent components are explicitly stated in the manifest file, with no background auto-updates. In case of a major Soveren Cloud update pr anything else that requires the latest Agent version, we will inform you well ahead so you can plan for it.
 
-Soveren cloud supports older versions of the gateway, so you can update the gateway at your own pace.
+To update your Soveren Agent, just re-apply the manifest:
 
-Versions of Soveren gateway components are explicitly stated in the manifest file, with no background auto-updates.
-
-In case of a major cloud update that requires the latest gateway version, we will inform you well ahead so you can plan for it.
-
-=== "Kubernetes"
-
-    To update Soveren gateway, apply the Soveren gateway manifest:   
-
-        kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml  
-
-=== "Docker Compose"
-
-    To update Soveren gateway:
-
-    1. If you deployed Soveren with Docker Compose, you still have the [configuration repo](../../getting-started/quick-start/) cloned and changed locally to run it.
-        
-        Switch to the repo and pull the latest manifest update:
-          
-          ```
-          git pull
-          ```
-
-    2. Apply the Soveren gateway manifest update running the command below in the ``compose`` repo folder:
-           
-           ```
-           docker-compose up -d
-           ```
-
-## Soveren cloud
-
-Soveren cloud is managed by the Soveren team and doesn't require updates from the user.
-
-
-
-
+```shell
+kubectl apply -k https://github.com/soverenio/deployment.git/interceptor/base
+```
