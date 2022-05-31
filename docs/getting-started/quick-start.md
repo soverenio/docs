@@ -29,9 +29,9 @@ Installing Soveren is really simple:
 
 There are several things which happen automatically in the cluster when you apply the manifest.
 
-1. First, the namespace `soveren-interceptor` is created
-2. Then, the Interceptors are deployed into that namespace, as well as the Personal Data Detector (which itself consists of several components)
-3. For Soveren Agent to be able to read relevant information from the Kubernetes API, the following happens:
+1. First, the namespace `soveren-interceptor` is created.
+2. Then, the Soveren Agent is deployed into that namespace. The Soveren Agent contains the Interceptors and the Personal Data Detector (which itself consists of several components).
+3. For the Soveren Agent to be able to read relevant information from the Kubernetes API, the following happens:
      * Dedicated `ServiceAccount`s are created both for Interceptors and for the Personal Data Detector
      * `ServiceAccount` for Interceptors is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
      * `ServiceAccount` for the Personal Data Detector is given cluster-wide permissions (`ClusterRoleBinding`) to `view`
