@@ -12,14 +12,14 @@ Preconfigured dashboards provide a view into privacy incidents and risks related
 
 Soveren has a hybrid architecture:
 
-* Soveren Agent is a pre-packaged container installed in your perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the cloud.
+* Soveren Agent is a pre-packaged container installed in your perimeter. It parses structured HTTP JSON traffic, gathers metadata about PII, and sends the metadata to the Soveren Cloud.
 * Soveren Cloud is a SaaS managed by Soveren. It provides dashboards to gain visibility into different PII-related statistical data and metrics.
 
 ### Soveren Agent
 
 Soveren Agent is deployed on premise and configured to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. The Agent processes them asynchronously and gathers metadata about PII from the payloads.
 
-Technically, the Agent consists of several parts:
+Technically, the Soveren Agent consists of several parts:
 * Interceptors which are distributed to all worker nodes of the cluster through the DaemonSet. They capture the traffic from virtual interfaces of the pods with the help of a packet capturing mechanism;
 * Messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)) which receives the data from Interceptors;
 * and the Personal Data Detector (or simply Detector) which discovers PII with the help of a custom machine learning algorithms.
