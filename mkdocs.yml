@@ -10,13 +10,13 @@ nav:
   - Administration:
   #    - Failover: 'administration/failover.md'
   #    - Proxy settings: 'administration/proxy-settings.md'
-      - Managing gateways: 'administration/managing-gateways.md'
+      - Managing Agents: 'administration/managing-gateways.md'
       - Updating Soveren: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
-      - Overview: 'dashboards/overview.md'
+  #    - Overview: 'dashboards/overview.md'
       - PII model: 'dashboards/pii-model.md'
-  - FAQ: 'miscellaneous/faq.md'
+  #- FAQ: 'miscellaneous/faq.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
