@@ -36,4 +36,4 @@ There are several things which happen automatically in the cluster when you appl
    * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
 4. Finally, the Personal Data Detector is deployed:
    * A dedicated `ServiceAccount` is created as well, so that the Detector is able to listen to the Interceptors
-   * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to `view` in the `soveren-interceptor` namespace
+   * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to `view`
