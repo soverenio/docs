@@ -31,9 +31,7 @@ There are several things which happen automatically in the cluster when you appl
 
 1. First, the namespace `soveren-interceptor` is created
 2. Then, the Interceptors are deployed into that namespace, as well as the Personal Data Detector (which itself consists of several components)
-3. For Soveren Interceptors to be able to gather the traffic:
-     * A dedicated `ServiceAccount` is created
-     * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
-4. For the Personal Data Detector to listen to the Interceptors:
-     * A dedicated `ServiceAccount` is created as well
-     * This `ServiceAccount` is given cluster-wide permissions (`ClusterRoleBinding`) to `view`
+3. For Soveren Agent to be able to read relevant information from the Kubernetes API, the following happens:
+     * Dedicated `ServiceAccount`s are created both for Interceptors and for the Personal Data Detector
+     * `ServiceAccount` for Interceptors is given cluster-wide permissions (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
+     * `ServiceAccount` for the Personal Data Detector is given cluster-wide permissions (`ClusterRoleBinding`) to `view`
