@@ -11,12 +11,12 @@ On top of that, the model assigns different weights or _sensitivities_ to differ
 Soveren works with the following types of potential PII data:
 
   * **`Person`**. This is a person's name which can be any combination of the first and last names.
-  * **`Birth date`**: date of birth of a person. This can be any conceivable representation of a date, if the form of any combination of day / month / year, or even a Unix timestamp.
+  * **`Birth date`**: date of birth of a person. This can be any conceivable representation of a date, in the form of any combination of day / month / year, or even a Unix timestamp.
   * **`Gender`**, or more precisely sex of a person (male or female).
   * **US `Driver license`** number (or code).
   * **US Social Security Number (`SSN`)**.
   * **Credit or debit `Card`**, including the number (checked for validity according to standards) and expiration date.
-  * **`Phone` number**.
+  * **`Phone`** number.
   * **`Email`** address.
   * **`Location`** where the person may reside, i.e. to be present physically, or live or receive a postage. This includes coordinates like latitude / longitude and all details of physical address (country code / city / street / building etc).
   * **`IBAN`**: international bank account number.
