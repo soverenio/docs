@@ -1,29 +1,36 @@
 # Quick start
 
+Installing Soveren is extremely simple:
+1. Install the Soveren Agent in your Kubernetes cluster
+2. [Go to dashboards](https://app.soveren.io/pii-types) in the Soveren Cloud and start getting insights!
+
 ## Installing the Agent
 
-Installing Soveren is really simple:
-
-1. [Create a new Soveren token](../../administration/managing-gateways#create-a-gateway) and have it handy for the following steps.
+1. [Create a new Soveren token](../../administration/managing-agents#create-an-agent) and have it handy for the following steps. The token identifies and authorizes your Agent within the Soveren Cloud.
  
-2. Make sure you export the `TOKEN` as an environment variable:
+
+2. Create a namespace for Soveren installation:
     ```shell
-    export TOKEN="<soveren-token>"
+    kubectl create namespace soverenio
+    ```
+   You can use any other valid namespace name instead of `soverenio`.
+
+
+4. Add the Soveren Helm repository:
+    ```shell
+    helm repo add soveren https://soverenio.github.io/helm-charts
     ```
 
-3. Apply the Soveren manifest:
+5. Install the Soveren Agent using the `<TOKEN>` that you obtained on the step 1:
     ```shell
-    kubectl apply -k https://github.com/soverenio/deployment.git/interceptor/base
+    helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
     ```
+   You can use any other valid release name instead of `soveren-agent`.
 
-4. Add the Soveren token to your Kubernetes cluster:
-    ```shell
-    kubectl -n soveren-interceptor create secret generic soveren-token --from-literal=token=${TOKEN:?}
-    ```
 
-5. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
+7. That's it! You may [go to dashboards](https://app.soveren.io/pii-types) now.
 
-    Also, check the [description of available dashboards](../../dashboards/overview).
+   Also you may want to check the [description of available dashboards](../../dashboards/overview).
 
 ## What happens under the hood
 
@@ -32,6 +39,5 @@ There are several things which happen automatically in the cluster when you appl
 1. First, the namespace `soveren-interceptor` is created.
 2. Then, the Soveren Agent is deployed into that namespace. The Soveren Agent contains the Interceptors and the Personal Data Detector (which itself consists of several components).
 3. For the Soveren Agent to be able to read relevant information from the Kubernetes API, the following happens:
-     * Dedicated `ServiceAccount`s are created both for Interceptors and for the Personal Data Detector
-     * `ServiceAccount` for Interceptors [is given cluster-wide permissions](https://github.com/soverenio/deployment/blob/master/interceptor/base/interceptor-sa-cr-crb.yaml) (`ClusterRoleBinding`) to execute `get`, `watch` and `list` on the pods
-     * `ServiceAccount` for the Personal Data Detector [is given cluster-wide permissions](https://github.com/soverenio/deployment/blob/master/interceptor/base/digger-sa-crb.yaml) (`ClusterRoleBinding`) to `view`
+     * A dedicated `ServiceAccount` is created for the Personal Data Detector
+     * This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/deployment/blob/master/interceptor/base/digger-sa-crb.yaml) (`ClusterRoleBinding`) to `view`
