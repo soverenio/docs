@@ -10,7 +10,7 @@ nav:
   - Administration:
   #    - Failover: 'administration/failover.md'
   #    - Proxy settings: 'administration/proxy-settings.md'
-      - Managing Agents: 'administration/managing-gateways.md'
+      - Managing Agents: 'administration/managing-agents.md'
       - Updating Soveren: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
