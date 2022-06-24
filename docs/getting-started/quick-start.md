@@ -37,9 +37,15 @@ Installing Soveren is extremely simple:
 
 ## What happens under the hood
 
-There are several things which happen automatically in the cluster when you apply the manifest.
+There are several things which happen automatically in the cluster when you install Soveren Agent:
 
-2. The Soveren Agent is deployed into the namespace `soverenio`. The Soveren Agent contains the Interceptors and the Personal Data Detector (which itself consists of several components).
-3. For the Soveren Agent to be able to read relevant information from the Kubernetes API, the following happens:
-     * A dedicated `ServiceAccount` is created for the Personal Data Detector
-     * This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/deployment/blob/master/interceptor/base/digger-sa-crb.yaml) (`ClusterRoleBinding`) to `view`
+1. The Soveren Agent contains the Interceptors and the Personal Data Detector, which itself consists of several components.
+
+
+2. Both the Interceptors and the Personal Data Detector are deployed into the namespace `soverenio`. 
+
+
+3. For the Soveren Agent to be able to read relevant information from the Kubernetes API, a dedicated `ServiceAccount` is created for the Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/deployment/blob/master/interceptor/base/digger-sa-crb.yaml) (`ClusterRoleBinding`) to `view`.
+
+
+4. The Interceptors do not need special Kubernetes RBAC permissions to capture the traffic
