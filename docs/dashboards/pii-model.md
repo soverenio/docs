@@ -14,7 +14,9 @@ Soveren works with the following types of potential PII data:
   * **`Birth date`**: date of birth of a person. This can be any conceivable representation of a date, in the form of any combination of day / month / year, or even a Unix timestamp.
   * **`Gender`**, or more precisely sex of a person (male or female).
   * **US `Driver license`** number (or code).
-  * **US Social Security Number (`SSN`)**.
+  * **`Passport` data**, including the number.
+  * **`Tax number`**, or Taxpayer Identification Number. Depends on the country. Special case is the US Social Security Number (`SSN`)
+  * **`Pension number`**, depends on the country.
   * **Credit or debit `Card`**, including the number (checked for validity according to standards) and expiration date.
   * **`Phone`** number.
   * **`Email`** address.
@@ -34,6 +36,6 @@ The PII data types are individually assigned the following levels:
 
 * **Low**: `Birth date`, `Gender`
 * **Medium**: `Person`, `Phone`, `Email`, `IP address`
-* **High**: `Location`, `Card`, `Driver license`, `SSN`, `IBAN`
+* **High**: `Location`, `Card`, `Driver license`, `Passport`, `Tax number`, `SSN`, `Pension number`, `IBAN`
 
 The sensitivity levels are assigned different numerical weights, so that PII data type combinations result in different combined sensitivities. For example, `Birth date` combined with `Gender` still result in **Low** sensitivity. Similarly, `Person` + `Phone` + `Email` are of **Medium** sensitivity, whereas `Person` + `Phone` + `Email` + `Gender` is of **High** sensitivity from the potential person's identification point of view.
