@@ -22,7 +22,7 @@ Soveren Agent is deployed on premise and configured to analyze the relevant part
 Technically, the Soveren Agent consists of several parts:
 
 * Interceptors which are distributed to all worker nodes of the cluster through the DaemonSet. They capture the traffic from virtual interfaces of the pods with the help of a packet capturing mechanism;
-* messaging system ([Apache Kafka](https://kafka.apache.org/documentation/>)) which receives the data from Interceptors;
+* messaging system ([Apache Kafka](https://kafka.apache.org/)) which receives the data from Interceptors;
 * and the Personal Data Detector (or simply Detector) which discovers PII with the help of a custom machine learning algorithms.
 
 Metadata about the requests and responses is collected and sent to Soveren Cloud.
