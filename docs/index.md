@@ -23,8 +23,8 @@ The Soveren Agent consists of several parts:
 * **Messaging system** which receives data from the Interceptors. Consists of a ([Kafka](https://kafka.apache.org/)) instance (stores request/response data) and Digger (passes data to the detection and further to the Soveren Cloud)
 * **Sensitive Data Detector** (or simply Detector) which discovers data types and their sensitivity with the help of proprietary machine learning algorithms.
 
-Metadata about the requests and responses is collected and sent to Soveren Cloud. The metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload contents is included in the metadata.
+Metadata about the requests and responses is sent to Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload contents is included in the metadata.
 
 ### Soveren Cloud
 
-Soveren Cloud is a SaaS managed by Soveren.  It offers a set of dashboards that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
+Soveren Cloud is a SaaS managed by Soveren. It offers a set of dashboards that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
