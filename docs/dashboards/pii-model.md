@@ -4,13 +4,13 @@ We recognize a number of data types that can potentially identify a person, like
 
 We developed our own machine learning model that does data detection and classification.
 
-You can think of the Soveren model as a two-stage classifier. First, for each observed field the classifier determines a data type, for example email. Then, depending on the context, the classifier decides if this was actually sensitive data or not, for example if the person's identity could actually be revealed if the observed value was disclosed.
+You can think of the Soveren model as a two-stage classifier. First, for each observed field the classifier determines the data type, for example email. And then depending on the context the classifier decides if this was actually sensitive data or not. For example if the person's identity could actually be revealed if the observed value was disclosed.
 
 On top of that, the model assigns different weights or _sensitivities_ to different data types and their combinations. Those sensitivities define how likely it is to get the actual person's identity when this data is disclosed.
 
 ## Recognised sensitive data types
 
-Right noew Soveren works with the following data types:
+Right now Soveren works with the following data types:
 
   * **`Person`**. This is a person's name which can be any combination of the first and last names.
   * **`Birth date`**: date of birth of a person. This can be any conceivable representation of a date, in the form of any combination of day / month / year, or even a Unix timestamp.
@@ -30,7 +30,7 @@ Right noew Soveren works with the following data types:
 
 ## The sensitivity model
 
-We consider both individual data types and their combinations, because sensitivity of the combined data set can be significantly higher than that of any individual value. For example, the name itself does not reveal much in terms of identification when used alone. But the name combined with the postal address can reveal the identity with much higher certainty.
+We consider both individual data types and their combinations, because sensitivity of the combined data set can be significantly higher than that of any individual data field. For example, the name itself does not reveal much in terms of identification when used alone. But the name combined with the postal address can reveal the identity with much higher certainty.
 
 There are three levels of sensitivity: **Low**, **Medium** and **High**.
 
