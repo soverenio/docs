@@ -14,7 +14,6 @@ nav:
       - Updating Soveren: 'administration/updating-soveren.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
-  #    - Overview: 'dashboards/overview.md'
       - Sensitive data model: 'dashboards/data-model.md'
   #- FAQ: 'miscellaneous/faq.md'
 
