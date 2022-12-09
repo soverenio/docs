@@ -37,18 +37,18 @@ Installing Soveren is extremely simple:
 
 There are several things which happen automatically in the cluster when you install the Soveren Agent:
 
-1. The Soveren Agent contains the Interceptors and the Personal Data Detector, which itself [consists of several components](../../#soveren-agent).
+1. Soveren Agent contains Interceptors and Personal Data Detector, which itself [consists of several components](../../#soveren-agent).
 
 
-2. Both the Interceptors and the Personal Data Detector are deployed into the namespace `soverenio`. 
+2. Both Interceptors and Personal Data Detector are deployed into the namespace `soverenio`. 
 
 
-3. Soveren Agent reads a lot of relevant information from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for the Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `view`.
+3. Soveren Agent reads a lot of relevant information from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `view`.
 
 
-4. The Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
+4. Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
 
-5. The Interceptors read data from virual network interfaces of the host. For this, the containers in which the Interceptors run require several things:
+5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require several things:
 
     1. `privileged: true`
 
