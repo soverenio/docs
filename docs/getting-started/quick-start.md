@@ -52,10 +52,10 @@ There are several things which happen automatically in the cluster when you inst
 
 5. The Interceptors read data from virual network interfaces of the host. For this, the containers in which the Interceptors run require several things:
 
-   1. `privileged: true`
+    1. `privileged: true`
 
-   2. `dnsPolicy: ClusterFirstWithHostNet`
+    2. `dnsPolicy: ClusterFirstWithHostNet`
 
-   3. `hostNetwork: true`
+    3. `hostNetwork: true`
 
-   4. `hostPID: true`
+    4. `hostPID: true`
