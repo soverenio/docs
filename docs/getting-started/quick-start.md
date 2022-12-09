@@ -1,100 +1,59 @@
 # Quick start
 
-Currently, Soveren gateway supports deployment with Kubernetes and Docker Compose. If you're eager to test the gateway using a different technology or having any problems, contact us at [support@soveren.io](mailto:support@soveren.io).
+Installing Soveren is extremely simple:
+
+1. Install the Soveren Agent in your Kubernetes cluster
+
+2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
 
 
+## Installing the Agent
 
-=== "Kubernetes"
+1. [Create a new Soveren token](../../administration/managing-agents#create-an-agent) and have it handy for the following steps. The token identifies and authorizes your Agent within the Soveren Cloud.
+ 
 
-    1. Add the Soveren token to your Kubernetes cluster.
-
-         [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
-      
-            kubectl create secret generic soveren-proxy-token --from-literal=token=<soveren-token-for-the-gateway>    
-         
-    2. Apply the Soveren gateway manifest and configmap:     
-
-            kubectl apply -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/install.yaml -f https://raw.githubusercontent.com/soverenio/deployment/master/gateway/kubernetes/replicator-configmap.yaml
-    
-    3. Сonfigure Soveren gateway to proxy the traffic for your services. <a name="configure-soveren"></a>
-
-          Edit the ``replicator`` configmap and set the ``url`` parameter in the section ``services`` to point to your service:
-
-            kubectl edit cm replicator
-
-          `replicator` configmap example:
-
-               # Add the service
-               services:
-                 upstream:
-                   loadBalancer:
-                     servers:
-                       - url: http://address-of-your-service:port/
+2. Create a namespace for Soveren installation:
+    ```shell
+    kubectl create namespace soverenio
+    ```
+   You can use any other valid namespace name instead of `soverenio`.
 
 
-          Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options.
-          
-          
+4. Add the Soveren Helm repository:
+    ```shell
+    helm repo add soveren https://soverenio.github.io/helm-charts
+    ```
 
-    4. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
-
-          Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection.
-          
-
-    5. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
-
-
-          Also, check the [description of available dashboards](../../dashboards/overview).
+5. Install the Soveren Agent using the `<TOKEN>` that you obtained on the step 1:
+    ```shell
+    helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
+    ```
+   You can use any other valid release name instead of `soveren-agent`.
 
 
-          
+7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now.
 
-=== "Docker Compose"
+## What happens under the hood
 
-    <div class="admonition info">
-    <p class="admonition-title">Requirements</p>
-    <p>Soveren gateway supports Docker Compose v1.27.0 or higher.</p>
-    </div>
+There are several things which happen automatically in the cluster when you install the Soveren Agent:
 
-    1. Clone the repo containing the configuration files:
-          ```
-          git clone https://github.com/soverenio/deployment
-          ```
+1. The Soveren Agent contains the Interceptors and the Personal Data Detector, which itself [consists of several components](../../#soveren-agent).
 
-    2. Add the Soveren token to Docker Compose. 
 
-          [Create a gateway](../../administration/managing-gateways#create-a-gateway), copy the Soveren token displayed next to it, and run: 
-          
-          ```
-          export token=‘<soveren-token-from-your-account-on-soveren.io>’
-          ```
+2. Both the Interceptors and the Personal Data Detector are deployed into the namespace `soverenio`. 
 
-    3. Сonfigure Soveren gateway to proxy the traffic for your services.
 
-          Edit the `configs/traefik_configs/conf.d/20-replicator.yaml` config and set the `url` parameter in the section `services` to point to your service:
+3. Soveren Agent reads a lot of relevant information from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for the Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `view`.
 
-          `20-replicator` config example:
-       
-             # Add the service
-             http:
-               services:
-                 upstream:
-                   loadBalancer:
-                     servers:
-                       - url: http://address-of-your-service:port/
 
-          Soveren gateway is based on Traefik. Refer to the [Traefik docs](https://doc.traefik.io/traefik/routing/overview/) if you need more routing options.
+4. The Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
 
-    4. Apply the Soveren gateway manifest running the command below in the `compose` repo folder:
+5. The Interceptors read data from virual network interfaces of the host. For this, the containers in which the Interceptors run require several things:
 
-          ```
-          docker-compose up -d
-          ```         
+    1. `privileged: true`
 
-    5. Configure your services to route traffic to Soveren gateway. The port the gateway listens on for incoming traffic is 8090.
+    2. `dnsPolicy: ClusterFirstWithHostNet`
 
-          Soveren gateway only analyzes traffic with the `application/json` content type. All other content types just pass through the gateway without any personal data detection. 
+    3. `hostNetwork: true`
 
-    6. That's it! [Go to the dashboards](https://app.soveren.io/pii-types) and start getting insights.
-
-          Also, check the [description of available dashboards](../../dashboards/overview).
+    4. `hostPID: true`
