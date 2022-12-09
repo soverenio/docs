@@ -39,7 +39,7 @@ Installing Soveren is extremely simple:
 
 There are several things which happen automatically in the cluster when you install the Soveren Agent:
 
-1. The Soveren Agent contains the Interceptors and the Personal Data Detector, which itself [consists of several components](../#soveren-agent).
+1. The Soveren Agent contains the Interceptors and the Personal Data Detector, which itself [consists of several components](../../#soveren-agent).
 
 
 2. Both the Interceptors and the Personal Data Detector are deployed into the namespace `soverenio`. 
