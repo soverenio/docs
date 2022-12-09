@@ -8,7 +8,7 @@ Before doing an upgrade, it's a good idea to create the `values.yaml` file in th
 digger:
   token: <TOKEN>
 ```
-This frees you from passing the token value in the command line or through the environment variables. And you can also tune a number of other values lime CPU & MEM limits or log level of the Agent's components.
+This frees you from passing the token value in the command line or through the environment variables. And you can also tune a number of other values like CPU & MEM limits or log level of the Agent's components.
 
 After creating the `values.yaml` file, run the following commands:
 
