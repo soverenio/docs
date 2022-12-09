@@ -15,7 +15,7 @@ nav:
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
   #    - Overview: 'dashboards/overview.md'
-      - PII model: 'dashboards/pii-model.md'
+      - Sensitive data model: 'dashboards/data-model.md'
   #- FAQ: 'miscellaneous/faq.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
