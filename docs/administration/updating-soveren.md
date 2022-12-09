@@ -16,4 +16,4 @@ After creating the `values.yaml` file, run the following commands:
 helm repo update soveren
 helm -n soverenio -f path_to/values.yaml upgrade soveren-agent soveren/soveren-agent
 ```
-That's it! You've just upgraded your Soveren Agent.
+That's it! You've just updated your Soveren Agent.
