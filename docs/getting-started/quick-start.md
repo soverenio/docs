@@ -4,7 +4,7 @@ Installing Soveren is extremely simple:
 
 1. Install the Soveren Agent in your Kubernetes cluster
 
-2. [Go to the Soveren app](https://app.soveren.io/pii-types) in the Soveren Cloud and start getting insights!
+2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
 
 
 ## Installing the Agent
@@ -31,7 +31,7 @@ Installing Soveren is extremely simple:
    You can use any other valid release name instead of `soveren-agent`.
 
 
-7. That's it! You may [go to the Soveren app](https://app.soveren.io/pii-types) now.
+7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now.
 
    Also you may want to check the [description of available dashboards](../../dashboards/overview).
 
