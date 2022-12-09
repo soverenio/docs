@@ -33,8 +33,6 @@ Installing Soveren is extremely simple:
 
 7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now.
 
-   Also you may want to check the [description of available dashboards](../../dashboards/overview).
-
 ## What happens under the hood
 
 There are several things which happen automatically in the cluster when you install the Soveren Agent:
