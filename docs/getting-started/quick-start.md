@@ -48,7 +48,7 @@ There are several things which happen automatically in the cluster when you inst
 
 4. Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
 
-5. Interceptors read data from virual network interfaces of the host. For this, the containers in which Interceptors are running require several things:
+5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require several things:
 
     1. `privileged: true`
 
