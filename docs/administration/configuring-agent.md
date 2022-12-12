@@ -151,7 +151,7 @@ Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to
 
 The sytnax is like this:
 
-* if nothing is soecified then all namespaces will be covered;
+* if nothing is specified then all namespaces will be covered;
 * asterisk means _everything_;
 * `action: allow` includes this namespace into monitoring;
 * `action: deny` excludes this namespace from monitoring.
