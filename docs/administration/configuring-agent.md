@@ -170,3 +170,16 @@ digger:
         - namespace: "*"
           action: allow
 ```
+
+## Changing the log level
+
+By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
+
+```shell
+[digger|interceptor|detectionTool]:
+  cfg:
+    log:
+      level: error
+```
+
+We don't manage the log levels of Kafka or Prometheus.
