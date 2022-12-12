@@ -66,6 +66,8 @@ securityContext:
 The default values here are as follows. Under normal circumstances you don't need to touch any of them.
 
 ```shell
+kafka:
+  embedded:
     resources:
       requests:
         cpu: "100m"
@@ -82,6 +84,8 @@ The default values here are as follows. Under normal circumstances you don't nee
 In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. You don't need to change it but here's what is set as the default:
 
 ```shell
+kafka:
+  embedded:
     env:
     - name: KAFKA_HEAP_OPTS
       value: -Xmx512m -Xms512m
@@ -96,6 +100,7 @@ Digger employs all sorts of data sampling algorithms to make sure that all endpo
 Normally you should not want to change the resource values for Digger but here they are:
 
 ```shell
+digger:
   resources:
     requests:
       cpu: "100m"
@@ -113,6 +118,7 @@ The Detection tool does all the heavy lifting when it comes to detecting data ty
 The values for the Detection tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the limits, so we encourage you to monitor the actual usage and adjust accordingly.
 
 ```shell
+detectionTool:
   resources:
     requests:
       cpu: "100m"
@@ -125,3 +131,17 @@ The values for the Detection tool resource consumption are adjusted for optimal 
 
 ## Namespace filtering
 
+```shell
+digger:
+  cfg:
+    kubernetesfilterlist:
+      # filter by kubernetes namespace definitions. Empty list allows everything. You can set it like this:
+      # - namespace: default
+      #   action: allow
+      # - namespace: kube-system
+      #   action: deny
+      definitions:
+        - namespace: "*"
+          action: allow
+
+```
