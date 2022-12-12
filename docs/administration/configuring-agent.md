@@ -1,8 +1,8 @@
 # Configuring the Soveren Agent
 
-We use Helm for managing the deployment of Soveren Agents. To pass custom values to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
+We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file.
+You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
 
 ## The token
 
