@@ -107,3 +107,21 @@ Normally you should not want to change the resource values for Digger but here t
 ```
 
 ### Detection tool
+
+The Detection tool does all the heavy lifting when it comes to detecting data types in the flows and their sensitivity. It runs a custom built machine learning models using Python for that.
+
+The values for the Detection tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the limits, so we encourage you to monitor the actual usage and adjust accordingly.
+
+```shell
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "1680Mi"
+    limits:
+      cpu: "1100m"
+      memory: "2304Mi"
+      ephemeral-storage: 200Mi
+```
+
+## Namespace filtering
+
