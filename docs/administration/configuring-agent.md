@@ -190,8 +190,8 @@ We don't manage the log levels of Kafka or Prometheus.
 
 ### Setting the ports for Prometheus
 
-<different compomemts have differently named values?>
+--different compomemts have differently named values?--
 
 ### Sending metrics to a local Prometheus
 
-<TODO>
+--TODO--
