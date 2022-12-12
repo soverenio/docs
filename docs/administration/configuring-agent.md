@@ -4,7 +4,7 @@ We use Helm for managing the deployment of Soveren Agents. To pass custom values
 
 You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file.
 
-## Passing the token
+## The token
 
 To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`.
 
@@ -15,3 +15,14 @@ digger:
   token: <TOKEN>
 ```
 
+## Resource limits
+
+You can adjust resource usage limits for each of the Soveren Agent's components.
+
+As a rule of thumb, we **_do not_** recommend to change the `requests` values. They are set with regard to a minimum reasonable functionality that the component can provide given that much resources.
+
+The `limits` however differ widely between Agent's components, and are heavily traffic dependent. We 
+
+### Interceptors
+
+The interceptors are placed on each node of the cluster. Their ability to collect traffic is proportional to how much resources they are allowed to use.
