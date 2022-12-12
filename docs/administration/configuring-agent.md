@@ -63,7 +63,7 @@ securityContext:
 
 [Kafka](https://kafka.apache.org/) is the only component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
 
-The default values here are as follows. Under normal circumstances you don;t need to touuch any of them.
+The default values here are as follows. Under normal circumstances you don't need to touch any of them.
 
 ```shell
     resources:
@@ -79,7 +79,7 @@ The default values here are as follows. Under normal circumstances you don;t nee
 
 #### Heap usage by Kafka
 
-In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. You don't need to change it but here's what is set as a default:
+In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. You don't need to change it but here's what is set as the default:
 
 ```shell
     env:
