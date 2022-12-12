@@ -1,6 +1,6 @@
 # Updating the Soveren Agent
 
-We use Helm for managing deployment of Soveren Agent. To update your Soveren Agent, you just need to update the Soveren Helm repository and run the upgrade command.
+We use Helm for managing the deployment of Soveren Agents. To update your Soveren Agent, you just need to update the Soveren Helm repository and run the upgrade command.
 
 Before doing an upgrade, it's a good idea to create the `values.yaml` file in the folder that you use for custom Helm values configuration. You can put in the value of your Agent's token like this:
 
