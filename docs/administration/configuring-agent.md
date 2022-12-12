@@ -182,6 +182,8 @@ By default log levels of all Soveren Agent components is set to `error`. You can
       level: error
 ```
 
+(You need to create different config sections for dirrefent components — `digger` or `interceptor` or `detectionTool` — but the syntax is the same
+
 We don't manage the log levels of Kafka or Prometheus.
 
 ## Metrics collection
