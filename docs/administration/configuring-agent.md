@@ -25,4 +25,36 @@ The `limits` however differ widely between Agent's components, and are heavily t
 
 ### Interceptors
 
-The interceptors are placed on each node of the cluster. Their ability to collect traffic is proportional to how much resources they are allowed to use. Both CPU and memory are important.
+The interceptors are placed on each node of the cluster as a `DaemonSet`. Their ability to collect traffic is proportional to how much resources they are allowed to use.
+
+Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, rading from virtual network interfaces of the host and building request/response pairs. Thus the memory they use is directly proportional to how large those `JSON`s are.
+
+The reading is done in a non-blocking fashion, leveraging the [`libpcap`](https://www.tcpdump.org/) library.  If there is not enough CPU the interceptors may not have enough time to read the traffic and build enough request/response pairs relevant for building the data map.
+
+The default configuration in the following. You are encouraged to observe actual usage for a while and tune the `limits` up or down.
+
+```shell
+interceptor:
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2048Mi"
+      ephemeral-storage: 100Mi
+```
+
+The `ephemeral-storage` is for making sure the virtual disk space is not overused.
+
+#### Permissions for the interceptors
+
+For interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interceptoin, but just in case):
+
+```shell
+securityContext:
+      privileged: true
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      hostPID: true
+```
