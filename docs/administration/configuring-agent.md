@@ -183,3 +183,13 @@ By default log levels of all Soveren Agent components is set to `error`. You can
 ```
 
 We don't manage the log levels of Kafka or Prometheus.
+
+## Metrics collection
+
+### Setting the ports for Prometheus
+
+<different compomemts have differently named values?>
+
+### Sending metrics to a local Prometheus
+
+<TODO>
