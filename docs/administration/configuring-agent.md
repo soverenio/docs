@@ -6,14 +6,14 @@ You can change a number of things regarding the Soveren Agent deployment. But do
 
 ## The token
 
-To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`.
-
-Digger is a component of an Agent that actually sends metadata to the Soveren Cloud, this is where the token value is used.
+To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
 
 ```shell
 digger:
   token: <TOKEN>
 ```
+
+Digger is a component of an Agent that actually sends metadata to the Soveren Cloud, this is where the token value is used.
 
 ## Resource limits
 
