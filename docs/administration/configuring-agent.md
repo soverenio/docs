@@ -162,7 +162,9 @@ Here's an example of how you can do this:
 digger:
   cfg:
     kubernetesfilterlist:
-      # filter by kubernetes namespace definitions. Empty list allows everything. You can set it like this:
+      # filter by kubernetes namespace definitions.
+      # Empty list allows everything.
+      # You can set it like this:
       # - namespace: default
       #   action: allow
       # - namespace: kube-system
@@ -170,5 +172,4 @@ digger:
       definitions:
         - namespace: "*"
           action: allow
-
 ```
