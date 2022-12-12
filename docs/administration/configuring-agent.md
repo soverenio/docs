@@ -47,7 +47,7 @@ interceptor:
 
 The `ephemeral-storage` is for making sure that the virtual disk space is not overused.
 
-#### Permissions for the interceptors
+#### Permissions required by the interceptors
 
 For interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
 
@@ -58,3 +58,35 @@ securityContext:
       hostNetwork: true
       hostPID: true
 ```
+
+### Kafka
+
+[Kafka](https://kafka.apache.org/) is the only component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
+
+The default values here are as follows. Under normal circumstances you don;t need to touuch any of them.
+
+```shell
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "650Mi"
+        ephemeral-storage: 5Gi
+      limits:
+        cpu: "200m"
+        memory: "1024Mi"
+        ephemeral-storage: 10Gi
+```
+
+#### Heap usage by Kafka
+
+In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. You don't need to change it but here's what is set as a default:
+
+```shell
+    env:
+    - name: KAFKA_HEAP_OPTS
+      value: -Xmx512m -Xms512m
+```
+
+### Digger
+
+### Detection tool
