@@ -131,7 +131,7 @@ detectionTool:
 
 ### Prometheus
 
-We run a Prometheus agent to collect some metrics to check the basic performance of the Soveren Agent. Values here are pretty generic for most cases.
+We run a Prometheus agent to collect some metrics to check basic performance of the Soveren Agent. Values here are pretty generic for most cases.
 
 ```shell
 prometheusAgent:
@@ -146,6 +146,17 @@ prometheusAgent:
 ```
 
 ## Namespace filtering
+
+Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to monitor. You can do that by explicitly stating the allowed namespaces (the allow list) or by excluding particular ones (the exclude list).
+
+The sytnax is like this:
+
+* if nothing is soecified then all namespaces will be covered;
+* asterisk means _everything_;
+* `action: allow` includes this namespace into monitoring;
+* `action: deny` excludes this namespace from monitoring.
+
+Here's an example of how you can do this:
 
 ```shell
 digger:
