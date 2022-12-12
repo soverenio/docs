@@ -13,7 +13,7 @@ digger:
   token: <TOKEN>
 ```
 
-Digger is a component of an Agent that actually sends metadata to the Soveren Cloud, this is where the token value is used.
+Digger is a component of the Agent that actually sends metadata to the Soveren Cloud, this is where the token value is used.
 
 ## Resource limits
 
