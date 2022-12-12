@@ -2,7 +2,7 @@
 
 We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
+You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
 
 ## The token
 
@@ -127,6 +127,22 @@ detectionTool:
       cpu: "1100m"
       memory: "2304Mi"
       ephemeral-storage: 200Mi
+```
+
+### Prometheus
+
+We run a Prometheus agent to collect some metrics to check the basic performance of the Soveren Agent. Values here are pretty generic for most cases.
+
+```shell
+prometheusAgent:
+  resources: 
+    requests:
+      memory: "192Mi"
+      cpu: "75m"
+    limits:
+      memory: "400Mi"
+      cpu: "75m"
+      ephemeral-storage: 100Mi
 ```
 
 ## Namespace filtering
