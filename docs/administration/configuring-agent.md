@@ -23,6 +23,8 @@ As a rule of thumb, we **_do not_** recommend to change the `requests` values. T
 
 The `limits` however differ widely between Agent's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
 
+Soveren Agent does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` is just for making sure that the virtual disk space is not overused. You can safely get rid of any of them.
+
 ### Interceptors
 
 The interceptors are placed on each node of the cluster as a `DaemonSet`. Their ability to collect the traffic is proportional to how much resources they are allowed to use.
@@ -44,8 +46,6 @@ interceptor:
       memory: "2048Mi"
       ephemeral-storage: 100Mi
 ```
-
-The `ephemeral-storage` is for making sure that the virtual disk space is not overused.
 
 #### Permissions required by the interceptors
 
@@ -88,5 +88,22 @@ In our testing, Kafka was found to be somewhat heap-hungry. That's why we limite
 ```
 
 ### Digger
+
+Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Deection tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
+
+Digger employs all sorts of data sampling algorithms to make sure that all endpoints and assets in the data map are uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
+
+Normally you should not want to change the resource values for Digger but here they are:
+
+```shell
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "100Mi"
+    limits:
+      cpu: "1500m"
+      memory: "768Mi"
+      ephemeral-storage: 100Mi
+```
 
 ### Detection tool
