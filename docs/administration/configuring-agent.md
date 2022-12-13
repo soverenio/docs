@@ -154,7 +154,7 @@ prometheusAgent:
 
 Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to monitor. You can do that by explicitly stating the allowed namespaces (the allow list) or by excluding particular ones (the exclude list).
 
-The sytnax is like this:
+The syntax is like this:
 
 * if nothing is specified then all namespaces will be covered;
 * asterisk means _everything_;
