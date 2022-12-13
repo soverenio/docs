@@ -4,6 +4,12 @@ We use Helm for managing the deployment of Soveren Agents. To customize values s
 
 You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
 
+!!! note "Only use `values.yaml` for the values that you want to override"
+
+    Never use a complete copy of our `values.yaml` from the repository. This leads to a lot of time-consuming errors.
+    
+    Only use `values.yaml` for the values that you want t ochange.
+
 ## The token
 
 To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
@@ -13,7 +19,7 @@ digger:
   token: <TOKEN>
 ```
 
-Digger is a component of the Agent that actually sends metadata to the Soveren Cloud, this is where the token value is used.
+Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection tool gets the token value from Digger.)
 
 ## Resource limits
 
@@ -176,15 +182,15 @@ digger:
 By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
 
 ```shell
-[digger|interceptor|detectionTool]:
+[digger|interceptor|detectionTool|prometheusAgent]:
   cfg:
     log:
       level: error
 ```
 
-(You need to create different config sections for dirrefent components — `digger` or `interceptor` or `detectionTool` — but the syntax is the same.)
+(You need to create different config sections for dirrefent components — `digger` or `interceptor` or `detectionTool` or `prometheusAgent` — but the syntax is the same.)
 
-We don't manage the log levels of Kafka or Prometheus.
+We don't manage the log levels of Kafka, by default it's `info`
 
 ## Metrics collection
 
