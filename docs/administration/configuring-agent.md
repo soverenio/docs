@@ -6,9 +6,8 @@ You can change a number of things regarding the Soveren Agent deployment. You ca
 
 !!! danger "Use `values.yaml` only for the values that you want to override!"
 
-    Never use a complete copy of our `values.yaml` from the repository. This leads to a lot of time-consuming errors.
-    
-    Only use `values.yaml` for the values that you want t ochange.
+    Never use a complete copy of our `values.yaml` from the repository. This leads to a lot of glitches in production that are hard and time consuming to track down.
+    Only use `values.yaml` for the values that you want to change.
 
 ## The token
 
