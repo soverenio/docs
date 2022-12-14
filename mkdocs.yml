@@ -9,6 +9,7 @@ nav:
   - Quick start: getting-started/quick-start.md
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
+      - Configuring the Agent: 'administration/configuring-agent.md'
       - Updating the Agent: 'administration/updating-agent.md'
   - Troubleshooting: 'troubleshooting/troubleshooting.md'
   - Dashboards:
