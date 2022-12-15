@@ -176,6 +176,16 @@ digger:
           action: allow
 ```
 
+The default policy of the Agent is to work with explicitly mentioned namespaces and ignore everything else.
+
+!!! info "Conclude with `allow *` if you set any `deny` definitions"
+    If you've placed some `deny` definitions into the filter list and want everything else to be monitored then please make sure you've ended the list with the following:
+    ```shell
+          - namespace: "*"
+          action: allow
+    ```
+    Otherwise the Agent might end up not monitoring any namespaces if there were only `deny` definitions.
+
 ## Changing the log level
 
 By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
