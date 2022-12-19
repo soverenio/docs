@@ -41,7 +41,7 @@ helm -n soverenio get values soveren-agent | grep -v token
 
 If everything is found to be good with the basic setup but something still looks to be off, you can dig deeper into individual components.
 
-### Deployments and DaemonSet
+### Checking Deployments and DaemonSet
 
 First let's have a look at the whole setup of each component:
 
@@ -57,7 +57,7 @@ Interceptors are a Kubernetes _DaemonSet_, so you need a different command for g
 kubectl -n soverenio describe daemonset -l app.kubernetes.io/component=interceptor
 ```
 
-### Individual pods
+### Checking pods
 
 Having the above, you can now look deeper into individual pods if something looks suspicious about them.
 
