@@ -100,7 +100,7 @@ kubectl -n soverenio describe pod -l app.kubernetes.io/name=soveren-agent
 
 ## Checking the logs
 
-If something certainbly went south with a particular component, it is worth checking its logs.
+If something certainly went south with a particular component, it is worth checking its logs.
 
 This command gives you the logs by component:
 ```shell
@@ -109,7 +109,7 @@ kubectl -n soverenio logs -l app.kubernetes.io/component=[digger|interceptor|kaf
 
 You need to run this command separately for `digger`, `interceptor`, `kafka`, `prometheus-agent` and `detection-tool`. And  `soverenio` is the namespace to which you've [deployed](../../getting-started/quick-start/) the Agent.
 
-You can dig into individual pod's logs e.g. for the interceptors:
+You can dig into individual pod's logs e.g. for interceptors:
 
 ```shell
 kubectl -n soverenio get pod -l app.kubernetes.io/component=interceptor
@@ -123,4 +123,4 @@ kubectl -n soverenio logs <POD_NAME>
 
 Where `POD_NAME` if the name of a suspicious pod from the output of the command above.
 
-To make the logs more verbose you might need to [raise the log level](../../configuring-agent/#changing-the-log-level) of a particular component.
+To make the logs more verbose you might need to [raise the log level](../configuring-agent/#changing-the-log-level) of a particular component.
