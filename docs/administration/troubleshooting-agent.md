@@ -18,7 +18,7 @@ Then it makes sense to verify that all Soveren Agent components have been deploy
 helm -n soverenio list
 ```
 
-Here `soverenio` is the namespace to which you've [deployed](../getting-started/) the Agent.
+Here `soverenio` is the namespace to which you've [deployed](../../getting-started/) the Agent.
 
 Your are looking for the following:
 
