@@ -34,8 +34,8 @@ Further, you can check that all custom values that you've specified in your `val
 helm -n soverenio get values soveren-agent | grep -v token
 ```
 
-## Verifying individual components
-
 !!! note "The output of those three commands provide a very basic consistency check that all's good with you Soveren Agent setup"
+
+## Verifying individual components
 
 ## Checking the logs
