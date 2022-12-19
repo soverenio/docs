@@ -39,7 +39,7 @@ helm -n soverenio get values soveren-agent | grep -v token
 
 ## Verifying individual components
 
-If everything is found to be good with the basic setup but something still looks to be off, you can dig deeper into individual components.
+If everything is found to be good with the basic setup but something still looks off, you can dig deeper into individual components.
 
 ### Checking Deployments and DaemonSet
 
