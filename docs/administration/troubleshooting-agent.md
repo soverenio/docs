@@ -61,7 +61,7 @@ kubectl -n soverenio describe daemonset -l app.kubernetes.io/component=intercept
 
 #### Permissions required by interceptors
 
-If here you find that something's wrong specifically woith the interceptors, e.g. they are failing to get to the running mode, then make sure they are allowed the necessary permissions:
+If here you find that something's wrong specifically with the interceptors, e.g. they are failing to get to the running mode, then make sure they are allowed the necessary permissions:
 
 ```shell
 kubectl -n soverenio get daemonset -l app.kubernetes.io/component=interceptor -o yaml
@@ -77,7 +77,8 @@ securityContext:
       hostPID: true
 ```
 
-Since interceptors listen to the host's virtual interfaces, the containers they run in require such permission. If they are not given then interceptors will fail to acquire any traffic.
+!!! warning "make sure the security context is set right"
+    Since interceptors listen to the host's virtual interfaces, the containers they run in require such permissions. Otherwise interceptors will fail to acquire any traffic.
 
 ### Checking pods
 
