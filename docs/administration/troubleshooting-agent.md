@@ -59,9 +59,29 @@ Interceptors are a Kubernetes _DaemonSet_, so you need a different command:
 kubectl -n soverenio describe daemonset -l app.kubernetes.io/component=interceptor
 ```
 
+#### Permissions required by interceptors
+
+If here you find that something's wrong specifically woith the interceptors, e.g. they are failing to get to the running mode, then make sure they are allowed the necessary permissions:
+
+```shell
+kubectl -n soverenio get daemonset -l app.kubernetes.io/component=interceptor -o yaml
+```
+
+What you are looking for is `securityContext`, it should be the following:
+
+```shell
+securityContext:
+      privileged: true
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      hostPID: true
+```
+
+Since interceptors listen to the host's virtual interfaces, the containers they run in require such permission. If they are not given then interceptors will fail to acquire any traffic.
+
 ### Checking pods
 
-Having the above, you can now look deeper into individual pods if something looks suspicious about them.
+Having the above, you can now look deeper into pods if something looks suspicious about any of the components.
 
 Pods by component:
 
