@@ -35,7 +35,7 @@ helm -n soverenio get values soveren-agent | grep -v token
 ```
 
 !!! info "Those commands provide a very basic consistency check that all's good with you Soveren Agent setup"
-    Please share the output of those commands in the beginning of any new conversation with out customer success team.
+    Please share the output of those commands in the beginning of any new conversation with our customer success team.
 
 ## Verifying individual components
 
@@ -121,6 +121,6 @@ This gives you the list of `POD_NAMES` the interceptors are running in. And then
 kubectl -n soverenio logs <POD_NAME>
 ```
 
-Where `POD_NAME` if the name of a suspicious pod from the output of the command above.
+Where `POD_NAME` is the name of a suspicious pod from the output of the command above.
 
 To make the logs more verbose you might need to [raise the log level](../configuring-agent/#changing-the-log-level) of a particular component.
