@@ -51,7 +51,9 @@ kubectl -n soverenio describe deployment -l app.kubernetes.io/component=[digger|
 
 Please run the above command several times: separately for `digger`, `kafka`, `prometheus-agent` and `detection-tool`. All those components are _Deployments_ in Kubernetes terms, and you'll get the detailed info on all of them.
 
-Interceptors are a Kubernetes _DaemonSet_, so you need a different command for getting their specifics:
+Again, `soverenio` is the namespace to which you've [deployed](../../getting-started/quick-start/) the Agent.
+
+Interceptors are a Kubernetes _DaemonSet_, so you need a different command:
 
 ```shell
 kubectl -n soverenio describe daemonset -l app.kubernetes.io/component=interceptor
