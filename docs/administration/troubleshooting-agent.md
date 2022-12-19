@@ -12,11 +12,13 @@ helm search repo soveren
 
 You can verify the output of this command with our support team.
 
-Then, it makes sense to verify that all Soveren Agent components have been deployed:
+Then it makes sense to verify that all Soveren Agent components have been deployed:
 
 ```shell
 helm -n soverenio list
 ```
+
+Here `soverenio` is the namespace to which you've [deployed](../getting-started/) the Agent.
 
 Your are looking for the following:
 
