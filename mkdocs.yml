@@ -11,7 +11,7 @@ nav:
       - Managing Agents: 'administration/managing-agents.md'
       - Configuring the Agent: 'administration/configuring-agent.md'
       - Updating the Agent: 'administration/updating-agent.md'
-  - Troubleshooting: 'troubleshooting/troubleshooting.md'
+      - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
   - Dashboards:
       - Sensitive data model: 'dashboards/data-model.md'
 
