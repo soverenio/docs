@@ -9,8 +9,9 @@ nav:
   - Quick start: getting-started/quick-start.md
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
-      - Updating Soveren: 'administration/updating-soveren.md'
-  - Troubleshooting: 'troubleshooting/troubleshooting.md'
+      - Configuring the Agent: 'administration/configuring-agent.md'
+      - Updating the Agent: 'administration/updating-agent.md'
+      - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
   - Dashboards:
       - Sensitive data model: 'dashboards/data-model.md'
 
