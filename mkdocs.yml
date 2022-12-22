@@ -12,8 +12,8 @@ nav:
       - Configuring the Agent: 'administration/configuring-agent.md'
       - Updating the Agent: 'administration/updating-agent.md'
       - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
-  - Dashboards:
-      - Sensitive data model: 'dashboards/data-model.md'
+  - User guide:
+      - Sensitive data model: 'user-guide/data-model.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
