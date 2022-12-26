@@ -1,6 +1,8 @@
 # Overview
 
-Soveren provides a number of dashboards in its [cloud application](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them:
+## Dashboards summary
+
+Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them:
 
 * Overview which show last events, event statistics (how many of them there were, discovered data types, most sensitive assets and most common data type combinations
 
