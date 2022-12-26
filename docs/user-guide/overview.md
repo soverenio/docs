@@ -4,21 +4,33 @@
 
 Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them:
 
-* **Overview** which shows last events, how many events there were, discovered data types, most sensitive assets and most common data type combinations
+### Overview
 
-* **Data map** ...
+The [Overview](https://app.soveren.io/overview) shows last events, how many events there were, discovered data types, most sensitive assets and most common data type combinations
 
-* **Assets** ...
+### Assets
 
-* **Events** ...
+[Assets](https://app.soveren.io/data-inventory/) are
 
-* **Data types** ...
+### Data map
 
-* **Violations** ...
+The [Data map](https://app.soveren.io/data-map) provides a view of your landscape
+
+### Events
+
+[Events](https://app.soveren.io/events) are
+
+### Data types
+
+[Data types](https://app.soveren.io/pii-types) are
+
+### Violations
+
+Violations are coming soon. They are
 
 ## How Soveren works with your data
 
-* Soveren Agent does not send any personal data outside your environment. Everything that you see on the dashboards is just metadata about what the Agent observed in your environment. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
+* Soveren Agent does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Agent observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
 
 * In the metadata that we show on the dashboards, we mask textual and numerical and complex data types so that you can see what sort of data was actually there from the form of it. This masking is done in your perimeter and sent to the Soveren Cloud as part of the metadata.
 
