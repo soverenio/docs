@@ -60,7 +60,7 @@ You can also dive into individual assets to check their specific data flows and 
 
 An axample of the events view:
 
-![Events](../../img/user-guide/events-02.png "Events")
+![Events](../../img/user-guide/events-01.png "Events")
 
 ### Data types
 
