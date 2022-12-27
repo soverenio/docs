@@ -8,9 +8,9 @@ Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them
 
 The [Overview](https://app.soveren.io/overview) provides you with [a 7-day summary stats](#how-soveren-works-with-your-data) about what has happened in your infrastructure. It shows last important events, how many events there were, discovered data types, the most sensitive assets and the most common data type combinations.
 
-The numbers show how many events or assets or endpoints and such are there currently, and also there are changes with respect to the previous period (Soveren works in [7-day periods](#how-soveren-works-with-your-data), old data gets washed away as the time passes).
+The numbers show how many events or assets or endpoints and such are there currently, and also there are changes with respect to the [previous period7-day periods](#how-soveren-works-with-your-data).
 
-The sensitivity of each found data type is reflected with color: red means very sensitive, yellow means not so much, green means little to worry about _unless_ coupled with some other data types leading to increased sensitivity of a combination.
+The sensitivity of each found data type is shown with color. Red means pretty sensitive if disclosed, yellow means not so much, green means little to worry about _unless_ combined with some other data types leading to increased sensitivity of a combination.
 
 ![Overview: summary](../../img/user-guide/overview-01.png "Overview: summary")
 ![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
