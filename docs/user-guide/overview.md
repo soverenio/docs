@@ -2,7 +2,7 @@
 
 ## Dashboards summary
 
-Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them. Pictures below are just to convey a general idea, they are constantly updated along with all the product enhancements that we are doing.
+Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them. Pictures below are just to convey the general idea, they are constantly updated along with all the product enhancements that we are doing.
 
 ### Overview
 
