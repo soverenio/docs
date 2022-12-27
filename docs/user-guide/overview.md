@@ -44,7 +44,7 @@ You can further dive into individual assets to check the data flows and endpoint
 
 ### Data map
 
-[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Agent are shown together. those assets are split into the internal and external parts and connected by the flows.
+[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Agent are shown together. Those assets are split into the internal and external parts and connected by the flows.
 
 ![Data map](../../img/user-guide/data-map-01.png "Data map")
 
