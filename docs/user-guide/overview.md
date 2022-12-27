@@ -6,7 +6,10 @@ Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them
 
 ### Overview
 
-The [Overview](https://app.soveren.io/overview) shows last events, how many events there were, discovered data types, most sensitive assets and most common data type combinations
+The [Overview](https://app.soveren.io/overview) provides you with a 7-day summary stats on what has happened in your infrastructure. It shows last important events, how many events there were, discovered data types, the most sensitive assets and the most common data type combinations.
+
+![Overview: summary](../../img/user-guide/overview-01.png "Overview: summary")
+![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
 
 ### Assets
 
