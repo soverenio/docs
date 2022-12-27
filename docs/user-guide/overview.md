@@ -64,7 +64,7 @@ An axample of the events view:
 
 ### Data types
 
-[Data types](https://app.soveren.io/pii-types) is a summary of sensitive types that the Soveren Agent has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
+[Data types](https://app.soveren.io/pii-types) are a summary of sensitive types that the Soveren Agent has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
 
 An example of the data types view:
 
@@ -72,7 +72,7 @@ An example of the data types view:
 
 ### Violations
 
-Violations are coming soon. They are
+This part of the product is coming really soon, stay tuned!
 
 ## How Soveren works with your data
 
