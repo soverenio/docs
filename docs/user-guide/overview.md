@@ -56,7 +56,11 @@ You can also dive into individual assets to check their specific data flows and 
 
 ### Events
 
-[Events](https://app.soveren.io/events) are
+[Events](https://app.soveren.io/events) are literally some occurrences that Soveren has found and deemed as important. They may or may not lead to some violations of pre-defined rules regarding the sensitive data exchange (more on that later). An example of an event would be the first evidence of a sensitive type found in a particular data flow.
+
+An axample of the events view:
+
+![Events](../../img/user-guide/events-02.png "Events")
 
 ### Data types
 
