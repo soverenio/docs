@@ -2,11 +2,15 @@
 
 ## Dashboards summary
 
-Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them:
+Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them. Pictures below are just to convey a general idea, they are constantly updated along with all the product enhancements that we are doing.
 
 ### Overview
 
-The [Overview](https://app.soveren.io/overview) provides you with a 7-day summary stats on what has happened in your infrastructure. It shows last important events, how many events there were, discovered data types, the most sensitive assets and the most common data type combinations.
+The [Overview](https://app.soveren.io/overview) provides you with [a 7-day summary stats](#how-soveren-works-with-your-data) about what has happened in your infrastructure. It shows last important events, how many events there were, discovered data types, the most sensitive assets and the most common data type combinations.
+
+The numbers show how many events or assets or endpoints and such are there currently, and also there are changes with respect to the previous period (Soveren works in [7-day periods](#how-soveren-works-with-your-data), old data gets washed away as the time passes).
+
+The sensitivity of each found data type is reflected with color: red means very sensitive, yellow means not so much, green means little to worry about _unless_ coupled with some other data types leading to increased sensitivity of a combination.
 
 ![Overview: summary](../../img/user-guide/overview-01.png "Overview: summary")
 ![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
