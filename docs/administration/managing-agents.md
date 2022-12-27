@@ -4,7 +4,7 @@ You need one Agent per each of your Kubernetes clusters that you want Soveren to
 
 Each Agent is identified by the token. You can browse and manage Agents and their tokens on the [agents page](https://app.soveren.io/agents).
 
-![Agents](../../img/dashboards/agents.png "Agents")
+![Agents](../../img/administration/agents.png "Agents")
 
 ## Create an Agent
 
