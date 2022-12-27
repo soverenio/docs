@@ -72,7 +72,7 @@ Violations are coming soon. They are
 
 ## How Soveren works with your data
 
-* Soveren Agent does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Agent observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
+* Soveren Agent does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Agent has observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
 
 * In the metadata that we show on the dashboards, we mask textual and numerical and complex data types so that you can see what sort of data was actually there from the form of it. This masking is done in your perimeter and sent to the Soveren Cloud as part of the metadata.
 
