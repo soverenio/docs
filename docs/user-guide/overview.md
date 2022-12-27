@@ -48,7 +48,7 @@ You can further dive into individual assets to check the data flows and endpoint
 
 ![Data map](../../img/user-guide/data-map-01.png "Data map")
 
-There are a number of filtering options and toggles on the map which help making focused views on different parts of the infrastructure. There is also a visual notion of sensitive data types that have been found in the assets and in the flows.
+There are a number of filtering options and toggles on the map which help making focused views into different parts of the infrastructure. There is also a visual notion of sensitive data types that have been found in the assets and in the flows.
 
 ![Flow on the data map](../../img/user-guide/data-map-02.png "Flow on the data map")
 
