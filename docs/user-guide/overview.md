@@ -17,7 +17,25 @@ The sensitivity of each found data type is shown with color. Red means pretty se
 
 ### Assets
 
-[Assets](https://app.soveren.io/data-inventory/) are
+[Assets](https://app.soveren.io/data-inventory/) are places of data concentration that Soveren discovers in your infrastructure while looking into the traffic. They are communicating to each other through data flows which may or may not contain some sensitive data in them.
+
+There are several types of assets: internal and external ones, and endpoints.
+
+Internal assets are found within your Kubernetes cluster, whereas external ones are located outside of it. Example of an external asset would be some third-party data provider or consumer that you communicate with under some data processing agreement.
+
+Endpoints are essentially the APIs that are exposed or consumed by some other assets. They are points to which other assets connect and send or get some data, including sentitive data.
+
+Example of an internal assets view:
+
+![Internal assets](../../img/user-guide/assets-01.png "Internal assets")
+
+Example of an external assets view:
+
+![External assets](../../img/user-guide/assets-02.png "External assets")
+
+Example of an endpoints view:
+
+![Endpoints](../../img/user-guide/assets-03.png "Endpoints")
 
 ### Data map
 
