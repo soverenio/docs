@@ -21,19 +21,19 @@ The sensitivity of each found data type is shown with color. Red means pretty se
 
 There are several types of assets: internal and external ones, and endpoints. Internal assets are found within your Kubernetes cluster, whereas external ones are located outside of it.
 
-Example of an internal assets view:
+An example of the internal assets view:
 
 ![Internal assets](../../img/user-guide/assets-01.png "Internal assets")
 
-Example of an external asset would be some third-party data provider or consumer that you communicate with under some data processing agreement. Or they can be robots which are scanning your resources from time to time (e.g. search engine crawlers), or they can be external users looking into your apps from their browsers or (mobile) applications.
+An example of an external asset would be some third-party data provider or consumer that you communicate with under some data processing agreement. Or they can be robots which are scanning your resources from time to time (e.g. search engine crawlers), or they can be external users looking into your apps from their browsers or (mobile) applications.
 
-Example of an external assets view:
+An example of the external assets view:
 
 ![External assets](../../img/user-guide/assets-02.png "External assets")
 
 Endpoints are essentially the APIs that are exposed or consumed by some other assets. They are points to which other assets connect and send or get some data, including sentitive data.
 
-Example of an endpoints view:
+An example of the endpoints view:
 
 ![Endpoints](../../img/user-guide/assets-03.png "Endpoints")
 
