@@ -37,9 +37,22 @@ Example of an endpoints view:
 
 ![Endpoints](../../img/user-guide/assets-03.png "Endpoints")
 
+You can further dive into individual assets to check the data flows and endpoints associated with them:
+
+![Asset flows](../../img/user-guide/assets-04.png "Asset flows")
+![Asset endpoints](../../img/user-guide/assets-05.png "Asset endpoints")
+
 ### Data map
 
-The [Data map](https://app.soveren.io/data-map) provides a view of your landscape
+[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Agent are shown together. those assets are split into the internal and external parts and connected by the flows.
+
+![Data map](../../img/user-guide/data-map-01.png "Data map")
+
+There are a number of filtering options and toggles on the map which help making focused views on different parts of the infrastructure. There is also a visual notion of sensitive data types that have been found in the assets and in the flows.
+
+![Flow on the data map](../../img/user-guide/data-map-02.png "Flow on the data map")
+
+You can also dive into individual assets to check their specific data flows and endpoints.
 
 ### Events
 
