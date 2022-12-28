@@ -6,6 +6,8 @@ Soveren discovers services in a Kubernetes cluster, parses the traffic flowing b
 
 Preconfigured dashboards provide a view into the discovered data and risks related to it, so that engineering and security leaders can make informed security and privacy decisions.
 
+Below is an outline of how Soreven works. You can find mode details in the [architecture section](quick-start/architecture/).
+
 ## How Soveren works
 
 Soveren has a hybrid architecture:
