@@ -35,9 +35,9 @@ Then, the Interceptors should know which interfaces to read. For that they are g
 
 Interceptors then read data from the virtual interfaces available to them in the network namespace of the host. _**This reading happens in a non-blocking fashion**_. If it so happens that the host is loaded with higher priority tasks, then the OS may deprive the Interceptor of CPU and memory resources, which in turn may result in partial coverage of the traffic by the Interceptor.
 
-The K8s API also provides naming of pods and other metadata to the Interceptors. As a result, later on in the Soveren Cloud the assets are called by their DNS/K8s names instead of IP addresses, which makes data that the Soveren app displays more accessible.
+The K8s API also provides naming of pods and other metadata to the Interceptors. As a result, later on in the Soveren Cloud the assets are called by their DNS/K8s names instead of IP addresses, which makes data that the [Soveren app](https://app.soveren.io/) displays more accessible.
 
-#### Permissions required by the interceptors
+#### Permissions required by the Interceptors
 
 For Interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
 
