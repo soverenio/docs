@@ -27,6 +27,8 @@ Let’s look in more detail into what those components do and how they talk to e
 
 ## Traffic interception
 
+![Traffic interception](../../img/getting-started/architecture-01.png "Traffic interception")
+
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Normally they are present as pods on each worker node of the cluster.
 
 Pods with the Interceptors have `hostNetwork` set to `true` (more on that [below](#permissions-required-by-the-interceptors)). That gives them access to the underlying host, that is to the virtual machine they are running on. Given that, the Interceptors read data from network namespaces of the host, leveraging the [PCAP library](https://www.tcpdump.org/) for that.
@@ -51,6 +53,8 @@ securityContext:
 
 
 ## The end-to-end flow
+
+![The end-to-end flow of the Soveren Agent](../../img/getting-started/architecture-02.png "The end-to-end flow of the Soveren Agent")
 
 The flow of the Soveren Agent looks like this:
 
