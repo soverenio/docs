@@ -31,7 +31,9 @@ Installing Soveren is extremely simple:
    You can use any other valid release name instead of `soveren-agent`.
 
 
-7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now.
+7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../user-guide/overview/).
+
+For more advanced configuration options please take a look at the [configuration page](../administration/configuring-agent/).
 
 ## What happens under the hood
 
