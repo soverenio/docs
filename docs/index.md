@@ -6,6 +6,8 @@ Soveren discovers services in a Kubernetes cluster, parses the traffic flowing b
 
 Preconfigured dashboards provide a view into the discovered data and risks related to it, so that engineering and security leaders can make informed security and privacy decisions.
 
+Below is an outline of how Soreven works. You can find mode details in the [architecture section](getting-started/architecture/).
+
 ## How Soveren works
 
 Soveren has a hybrid architecture:
@@ -17,10 +19,10 @@ Soveren has a hybrid architecture:
 
 Soveren Agent is [deployed](getting-started/quick-start/) on premise and [configured](administration/configuring-agent/) to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. The Agent processes them asynchronously and gathers metadata about PII from the payloads.
 
-The Soveren Agent consists of several parts:
+Soveren Agent consists of several parts:
 
-* **Interceptors** which are distributed to all worker nodes of the cluster through the DaemonSet. They capture the traffic from virtual interfaces of the pods with the help of a packet capturing mechanism;
-* **Messaging system** which receives data from the Interceptors. Consists of a [Kafka](https://kafka.apache.org/) instance (stores request/response data) and Digger (passes data to the detection and further to the Soveren Cloud)
+* **Interceptors** which are distributed to all worker nodes of the cluster through the [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). They capture the traffic from virtual interfaces of the pods with the help of a [packet capturing](https://www.tcpdump.org/) mechanism;
+* **Messaging system** which receives data from the Interceptors. Consists of a [Kafka](https://kafka.apache.org/) instance which stores request/response data, and Digger which passes data to the detection and further to the Soveren Cloud;
 * **Sensitive Data Detector** (or simply Detector) which discovers data types and their sensitivity with the help of proprietary machine learning algorithms.
 
 Metadata about the requests and responses is sent to Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload values is included in the metadata.
