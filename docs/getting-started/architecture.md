@@ -29,7 +29,7 @@ Let’s look in more detail into what those components do and how they talk to e
 
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Normally they are present as pods on each worker node of the cluster.
 
-Pods with the Interceptors have `hostNetwork` set to `true` (more on that below). That gives them access to the underlying host, that is to the virtual machine they are running on. Given that, the Interceptors read data from network namespaces of the host, leveraging the [PCAP library](https://www.tcpdump.org/) for that.
+Pods with the Interceptors have `hostNetwork` set to `true` (more on that [below](#permissions-required-by-the-interceptors)). That gives them access to the underlying host, that is to the virtual machine they are running on. Given that, the Interceptors read data from network namespaces of the host, leveraging the [PCAP library](https://www.tcpdump.org/) for that.
 
 Then, the Interceptors should know which interfaces to read. For that they are given the list of relevant IP addresses that should be present on their host, they could then match them with the interfaces that they actually observe on the host. Digger — a part of the messaging system — leverages the Kubernetes (K8s) API to obtain the addressing information.
 
