@@ -19,7 +19,7 @@ Soveren Agent is [deployed](getting-started/quick-start/) on premise and [config
 
 Soveren Agent consists of several parts:
 
-* **Interceptors** which are distributed to all worker nodes of the cluster through the DaemonSet. They capture the traffic from virtual interfaces of the pods with the help of a packet capturing mechanism;
+* **Interceptors** which are distributed to all worker nodes of the cluster through the [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). They capture the traffic from virtual interfaces of the pods with the help of a packet capturing mechanism;
 * **Messaging system** which receives data from the Interceptors. Consists of a [Kafka](https://kafka.apache.org/) instance (stores request/response data) and Digger (passes data to the detection and further to the Soveren Cloud)
 * **Sensitive Data Detector** (or simply Detector) which discovers data types and their sensitivity with the help of proprietary machine learning algorithms.
 
