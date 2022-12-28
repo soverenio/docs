@@ -32,7 +32,7 @@ Soveren Agent does not persist any data, it is completely normal if any componen
 
 ### Interceptors
 
-The interceptors are placed on each node of the cluster as a `DaemonSet`. Their ability to collect the traffic is proportional to how much resources they are allowed to use.
+The interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how much resources they are allowed to use.
 
 Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs. Thus the memory they use is directly proportional to how large those `JSON`s are.
 
