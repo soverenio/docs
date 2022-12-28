@@ -1,6 +1,6 @@
 # Introduction
 
-Soveren discovers sensitive information, such as PII (personally identifiable information, or just personal data), PHI (health information), PCI (card data) or developers secrets, in structured API flows.
+Soveren discovers [sensitive information](user-guide/data-model/), such as PII (personally identifiable information, or just personal data), PHI (health information), PCI (card data) or developers secrets, in structured API flows.
 
 Soveren discovers services in a Kubernetes cluster, parses the traffic flowing between them and into or out of the cluster. We identify data types present in those flows, and grade their sensitivity according to consequences that might arise if that data was leaked or used inappropriately.
 
