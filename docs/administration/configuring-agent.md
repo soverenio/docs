@@ -32,7 +32,7 @@ Soveren Agent does not persist any data, it is completely normal if any componen
 
 ### Interceptors
 
-The interceptors are placed on each node of the cluster as a `DaemonSet`. Their ability to collect the traffic is proportional to how much resources they are allowed to use.
+The interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how much resources they are allowed to use.
 
 Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs. Thus the memory they use is directly proportional to how large those `JSON`s are.
 
@@ -50,18 +50,6 @@ interceptor:
       cpu: "1000m"
       memory: "2048Mi"
       ephemeral-storage: 100Mi
-```
-
-#### Permissions required by the interceptors
-
-For interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
-
-```shell
-securityContext:
-      privileged: true
-      dnsPolicy: ClusterFirstWithHostNet
-      hostNetwork: true
-      hostPID: true
 ```
 
 ### Kafka
@@ -167,14 +155,16 @@ Here's an example of how you can do this:
 digger:
   cfg:
     kubernetesfilterlist:
-      # - namespace: default
-      #   action: allow
-      # - namespace: kube-system
-      #   action: deny
       definitions:
+        # - namespace: default
+        #   action: allow
+        # - namespace: kube-system
+        #   action: deny
         - namespace: "*"
           action: allow
 ```
+
+When defining names you can use wildcards and globs like `foo*`, `/dev/sd?`, `devspace-[1-9]` etc as defined in the [Go path package](https://pkg.go.dev/path#Match)
 
 The default policy of the Agent is to work with explicitly mentioned namespaces and ignore everything else.
 
