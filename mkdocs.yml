@@ -7,6 +7,7 @@ site_url: https://docs.soveren.io/en/stable/
 nav:
   - Introduction: index.md
   - Quick start: getting-started/quick-start.md
+  - Architecture: getting-started/architecture.md
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
       - Configuring the Agent: 'administration/configuring-agent.md'
