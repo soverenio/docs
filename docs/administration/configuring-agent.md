@@ -52,18 +52,6 @@ interceptor:
       ephemeral-storage: 100Mi
 ```
 
-#### Permissions required by the interceptors
-
-For interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
-
-```shell
-securityContext:
-      privileged: true
-      dnsPolicy: ClusterFirstWithHostNet
-      hostNetwork: true
-      hostPID: true
-```
-
 ### Kafka
 
 [Kafka](https://kafka.apache.org/) is the only component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
