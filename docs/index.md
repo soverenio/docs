@@ -15,7 +15,7 @@ Soveren has a hybrid architecture:
 
 ### Soveren Agent
 
-Soveren Agent is [deployed]((getting-started/quick-start/)) on premise and [configured](administration/configuring-agent/) to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. The Agent processes them asynchronously and gathers metadata about PII from the payloads.
+Soveren Agent is [deployed](getting-started/quick-start/) on premise and [configured](administration/configuring-agent/) to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. The Agent processes them asynchronously and gathers metadata about PII from the payloads.
 
 The Soveren Agent consists of several parts:
 
