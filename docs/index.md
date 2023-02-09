@@ -1,32 +1,45 @@
 # Introduction
 
-Soveren discovers [sensitive information](user-guide/data-model/), such as PII (personally identifiable information, or just personal data), PHI (health information), PCI (card data) or developers secrets, in structured API flows.
+## Problem that we are solving
 
-Soveren discovers services in a Kubernetes cluster, parses the traffic flowing between them and into or out of the cluster. We identify data types present in those flows, and grade their sensitivity according to consequences that might arise if that data was leaked or used inappropriately.
+Sensitive data is painstakingly hard to control and protect. Businesses process an ever-expanding set of data, subject to complex security, privacy, and compliance requirements, and spread across diverse application environments. All the while, cyberattacks are on the rise.
 
-Preconfigured dashboards provide a view into the discovered data and risks related to it, so that engineering and security leaders can make informed security and privacy decisions.
+Even the best manual controls and security tools routinely overlook critical risks, leading to costly data breaches and regulatory fines.
 
-Below is an outline of how Soreven works. You can find mode details in the [architecture section](getting-started/architecture/).
+## What Soveren offers
+
+Soveren makes it easy for modern security teams to regain control over sensitive data:
+
+* Gain complete data intelligence across your application environments
+* Automate policy enforcement and find critical changes and anomalies in data flows
+* Mitigate data risks early on to prevent them from becoming costly incidents
+
+Soveren’s proprietary technology scans Kubernetes clusters in real time to autopilot critical (but tedious) data protection tasks, such as:
+
+* Discovery and classification of [sensitive data](user-guide/data-model/)
+* Detection of sensitive data in non-production environments
+* Detection of PCI data outside of the PCI DSS perimeter
+* Control of sensitive data sharing with 3rd parties
+
+The resulting benefits include automated data discovery and classification, continuously enforced security and compliance policies, and reduced probability of data breaches and fines.
+
+## Why Soveren
+
+Soveren takes 15 minutes to deploy and provides value immediately (not in days or weeks!), with a set of out-of-the-box policies and baseline rules. It automatically routes issues to the right teams in Jira and Slack without slowing down your operations.
+
+Soveren replaces costly and unreliable manual controls. It automates monitoring of application environments to control sensitive data flows (including 3rd-party data transfers) and detect security, privacy, and compliance risks in real time.
+
+Unlike other security tools, Soveren requires zero configuration, has low total cost of ownership, and covers all critical security, privacy, and compliance needs at once. 
+
 
 ## How Soveren works
 
-Soveren has a hybrid architecture:
+Soveren offers a native Kubernetes integration with zero impact on latency and reliability. Our Helm-based deployment is typically done in 15 minutes and supports cloud, on-prem, and hybrid infrastructures. Sensitive data always stays inside your environment.
 
-* Soveren Agent is [installed](getting-started/quick-start/) in your perimeter. It intercepts and parses structured HTTP JSON traffic, gathers metadata about sensitive data types it dicsovers, and sends the metadata to the Soveren Cloud.
-* [Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It provides dashboards to gain visibility into sensitive data flows, as well as summary statistics and metrics.
+Once deployed, Soveren’s technology works autonomously in the background. It handles all the critical aspects of sensitive data protection, so you don’t have to. Soveren:
 
-### Soveren Agent
+* Classifies [45+ country-specific data types in 20+ languages](user-guide/data-model/) with 95% detection accuracy, out-of-the-box (powered by proprietary ML algorithms)
+* Visualizes Kubernetes environments so security teams can monitor and analyze data flows in real time (without relying on “opinions”)
+* Maintains automated control of security guidelines, privacy regulations, and compliance standards (e.g., PCI DSS, GDPR, CPRA, NIST)
 
-Soveren Agent is [deployed](getting-started/quick-start/) on premise and [configured](administration/configuring-agent/) to analyze the relevant part of inter-service HTTP API requests and responses that have the `application/json` content type. The Agent processes them asynchronously and gathers metadata about PII from the payloads.
-
-Soveren Agent consists of several parts:
-
-* **Interceptors** which are distributed to all worker nodes of the cluster through the [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). They capture the traffic from virtual interfaces of the pods with the help of a [packet capturing](https://www.tcpdump.org/) mechanism;
-* **Messaging system** which receives data from the Interceptors. Consists of a [Kafka](https://kafka.apache.org/) instance which stores request/response data, and Digger which passes data to the detection and further to the Soveren Cloud;
-* **Sensitive Data Detector** (or simply Detector) which discovers data types and their sensitivity with the help of proprietary machine learning algorithms.
-
-Metadata about the requests and responses is sent to Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload values is included in the metadata.
-
-### Soveren Cloud
-
-[Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It offers [a set of dashboards](user-guide/overview/) that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
+Take a look at the [architecture section](getting-started/architecture/) for more details on how Soveren works under the hood.
