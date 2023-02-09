@@ -4,7 +4,9 @@ Soveren consists of two major parts: Soveren Agent which you [install](../quick-
 
 Since Soveren Agent probably requires a lot more attention from your part than Soveren Cloud, here we outline in more detail how the whole thing works with the focus on Agent.
 
-## Soveren Agent: the overview
+## Soveren Agent
+
+### The overview
 
 Soveren Agent consists of several parts:
 
@@ -25,7 +27,7 @@ So speaking in Kubernetes terms, there are the following pods:
 
 Let’s look in more detail into what those components do and how they talk to each other.
 
-## Traffic interception
+### Traffic interception
 
 ![Traffic interception](../../img/getting-started/architecture-01.png "Traffic interception")
 
@@ -52,7 +54,7 @@ securityContext:
 ```
 
 
-## The end-to-end flow
+### The end-to-end flow
 
 ![The end-to-end flow of the Soveren Agent](../../img/getting-started/architecture-02.png "The end-to-end flow of the Soveren Agent")
 
@@ -69,3 +71,7 @@ The flow of the Soveren Agent looks like this:
 5. Digger reads the request/response pair from the topic and decides whether it’s subject to the detailed analysis of present data types and their sensitivity. (Intelligent sampling may be involved here if the load becomes really high). If yes, Digger sends the pair to the Detection-tool and gets back the result.
 
 6. Digger forms a metadata package describing the processed request/response pair and sends it to the Soveren Cloud. This connection uses gRPC and protobuf.
+
+## Soveren Cloud
+
+[Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It offers [a set of dashboards](../user-guide/overview/) that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
