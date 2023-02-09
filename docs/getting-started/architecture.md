@@ -2,7 +2,7 @@
 
 Soveren consists of two major parts:
 
-* Soveren Agent is [installed](../../getting-started/quick-start/) in your perimeter. It intercepts and parses structured HTTP JSON traffic, gathers metadata about sensitive data types it dicsovers, and sends the metadata to the Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload values is included in the metadata.
+* Soveren Agent that you [deploy](../../getting-started/quick-start/) in your Kubernetes cluster. It intercepts and parses structured HTTP JSON traffic, gathers metadata about sensitive data types it dicsovers, and sends the metadata to the Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. No part of the actual payload values is included in the metadata.
 * [Soveren Cloud](https://app.soveren.io/) is hostes and managed by Soveren. It provides [dashboards](../../user-guide/overview/) to gain visibility into sensitive data flows, as well as summary statistics and metrics.
 
 ## Soveren Agent
