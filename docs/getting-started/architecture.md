@@ -74,4 +74,4 @@ The flow of the Soveren Agent looks like this:
 
 ## Soveren Cloud
 
-[Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It offers [a set of dashboards](../user-guide/overview/) that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
+[Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It offers [a set of dashboards](../../user-guide/overview/) that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
