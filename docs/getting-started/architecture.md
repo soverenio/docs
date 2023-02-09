@@ -9,7 +9,7 @@ Soveren has a hybrid architecture:
 
 ## Soveren Agent
 
-### Overview
+### Architecture
 
 Soveren Agent consists of several parts:
 
@@ -29,6 +29,24 @@ So speaking in Kubernetes terms, there are the following pods:
 * _Detection-tool_ as Detector, one per deployment.
 
 Let’s look in more detail into what those components do and how they talk to each other.
+
+### The end-to-end flow
+
+![The end-to-end flow of the Soveren Agent](../../img/getting-started/architecture-02.png "The end-to-end flow of the Soveren Agent")
+
+The flow of the Soveren Agent looks like this:
+
+1. Interceptors collect relevant traffic from the pods. They observe only HTTP requests with `Content-Type: application/json` set.
+
+2. Interceptors match requests to individual endpoints with responses coming from them, and build request+response pairs.
+
+3. Interceptors write the request/response pairs to the Kafka topic using [binary Kafka protocol](https://kafka.apache.org/protocol.html).
+
+4. (The Interceptor is present as well on the node where Kafka and Digger and Detection-tool might be deployed because there can also be other pods with the traffic subject to monitoring.)
+
+5. Digger reads the request/response pair from the topic and decides whether it’s subject to the detailed analysis of present data types and their sensitivity. (Intelligent sampling may be involved here if the load becomes really high). If yes, Digger sends the pair to the Detection-tool and gets back the result.
+
+6. Digger forms a metadata package describing the processed request/response pair and sends it to the Soveren Cloud. This connection uses gRPC and protobuf.
 
 ### Traffic interception
 
@@ -55,25 +73,6 @@ securityContext:
       hostNetwork: true
       hostPID: true
 ```
-
-
-### The end-to-end flow
-
-![The end-to-end flow of the Soveren Agent](../../img/getting-started/architecture-02.png "The end-to-end flow of the Soveren Agent")
-
-The flow of the Soveren Agent looks like this:
-
-1. Interceptors collect relevant traffic from the pods. They observe only HTTP requests with `Content-Type: application/json` set.
-
-2. Interceptors match requests to individual endpoints with responses coming from them, and build request+response pairs.
-
-3. Interceptors write the request/response pairs to the Kafka topic using [binary Kafka protocol](https://kafka.apache.org/protocol.html).
-
-4. (The Interceptor is present as well on the node where Kafka and Digger and Detection-tool might be deployed because there can also be other pods with the traffic subject to monitoring.)
-
-5. Digger reads the request/response pair from the topic and decides whether it’s subject to the detailed analysis of present data types and their sensitivity. (Intelligent sampling may be involved here if the load becomes really high). If yes, Digger sends the pair to the Detection-tool and gets back the result.
-
-6. Digger forms a metadata package describing the processed request/response pair and sends it to the Soveren Cloud. This connection uses gRPC and protobuf.
 
 ## Soveren Cloud
 
