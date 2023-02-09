@@ -62,7 +62,7 @@ Interceptors then read data from the virtual interfaces available to them in the
 
 The K8s API also provides naming of pods and other metadata to the Interceptors. As a result, later on in the Soveren Cloud the assets are called by their DNS/K8s names instead of IP addresses, which makes data that the [Soveren app](https://app.soveren.io/) displays more accessible.
 
-#### Permissions required by the Interceptors
+#### Required permissions
 
 For Interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
 
