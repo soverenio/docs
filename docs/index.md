@@ -15,6 +15,7 @@ Soveren makes it easy for modern security teams to regain control over sensitive
 * Mitigate data risks early on to prevent them from becoming costly incidents
 
 Soveren’s proprietary technology scans Kubernetes clusters in real time to autopilot critical (but tedious) data protection tasks, such as:
+
 * Discovery and classification of [sensitive data](user-guide/data-model/)
 * Detection of sensitive data in non-production environments
 * Detection of PCI data outside of the PCI DSS perimeter
@@ -36,6 +37,7 @@ Unlike other security tools, Soveren requires zero configuration, has low total 
 Soveren offers a native Kubernetes integration with zero impact on latency and reliability. Our Helm-based deployment is typically done in 15 minutes and supports cloud, on-prem, and hybrid infrastructures. Sensitive data always stays inside your environment.
 
 Once deployed, Soveren’s technology works autonomously in the background. It handles all the critical aspects of sensitive data protection, so you don’t have to. Soveren:
+
 * Classifies [45+ country-specific data types in 20+ languages](user-guide/data-model/) with 95% detection accuracy, out-of-the-box (powered by proprietary ML algorithms)
 * Visualizes Kubernetes environments so security teams can monitor and analyze data flows in real time (without relying on “opinions”)
 * Maintains automated control of security guidelines, privacy regulations, and compliance standards (e.g., PCI DSS, GDPR, CPRA, NIST)
