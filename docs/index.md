@@ -1,14 +1,15 @@
 # Introduction
 
-## The problem
+## Problem that we are solving
 
 Sensitive data is painstakingly hard to control and protect. Businesses process an ever-expanding set of data, subject to complex security, privacy, and compliance requirements, and spread across diverse application environments. All the while, cyberattacks are on the rise.
 
 Even the best manual controls and security tools routinely overlook critical risks, leading to costly data breaches and regulatory fines.
 
-## Solution
+## What Soveren offers
 
 Soveren makes it easy for modern security teams to regain control over sensitive data:
+
 * Gain complete data intelligence across your application environments
 * Automate policy enforcement and find critical changes and anomalies in data flows
 * Mitigate data risks early on to prevent them from becoming costly incidents
@@ -39,4 +40,4 @@ Once deployed, Soveren’s technology works autonomously in the background. It h
 * Visualizes Kubernetes environments so security teams can monitor and analyze data flows in real time (without relying on “opinions”)
 * Maintains automated control of security guidelines, privacy regulations, and compliance standards (e.g., PCI DSS, GDPR, CPRA, NIST)
 
-take a look at the [architecture section](getting-started/architecture/) for more details on how Soveren works under the hood.
+Take a look at the [architecture section](getting-started/architecture/) for more details on how Soveren works under the hood.
