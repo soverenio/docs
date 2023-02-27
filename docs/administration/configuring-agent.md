@@ -176,6 +176,26 @@ The default policy of the Agent is to work with explicitly mentioned namespaces 
     ```
     Otherwise the Agent might end up not monitoring any namespaces if there were only `deny` definitions.
 
+## Service mesh and encryption
+
+Soveren can monitor connections encrypted with service mesh like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/). Since we just monitor virtual interfaces of the host, it is enough to tell Interceptors to listen at the appropriate place.
+
+### Linkerd
+
+```shell
+interceptor:
+  cfg:
+    source:
+      namespacelocal: "true"
+    # if the port of Linkerd differs from the default (4140)
+    conntracker:
+      linkerdPort: <PORT>
+```
+
+### Istio
+
+Coming soon!
+
 ## Changing the log level
 
 By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
