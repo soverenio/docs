@@ -178,15 +178,13 @@ The default policy of the Agent is to work with explicitly mentioned namespaces 
 
 ## Service mesh and encryption
 
-Soveren can monitor connections encrypted with service mesh like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/). Since we just monitor virtual interfaces of the host, it is enough to tell Interceptors to listen at the appropriate place.
+Soveren can monitor connections encrypted with service mesh like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-### Linkerd
+The agent will automatically detect if there is service mesh deployed in the cluster / on the node. The only fine tuning you might need is if yourmesh implementation is using non-standard ports. For example, for Linkerd you might need something like this in your `values.yaml`:
 
 ```shell
 interceptor:
   cfg:
-    source:
-      namespacelocal: "true"
     # if the port of Linkerd differs from the default (4140)
     conntracker:
       linkerdPort: <PORT>
