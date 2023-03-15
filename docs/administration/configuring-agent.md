@@ -190,10 +190,6 @@ interceptor:
       linkerdPort: <PORT>
 ```
 
-### Istio
-
-Coming soon!
-
 ## Changing the log level
 
 By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
