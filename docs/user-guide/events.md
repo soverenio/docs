@@ -127,7 +127,7 @@ Each JSON message carries significant information about an event and is composed
 ## Event types
 
 
-| <span style="white-space:pre">Event Category (`category`)</span> | <span style="white-space:nowrap">Event Type (`event_type`)</span> | Triggered When  |
+| <div style="white-space:pre">Event Category (`category`)</div> | <div style="white-space:nowrap">Event Type (`event_type`)</div> | Triggered When  |
 |-------------------  |----------------------------------- |----------------|
 | `new_data_types`    | `new_data_type`                    | A new data type is observed for the first time.|
 | `data_flow_changes` | `new_internal_receiver`            | An internal asset is newly registered to receive data. |
