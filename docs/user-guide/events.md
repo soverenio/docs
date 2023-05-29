@@ -102,9 +102,9 @@ Each JSON message carries significant information about an event and is composed
 
 4. `event_link`: A URL linking to the event details in the Soveren app. Users can follow this link directly into the product.
 
-5. `category`: The category of the event. Helps in broadly classifying the event.
+5. `category`: The [category](#event-categories) of the event. Helps in broadly classifying the event.
 
-6. `event_type`: The specific type of the event. Helps in identifying the concrete nature of the event.
+6. `event_type`: The [specific type](#event-types) of the event. Helps in identifying the concrete nature of the event.
 
 7. `data_types`: An array of strings that specify the types of data involved in the event.
 
@@ -123,4 +123,6 @@ Each JSON message carries significant information about an event and is composed
 12. `third_party_ip`: The IP address of a third party involved in the event, if relevant.
 
 13. `user_agent`: The user agent information for the event, if relevant.
+
+## Event types
 
