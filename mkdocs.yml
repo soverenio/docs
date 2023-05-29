@@ -48,6 +48,8 @@ theme:
 markdown_extensions:
   # Hover-overs for abbreviation for context-like glossary
   - abbr
+  # tables
+  - tables
   # Notes, tips, warnings, etc.
   - admonition
   # Make admonitions collapsable
