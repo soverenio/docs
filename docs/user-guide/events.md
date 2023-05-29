@@ -75,8 +75,9 @@ Besides in the UI, Soveren provides you with representations of events as struct
   "user_agent": "some user agent"
 }
 
-1. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
 ```
+
+1. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
 
 </details>
 
