@@ -61,7 +61,7 @@ Besides in the UI, Soveren provides you with representations of events as struct
     "name": "Policy 234"
   },
 
-  "conflicting_assets":[ # (1)!
+  "conflicting_assets":[ # (1)
     {
       "name":"Asset 1",
       "link": "https://app.soveren.io/data-inventory/external-assets/1"
