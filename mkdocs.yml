@@ -51,7 +51,8 @@ markdown_extensions:
   # Notes, tips, warnings, etc.
   - admonition
   # Make admonitions collapsable
-  - pymdownx.details
+  # - pymdownx.details
+  - pymdownx.blocks
   # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
   - pymdownx.superfences
   # Content tabs
