@@ -15,7 +15,7 @@ Besides in the UI, Soveren provides you with representations of events as struct
 <details>
   <summary>Example of an event JSON object</summary>
 
-```{.json .copy .annotate} 
+```{.json .copy .annotate linenums="1"} 
 {
   "title": "Internal asset Asset 3 is sharing Person with third parties",
   "sensitivity": "Medium",
@@ -78,7 +78,9 @@ Besides in the UI, Soveren provides you with representations of events as struct
 
 1.  `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
 
+
 </details>
+
 
 ### Event object structure
 
