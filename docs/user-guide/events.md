@@ -4,7 +4,8 @@
 
 Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
 
-## Example of an event
+<details>
+  <summary>Example of an event</summary>
 
 ```json
 {
@@ -66,5 +67,7 @@ Events are something interesting or new happening in your infrasructure. For exa
   "user_agent": "some user agent"
 }
 ```
+
+</details>
 
 ## Event categories and types
