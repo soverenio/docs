@@ -61,7 +61,7 @@ Besides in the UI, Soveren provides you with representations of events as struct
     "name": "Policy 234"
   },
 
-  "conflicting_assets":[ # (1)!
+  "conflicting_assets":[
     {
       "name":"Asset 1",
       "link": "https://app.soveren.io/data-inventory/external-assets/1"
@@ -75,16 +75,8 @@ Besides in the UI, Soveren provides you with representations of events as struct
   "user_agent": "some user agent"
 }
 ```
-
-1.  `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
-
 </details>
 
-``` yaml
-theme:
-  features:
-    - content.code.annotate # (1)
-```
 
 ### Event object structure
 
@@ -124,6 +116,3 @@ Each such JSON message carries significant information about an event and is com
  
 ## Event categories and types
 
-
-1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be written in Markdown.
