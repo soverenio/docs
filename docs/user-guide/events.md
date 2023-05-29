@@ -4,18 +4,18 @@
 
 Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
 
-Soveren provides you with a nice UI to manage the events. Here's An example of the events view:
+Soveren provides you with a nice UI to manage the events. Here's an example of the events view:
 
 ![Events](../../img/user-guide/events-01.png "Events")
 
 ## Event objects
 
-Besides in the UI, Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own SIEM or process management software, as well as create customize alerts in the messaging apps.
+Besides in the UI, Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own SIEM or process management software, as well as create customized alerts in the messaging apps.
 
 <details>
   <summary>Example of an event JSON object</summary>
 
-```json
+```{.json .copy linenums="1"} 
 {
   "title": "Internal asset Asset 3 is sharing Person with third parties",
   "sensitivity": "Medium",
