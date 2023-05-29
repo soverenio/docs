@@ -126,17 +126,20 @@ Each JSON message carries significant information about an event and is composed
 
 ## Event types
 
-| Event Category (`category`) | Event Type (`event_type`)  | Description  |
-|-------------------|-------------|--------------|
-| `"new_data_types"`    | `"new_data_type"` | Triggered when a new type of data is introduced into the system.|
-| `"data_flow_changes"` | `"new_internal_receiver"` | Triggered when an internal entity is newly registered to receive data. |
-|                   | `"new_internal_sender"` | Triggered when an internal entity is newly registered to send data. |
-|                   | `"updated_internal_receiver"` | Triggered when an existing internal data receiver is updated. |
-|                   | `"updated_internal_sender"` | Triggered when an existing internal data sender is updated. |
-|                   | `"new_external_receiver"` | Triggered when a new external entity is registered to receive data. |
-|                   | `"updated_enduser_receiver"`, `"updated_robot_receiver"`, `"updated_external_receiver"` | Triggered when an existing data receiver (end-user, robot, or external) is updated. |
-| `"policy_violations"` | `"policy_violation"` | Triggered when a violation of established policy within the system is detected. |
-|                   | `"3rd_party_policy_violation"` | Triggered when a violation of a third-party policy is detected. |
-| `"others"`      | `"discovery_complete"` | Triggered when a discovery process concludes. |
-|                   | `"custom_asset_rule_conflict"` | Triggered when a rule conflict related to a custom asset arises. |
-|                   | `"email_clustered"` | Triggered when emails are grouped together. |
+
+| Event Category (`category`)            | Event Type (`event_type`)                         | Triggered When  |
+|-------------------  |----------------------------------- |----------------|
+| `new_data_types`    | `new_data_type`                    | A new type of data is introduced into the system.|
+| `data_flow_changes` | `new_internal_receiver`            | An internal entity is newly registered to receive or send data. |
+|                     | `new_internal_sender`              | An internal entity is newly registered to send data. |
+|                     | `updated_internal_receiver`        | An existing internal data receiver is updated. |
+|                     | `updated_internal_sender`          | An existing internal data sender is updated. |
+|                     | `new_external_receiver`            | A new external entity is registered to receive data. |
+|                     | `updated_enduser_receiver`         | An existing end-user data receiver is updated. |
+|                     | `updated_robot_receiver`           | An existing robot data receiver is updated. |
+|                     | `updated_external_receiver`        | An existing external data receiver is updated. |
+| `policy_violations` | `policy_violation`                 | A violation of established policy within the system is detected. |
+|                     | `3rd_party_policy_violation`       | A violation of a third-party policy is detected. |
+| `others`            | `discovery_complete`               | A discovery process concludes. |
+|                     | `custom_asset_rule_conflict`       | A rule conflict related to a custom asset arises. |
+|                     | `email_clustered`                  | Emails are grouped together. |
