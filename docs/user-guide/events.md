@@ -15,7 +15,8 @@ Events are something interesting or new happening in your infrasructure. For exa
   "category": "New data type",
   "event_type": "policy_violation",
   "data_types": [
-    "Person", "Email"
+    "Person",
+    "Email"
   ],
 
   "sending": {
@@ -52,8 +53,14 @@ Events are something interesting or new happening in your infrasructure. For exa
   },
 
   "conflicting_assets":[
-    {"name":"Asset 1", "link": "https://app.soveren.io/data-inventory/external-assets/1"},
-    {"name":"Asset 2", "link": "https://app.soveren.io/data-inventory/external-assets/2"}
+    {
+      "name":"Asset 1",
+      "link": "https://app.soveren.io/data-inventory/external-assets/1"
+    },
+    {
+      "name":"Asset 2",
+      "link": "https://app.soveren.io/data-inventory/external-assets/2"
+    }
   ],
   "third_party_ip": "123.1.1.1",
   "user_agent": "some user agent"
