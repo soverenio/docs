@@ -15,7 +15,7 @@ Besides in the UI, Soveren provides you with representations of events as struct
 <details>
   <summary>Example of an event JSON object</summary>
 
-```{.json .copy linenums="1"} 
+```{.json .copy .annotate linenums="1"} 
 {
   "title": "Internal asset Asset 3 is sharing Person with third parties",
   "sensitivity": "Medium",
