@@ -2,46 +2,23 @@
 
 ## What are events in Soveren?
 
-Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
+Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that according to your expectations. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
 
 Soveren provides you with a nice UI to manage the events. Here's an example of the events view:
 
 ![Events](../../img/user-guide/events-01.png "Events")
 
- 
-## Event categories and types
+## Event categories
 
-The system events can be divided into the following categories:
+The events that Soveren detects belong to one of following four categories:
 
-### 1. New Data Types (`new_data_types`)
+1. **New Data Types**: events of this type are recorded whenever Soveren observes a previously absent data type in the asset or in the data flow.
 
-This category represents the introduction of new data types into the system.
+2. **Data Flow Changes**: this category encapsulates all changes related to both internal and external senders and receivers.
 
-- **New Data Type (`new_data_type`)**: Triggered when a new type of data is introduced. DevOps should expect new data structures in the event's payload.
+3. **Policy Violations**: covers all events triggered by violations of configured policies.
 
-### 2. Data Flow Changes (`data_flow_changes`)
-
-This category encapsulates all changes related to the flow of data, including alterations to both internal and external senders and receivers.
-
-- **New Internal Receiver / Sender (`new_internal_receiver` / `new_internal_sender`)**: Triggered when an internal entity is newly registered to receive or send data. Check for new entities in system logs.
-- **Updated Internal Receiver / Sender (`updated_internal_receiver` / `updated_internal_sender`)**: Triggered when an existing internal data receiver or sender is updated. Look for changes in data flow paths in the logs.
-- **New External Receiver (`new_external_receiver`)**: Triggered when a new external entity is registered to receive data. Ensure to verify new endpoints in the system.
-- **Updated Receiver (`updated_enduser_receiver` / `updated_robot_receiver` / `updated_external_receiver`)**: Triggered when an existing data receiver (end-user, robot, or external) is updated. Look for changes in data delivery endpoints.
-
-### 3. Policy Violations (`policy_violations`)
-
-This category covers all policy-related events, particularly any violations.
-
-- **Policy Violation (`policy_violation`)**: Triggered when a violation of established policy within the system is detected. Look for details in the log about the policy and the nature of the violation.
-- **Third-Party Policy Violation (`3rd_party_policy_violation`)**: Triggered when a violation of a third-party policy is detected. Look for logs detailing the third-party policy and how the violation occurred.
-
-### 4. Other Events (`others`)
-
-This category captures any events that do not fit into the aforementioned categories. These can range from process completions to rule conflicts.
-
-- **Discovery Completion (`discovery_complete`)**: Triggered when a discovery process concludes. Check for logs indicating the completion status and any findings from the discovery process.
-- **Custom Asset Rule Conflict (`custom_asset_rule_conflict`)**: Triggered when a rule conflict related to a custom asset arises. Review the log details for the conflicting rules and the custom asset involved.
-- **Email Clustering (`email_clustered`)**: Triggered when emails are grouped together. Look for logs detailing the email 
+4. **Other Events**: a catch-all category which comprises a plethora of system-things ranging from data map being collected and ready for review, misconfiguration of the rules wither in Soveren or in your cluster.
 
 ## Event objects
 
