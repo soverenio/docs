@@ -126,3 +126,16 @@ Each JSON message carries significant information about an event and is composed
 
 ## Event types
 
+| Category          | Event Type  | Description  |
+|-------------------|-------------|--------------|
+| New Data Types    | New Data Type Event | Triggered when a new type of data is introduced into the system.|
+| Data Flow Changes | New Internal Receiver / Sender Event | Triggered when an internal entity is newly registered to receive or send data. |
+|                   | Updated Internal Receiver / Sender Event | Triggered when an existing internal data receiver or sender is updated. |
+|                   | New External Receiver Event | Triggered when a new external entity is registered to receive data. |
+|                   | Updated Receiver Event | Triggered when an existing data receiver (end-user, robot, or external) is updated. |
+| Policy Violations | Policy Violation Event | Triggered when a violation of established policy within the system is detected. |
+|                   | Third-Party Policy Violation Event | Triggered when a violation of a third-party policy is detected. |
+| Other Events      | Discovery Completion Event | Triggered when a discovery process concludes. |
+|                   | Custom Asset Rule Conflict Event | Triggered when a rule conflict related to a custom asset arises. |
+|                   | Email Clustering Event | Triggered when emails are grouped together. |
+
