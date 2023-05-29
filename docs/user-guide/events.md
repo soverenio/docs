@@ -61,7 +61,7 @@ Besides in the UI, Soveren provides you with representations of events as struct
     "name": "Policy 234"
   },
 
-  "conflicting_assets":[ # (1)
+  "conflicting_assets":[ # (1)!
     {
       "name":"Asset 1",
       "link": "https://app.soveren.io/data-inventory/external-assets/1"
@@ -74,10 +74,9 @@ Besides in the UI, Soveren provides you with representations of events as struct
   "third_party_ip": "123.1.1.1",
   "user_agent": "some user agent"
 }
-
 ```
 
-1. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
+1.  `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
 
 </details>
 
