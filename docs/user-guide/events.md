@@ -86,10 +86,6 @@ theme:
     - content.code.annotate # (1)
 ```
 
-1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be written in Markdown.
-
-
 ### Event object structure
 
 Each such JSON message carries significant information about an event and is composed of the following attributes:
@@ -127,3 +123,7 @@ Each such JSON message carries significant information about an event and is com
 
  
 ## Event categories and types
+
+
+1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
