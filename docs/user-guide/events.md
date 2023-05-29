@@ -139,7 +139,7 @@ Each JSON message carries significant information about an event and is composed
 |                     | `updated_enduser_receiver`         | An existing end-user (external data receiver) starts receiving new data type. |
 |                     | `updated_robot_receiver`           | An existing robot (external data receiver) starts receiving new data type. |
 | `policy_violations` | `policy_violation`                 | A violation of policy configured within the Soveren app is detected. |
-|                     | <span style="white-space:pre">`3rd_party_policy_violation`</span>       | A violation of a third-party policy (sending data to 3rd party) is detected. |
+|                     | <div style="white-space:pre">`3rd_party_policy_violation`</div>       | A violation of a third-party policy (sending data to 3rd party) is detected. |
 | `others`            | `discovery_complete`               | A discovery process concludes, all assets are present on the data map. |
 |                     | <span style="white-space:pre">`custom_asset_rule_conflict`</span>       | A rule conflict related to a custom asset arises. |
 |                     | `email_clustered`                  | There are actual emails used in your URLs, Soveren detected & masked them in those URLs in Soveren app. |
