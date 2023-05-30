@@ -87,9 +87,6 @@ Besides in the UI, Soveren provides you with representations of events as struct
 ```
 </details>
 
-
-### Event object structure
-
 Each JSON message carries significant information about an event and is composed of the following attributes:
 
 1. `title`: A human-readable title for the event, such as a brief summary or description.
