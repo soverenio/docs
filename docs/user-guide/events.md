@@ -1,12 +1,10 @@
 # Events
 
-## What are events in Soveren?
+## What are Events in Soveren?
 
 Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that according to your expectations. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
 
-Soveren provides you with a nice UI to manage the events. Here's an example of the events view:
-
-![Events](../../img/user-guide/events-01.png "Events")
+Soveren provides you with a [nice UI](../overview/#events) to manage the events. There are also ways to automate working with events through integration, as they can be represented as [JSON objects](#event-objects).
 
 ## Event categories
 
@@ -16,9 +14,9 @@ The events that Soveren detects belong to one of following four categories:
 
 2. **Data Flow Changes**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
 
-3. **Policy Violations**: covers all events triggered by violations of policies configured in the Soveren app.
+3. **Policy Violations**: cover all events triggered by violations of policies configured in the Soveren app.
 
-4. **Other Events**: a catch-all category which comprises a plethora of system-things ranging from data map ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
+4. **Other Events**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
 
 ## Event objects
 
@@ -126,6 +124,9 @@ Each JSON message carries significant information about an event and is composed
 
 ## Event types
 
+Besides being broadly categorized, the events in Soveren are also fine-grained into specific types describing concrete situations that require your pointed attention.
+
+Here's the list of the event types by category. Your can use `event_type` and event `category` to build automation around specific cases when getting event messages through integrations with Soveren.
 
 | Event category (`category`) | Event type (`event_type`) | Triggered when  |
 |-------------------  |----------------------------------- |----------------|
