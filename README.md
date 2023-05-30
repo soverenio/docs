@@ -30,13 +30,13 @@ To start with Soveren documentation, follow the steps below.
    git clone https://github.com/soverenio/docs.git
    ```
 
-4. Create and edit doc source files:
+3. Create and edit doc source files:
    
    * Create new `.md` files inside the `docs` folder.  
    * Create new subfolders to group the files if needed. Apply common sense.   
    * The files content is written in [Markdown](https://www.markdownguide.org/cheat-sheet/).
             
-5. Build and deploy.
+4. Build and deploy.
     
    As the repo is integrated with the CI/CD tool and the hosting provider, the pipeline is simple:
    
@@ -46,7 +46,7 @@ To start with Soveren documentation, follow the steps below.
 
    *Test your artifacts locally before making a commit!*
    
-6. Follow a Gitflow of your choice. 
+5. Follow a Gitflow of your choice. 
    
    Current Gitflow:
       
