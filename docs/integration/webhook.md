@@ -34,7 +34,7 @@ After pressing the **Save** button, make sure you test the connection. If succes
 
 ## Using the webhook
 
-Whenever a relevant events occur, the webhook will be sending `POST` requests to the enpoint that you've provided. The [Event object](../event-objects/) page describes the structure of messages that you will get. You can filter and aggregate on `category` or `event_type` or on [other attributes](../event-objects/#what-are-event-objects-in-soveren) of the message.
+Whenever relevant events occur, the webhook will be sending `POST` requests to the enpoint that you've provided. The [Event object](../event-objects/) page describes the structure of messages that you will get. You can filter and aggregate on `category` or `event_type` or on [other attributes](../event-objects/#what-are-event-objects-in-soveren) of the message.
 
 ## Checking the webhook status
 
