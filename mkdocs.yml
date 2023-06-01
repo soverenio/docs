@@ -18,7 +18,6 @@ nav:
       - Events: 'user-guide/events.md'
       - Sensitive data model: 'user-guide/data-model.md'
   - Integration:
-      - Overview: 'integration/overview.md'
       - Webhook: 'integration/webhook.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
