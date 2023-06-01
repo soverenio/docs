@@ -15,9 +15,9 @@ nav:
       - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
   - User guide:
       - Overview: 'user-guide/overview.md'
-      - Events: 'user-guide/events.md'
       - Sensitive data model: 'user-guide/data-model.md'
   - Integration:
+      - Event objectss: 'integration/event-objects.md'
       - Webhook: 'integration/webhook.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
