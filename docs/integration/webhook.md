@@ -20,7 +20,7 @@ The following [configuration panel](https://app.soveren.io/integrations/webhook/
 
 Here you need to provide a couple of parameters:
 
-* **Webhook URL**: en endpoint that will be receiving the events.
+* **Webhook URL**: an endpoint that will be receiving the events.
 
 * **Token (optional)**: an optional secret that we should use for signing the request body, if provided. The resulting signature ([HMAC-SHA-256](https://en.wikipedia.org/wiki/HMAC)) will be present in the `x-soveren-signature` request header, e.g.: `x-soveren-signature: sha256=46f45c56b2accfdeb492584db9c809a204005a1ad922279f88da429f7f0a7b47`
 
