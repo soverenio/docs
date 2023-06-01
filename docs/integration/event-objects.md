@@ -2,7 +2,7 @@
 
 ## What are event objects in Soveren?
 
-Besides the [UI]((../overview/#events)), Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own [(SIEM)](https://en.wikipedia.org/wiki/Security_information_and_event_management) or process management software, as well as create customized alerts in the messaging apps.
+Besides the [UI]((../overview/#events)), Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own [SIEM](https://en.wikipedia.org/wiki/Security_information_and_event_management) or process management software, as well as create customized alerts in the messaging apps.
 
 <details>
   <summary>Example of an event JSON object</summary>
