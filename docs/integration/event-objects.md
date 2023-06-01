@@ -105,13 +105,13 @@ Each JSON message carries significant information about an event and is composed
 
 The events that Soveren detects belong to one of following four categories:
 
-1. **New Data Types**: events of this type are recorded whenever Soveren observes a data type for the first time in your infrastructure.
+1. **New Data Type**: events of this type are recorded whenever Soveren observes a data type for the first time in your infrastructure.
 
-2. **Data Flow Changes**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
+2. **Data Flow Change**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
 
-3. **Policy Violations**: cover all events triggered by violations of policies configured in the Soveren app.
+3. **Policy Violation**: cover all events triggered by violations of policies configured in the Soveren app.
 
-4. **Other Events**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
+4. **Other**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
 
 ## Event types
 
