@@ -1,26 +1,8 @@
-# Events
+# Event objects
 
-## What are Events in Soveren?
+## What are event objects in Soveren?
 
-Events are something interesting or new happening in your infrasructure. For example, you may start sharing a sensitive data type in the flow which was not allowed to do that according to your expectations. Or there can be a new external party that your serivces are talking to, previously unobserved. Whenever something like that happens, Soveren shows you an event that you can deal with, e.g. decide whether this new data type sharing should be allowed or blocked.
-
-Soveren provides you with a [nice UI](../overview/#events) to manage the events. There are also ways to automate working with events through integration, as they can be represented as [JSON objects](#event-objects).
-
-## Event categories
-
-The events that Soveren detects belong to one of following four categories:
-
-1. **New Data Types**: events of this type are recorded whenever Soveren observes a data type for the first time in your infrastructure.
-
-2. **Data Flow Changes**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
-
-3. **Policy Violations**: cover all events triggered by violations of policies configured in the Soveren app.
-
-4. **Other Events**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
-
-## Event objects
-
-Besides in the UI, Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own SIEM or process management software, as well as create customized alerts in the messaging apps.
+Besides the [UI]((../overview/#events)), Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own [SIEM](https://en.wikipedia.org/wiki/Security_information_and_event_management) or process management software, as well as create customized alerts in the messaging apps.
 
 <details>
   <summary>Example of an event JSON object</summary>
@@ -118,6 +100,18 @@ Each JSON message carries significant information about an event and is composed
 12. `third_party_ip`: The IP address of a third party involved in the event, if relevant.
 
 13. `user_agent`: The user agent information for the event, if relevant.
+
+## Event categories
+
+The events that Soveren detects belong to one of following four categories:
+
+1. **New Data Type**: events of this type are recorded whenever Soveren observes a data type for the first time in your infrastructure.
+
+2. **Data Flow Change**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
+
+3. **Policy Violation**: cover all events triggered by violations of policies configured in the Soveren app.
+
+4. **Other**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
 
 ## Event types
 
