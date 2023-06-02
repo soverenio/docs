@@ -16,6 +16,9 @@ nav:
   - User guide:
       - Overview: 'user-guide/overview.md'
       - Sensitive data model: 'user-guide/data-model.md'
+  - Integration:
+      - Event objects: 'integration/event-objects.md'
+      - Webhook: 'integration/webhook.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
@@ -47,10 +50,13 @@ theme:
 markdown_extensions:
   # Hover-overs for abbreviation for context-like glossary
   - abbr
+  # tables
+  - tables
   # Notes, tips, warnings, etc.
   - admonition
   # Make admonitions collapsable
-  - pymdownx.details
+  # - pymdownx.details
+  - pymdownx.blocks.details
   # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
   - pymdownx.superfences
   # Content tabs
