@@ -24,7 +24,7 @@ Here you need to provide a couple of parameters:
 
 * **Token (optional)**: an optional secret that we should use for signing the request body, if provided. The resulting signature ([HMAC-SHA-256](https://en.wikipedia.org/wiki/HMAC)) will be present in the `x-soveren-signature` request header, e.g.: `x-soveren-signature: sha256=46f45c56b2accfdeb492584db9c809a204005a1ad922279f88da429f7f0a7b47`
 
-We do recommend that you provide the token and check the signature (this protects the webhook from unauthorised use), but if you don't want to then just put in some dummy value.
+We do recommend that you provide the token and check the signature (this protects the webhook from unauthorised use). But if you don't want to then just leave the field blank: the body will not be signed and there will be no additional header in the request.
 
 Now you need to specify what [event categories](../event-objects/#event-categories) you want to get from the webhook. You can opt for all of them or only for some of them.
 
