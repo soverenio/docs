@@ -49,7 +49,7 @@ interceptor:
     limits:
       cpu: "1000m"
       memory: "2048Mi"
-      ephemeral-storage: 100Mi
+      ephemeral-storage: "100Mi"
 ```
 
 ### Kafka
@@ -65,11 +65,11 @@ kafka:
       requests:
         cpu: "100m"
         memory: "650Mi"
-        ephemeral-storage: 5Gi
+        ephemeral-storage: "5Gi"
       limits:
         cpu: "200m"
         memory: "1024Mi"
-        ephemeral-storage: 10Gi
+        ephemeral-storage: "10Gi"
 ```
 
 #### Heap usage by Kafka
@@ -101,7 +101,7 @@ digger:
     limits:
       cpu: "1500m"
       memory: "768Mi"
-      ephemeral-storage: 100Mi
+      ephemeral-storage: "100Mi"
 ```
 
 ### Detection tool
@@ -119,7 +119,7 @@ detectionTool:
     limits:
       cpu: "1100m"
       memory: "2304Mi"
-      ephemeral-storage: 200Mi
+      ephemeral-storage: "200Mi"
 ```
 
 ### Prometheus
@@ -135,8 +135,38 @@ prometheusAgent:
     limits:
       memory: "400Mi"
       cpu: "75m"
-      ephemeral-storage: 100Mi
+      ephemeral-storage: "100Mi"
 ```
+
+#### Sending metrics to local Prometheus
+
+If you want to monitor the metrics that the Soveren Agent collects, here's hod to do that:
+
+```shell
+prometheusAgent:
+  additionalMetrics: 
+    enabled: "true"
+    name: "PROMETHEUS_NAME"
+    url: "PROMETHEUS_URL"
+```
+
+where:
+
+* `PROMETHEUS_NAME` is a name that you want to give here to your local Prometheus,
+
+* `PROMETHEUS_URL` is a URL which will be receiving the metrics.
+
+## Proxying the traffic
+
+Sometimes you might want to direct the traffic between Soveren Agent and Cloud though the proxy. You might want to do it e.g. for additional control of only the allowed traffic going outside you cluster.
+
+To do that, just specify the top-level value in your `values.yaml`:
+
+```shell
+httpsProxy: PROXY_ADDRESS:PROXY_PORT
+```
+
+where `PROXY_ADDRESS` and `PROXY_PORT` are the address of your proxy service and the port which is dedicated to listening, respectively.
 
 ## Namespace filtering
 
