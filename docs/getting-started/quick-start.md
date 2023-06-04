@@ -45,7 +45,7 @@ There are several things which happen automatically in the cluster when you inst
 2. Both Interceptors and Personal Data Detector are deployed into the namespace `soverenio`. 
 
 
-3. Soveren Agent reads a lot of relevant information from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `view`.
+3. Soveren Agent subscribes to a lot of metadata from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`.
 
 
 4. Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
