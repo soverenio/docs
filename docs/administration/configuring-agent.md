@@ -146,15 +146,15 @@ If you want to monitor the metrics that the Soveren Agent collects, here's hod t
 prometheusAgent:
   additionalMetrics: 
     enabled: "true"
-    name: "PROMETHEUS_NAME"
-    url: "PROMETHEUS_URL"
+    name: "<PROMETHEUS_NAME>"
+    url: "<PROMETHEUS_URL>"
 ```
 
 where:
 
-* `PROMETHEUS_NAME` is a name that you want to give here to your local Prometheus,
+* `<PROMETHEUS_NAME>` is a name that you want to give here to your local Prometheus,
 
-* `PROMETHEUS_URL` is a URL which will be receiving the metrics.
+* `<PROMETHEUS_URL>` is a URL which will be receiving the metrics.
 
 ## Proxying the traffic
 
@@ -163,10 +163,10 @@ Sometimes you might want to direct the traffic between Soveren Agent and Cloud t
 To do that, just specify the top-level value in your `values.yaml`:
 
 ```shell
-httpsProxy: PROXY_ADDRESS:PROXY_PORT
+httpsProxy: <PROXY_ADDRESS>:<PROXY_PORT>
 ```
 
-where `PROXY_ADDRESS` and `PROXY_PORT` are the address of your proxy service and the port which is dedicated to listening, respectively.
+where `<PROXY_ADDRESS>` and `<PROXY_PORT>` are the address of your proxy service and the port which is dedicated to listening, respectively.
 
 ## Namespace filtering
 
