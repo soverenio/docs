@@ -152,13 +152,13 @@ prometheusAgent:
 
 where:
 
-* `<PROMETHEUS_NAME>` is a name that you want to give here to your local Prometheus,
+* `<PROMETHEUS_NAME>` is the name that you want to give here to your local Prometheus,
 
-* `<PROMETHEUS_URL>` is a URL which will be receiving the metrics.
+* `<PROMETHEUS_URL>` is the URL which will be receiving the metrics.
 
 ## Proxying the traffic
 
-Sometimes you might want to direct the traffic between Soveren Agent and Cloud though the proxy. You might want to do it e.g. for additional control of only the allowed traffic going outside you cluster.
+Sometimes you might want to direct the traffic between Soveren Agent and Cloud though the proxy. You might want to do it e.g. for additional control of only the allowed traffic going outside of you cluster.
 
 To do that, just specify the top-level value in your `values.yaml`:
 
