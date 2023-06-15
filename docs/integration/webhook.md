@@ -36,6 +36,8 @@ After pressing the **Save** button, make sure you test the connection. If succes
 
 Whenever relevant events occur, the webhook will be sending `POST` requests to the enpoint that you've provided. The [Event object](../event-objects/) page describes the structure of messages that you will get. You can filter and aggregate on `category` or `event_type` or on [other attributes](../event-objects/#what-are-event-objects-in-soveren) of the message.
 
+When sending events, Soveren uses the `SoverenWebhook/1.0` user agent. And if you provided the token then there will also be a `x-soveren-signature` request header from signing the message body.
+
 ## Checking the webhook status
 
 If the webhook is working properly, the [Integrations in the Soveren app](https://app.soveren.io/integrations/) will show the successful connected status:
