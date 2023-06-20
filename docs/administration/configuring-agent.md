@@ -67,7 +67,7 @@ kafka:
         memory: "650Mi"
         ephemeral-storage: "5Gi"
       limits:
-        cpu: "200m"
+        cpu: "400m"
         memory: "1024Mi"
         ephemeral-storage: "10Gi"
 ```
