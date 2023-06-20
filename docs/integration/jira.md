@@ -12,9 +12,9 @@ First, open the [Integrations in the Soveren app](https://app.soveren.io/integra
 
 ![Jira in Integration](../../img/integration/integrations-list-jira.png "Jira in Integration")
 
-The following [connection settings](https://app.soveren.io/integrations/webhook/) will open:
+The following [connection settings](https://app.soveren.io/integrations/jira/) will open:
 
-![Jira connection settings](../../img/integration/jira-config-emtpy.png "Jira connection settings")
+![Jira connection settings](../../img/integration/jira-config-empty.png "Jira connection settings")
 
 Here you need to provide the following:
 
