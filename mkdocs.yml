@@ -19,6 +19,7 @@ nav:
   - Integration:
       - Event objects: 'integration/event-objects.md'
       - Webhook: 'integration/webhook.md'
+      - Jira: 'integration/jira.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
