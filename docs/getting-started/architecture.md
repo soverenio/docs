@@ -66,10 +66,10 @@ For Interceptors to be able to read from the host, the containers they run in re
 
 ```shell
 securityContext:
-      privileged: true
-      dnsPolicy: ClusterFirstWithHostNet
-      hostNetwork: true
-      hostPID: true
+  privileged: true
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
+  hostPID: true
 ```
 
 ## Soveren Cloud
