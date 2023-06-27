@@ -30,7 +30,7 @@ Let’s look in more detail into what those components do and how they talk to e
 
 ### The end-to-end flow
 
-![The end-to-end flow of the Soveren Agent](../../img/getting-started/architecture-02.png "The end-to-end flow of the Soveren Agent")
+![The end-to-end flow of the Soveren Agent](../../img/architecture/agent-flow.png "The end-to-end flow of the Soveren Agent")
 
 The flow of the Soveren Agent looks like this:
 
@@ -48,7 +48,7 @@ The flow of the Soveren Agent looks like this:
 
 ### Traffic interception
 
-![Traffic interception](../../img/getting-started/architecture-01.png "Traffic interception")
+![Traffic interception](../../img/architecture/interception.png "Traffic interception")
 
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Normally they are present as pods on each worker node of the cluster.
 
