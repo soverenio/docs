@@ -1,68 +1,68 @@
 # Architecture
 
-Soveren consists of two major parts:
+Soveren is composed of two primary components:
 
-* **Soveren Agent** which you [deploy](../../getting-started/quick-start/) in your Kubernetes cluster. It intercepts and parses structured HTTP JSON traffic, gathers metadata about the flows and sends it to the Soveren Cloud. This metadata contains information about how the payload was structured (what fields), which sensitive data types were detected, and which services were involved in the communication. **No part of the actual payload values is included in the metadata**.
-* [**Soveren Cloud**](https://app.soveren.io/) is hosted and managed by Soveren. It provides [dashboards](../../user-guide/overview/) to gain visibility into sensitive data flows, as well as summary statistics and metrics.
+* **Soveren Agent**: Deployed within your Kubernetes cluster, the Agent [intercepts and analyzes](../../getting-started/quick-start/) structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services. Importantly, the metadata **does not include any actual payload values**. The collected information is then relayed to the Soveren Cloud.
+* [**Soveren Cloud**](https://app.soveren.io/): Hosted and managed by Soveren, this cloud platform presents user-friendly [dashboards](../../user-guide/overview/) that provide visualization of sensitive data flows and summary statistics and metrics.
 
 ## Soveren Agent
 
 ### Architecture
 
-Soveren Agent consists of several parts:
+The Soveren Agent comprises several key parts:
 
-* **Interceptors** which are distributed to all worker nodes of the cluster through the [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). They capture the traffic from virtual interfaces of the pods with the help of a [packet capturing](https://www.tcpdump.org/) mechanism;
-* **Messaging system** which receives data from the Interceptors. Consists of a [Kafka](https://kafka.apache.org/) instance which stores request/response data, and Digger which passes data to the detection and further to the Soveren Cloud;
-* **Sensitive Data Detector** (or simply Detector) which discovers data types and their sensitivity with the help of proprietary machine learning algorithms.
+* **Interceptors**: Distributed across all worker nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
+* **Messaging system**: This system includes a [Kafka](https://kafka.apache.org/) instance that stores request/response data and a component called Digger which forwards data for detection and eventually to the Soveren Cloud.
+* **Sensitive Data Detector** (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
 
-In Kubernetes (K8s) terms, all components of the Soveren Agent are pods which are deployed to the worker nodes.
+In Kubernetes (K8s) terminology, all these components of the Soveren Agent are pods deployed to the worker nodes.
 
-In general, Interceptors are present on each node of the cluster. Kafka, Digger and Detector are deployed onto a separate node.
+Generally, Interceptors are present on every node in the cluster, while Kafka, Digger, and Detector are housed on a separate node.
 
-So speaking in Kubernetes terms, there are the following pods:
+Therefore, in Kubernetes terms, the following pods exist:
 
-* _Interceptors_: many of them, one per each worker node;
-* _Kafka_ as part of the Messaging system, one per deployment;
-* _Digger_ as another part of the Messaging system, one per deployment;
-* _Detection-tool_ as Detector, one per deployment.
+* _Interceptors_: One per worker node;
+* _Kafka_: Part of the Messaging system, deployed once per setup;
+* _Digger_: Another component of the Messaging system, deployed once per setup;
+* _Detection-tool_ (Detector): Deployed once per setup.
 
-Let’s look in more detail into what those components do and how they talk to each other.
+Let's delve deeper into these components' operations and communications.
 
 ### The end-to-end flow
 
 ![The end-to-end flow of the Soveren Agent](../../img/architecture/agent-flow.png "The end-to-end flow of the Soveren Agent")
 
-The flow of the Soveren Agent looks like this:
+The Soveren Agent follows this sequence of operations:
 
-1. Interceptors collect relevant traffic from the pods. They observe only HTTP requests with `Content-Type: application/json` set.
+1. Interceptors collect relevant traffic from pods, focusing on HTTP requests with the `Content-Type: application/json` header.
 
-2. Interceptors match requests to individual endpoints with responses coming from them, and build request+response pairs.
+2. Interceptors pair requests to individual endpoints with their respective responses, creating request+response pairs.
 
-3. Interceptors write the request/response pairs to the Kafka topic using [binary Kafka protocol](https://kafka.apache.org/protocol.html).
+3. Interceptors transfer these pairs to a Kafka topic using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
 
-4. (The Interceptor is present as well on the node where Kafka and Digger and Detection-tool might be deployed because there can also be other pods with the traffic subject to monitoring.)
+4. (Please note, the Interceptor is also present on the node hosting Kafka, Digger, and the Detection-tool, as these may monitor other pods with relevant traffic.)
 
-5. Digger reads the request/response pair from the topic and decides whether it’s subject to the detailed analysis of present data types and their sensitivity. (Intelligent sampling may be involved here if the load becomes really high). If yes, Digger sends the pair to the Detection-tool and gets back the result.
+5. Digger reads the request/response pair from the topic, evaluates it for detailed analysis of data types and their sensitivity (employing intelligent sampling for high load scenarios). If necessary, Digger forwards the pair to the Detection-tool and retrieves the result.
 
-6. Digger forms a metadata package describing the processed request/response pair and sends it to the Soveren Cloud. This connection uses gRPC and protobuf.
+6. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC and protobuf protocols.
 
 ### Traffic interception
 
 ![Traffic interception](../../img/architecture/interception.png "Traffic interception")
 
-Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Normally they are present as pods on each worker node of the cluster.
+Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and by default, exist as pods on all worker nodes in the cluster.
 
-Pods with the Interceptors have `hostNetwork` set to `true` (more on that [below](#required-permissions)). That gives them access to the underlying host, that is to the virtual machine they are running on. Given that, the Interceptors read data from network namespaces of the host, leveraging the [PCAP library](https://www.tcpdump.org/) for that.
+Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces using the [PCAP library](https://www.tcpdump.org/).
 
-Then, the Interceptors should know which interfaces to read. For that they are given the list of relevant IP addresses that should be present on their host, they could then match them with the interfaces that they actually observe on the host. Digger — a part of the messaging system — leverages the Kubernetes (K8s) API to obtain the addressing information.
+Interceptors use a list of relevant IP addresses on their host to determine which interfaces to read. They match these addresses with the interfaces they observe on the host. Digger, a component of the messaging system, uses the Kubernetes API to obtain this addressing information.
 
-Interceptors then read data from the virtual interfaces available to them in the network namespace of the host. _**This reading happens in a non-blocking fashion**_. If it so happens that the host is loaded with higher priority tasks, then the OS may deprive the Interceptor of CPU and memory resources, which in turn may result in partial coverage of the traffic by the Interceptor.
+Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
-The K8s API also provides naming of pods and other metadata to the Interceptors. As a result, later on in the Soveren Cloud the assets are called by their DNS/K8s names instead of IP addresses, which makes data that the [Soveren app](https://app.soveren.io/) displays more accessible.
+The Kubernetes API also provides pod names and other metadata to the Interceptors. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
 
 #### Required permissions
 
-For Interceptors to be able to read from the host, the containers they run in require the following permissions (you can't really change them without breaking the interception, but just in case):
+To enable Interceptors to read from the host, their containers require the following permissions (modifying these might disrupt traffic interception):
 
 ```shell
 securityContext:
@@ -74,4 +74,4 @@ securityContext:
 
 ## Soveren Cloud
 
-[Soveren Cloud](https://app.soveren.io/) is a SaaS managed by Soveren. It offers [a set of dashboards](../../user-guide/overview/) that provide various views into the metadata collected by Soveren Agent. There are analytics and stats on which relevant data types have been observed and how sensitive they were, what services were involved, were there any violations of pre-set policies and configurations in terms of allowed data types.
+[Soveren Cloud](https://app.soveren.io/) is a Software as a Service (SaaS) managed by Soveren. It provides [a suite of dashboards](../../user-guide/overview/) displaying diverse views into the metadata collected by the Soveren Agent. Users can view statistics and analytics on observed data types, their sensitivity, involved services, and any violations of predefined policies and configurations for allowed data types.
