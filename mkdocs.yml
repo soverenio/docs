@@ -9,7 +9,7 @@ nav:
   - Quick start: 'getting-started/quick-start.md'
   - Architecture:
       - Overview: 'architecture/overview.md'
-      - 'Interceptors: collecting the traffic': 'architecture/traffic-collection.md'
+      - 'Interceptors: collecting the traffic': 'architecture/traffic-interception.md'
       - 'Digger: processing the traffic': 'architecture/traffic-processing.md'
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
