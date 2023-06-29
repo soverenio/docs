@@ -40,11 +40,11 @@ The Soveren Agent follows this sequence of operations:
 
 3. Interceptors transfer these pairs to a Kafka topic using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
 
-4. (Please note, the Interceptor is also present on the node hosting Kafka, Digger, and the Detection-tool, as these may monitor other pods with relevant traffic.)
+4. (Please note, the Interceptor is also present on the node(s) hosting Kafka, Digger, and the Detection-tool, as there may also be other pods with relevant traffic on this node.)
 
 5. Digger reads the request/response pair from the topic, evaluates it for detailed analysis of data types and their sensitivity (employing intelligent sampling for high load scenarios). If necessary, Digger forwards the pair to the Detection-tool and retrieves the result.
 
-6. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC and protobuf protocols.
+6. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC protocol and protobuf.
 
 ### Traffic interception
 
@@ -52,13 +52,11 @@ The Soveren Agent follows this sequence of operations:
 
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and by default, exist as pods on all worker nodes in the cluster.
 
-Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces using the [PCAP library](https://www.tcpdump.org/).
-
-Interceptors use a list of relevant IP addresses on their host to determine which interfaces to read. They match these addresses with the interfaces they observe on the host. Digger, a component of the messaging system, uses the Kubernetes API to obtain this addressing information.
+Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
-The Kubernetes API also provides pod names and other metadata to the Interceptors. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
+The Kubernetes API provides pod names and other metadata to the Digger. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
 
 #### Required permissions
 
