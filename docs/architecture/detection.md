@@ -1,4 +1,4 @@
-# Detection of sensitive data
+# Detection-tool: uncovering sensitive data
 
 3-stage detection
 
