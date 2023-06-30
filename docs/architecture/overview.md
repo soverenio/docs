@@ -13,7 +13,7 @@ The Soveren Agent comprises several key parts:
 
 * **Interceptors**: Distributed across all worker nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
 * **Processing and messaging system**: This system includes a [Kafka](https://kafka.apache.org/) instance that stores request/response data and a component called Digger which forwards data for detection and eventually to the Soveren Cloud.
-* **Sensitive Data Detector** (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
+* **Sensitive data detector** (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
 
 In Kubernetes (K8s) terminology, all these components of the Soveren Agent are pods deployed to the worker nodes.
 
@@ -22,8 +22,8 @@ Generally, Interceptors are present on every node in the cluster, while Kafka, D
 Therefore, in Kubernetes terms, the following pods exist:
 
 * _Interceptors_: One per worker node;
-* _Kafka_: Part of the Messaging system, deployed once per setup;
-* _Digger_: Another component of the Messaging system, deployed once per setup;
+* _Kafka_: Part of the Processing and messaging system, deployed once per setup;
+* _Digger_: Another component of the Processing and messaging system, deployed once per setup;
 * _Detection-tool_ (Detector): Deployed once per setup.
 
 We also employ Prometheus for metrics collection, this component is not shown here.
