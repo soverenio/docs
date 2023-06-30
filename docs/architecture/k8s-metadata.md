@@ -1,12 +1,11 @@
-# Getting metadata from Kubernetes API
+# Retrieving Metadata from the Kubernetes API
 
-Digger uses the Kubernetes (K8s) API to get metadata on Kubernetes entities: `pod`s, `endpoint`s and `service`s. We leverage the technique described as the [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
+Digger utilizes the Kubernetes (K8s) API to gather metadata on these entities: `pod`s, `endpoint`s, and `service`s. This process employs the method depicted as [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
 
-When the Agent is starting, the Digger makes three `list` calls and receives initial information on [collections](https://kubernetes.io/docs/reference/using-api/api-concepts/#collections) of `pod`s, `endpoint`s and `service`s. The Digger then makes three `watch` calls, effectively subscribing to notifications about the configuration changes of the entities of those three kinds.
+During the initiation phase of the Agent, Digger conducts three `list` calls to collect initial data on [collections](https://kubernetes.io/docs/reference/using-api/api-concepts/#collections) of `pod`s, `endpoint`s, and `service`s. Subsequently, Digger initiates three `watch` calls, essentially subscribing to notifications about configuration modifications in entities of these three types.
 
-If the K8s API is not available at the moment for whatever reason, the Digger tries to re-subscribe, exponentially increasing the waiting time between tries.
+In scenarios where the K8s API is unavailable due to any reason, Digger attempts to re-subscribe, with the waiting duration between attempts incrementing exponentially.
 
-When subscribing, Digger uses the `resourceVersion`, so that Kubernetes would send only the new events to it.
+For the subscription process, Digger employs the `resourceVersion` so that Kubernetes will only transmit new events to it.
 
-Whenver a new entity arrives in the notifications from Kubernetes, the Digger extracts the meta information like name, namespace, labels and annotations, and stores it in the cache. It also checks which larger Kubernetes construct created that entity, like `DaemonSet` or `ReplicaSet` or `Deployment`, among others. This provides larger context to for example the pod name (which can be quite cryptic by itself) of the discovered asset.
-
+Upon receiving a new entity in the notifications from Kubernetes, Digger processes the metadata, such as the name, namespace, labels, and annotations, storing these in the cache. Digger also identifies the higher-level Kubernetes construct that created this entity, in other words, the workload resource (such as `DaemonSet`, `ReplicaSet`, or `Deployment`, among others) that serves as the actual owner of this entity. This method gives a broader context, for instance, the pod name (which could be quite cryptic in isolation) of the discovered asset.
