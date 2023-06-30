@@ -1,4 +1,4 @@
-# Retrieving Metadata from the Kubernetes API
+# Retrieving metadata from the Kubernetes API
 
 Digger utilizes the Kubernetes (K8s) API to gather metadata on these entities: `pod`s, `endpoint`s, and `service`s. This process employs the method depicted as [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
 
