@@ -9,7 +9,7 @@ nav:
   - Quick start: 'getting-started/quick-start.md'
   - Architecture:
       - Overview: 'architecture/overview.md'
-      - Collecting the traffic: 'architecture/traffic-interception.md'
+      - Capturing the traffic: 'architecture/traffic-interception.md'
       - Processing the traffic: 'architecture/traffic-processing.md'
       - Kubernetes metadata: 'architecture/k8s-metadata.md'
       - Sensitive data detection: 'architecture/detection.md'
