@@ -26,7 +26,9 @@ Therefore, in Kubernetes terms, the following pods exist:
 * _Digger_: Another component of the Messaging system, deployed once per setup;
 * _Detection-tool_ (Detector): Deployed once per setup.
 
-Let's delve deeper into these components' operations and communications.
+We also employ Prometheus for metrics collection, this component is not shown here.
+
+Let's delve deeper into the main components' operations and communications.
 
 ### The end-to-end flow
 
