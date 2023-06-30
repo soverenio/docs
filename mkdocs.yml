@@ -12,7 +12,7 @@ nav:
       - Collecting the traffic: 'architecture/traffic-interception.md'
       - Processing the traffic: 'architecture/traffic-processing.md'
       - Kubernetes metadata: 'architecture/k8s-metadata.md'
-      - Detection: 'architecture/detection.md'
+      - Sensitive data detection: 'architecture/detection.md'
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
       - Configuring the Agent: 'administration/configuring-agent.md'
