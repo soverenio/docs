@@ -46,6 +46,8 @@ The Soveren Agent follows this sequence of operations:
 
 6. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC protocol and protobuf.
 
+The Kubernetes API provides pod names and other metadata to the Digger. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
+
 ### Traffic interception
 
 ![Traffic interception](../../img/architecture/interception.png "Traffic interception")
@@ -55,8 +57,6 @@ Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/w
 Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
-
-The Kubernetes API provides pod names and other metadata to the Digger. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
 
 #### Required permissions
 
