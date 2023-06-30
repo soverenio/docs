@@ -7,8 +7,6 @@ Soveren is composed of two primary components:
 
 ## Soveren Agent
 
-### Architecture
-
 The Soveren Agent comprises several key parts:
 
 * **Interceptors**: Distributed across all worker nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
@@ -30,8 +28,6 @@ We also employ Prometheus for metrics collection, this component is not shown he
 
 Let's delve deeper into the main components' operations and communications.
 
-### The end-to-end flow
-
 ![The end-to-end flow of the Soveren Agent](../../img/architecture/agent-flow.png "The end-to-end flow of the Soveren Agent")
 
 The Soveren Agent follows this sequence of operations:
@@ -49,28 +45,6 @@ The Soveren Agent follows this sequence of operations:
 6. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC protocol and protobuf.
 
 The Kubernetes API provides pod names and other metadata to the Digger. Consequently, Soveren Cloud identifies assets by their DNS/Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
-
-### Traffic interception
-
-![Traffic interception](../../img/architecture/interception.png "Traffic interception")
-
-Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and by default, exist as pods on all worker nodes in the cluster.
-
-Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
-
-Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
-
-#### Required permissions
-
-To enable Interceptors to read from the host, their containers require the following permissions (modifying these might disrupt traffic interception):
-
-```shell
-securityContext:
-  privileged: true
-  dnsPolicy: ClusterFirstWithHostNet
-  hostNetwork: true
-  hostPID: true
-```
 
 ## Soveren Cloud
 
