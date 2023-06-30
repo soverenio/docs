@@ -12,7 +12,7 @@ Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#req
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
-#### Required permissions
+## Required permissions
 
 To enable Interceptors to read from the host, their containers require the following permissions (modifying these might disrupt traffic interception):
 
