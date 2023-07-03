@@ -42,13 +42,13 @@ Step by step:
 
    At least one half of the pair must have the manageable `content-type` set properly
 
-   8. The following information is considered apriori technical and is discarded from further analysis:
+8. The following information is considered apriori technical and is discarded from further analysis:
 
-       8.1 Internal Kubernetes or Soveren requests: `UA: kube-probe` and `X-Soveren-Request` headers
+    8.1 Internal Kubernetes or Soveren requests: `UA: kube-probe` and `X-Soveren-Request` headers
 
-       8.2 HTTP errors with codes `301`, `308`, `4xx`, `5xx`
+    8.2 HTTP errors with codes `301`, `308`, `4xx`, `5xx`
 
-       8.3 Requests to the following URLs: `/metrics`, `/healthz`, `/api/health`, `/api/v2/alive`, `/api/v2/detect`
+    8.3 Requests to the following URLs: `/metrics`, `/healthz`, `/api/health`, `/api/v2/alive`, `/api/v2/detect`
 
 9. The collected pairs are stored in a buffer. Eventually the Interceptor writes them to a dedicated Kafka topic (Kafka here is a separate component of the Soveren Agent, a part of the processing and messaging system). If for whatever reason Kafka is not available for too long, the Interceptor flushes the buffer, therefore losing some of the collected information
 
