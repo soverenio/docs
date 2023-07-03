@@ -34,9 +34,9 @@ Step by step:
 
 7. While building the pair, the Interceptor checks the `content-type` from the header, it must be one of the following:
 
-   4.1 `application/json`
+   7.1 `application/json`
 
-   4.2 `application/x-www-form-urlencoded`
+   7.2 `application/x-www-form-urlencoded`
 
    Other `content-type`s are discarded at this point.
 
