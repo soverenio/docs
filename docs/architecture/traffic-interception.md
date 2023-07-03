@@ -33,13 +33,9 @@ Step by step:
 6. The collected request / response pair also must not exceed the pre-defined size limit (1Mb), otherwise it is discarded
 
 7. While building the pair, the Interceptor checks the `content-type` from the header, it must be one of the following:
-
    7.1 `application/json`
-
    7.2 `application/x-www-form-urlencoded`
-
    Other `content-type`s are discarded at this point.
-
    At least one half of the pair must have the manageable `content-type` set properly
 
 8. The following information is considered apriori technical and is discarded from further analysis:
