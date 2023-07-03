@@ -33,20 +33,22 @@ Step by step:
 6. The collected request / response pair also must not exceed the pre-defined size limit (1Mb), otherwise it is discarded
 
 7. While building the pair, the Interceptor checks the `content-type` from the header, it must be one of the following:
+
    7.1 `application/json`
+
    7.2 `application/x-www-form-urlencoded`
-   Other `content-type`s are discarded at this point.
-   At least one half of the pair must have the manageable `content-type` set properly
 
-8. The following information is considered apriori technical and is discarded from further analysis:
+8. `content-type`s other than the above are discarded at this point. At least one half of the pair must have the manageable `content-type` set properly
 
-    8.1 Internal Kubernetes or Soveren requests: `UA: kube-probe` and `X-Soveren-Request` headers
+9. The following information is considered apriori technical and is discarded from further analysis:
 
-    8.2 HTTP errors with codes `301`, `308`, `4xx`, `5xx`
+    9.1 Internal Kubernetes or Soveren requests: `UA: kube-probe` and `X-Soveren-Request` headers
 
-    8.3 Requests to the following URLs: `/metrics`, `/healthz`, `/api/health`, `/api/v2/alive`, `/api/v2/detect`
+    9.2 HTTP errors with codes `301`, `308`, `4xx`, `5xx`
 
-9. The collected pairs are stored in a buffer. Eventually the Interceptor writes them to a dedicated Kafka topic (Kafka here is a separate component of the Soveren Agent, a part of the processing and messaging system). If for whatever reason Kafka is not available for too long, the Interceptor flushes the buffer, therefore losing some of the collected information
+    9.3 Requests to the following URLs: `/metrics`, `/healthz`, `/api/health`, `/api/v2/alive`, `/api/v2/detect`
+
+10. The collected pairs are stored in a buffer. Eventually the Interceptor writes them to a dedicated Kafka topic (Kafka here is a separate component of the Soveren Agent, a part of the processing and messaging system). If for whatever reason Kafka is not available for too long, the Interceptor flushes the buffer, therefore losing some of the collected information
 
 ## Required permissions
 
