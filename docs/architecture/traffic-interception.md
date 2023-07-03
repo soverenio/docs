@@ -12,35 +12,35 @@ Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/w
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
-## How the Interceptors work
+## Interceptor operation
 
-The simplified flow of how each Interceptor works is as follows:
+The simplified flow of each Interceptor's operation is outlined below:
 
 ![The main flow of the Interceptor](../../img/architecture/interceptor-flow.png "The main flow of the Interceptor")
 
 Step by step:
 
-1. The Interceptor looks into the processes running on the host. It identifies `pod`s and individual containers by matching IP addresses of their virtual network interfaces
+1. The Interceptor examines the processes operating on the host. It identifies `pod`s and individual containers by associating the IP addresses of their virtual network interfaces.
 
-2. By looking into the processes of individual containers, the Interceptor identifies which `pod`s are running service mesh (Istio or Linkerd). If the mesh is found then the Interceptor starts listening to the `loopback` interface of the container with mesh, to see the unencrypted traffic. If the mesh is not present then the Interceptor listens to the external network interface of the `pod`
+2. Upon inspecting individual container processes, the Interceptor discerns which `pod`s are running service mesh (Istio or Linkerd). If a mesh is detected, the Interceptor initiates monitoring of the container's `loopback` interface to observe unencrypted traffic. If the mesh is absent, the Interceptor monitors the `pod`s external network interface.
 
-3. The Interceptor listens to the `tcp` traffic of the virtual interface until it collects the whole request or response. At this moment the Interceptor understands whether this is HTTP or some other protocol. The non-HTTP information is dropped by the Interceptor
+3. The Interceptor observes the `tcp` traffic of the virtual interface until an entire request or response is compiled. At this juncture, the Interceptor discerns whether the traffic comprises HTTP or a different protocol. Non-HTTP data is disregarded by the Interceptor.
 
-4. If the collected request or response is larger in size than some pre-defined limit (currently 1Mb), it is discarded and not accounted for in the further analysis
+4. If the collected request or response exceeds a predefined size limit (currently 1Mb), it is dismissed and excluded from subsequent analysis.
 
-5. The Interceptor remembers the collected request and waits for the response. If the response is not collected for too long, the request is discarded
+5. The Interceptor retains the collected request and awaits the response. If the response is delayed, the request is abandoned.
 
-6. The collected request / response pair also must not exceed the pre-defined size limit (1Mb), otherwise it is discarded
+6. The combined request/response pair must also not exceed the predefined size limit (1Mb); otherwise, it is discarded.
 
-7. While building the pair, the Interceptor checks the `content-type` from the header, it must be one of the following:
+7. During the pair's assembly, the Interceptor verifies the `content-type` from the header, which must be one of the following:
 
     7.1 `application/json`
 
     7.2 `application/x-www-form-urlencoded`
 
-8. `content-type`s other than the above are discarded at this point. At least one half of the pair must have the manageable `content-type` set properly
+8. `Content-type`s deviating from the above are discarded. At least one half of the pair must have a permissible `content-type` properly set.
 
-9. The following information is considered apriori technical and is discarded from further analysis:
+9. The ensuing data is deemed technically a priori and is excluded from further analysis:
 
     9.1 Internal Kubernetes or Soveren requests: `UA: kube-probe` and `X-Soveren-Request` headers
 
@@ -48,7 +48,7 @@ Step by step:
 
     9.3 Requests to the following URLs: `/metrics`, `/healthz`, `/api/health`, `/api/v2/alive`, `/api/v2/detect`
 
-10. The collected pairs are stored in a buffer. Eventually the Interceptor writes them to a dedicated Kafka topic (Kafka here is a separate component of the Soveren Agent, a part of the processing and messaging system). If for whatever reason Kafka is not available for too long, the Interceptor flushes the buffer, therefore losing some of the collected information
+10. The compiled pairs are stored in a buffer. Eventually, the Interceptor forwards them to a dedicated Kafka topic (In this context, Kafka is a standalone component of the Soveren Agent, forming part of the processing and messaging system). If Kafka is unavailable for a significant duration, the Interceptor clears the buffer, resulting in the loss of some collected information.
 
 ## Required permissions
 
@@ -62,8 +62,8 @@ securityContext:
   hostPID: true
 ```
 
-## Important caveat
+## Important considerations
 
-It is important to note that the Interceptors are optimized to consume as little resources as possible under all possible load conditions. Those can be really extreme, therefore there can be situations where the Interceptors are literally deprived of resources. This may occasionally lead to weird situations, like e.g. Interceptor not able to connect to the virtual interface because the pod or container is already gone by that time (results in Kubernetes errors in the log).
+It's crucial to acknowledge that the Interceptors are designed to use as few resources as possible under all conceivable load conditions. In certain extreme scenarios, Interceptors might be completely starved of resources. This might sporadically result in unusual situations, such as an Interceptor failing to connect to the virtual interface because the pod or container has already been terminated (resulting in Kubernetes log errors).
 
-However extreme the conditions, the Interceptors are designed to cope with them. If they omit some portion of the captured traffic, or if they occasionally miss a container or a `pod`, then the map will just take longer to build. 
+Regardless of how severe the conditions, Interceptors are designed to manage them. If they omit a portion of the captured traffic, or if they occasionally overlook a container or a  `pod`, the map construction will merely be slightly delayed. 
