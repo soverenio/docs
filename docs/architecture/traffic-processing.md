@@ -14,28 +14,16 @@ The simplified main flow of the Digger is outlined below:
 
 Let's dive into more details of how Digger works:
 
-1. Several goroutines read the request/response pairs from the Kafka topics and process them (see the steps below). When the processing of an individual pair is finished and the resulting metadata is sent to the Soveren Cloud, the goroutine moves the respective offset in Kafka.
+1. **Processing of request/response pairs:** Multiple goroutines read and process request/response pairs from Kafka topics. Upon completion of the processing for an individual pair and delivery of the resulting metadata to the Soveren Cloud, the respective offset in Kafka is updated by the goroutine. The Digger takes the responsibility of ensuring that Kafka topics don't overflow with data, thereby managing them by trimming as needed, contingent on the load and processing resources available.
 
-    * Digger makes sure that Kafka topics don't consume too much space and trims them as necessary, depending on the load and the resources available for processing
+2. **Processing of source and destination information:** The sources and destinations of requests are accessible to the Digger. These are looked up in a cache that is [populated independently with the current Kubernetes metadata](../k8s-metadata/) (names, namespaces, labels, etc). If the requisite Kubernetes metadata is absent from the cache, the processing is paused temporarily. If the new data lands in the cache during this interval, the processing resumes. However, if the metadata remains unavailable, the pair advances to the subsequent steps of processing, since the payload data can still be scrutinized for potential sensitivity, even in the absence of verbose Kubernetes names and labels.
 
-2. Sources and destinations of requests are available to Digger. The processor looks up those sources and destinations in the cache that is [independently populated with actual  Kubernetes metadata](../k8s-metadata/) (names, namespaces, labels etc)
+3. **Detection-tool usage:** The Digger sends the pair to the Detection-tool for data detection and sensitivity inspection, and collects the results. Depending on the workload and, consequently, the volume of request/response pairs, the Digger adopts a specific sampling mechanism before forwarding the data. This includes unconditional inspection of each new (previously unseen) URL and occasional sampling of already observed URLs based on the load. In particularly stressful conditions, a URL's data re-evaluation may take up to 6 hours.
 
-    * If the Kubernetes metadata is not available in the cache at the moment, the processing is put on hold for some time. If during that time the new data arrives in the cache, the processing is notified about that.
+4. **Value substitution:** Values within the pair's payloads are replaced with placeholders (`*` for letters, `1` for digits) while punctuation symbols like commas and special symbols such as `@` remain intact. This approach maintains the value formatting while eliminating all actual data.
 
-    * If the metadata was ultimately not available, the pair still moves on into further steps of processing because even without verbose names and labels the payload data can still be inspected for its potential sensitivity.
+5. **Serialization and communication:** The processed pair is serialized into protobuf and delivered to the Soveren Cloud via a bi-directional gRPC connection that is continuously active between the Digger and the Soveren Cloud. The communication rate is capped at roughly 10 requests per second. Any data that cannot be sent due to this limit is discarded, with the exception of data relating to previously unobserved URLs, which are sent unconditionally.
 
-3. Digger sends the pair to Detection-tool for data detection and its inspection for sensitivity. Depending on the load and hence on the amount of request/response pairs, Digger employs the following sampling mechanism before sending:
+6. **Transmitting metrics and health checks:** The Digger also dispatches a stream of heartbeats from the Agent components to the cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Agent.
 
-    * Each new (previously unobserved) URL is inspected unconditionally
-
-    * If this URL has already been observed, then samples from that URL are sent for detection only once in a while, depending on the load. Under really stressed conditions, it can take up to 6 hours for re-evaluation of this URL's data
-
-4. Digger collects the results of detection from Detection-tool 
-
-5. Values in the pair's payloads are replaced with placeholders (`*` for letters, `1` for digits) while punctuation symbols like commas and special symbols like `@` are left intact. Basically, this preserves the value formatting while stripping away all actual data.
-
-6. The processed pair is then serialized into protobuf and sent to the Soveren Cloud over a bi-directional gRPC connection which Digger and Soveren Cloud maintain at all times. The rate of communication is capped at about 10 requests per second. The data that cannot be sent because of this limit is discarded, excluding the information of previously unobserved URLs (these data is sent unconditionally).
-
-7. Digger also sends to the cloud a stream of heartbeats from the Agent components, as well as metrics that are collected from all of them. Those metrics give us visibility into the Agent healthiness and performance.
-
-8. Basic traffic counters like number of observed calls are also maintained by the Digger and sent to the Soveren Cloud. Those counters take into account the data that was sampled out or dropped because of high load, or trimmed from Kafka topics, so total numbers are very close to what has been actually seen by the Agent.
+6. **Traffic counter management:** Basic traffic counters like the number of observed calls are also managed by the Digger and relayed to the Soveren Cloud. These counters account for data that was either sampled out or discarded due to high load, or trimmed from Kafka topics, resulting in totals that closely reflect what the Agent has truly observed.
