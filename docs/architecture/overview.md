@@ -2,8 +2,8 @@
 
 Soveren is composed of two primary components:
 
-* **Soveren Agent**: Deployed within your Kubernetes cluster, the Agent [intercepts and analyzes](../../getting-started/quick-start/) structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services. Importantly, the metadata **does not include any actual payload values**. The collected information is then relayed to the Soveren Cloud.
-* **Soveren Cloud**: Hosted and managed by Soveren, this cloud platform presents user-friendly [dashboards](../../user-guide/overview/) that provide visualization of sensitive data flows and summary statistics and metrics.
+* **Soveren Agent**: Deployed within your Kubernetes cluster, the Agent intercepts and analyzes structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services. Importantly, the metadata **does not include any actual payload values**. The collected information is then relayed to the Soveren Cloud.
+* **Soveren Cloud**: Hosted and managed by Soveren, this cloud platform presents user-friendly dashboards that provide visualization of sensitive data flows and summary statistics and metrics.
 
 ## Soveren Agent
 
