@@ -32,7 +32,7 @@ The Soveren Agent follows this sequence of operations:
 
 2. Interceptors pair requests to individual endpoints with their respective responses, creating request+response pairs.
 
-3. Interceptors transfer these pairs to a Kafka topic using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
+3. Interceptors transfer these pairs to Kafka using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
 
 4. Digger reads the request/response pair from Kafka, evaluates it for detailed analysis of data types and their sensitivity (employing intelligent sampling for high load scenarios). If necessary, Digger forwards the pair to the Detection-tool and retrieves the result.
 
