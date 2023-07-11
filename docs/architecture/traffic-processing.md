@@ -4,7 +4,7 @@
 
 The incoming traffic is processed by the processing and messaging system, utilizing Kafka as a central hub for message aggregation and Digger, a component developed by Soveren, as the primary logical processor.
 
-Interceptors [write](../traffic-interception/#interceptor-operation) the collected request/response pairs to Kafka. Subsequently, Digger reads these pairs, enriches them with Kubernetes metadata, and forwards samples to the sensitive data detection component to gather detection results. Digger then removes all actual values from the data, replacing them with format-preserving placeholders, and transmits the resulting metadata to the Soveren Cloud.
+Interceptors [write](../traffic-interception/#sending-requestresponse-pairs-for-further-processing) the collected request/response pairs to Kafka. Subsequently, Digger reads these pairs, enriches them with Kubernetes metadata, and forwards samples to the sensitive data detection component to gather detection results. Digger then removes all actual values from the data, replacing them with format-preserving placeholders, and transmits the resulting metadata to the Soveren Cloud.
 
 ## Digger operation
 
