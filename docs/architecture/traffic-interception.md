@@ -61,7 +61,7 @@ There are several important stages:
 ### Sending request/response pairs for further processing
 
 * The compiled pairs are stored in a buffer. Eventually, the Interceptor forwards them to a dedicated Kafka topic. In this context, Kafka is a standalone component of the Soveren Agent, an integral part of the [processing and messaging system](../traffic-processing/).
-* 
+
 * If Kafka is unavailable for a significant period, the Interceptor purges the buffer, thereby losing some collected data.
 
 * It's worth noting that the traffic volume caused by the Interceptors does not double the original traffic volume. This is due to the fact that much of the traffic passing through the host does not meet the processing criteria. For instance, not all traffic is HTTP with the correct `content-type`, larger payloads are not processed, and technical traffic is disregarded, among other factors. 
