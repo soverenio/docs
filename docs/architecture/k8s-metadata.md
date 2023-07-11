@@ -1,6 +1,6 @@
 # Retrieving metadata from the Kubernetes API
 
-Digger utilizes the Kubernetes (K8s) API to gather metadata on these entities: `pods`, `endpoints`, and `services`. This process employs the method depicted as [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
+Digger utilizes the Kubernetes API to gather metadata on these entities: `pods`, `endpoints`, and `services`. This process employs the method depicted as [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
 
 Here's how the communication between Digger and the Kubernetes API is structured:
 
@@ -12,7 +12,7 @@ In more detail:
 
 2. Subsequently, Digger initiates three `watch` calls, essentially subscribing to notifications about configuration modifications in entities of these three types.
 
-    * In scenarios where the K8s API is unavailable due to any reason, Digger attempts to re-subscribe, with the waiting duration between attempts incrementing exponentially.
+    * In scenarios where the Kubernetes API is unavailable due to any reason, Digger attempts to re-subscribe, with the waiting duration between attempts incrementing exponentially.
 
     * For the subscription process, Digger employs the `resourceVersion` so that Kubernetes will only transmit new events to it.
 
