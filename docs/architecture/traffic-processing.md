@@ -42,8 +42,8 @@ Values within the pair's payloads are replaced with placeholders (`*` for letter
 
 ### Serialization and communication
 
-The processed pair is serialized into protobuf and delivered to the Soveren Cloud via a gRPC connection that is established by Digger. The communication rate is capped at roughly 10 requests per second. Any data that cannot be sent due to this limit is discarded, with the exception of data relating to previously unobserved URLs, which are sent unconditionally.
+The processed pair is serialized into protobuf and delivered to the Soveren Cloud via a gRPC connection which is established by Digger. The communication rate is capped at about 10 requests per second. Any data that cannot be sent due to this limit is discarded, with the exception of data relating to previously unobserved URLs, which are sent unconditionally.
 
 #### Transmitting metrics and health checks
 
-Digger also dispatches a stream of heartbeats from the Agent components to the cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Agent.
+Digger also dispatches a stream of heartbeats from the Agent components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Agent.
