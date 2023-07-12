@@ -71,10 +71,10 @@ What you are looking for is `securityContext`, it should be the following:
 
 ```shell
 securityContext:
-      privileged: true
-      dnsPolicy: ClusterFirstWithHostNet
-      hostNetwork: true
-      hostPID: true
+  privileged: true
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
+  hostPID: true
 ```
 
 !!! warning "Make sure the security context for interceptors is set right"
