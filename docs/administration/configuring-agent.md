@@ -74,7 +74,7 @@ kafka:
 
 #### Heap usage by Kafka
 
-In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. You don't need to change it but here's what is set as the default:
+In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
 
 ```shell
 kafka:
@@ -83,6 +83,8 @@ kafka:
     - name: KAFKA_HEAP_OPTS
       value: -Xmx512m -Xms512m
 ```
+
+The rule of thumb is this: if you increased the `limits` `memory` ×N-fold, also increase the Kafka heap ×N-fold.
 
 ### Digger
 
