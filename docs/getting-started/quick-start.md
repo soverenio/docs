@@ -1,5 +1,9 @@
 # Quick start
 
+!!! warning "Be sure to read the requirements and recommendations"
+
+    Defore installing the Soveren Agent, please read our [requirements and recommendations page](../../architecture/infrastructure-fit/)
+
 Installing Soveren is extremely simple:
 
 1. Install the Soveren Agent in your Kubernetes cluster
