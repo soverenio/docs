@@ -1,8 +1,8 @@
 # Quick start
 
-!!! warning "Be sure to read the requirements and recommendations"
+!!! warning "Please read through the requirements and recommendations"
 
-    Defore installing the Soveren Agent, please read our [requirements and recommendations page](../../architecture/infrastructure-fit/)
+    Before you proceed with the installation of the Soveren Agent, we strongly recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)
 
 Installing Soveren is extremely simple:
 
