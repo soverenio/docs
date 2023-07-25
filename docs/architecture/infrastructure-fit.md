@@ -12,7 +12,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 2. **We use Helm for deployment**. However, clients often adapt our charts to integrate the resulting manifests into their own deployment systems.
 
-3. **4 CPU, 16 Gb nodes**. We [optimized](../administration/configuring-agent/#resource-limits) our `limits` for nodes of this size. These are standard general-purpose nodes from popular cloud platforms:
+3. **4 CPU, 16 Gb nodes**. We [optimized](../../administration/configuring-agent/#resource-limits) our `limits` for nodes of this size. These are standard general-purpose nodes from popular cloud platforms:
 
     * Google Cloud: [c3-standard-4](https://cloud.google.com/compute/all-pricing#c3_standard_machine_types);
 
