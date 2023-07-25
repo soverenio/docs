@@ -1,8 +1,10 @@
 # Managing Agents
 
-You need one Agent per each of your Kubernetes clusters that you want Soveren to monitor. If you have multiple clusters and thus multiple Agents, the [Soveren app](https://app.soveren.io/) will aggregate data from all of them in a single pane of control.
+You need one Agent per each of your Kubernetes clusters that you want Soveren to monitor.
 
-Each Agent is identified by the token. You can browse and manage Agents and their tokens on the [agents page](https://app.soveren.io/agents).
+If you have multiple clusters and hence multiple Agents, Soveren will show them separately on the [data map](https://app.soveren.io/data-map). The clusters will be defined by the names of the Agents that you deploy in them.
+
+Soveren app identifies each Agent by the token.
 
 ![Agents](../../img/administration/agents.png "Agents")
 
