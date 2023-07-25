@@ -20,6 +20,20 @@ digger:
 
 Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection tool gets the token value from Digger.)
 
+## Multi-cluster deployment
+
+For each of your Kubernetes clusters, you'll require a Soveren Agent. If you've deployed Soveren Agents across several clusters, these agents will be identified by the names you assigned during creation. For more information, refer to [Managing agents](../managing-agents/).
+
+There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
+
+```shell
+digger:
+  statsclient:
+    clustername: <NAME>
+```
+
+Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Agent's name.
+
 ## Resource limits
 
 You can adjust resource usage limits for each of the Soveren Agent's components.
