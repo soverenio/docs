@@ -8,17 +8,17 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 ## Deployment
 
-1. **Kubernetes starting from version 1.21 and higher**: these are the versions that Soveren has been tested with. It can operate on older versions, but functionality may be suboptimal.
+1. **Kubernetes version 1.21 and higher**: these are the versions that Soveren has been tested with. It can operate on older versions, but functionality may be suboptimal.
 
 2. **We use Helm for deployment**. However, clients often adapt our charts to integrate the resulting manifests into their own deployment systems.
 
-3. **4 CPU, 16 Gb nodes**. Actual usage may vary, but this is the typical minimal node size that users deploy Soveren on. Examples include standard general-purpose nodes from popular cloud platforms:
+3. **4 CPU, 16 Gb nodes**. We optimized our `limits` for nodes of this size. These are standard general-purpose nodes from popular cloud platforms:
 
-    * [m7g.xlarge](https://aws.amazon.com/ec2/instance-types/#General_Purpose) from Amazon AWS;
+    * Google Cloud: [c3-standard-4](https://cloud.google.com/compute/all-pricing#c3_standard_machine_types);
 
-    * [c3-standard-4](https://cloud.google.com/compute/all-pricing#c3_standard_machine_types) from Google Cloud;
+   * Amazon AWS: [m7g.xlarge](https://aws.amazon.com/ec2/instance-types/#General_Purpose);
 
-    * [Standard_D4_v3](https://learn.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dv3-series) from Microsoft Azure.
+    * Microsoft Azure: [Standard_D4_v3](https://learn.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dv3-series).
 
 4. The [components of the Soveren Agent](../overview/#soveren-agent) are entirely self-sufficient. For instance, you don't need expertise in Kafka for our [messaging and processing system](../traffic-processing/) to operate; we handle everything.
 
