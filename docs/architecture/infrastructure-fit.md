@@ -16,7 +16,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
     * Google Cloud: [c3-standard-4](https://cloud.google.com/compute/all-pricing#c3_standard_machine_types);
 
-   * Amazon AWS: [m7g.xlarge](https://aws.amazon.com/ec2/instance-types/#General_Purpose);
+    * Amazon AWS: [m7g.xlarge](https://aws.amazon.com/ec2/instance-types/#General_Purpose);
 
     * Microsoft Azure: [Standard_D4_v3](https://learn.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dv3-series).
 
