@@ -53,4 +53,4 @@ helm repo update soveren
 helm upgrade soveren-agent soveren/soveren-agent -n soverenio -f path_to/values.yaml
 ```
 
-You can check the latest version information [in the chart](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/Chart.yaml), by looking for the `version` field.
+You can check the latest version information [in the current chart](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/Chart.yaml).
