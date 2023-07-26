@@ -1,54 +1,25 @@
 # Managing Agents
 
-You need one Agent per each of your Kubernetes clusters that you want Soveren to monitor. If you have multiple clusters and thus multiple Agents, the [Soveren app](https://app.soveren.io/) will aggregate data from all of them in a single pane of control.
+For each Kubernetes cluster you want Soveren to monitor, you'll require a Soveren Agent.
 
-Each Agent is identified by the token. You can browse and manage Agents and their tokens on the [agents page](https://app.soveren.io/agents).
+You can create, modify, and delete Agents via the [agents page](https://app.soveren.io/agents) in the Soveren app.
 
 ![Agents](../../img/administration/agents.png "Agents")
 
-## Create an Agent
+Each Agent is characterized by its `name` and `token`.
 
-To create an Agent:
+!!! danger "Use unique Agents and tokens for different clusters"
 
-1. Visit the [agents page](https://app.soveren.io/agents).
-2. Click the "New Agent" button in the upper-right corner. 
-3. In the slide-in popup, enter a name for the Agent.
+    If you're managing multiple clusters, please create unique Agents for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
 
-## Set up an Agent
+## Agent's Name
 
-To set up an Agent immediately after creating it, follow the instructions on the slide-in popup or refer to the [quick start](../../getting-started/quick-start/). 
+If you have multiple clusters, and thus multiple Agents, Soveren will display them separately on the [data map](https://app.soveren.io/data-map). The Agent's name will define the name of the cluster on the data map.
 
-## Rename an Agent
+You can also automate the naming of your clusters in Soveren [by setting the names of the clusters](../configuring-agent/#multi-cluster-deployment) in your configuration files.
 
-To rename an Agent:
+## Agent's Token
 
-1. Visit the [agents page](https://app.soveren.io/agents).
-2. Click the name field next to the Agent.
-3. Enter a new name. Your input will be saved automatically.
+The `token` allows the Soveren app to identify the Agent during communication.
 
-No additional actions or configuration changes required when renaming an Agent.
-
-## Delete an Agent
-
-To delete an Agent:
-
-1. Visit the [agents page](https://app.soveren.io/agents).
-2. Hover over the chosen Agent and click the recycle bin icon next to it.
-3. In the opened dialogue window, enter the Agent's name to confirm the deletion.
-4. Click "Delete".
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+We [recommend](../configuring-agent/#the-token) adding the `token` to your own configuration file, such as `values.yaml`, to simplify operational procedures.
