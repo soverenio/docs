@@ -4,10 +4,10 @@ We use Helm for managing the deployment of Soveren Agents. To customize values s
 
 You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
 
-!!! danger "Use `values.yaml` only for the values that you want to override!"
+!!! danger "Only use `values.yaml` to override specific values!"
 
-    Never use a complete copy of our `values.yaml` from the repository. This leads to a lot of glitches in production that are hard and time consuming to track down.
-    Only use `values.yaml` for the values that you want to change.
+    Avoid using a complete copy of our `values.yaml` from the repository. This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
+
 
 ## The token
 
@@ -18,7 +18,25 @@ digger:
   token: <TOKEN>
 ```
 
+!!! danger "Use unique Agents and tokens for different clusters"
+
+    If you're managing multiple clusters, please create unique Agents for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
+
 Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection tool gets the token value from Digger.)
+
+## Multi-cluster deployment
+
+For each of your Kubernetes clusters, you'll require a Soveren Agent. If you've deployed Soveren Agents across several clusters, these agents will be identified by the names you assigned during creation. For more information, refer to [Managing agents](../managing-agents/).
+
+There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
+
+```shell
+digger:
+  statsclient:
+    clustername: <NAME>
+```
+
+Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Agent's name.
 
 ## Resource limits
 
