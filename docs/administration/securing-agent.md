@@ -1,5 +1,7 @@
 # Securing the Agent
 
+!!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are not related to security."
+
 ## Proxying the Traffic
 
 There may be instances when you want to route the traffic between the Soveren Agent and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
