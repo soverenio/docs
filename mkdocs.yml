@@ -17,6 +17,7 @@ nav:
   - Administration:
       - Managing Agents: 'administration/managing-agents.md'
       - Configuring the Agent: 'administration/configuring-agent.md'
+      - Securing the Agent: 'administration/securing-agent.md'
       - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
   - User guide:
       - Overview: 'user-guide/overview.md'
