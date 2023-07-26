@@ -176,18 +176,6 @@ where:
 
 * `<PROMETHEUS_URL>` is the URL which will be receiving the metrics.
 
-## Proxying the traffic
-
-Sometimes you might want to direct the traffic between Soveren Agent and Cloud though the proxy. You might want to do it e.g. for additional control of only the allowed traffic going outside of you cluster.
-
-To do that, just specify the top-level value in your `values.yaml`:
-
-```shell
-httpsProxy: <PROXY_ADDRESS>:<PROXY_PORT>
-```
-
-where `<PROXY_ADDRESS>` and `<PROXY_PORT>` are the address of your proxy service and the port which is dedicated to listening, respectively.
-
 ## Namespace filtering
 
 Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to monitor. You can do that by explicitly stating the allowed namespaces (the allow list) or by excluding particular ones (the exclude list).
