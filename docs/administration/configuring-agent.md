@@ -1,5 +1,7 @@
 # Configuring the Soveren Agent
 
+!!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are specifically related to security."
+
 We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
 You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
@@ -175,18 +177,6 @@ where:
 * `<PROMETHEUS_NAME>` is the name that you want to give here to your local Prometheus,
 
 * `<PROMETHEUS_URL>` is the URL which will be receiving the metrics.
-
-## Proxying the traffic
-
-Sometimes you might want to direct the traffic between Soveren Agent and Cloud though the proxy. You might want to do it e.g. for additional control of only the allowed traffic going outside of you cluster.
-
-To do that, just specify the top-level value in your `values.yaml`:
-
-```shell
-httpsProxy: <PROXY_ADDRESS>:<PROXY_PORT>
-```
-
-where `<PROXY_ADDRESS>` and `<PROXY_PORT>` are the address of your proxy service and the port which is dedicated to listening, respectively.
 
 ## Namespace filtering
 

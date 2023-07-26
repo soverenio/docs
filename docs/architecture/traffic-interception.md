@@ -8,7 +8,7 @@ The primary objective of Interceptors is to intercept and monitor the network tr
 
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and by default, exist as pods on all nodes in the cluster.
 
-Pods with Interceptors have `hostNetwork` set to `true` ([see more on this](#required-permissions)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
+Pods with Interceptors have `hostNetwork` set to `true` and run in a privileged mode ([see more on this](../../administration/securing-agent/#container-security)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
@@ -65,18 +65,6 @@ There are several important stages:
 * If Kafka is unavailable for a significant period, the Interceptor purges the buffer, thereby losing some collected data.
 
 * It's worth noting that the traffic volume caused by the Interceptors does not double the original traffic volume. This is due to the fact that much of the traffic passing through the host does not meet the processing criteria. For instance, not all traffic is HTTP with the correct `content-type`, larger payloads are not processed, and technical traffic is disregarded, among other factors. 
-
-## Required permissions
-
-To enable Interceptors to read from the host, their containers require the following permissions (modifying these might disrupt traffic interception):
-
-```shell
-securityContext:
-  privileged: true
-  dnsPolicy: ClusterFirstWithHostNet
-  hostNetwork: true
-  hostPID: true
-```
 
 ## Important considerations
 
