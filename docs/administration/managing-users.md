@@ -40,9 +40,9 @@ User authentication with single sign-on (SSO) can be enabled in Soveren, allowin
 
 To begin, you will need to create an OIDC app integration for Soveren within your IdP — essentially, registering the Soveren app. The process to achieve this depends on your IdP. During this process, you will require the redirect URL (also referred to as the reply URL) of Soveren: this is the location to which your IdP directs users after successful registration or authentication. Soveren provides two URLs for this:
 
-* https://auth.soveren.io/ui/login/register/externalidp/callback
+* `https://auth.soveren.io/ui/login/register/externalidp/callback`
 
-* https://auth.soveren.io/ui/login/login/externalidp/callback
+* `https://auth.soveren.io/ui/login/login/externalidp/callback`
 
 Next, navigate to [Soveren's SSO settings](https://app.soveren.io/team/settings) and complete the following form:
 
