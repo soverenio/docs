@@ -20,7 +20,7 @@ Soveren authenticates the user using the email address you provide, and the pass
 
 After inputting the new user's email address, click on the **Generate invite link** button, copy the link, and manually send it to the new user via your preferred communication channels, such as email or Slack.
 
-!!! warning "The new user will not receive the link automatically. You must manually send it using your preferred communication channels like Slack or email."
+!!! warning "The new user will not receive the invitation link automatically. You must manually send it using your preferred communication channels like Slack or email."
 
 Until the new user accepts the invitation, you have the option to **Revoke** it if you change your mind:
 
@@ -31,5 +31,5 @@ Upon clicking the invitation link, the new user is presented with the following 
 ![Creating new user](../../img/administration/team-invite-accept.png "Creating new user")
 
 
-## Single sign on (SSO)
+## Single sign-on (SSO)
 
