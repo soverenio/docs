@@ -6,7 +6,7 @@ Whenever you log into [Soveren](https://app.soveren.io), you are directed to the
 
 ![Empty team](../../img/administration/team-init.png "Empty team")
 
-A user who is a Soveren admin has the ability to [invite new users](#inviting-a-new-user), generate password recovery links for users who have forgotten their credentials, block other users' access, and configure the [single sign-on (SSO)](#single-sign-on-(sso)) :
+A user who is a Soveren admin has the ability to [invite new users](#inviting-a-new-user), generate password recovery links for users who have forgotten their credentials, block other users' access, and configure the [single sign-on (SSO)](#single-sign-on-sso) :
 
 ![Team management](../../img/administration/team-existing-user-menu.png "Team management")
 
