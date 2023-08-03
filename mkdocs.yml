@@ -15,6 +15,7 @@ nav:
       - Kubernetes metadata: 'architecture/k8s-metadata.md'
 #      - Sensitive data detection: 'architecture/detection.md'
   - Administration:
+      - Managing Users: 'administration/managing-users.md'
       - Managing Agents: 'administration/managing-agents.md'
       - Configuring the Agent: 'administration/configuring-agent.md'
       - Securing the Agent: 'administration/securing-agent.md'
