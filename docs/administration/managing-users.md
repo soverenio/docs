@@ -60,6 +60,6 @@ Subsequently, specify the **Email domain** to be authenticated through SSO. You 
 
 After completing the form and saving the settings, [invite new users](#inviting-a-new-user) from the domain(s) you've configured. Soveren will attempt to authenticate these users through SSO. (It is essential that these users are correctly configured in the IdP.)
 
-!!! danger "Soveren retains the user's refresh token for 24 hours"
+!!! danger "Soveren checks if the user is active in the IdP at least once in 24 hours"
 
-    Soveren ensures that a user's refresh token is not older than 24 hours. Consequently, if a user is blocked in the IdP, there might be a delay before their access is revoked in Soveren.
+    If a user is blocked in the IdP, there might be a 24-hours delay before their access is revoked in Soveren.
