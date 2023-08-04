@@ -53,4 +53,4 @@ Soveren’s product has a hybrid architecture:
 
 * **Soveren Cloud** offers data and asset map, policy engine, and various statistics and metrics dashboards
 
-Take a look at the [architecture section](getting-started/architecture/) for more details on how Soveren works under the hood.
+Take a look at the [architecture section](architecture/overview/) for more details on how Soveren works under the hood.
