@@ -2,6 +2,8 @@
 
 !!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are not related to security."
 
+!!! info "Refer to [our current helm charts](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+
 ## Proxying the Traffic
 
 There may be instances when you want to route the traffic between the Soveren Agent and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
