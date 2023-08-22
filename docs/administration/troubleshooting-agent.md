@@ -101,7 +101,7 @@ To view all the Agent's pods:
 kubectl -n soverenio describe pod -l app.kubernetes.io/name=soveren-agent
 ```
 
-## Checking the logs
+## Checking logs
 
 If a specific component seems problematic, consider inspecting its logs.
 
