@@ -212,16 +212,16 @@ where:
 
 ## Namespace filtering
 
-Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to monitor. You can do that by explicitly stating the allowed namespaces (the allow list) or by excluding particular ones (the exclude list).
+At times, you may want to limit the Soveren Agent to specific namespaces for monitoring. You can achieve this by either specifying allowed namespaces (the "allow list") or by excluding particular ones (the "exclude list").
 
-The syntax is like this:
+The syntax is as follows:
 
-* if nothing is specified then all namespaces will be covered;
-* asterisk means _everything_;
-* `action: allow` includes this namespace into monitoring;
-* `action: deny` excludes this namespace from monitoring.
+* If nothing is specified, all namespaces will be monitored.
+* An asterisk (*) represents "everything."
+* `action: allow` includes the specified namespace for monitoring.
+* `action: deny` excludes the specified namespace from monitoring.
 
-Here's an example of how you can do this:
+Here's an example to demonstrate:
 
 ```shell
 digger:
@@ -236,25 +236,25 @@ digger:
           action: allow
 ```
 
-When defining names you can use wildcards and globs like `foo*`, `/dev/sd?`, `devspace-[1-9]` etc as defined in the [Go path package](https://pkg.go.dev/path#Match)
+When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`, and `devspace-[1-9]`, as defined in the [Go path package](https://pkg.go.dev/path#Match)
 
-The default policy of the Agent is to work with explicitly mentioned namespaces and ignore everything else.
+The Agent's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
-!!! info "Conclude with `allow *` if you set any `deny` definitions"
-    If you've placed some `deny` definitions into the filter list and want everything else to be monitored then please make sure you've ended the list with the following:
+!!! info "End with `allow *` if you have any `deny` definitions"
+    If you've included `deny` definitions in your filter list and want to monitor all other namespaces, make sure to conclude the list with:
     ```shell
           - namespace: "*"
           action: allow
     ```
-    Otherwise the Agent might end up not monitoring any namespaces if there were only `deny` definitions.
+    Failing to do so could result in the Agent not monitoring any namespaces if only `deny` definitions are present.
 
 ## Service mesh and encryption
 
-Soveren can monitor connections encrypted with service mesh like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
+Soveren can monitor connections encrypted through service meshes like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-The agent will automatically detect if there is service mesh deployed in the cluster / on the node. You only need fine tuning if your mesh implementation uses non-standard ports.
+The agent will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
 
-For example, for Linkerd you might need something like this in your `values.yaml`:
+For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
 ```shell
 interceptor:
@@ -266,7 +266,7 @@ interceptor:
 
 ## Changing the log level
 
-By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
+By default, the log levels for all Soveren Agent components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
 
 ```shell
 [digger|interceptor|detectionTool|prometheusAgent]:
@@ -275,6 +275,6 @@ By default log levels of all Soveren Agent components is set to `error`. You can
       level: error
 ```
 
-(You need to create different config sections for dirrefent components — `digger` or `interceptor` or `detectionTool` or `prometheusAgent` — but the syntax is the same.)
+(You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
 
-We don't manage the log level of Kafka, by default it's `info`.
+We do not manage the log level for Kafka; it is set to `info` by default.
