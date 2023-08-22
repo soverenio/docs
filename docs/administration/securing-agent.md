@@ -59,7 +59,7 @@ Interceptors capture traffic by monitoring the virtual interfaces of the host.
 
 Each Interceptor pod contains two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` itself, which processes the captured data.
 
-To allow interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
+To allow Interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
 
 ```shell
 securityContext:
