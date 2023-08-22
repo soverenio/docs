@@ -194,7 +194,7 @@ prometheusAgent:
 
 ## Sending metrics to local Prometheus
 
-If you want to monitor the metrics that the Soveren Agent collects, here's hod to do that:
+If you want to monitor the metrics that the Soveren Agent collects, here's how to do that:
 
 ```shell
 prometheusAgent:
