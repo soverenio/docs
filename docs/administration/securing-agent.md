@@ -72,4 +72,4 @@ hostNetwork: true
 hostPID: true
 ```
 
-Modifying these settings for Interceptors and Rpcapd will disrupt traffic interception.
+Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.
