@@ -178,7 +178,7 @@ detectionTool:
 
 ### Prometheus-agent
 
-We run a Prometheus agent to collect some metrics to check basic performance of the Soveren Agent. Values here are pretty generic for most cases.
+We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Agent. Values here are pretty generic for most cases.
 
 ```shell
 prometheusAgent:
