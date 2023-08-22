@@ -12,6 +12,9 @@ helm search repo soveren
 
 You can then compare the versions listed in the output with our customer success team for confirmation.
 
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent, and for current images / components versions."
+
+
 Next, it's advisable to confirm that all Soveren Agent components have been successfully deployed:
 
 ```shell
@@ -23,7 +26,7 @@ In this command, `soverenio` is the namespace where you've [deployed](../../gett
 Ensure you observe _all_ of the following:
 
 * `interceptor`: There should be several instances, equal to the number of nodes in your cluster. Interceptors collect the traffic from nodes and relay it to `kafka`.
-* `kafka`: Only one instance should exist, which receives traffic from the `interceptors`;
+* `kafka`: Only one instance should exist, which receives traffic from the `interceptors`.
 * `digger`: One instance, reads data from `kafka`, sends it to the `detection-tool`, collects results, and forwards relevant metadata to the Soveren Cloud.
 * `detection-tool`: A single instance, performs the bulk of the work detecting sensitive data.
 * `prometheus-agent`: A single instance, monitors basic metrics from all other Agent components.
@@ -34,7 +37,7 @@ Additionally, ensure that all custom values specified in your `values.yaml` have
 helm -n soverenio get values soveren-agent | grep -v token
 ```
 
-!!! info "These commands offer a basic check of the Soveren Agent setup's consistency"
+!!! warning "These commands offer a basic check of the Soveren Agent setup's consistency"
     Be prepared to share the output of these commands when discussing issues with our customer success team.
 
 ## Verifying individual components
@@ -59,7 +62,7 @@ kubectl -n soverenio describe daemonset -l app.kubernetes.io/component=intercept
 
 #### Permissions required by Interceptors
 
-If issues arise specifically with the Interceptors, such as difficulties transitioning to running mode, confirm they possess the requisite permissions::
+If issues arise specifically with the Interceptors, such as difficulties transitioning to running mode, confirm they possess the requisite permissions:
 
 ```shell
 kubectl -n soverenio get daemonset -l app.kubernetes.io/component=interceptor -o yaml

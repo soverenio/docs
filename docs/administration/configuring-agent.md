@@ -4,7 +4,7 @@
 
 We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-!!! info "Refer to [our current helm charts](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
 
 You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
 

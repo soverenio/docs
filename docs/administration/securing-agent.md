@@ -2,7 +2,7 @@
 
 !!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are not related to security."
 
-!!! info "Refer to [our current helm charts](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
 
 ## Proxying the Traffic
 
@@ -57,7 +57,7 @@ securityContext:
 
 Interceptors capture traffic by monitoring the virtual interfaces of the host.
 
-Each Interceptor pod contains two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` itself, which processes the captured data.
+In each Interceptor pod, there are two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` itself, which processes the captured data.
 
 To allow Interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
 
