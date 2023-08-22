@@ -13,7 +13,7 @@ You can change a number of things regarding the Soveren Agent deployment. You ca
     Avoid using a complete copy of our `values.yaml` from the repository. This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
 
 
-## The token
+## Agent token
 
 To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
 
