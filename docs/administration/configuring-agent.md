@@ -236,7 +236,7 @@ digger:
           action: allow
 ```
 
-When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`, and `devspace-[1-9]`, as defined in the [Go path package](https://pkg.go.dev/path#Match)
+When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`, and `devspace-[1-9]`, as defined in the [Go path package](https://pkg.go.dev/path#Match).
 
 The Agent's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
