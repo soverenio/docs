@@ -2,6 +2,8 @@
 
 !!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are not related to security."
 
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+
 ## Proxying the Traffic
 
 There may be instances when you want to route the traffic between the Soveren Agent and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
@@ -39,22 +41,37 @@ networkPolicy:
 
 ## Container security
 
+### Components that don't intercept traffic
+
 All containers of the Soveren Agent, except for the Interceptors, have the following `securityContext` by default:
 
 ```shell
 securityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
+  runAsUser: 1000 # 65534 for prometheusAgent
+  runAsGroup: 1000 # 65534 for prometheusAgent
   allowPrivilegeEscalation: false
   runAsNonRoot: true
 ```
 
-To enable Interceptors to read from the host, their containers require the following permissions (modifying these might disrupt traffic interception):
+### Components that do traffic interception
+
+Interceptors capture traffic by monitoring the virtual interfaces of the host.
+
+In each Interceptor pod, there are two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` itself, which processes the captured data.
+
+To allow Interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
 
 ```shell
 securityContext:
   privileged: true
-  dnsPolicy: ClusterFirstWithHostNet
-  hostNetwork: true
-  hostPID: true
 ```
+
+Additionally, the `interceptor` container requires the following:
+
+```shell
+dnsPolicy: ClusterFirstWithHostNet
+hostNetwork: true
+hostPID: true
+```
+
+Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.

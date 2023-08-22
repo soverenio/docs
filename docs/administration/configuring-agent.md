@@ -4,14 +4,15 @@
 
 We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-You can change a number of things regarding the Soveren Agent deployment. You can always check [our repository](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/values.yaml) for the full list of possible values. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+
+You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Agents](../managing-agents/#updating-agents)).
 
 !!! danger "Only use `values.yaml` to override specific values!"
+    Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent). This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
 
-    Avoid using a complete copy of our `values.yaml` from the repository. This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
 
-
-## The token
+## Agent token
 
 To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
 
@@ -21,14 +22,13 @@ digger:
 ```
 
 !!! danger "Use unique Agents and tokens for different clusters"
-
     If you're managing multiple clusters, please create unique Agents for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
 
-Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection tool gets the token value from Digger.)
+Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection-tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection-tool gets the token value from Digger.)
 
 ## Multi-cluster deployment
 
-For each of your Kubernetes clusters, you'll require a Soveren Agent. If you've deployed Soveren Agents across several clusters, these agents will be identified by the names you assigned during creation. For more information, refer to [Managing agents](../managing-agents/).
+For each Kubernetes cluster, you'll need a separate Soveren Agent. When deploying Soveren Agents across multiple clusters, they will be identified by the tokens and names assigned during their creation. For more information, refer to [Managing agents](../managing-agents/).
 
 There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
 
@@ -38,7 +38,7 @@ digger:
     clustername: <NAME>
 ```
 
-Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Agent's name.
+Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Agent's name defined in the [Soveren app](https://app.soveren.io/agents).
 
 ## Resource limits
 
@@ -48,17 +48,19 @@ As a rule of thumb, we **_do not_** recommend to change the `requests` values. T
 
 The `limits` however differ widely between Agent's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
 
-Soveren Agent does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` is just for making sure that the virtual disk space is not overused. You can safely get rid of any of them.
+Soveren Agent does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` values are just for making sure that the virtual disk space is not overused.
 
 ### Interceptors
 
-The interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how much resources they are allowed to use.
+The Interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how many resources they are allowed to use.
 
-Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs. Thus the memory they use is directly proportional to how large those `JSON`s are.
+Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs (read more in the [Interceptors: capturing the traffic](../../architecture/traffic-interception/)). Thus, the memory they use is directly proportional to how large those `JSON`s are.
 
-The reading is done in a non-blocking fashion, leveraging the [`libpcap`](https://www.tcpdump.org/) library.  If there is not enough CPU the interceptors may not have enough time to read the traffic and build enough request/response pairs relevant for building the data map.
+The reading is done in a non-blocking fashion, leveraging the [`libpcap`](https://www.tcpdump.org/) library, or more precisely the `rpcapd` fork. So in effect each Interceptor pod hosts two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` which processes the captured data.
 
-The default configuration is the following. You are encouraged to observe the actual usage for a while and tune the `limits` up or down.
+The default configuration is the following:
+
+For `interceptors`:
 
 ```shell
 interceptor:
@@ -72,11 +74,31 @@ interceptor:
       ephemeral-storage: "100Mi"
 ```
 
+For `rpcapd`:
+
+```shell
+rpcapd:
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "64Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+      ephemeral-storage: "100Mi"
+```
+
+You are encouraged to observe the actual usage for a while and tune the `limits` for the `interceptors` containers up or down. If there is not enough CPU the Interceptors may not have enough time to read the traffic and build enough request/response pairs relevant for building the data map.
+
+You will most probably not need to tune anything for the `rpcapd` container.
+
 ### Kafka
 
-[Kafka](https://kafka.apache.org/) is the only component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
+[Kafka](https://kafka.apache.org/) is the component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
 
-The default values here are as follows. Under normal circumstances you don't need to touch any of them.
+There is also a `kafka-exporter` container in the Kafka pod for sending metrics to Prometheus Agent.
+
+The default values for `kafka` and `kafka-exporter` containers are as follows (`kafka-exporter` is in the metrics section):
 
 ```shell
 kafka:
@@ -90,6 +112,16 @@ kafka:
         cpu: "400m"
         memory: "1024Mi"
         ephemeral-storage: "10Gi"
+    metrics:
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "650Mi"
+          ephemeral-storage: "5Gi"
+        limits:
+          cpu: "400m"
+          memory: "1024Mi"
+          ephemeral-storage: "10Gi"
 ```
 
 #### Heap usage by Kafka
@@ -104,15 +136,15 @@ kafka:
       value: -Xmx512m -Xms512m
 ```
 
-The rule of thumb is this: if you increased the `limits` `memory` ×N-fold, also increase the Kafka heap ×N-fold.
+The rule of thumb is this: if you increased the `limits` `memory` value for the `kafka` container ×N-fold, also increase the heap ×N-fold.
 
 ### Digger
 
-Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Deection tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
+Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Detection-tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
 
 Digger employs all sorts of data sampling algorithms to make sure that all endpoints and assets in the data map are uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
 
-Normally you should not want to change the resource values for Digger but here they are:
+The resource defaults for Digger are:
 
 ```shell
 digger:
@@ -126,27 +158,27 @@ digger:
       ephemeral-storage: "100Mi"
 ```
 
-### Detection tool
+### Detection-tool
 
-The Detection tool does all the heavy lifting when it comes to detecting data types in the flows and their sensitivity. It runs a custom built machine learning models using Python for that.
+The Detection-tool does all the heavy lifting when it comes to detecting data types in the flows and their sensitivity. It runs a custom-built machine learning models using Python for that.
 
-The values for the Detection tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the limits, so we encourage you to monitor the actual usage and adjust accordingly.
+The values for the Detection-tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the `limits`, so we encourage you to monitor the actual usage and adjust accordingly.
 
 ```shell
 detectionTool:
   resources:
     requests:
-      cpu: "100m"
+      cpu: "200m"
       memory: "1680Mi"
     limits:
-      cpu: "1100m"
+      cpu: "2200m"
       memory: "2304Mi"
       ephemeral-storage: "200Mi"
 ```
 
-### Prometheus
+### Prometheus-agent
 
-We run a Prometheus agent to collect some metrics to check basic performance of the Soveren Agent. Values here are pretty generic for most cases.
+We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Agent. Here are the default resource values:
 
 ```shell
 prometheusAgent:
@@ -160,9 +192,9 @@ prometheusAgent:
       ephemeral-storage: "100Mi"
 ```
 
-#### Sending metrics to local Prometheus
+## Sending metrics to local Prometheus
 
-If you want to monitor the metrics that the Soveren Agent collects, here's hod to do that:
+If you want to monitor the metrics that the Soveren Agent collects, here's how to do that:
 
 ```shell
 prometheusAgent:
@@ -180,16 +212,16 @@ where:
 
 ## Namespace filtering
 
-Sometimes it makes sense to confine the Soveren Agent to dedicated namespaces to monitor. You can do that by explicitly stating the allowed namespaces (the allow list) or by excluding particular ones (the exclude list).
+At times, you may want to limit the Soveren Agent to specific namespaces for monitoring. You can achieve this by either specifying allowed namespaces (the "allow list") or by excluding particular ones (the "exclude list").
 
-The syntax is like this:
+The syntax is as follows:
 
-* if nothing is specified then all namespaces will be covered;
-* asterisk means _everything_;
-* `action: allow` includes this namespace into monitoring;
-* `action: deny` excludes this namespace from monitoring.
+* If nothing is specified, all namespaces will be monitored.
+* An asterisk (*) represents "everything."
+* `action: allow` includes the specified namespace for monitoring.
+* `action: deny` excludes the specified namespace from monitoring.
 
-Here's an example of how you can do this:
+Here's an example to demonstrate:
 
 ```shell
 digger:
@@ -204,25 +236,25 @@ digger:
           action: allow
 ```
 
-When defining names you can use wildcards and globs like `foo*`, `/dev/sd?`, `devspace-[1-9]` etc as defined in the [Go path package](https://pkg.go.dev/path#Match)
+When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`, and `devspace-[1-9]`, as defined in the [Go path package](https://pkg.go.dev/path#Match).
 
-The default policy of the Agent is to work with explicitly mentioned namespaces and ignore everything else.
+The Agent's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
-!!! info "Conclude with `allow *` if you set any `deny` definitions"
-    If you've placed some `deny` definitions into the filter list and want everything else to be monitored then please make sure you've ended the list with the following:
+!!! info "End with `allow *` if you have any `deny` definitions"
+    If you've included `deny` definitions in your filter list and want to monitor all other namespaces, make sure to conclude the list with:
     ```shell
           - namespace: "*"
           action: allow
     ```
-    Otherwise the Agent might end up not monitoring any namespaces if there were only `deny` definitions.
+    Failing to do so could result in the Agent not monitoring any namespaces if only `deny` definitions are present.
 
 ## Service mesh and encryption
 
-Soveren can monitor connections encrypted with service mesh like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
+Soveren can monitor connections encrypted through service meshes like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-The agent will automatically detect if there is service mesh deployed in the cluster / on the node. You only need fine tuning if your mesh implementation uses non-standard ports.
+The agent will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
 
-For example, for Linkerd you might need something like this in your `values.yaml`:
+For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
 ```shell
 interceptor:
@@ -234,7 +266,7 @@ interceptor:
 
 ## Changing the log level
 
-By default log levels of all Soveren Agent components is set to `error`. You can change this by specifying different log level for individual components, like this:
+By default, the log levels for all Soveren Agent components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
 
 ```shell
 [digger|interceptor|detectionTool|prometheusAgent]:
@@ -243,6 +275,6 @@ By default log levels of all Soveren Agent components is set to `error`. You can
       level: error
 ```
 
-(You need to create different config sections for dirrefent components — `digger` or `interceptor` or `detectionTool` or `prometheusAgent` — but the syntax is the same.)
+(You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
 
-We don't manage the log level of Kafka, by default it's `info`.
+We do not manage the log level for Kafka; it is set to `info` by default.
