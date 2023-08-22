@@ -192,7 +192,7 @@ prometheusAgent:
       ephemeral-storage: "100Mi"
 ```
 
-### Sending metrics to local Prometheus
+## Sending metrics to local Prometheus
 
 If you want to monitor the metrics that the Soveren Agent collects, here's hod to do that:
 
