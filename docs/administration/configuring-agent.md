@@ -6,7 +6,7 @@ We use Helm for managing the deployment of Soveren Agents. To customize values s
 
 !!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
 
-You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option.
+You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Agents](../managing-agents/#updating-agents)).
 
 !!! danger "Only use `values.yaml` to override specific values!"
     Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent). This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
