@@ -43,23 +43,12 @@ For more advanced configuration options please take a look at the [configuration
 
 There are several things which happen automatically in the cluster when you install the Soveren Agent:
 
-1. Soveren Agent contains Interceptors and Personal Data Detector, which itself [consists of several components](../../#soveren-agent).
+1. Soveren Agent contains Interceptors and Sensitive Data Detector, which itself [consists of several components](../../#soveren-agent).
 
+2. All components of Soveren Agent are deployed into the namespace `soverenio`. 
 
-2. Both Interceptors and Personal Data Detector are deployed into the namespace `soverenio`. 
-
-
-3. Soveren Agent subscribes to a lot of metadata from the Kubernetes API. For this, a dedicated `ServiceAccount` is created for Personal Data Detector. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`.
-
+3. Soveren Agent subscribes to [a lot of metadata from the Kubernetes API](../../architecture/k8s-metadata/). A dedicated `ServiceAccount` is created. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`.
 
 4. Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
 
-5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require several things:
-
-    1. `privileged: true`
-
-    2. `dnsPolicy: ClusterFirstWithHostNet`
-
-    3. `hostNetwork: true`
-
-    4. `hostPID: true`
+5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require [privileged mode](../../administration/securing-agent/#components-that-do-traffic-interception).

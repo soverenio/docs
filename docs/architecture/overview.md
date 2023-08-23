@@ -30,7 +30,7 @@ The Soveren Agent follows this sequence of operations:
 
 1. Interceptors collect relevant traffic from pods, focusing on HTTP requests with the `Content-Type: application/json` header.
 
-2. Interceptors pair requests to individual endpoints with their respective responses, creating request+response pairs.
+2. Interceptors pair requests to individual endpoints with their respective responses, creating request/response pairs.
 
 3. Interceptors transfer these pairs to Kafka using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
 
