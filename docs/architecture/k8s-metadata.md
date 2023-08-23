@@ -2,6 +2,8 @@
 
 Digger utilizes the Kubernetes API to gather metadata on these entities: `pods`, `endpoints`, and `services`. This process employs the method depicted as [Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) in the official K8s documentation.
 
+A dedicated `ServiceAccount` is created. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`. Digger gets these access rights by using this `ServiceAccount`.
+
 Here's how the communication between Digger and the Kubernetes API is structured:
 
 ![How Digger interacts with the Kubernetes API](../../img/architecture/k8s-metadata-watching.png "How Digger interacts with the Kubernetes API")
