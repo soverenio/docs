@@ -43,7 +43,7 @@ For more advanced configuration options please take a look at the [configuration
 
 There are several things which happen automatically in the cluster when you install the Soveren Agent:
 
-1. Soveren Agent contains Interceptors and Sensitive Data Detector, which itself [consists of several components](../../#soveren-agent).
+1. Soveren Agent contains Interceptors, Processing and messaging system, and Sensitive data detector. (More details in the [Architecture section](../../architecture/overview/#soveren-agent)).
 
 2. All components of Soveren Agent are deployed into the namespace `soverenio`. 
 
