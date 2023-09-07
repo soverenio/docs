@@ -82,7 +82,7 @@ kubectl -n soverenio scale deployment.apps/<COMPONENT_NAME> --replicas=0
 To scale it back up, use:
 
 ```shell
-COMMAND
+kubectl -n soverenio scale deployment.apps/<COMPONENT_NAME> --replicas=1
 ```
 
 Scaling down interceptors does not offer any practical benefits. It is more effective to completely remove the Agent and then bring it back up using the standard update or deploy command.
