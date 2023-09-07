@@ -66,10 +66,10 @@ helm -n soverenio uninstall soveren-agent
 If you wish to address performance issues with any individual component, you can temporarily scale it down using the following command: 
 
 ```shell
-kubectl -n soverenio scale deployment.apps/<COMPONENT_NAME> --replicas=0
+kubectl -n soverenio scale deployment.apps/<DEPLOYMENT_NAME> --replicas=0
 ```
 
-`<COMPONENT_NAME>` can be one of the following:
+`<DEPLOYMENT_NAME>` can be one of the following:
 
 * `soveren-agent-kafka`
 
@@ -82,7 +82,7 @@ kubectl -n soverenio scale deployment.apps/<COMPONENT_NAME> --replicas=0
 To scale it back up, use:
 
 ```shell
-kubectl -n soverenio scale deployment.apps/<COMPONENT_NAME> --replicas=1
+kubectl -n soverenio scale deployment.apps/<DEPLOYMENT_NAME> --replicas=1
 ```
 
 Scaling down interceptors does not offer any practical benefits. It is more effective to completely remove the Agent and then bring it back up using the standard update or deploy command.
