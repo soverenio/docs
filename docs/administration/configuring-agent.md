@@ -336,7 +336,7 @@ The `affinity` option is conceptually similar to `nodeSelector` but allows for a
 
 The Soveren Agent is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
 
-`kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all interceptors before further processing by other components.
+`kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all Interceptors before further processing by other components.
 
 There may be scenarios where you'd want to use `persistentVolume` for `kafka`. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
 
