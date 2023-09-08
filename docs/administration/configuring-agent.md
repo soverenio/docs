@@ -331,3 +331,31 @@ affinity:
 ```
 
 The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
+
+## Persistent volume for Kafka
+
+The Soveren Agent is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
+
+`kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all Interceptors before further processing by other components.
+
+There may be scenarios where you'd want to use `persistentVolume` for `kafka`. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
+
+To enable `persistentVolume` for `kafka`, include the following section in your `values.yaml` file and adjust the settings as needed:
+
+```yaml
+kafka:
+  embedded:
+    persistentVolume:
+      # -- Create/use Persistent Volume Claim for server component. Uses empty dir if set to false.
+      enabled: false
+      # -- Array of access modes. Must match those of existing PV or dynamic provisioner. Ref: [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
+      accessModes:
+        - ReadWriteOnce
+      annotations: {}
+      # -- Specify the StorageClass for the persistent volume.
+      storageClass: ""
+      # -- Bind the Persistent Volume using labels. Must match all labels of the targeted PV.
+      matchLabels: {}
+      # -- Size of the volume. The size should be determined based on the metrics you collect and the retention policy you set.
+      size: 10Gi
+```
