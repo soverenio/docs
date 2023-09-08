@@ -323,11 +323,11 @@ affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
-        - matchExpressions:
-          - key: nodepool
-            operator: In
-            values:
-            - soveren
+      - matchExpressions:
+        - key: nodepool
+          operator: In
+          values:
+          - soveren
 ```
 
 The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
