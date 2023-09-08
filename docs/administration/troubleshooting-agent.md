@@ -70,14 +70,14 @@ kubectl -n soverenio get daemonset -l app.kubernetes.io/component=interceptor -o
 
 Each Interceptor pod houses two containers: the `rpcapd`, responsible for actual traffic capture, and the `interceptor` itself, which processes this data. Examine the `securityContext` for both `interceptor` and `rpcapd`:
 
-```shell
+```yaml
 securityContext:
   privileged: true
 ```
 
 For `interceptor` container, ensure the output includes:
 
-```shell
+```yaml
 dnsPolicy: ClusterFirstWithHostNet
 hostNetwork: true
 hostPID: true

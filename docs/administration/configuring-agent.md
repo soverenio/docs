@@ -16,7 +16,7 @@ You can change a number of things regarding the Soveren Agent deployment. But do
 
 To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
 
-```shell
+```yaml
 digger:
   token: <TOKEN>
 ```
@@ -32,7 +32,7 @@ For each Kubernetes cluster, you'll need a separate Soveren Agent. When deployin
 
 There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
 
-```shell
+```yaml
 digger:
   statsclient:
     clustername: <NAME>
@@ -62,7 +62,7 @@ The default configuration is the following:
 
 For `interceptors`:
 
-```shell
+```yaml
 interceptor:
   resources:
     requests:
@@ -76,7 +76,7 @@ interceptor:
 
 For `rpcapd`:
 
-```shell
+```yaml
 rpcapd:
   resources:
     requests:
@@ -100,7 +100,7 @@ There is also a `kafka-exporter` container in the Kafka pod for sending metrics 
 
 The default values for `kafka` and `kafka-exporter` containers are as follows (`kafka-exporter` is in the metrics section):
 
-```shell
+```yaml
 kafka:
   embedded:
     resources:
@@ -128,7 +128,7 @@ kafka:
 
 In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
 
-```shell
+```yaml
 kafka:
   embedded:
     env:
@@ -146,7 +146,7 @@ Digger employs all sorts of data sampling algorithms to make sure that all endpo
 
 The resource defaults for Digger are:
 
-```shell
+```yaml
 digger:
   resources:
     requests:
@@ -164,7 +164,7 @@ The Detection-tool does all the heavy lifting when it comes to detecting data ty
 
 The values for the Detection-tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the `limits`, so we encourage you to monitor the actual usage and adjust accordingly.
 
-```shell
+```yaml
 detectionTool:
   resources:
     requests:
@@ -180,7 +180,7 @@ detectionTool:
 
 We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Agent. Here are the default resource values:
 
-```shell
+```yaml
 prometheusAgent:
   resources: 
     requests:
@@ -196,7 +196,7 @@ prometheusAgent:
 
 If you want to monitor the metrics that the Soveren Agent collects, here's how to do that:
 
-```shell
+```yaml
 prometheusAgent:
   additionalMetrics: 
     enabled: "true"
@@ -223,7 +223,7 @@ The syntax is as follows:
 
 Here's an example to demonstrate:
 
-```shell
+```yaml
 digger:
   cfg:
     kubernetesfilterlist:
@@ -256,7 +256,7 @@ The agent will automatically detect if a service mesh is deployed in the cluster
 
 For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
-```shell
+```yaml
 interceptor:
   cfg:
     # if the port of Linkerd differs from the default (4140)
@@ -268,7 +268,7 @@ interceptor:
 
 By default, the log levels for all Soveren Agent components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
 
-```shell
+```yaml
 [digger|interceptor|detectionTool|prometheusAgent]:
   cfg:
     log:
@@ -278,3 +278,56 @@ By default, the log levels for all Soveren Agent components are set to `error`. 
 (You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
 
 We do not manage the log level for Kafka; it is set to `info` by default.
+
+## Binding of components to specific nodes
+
+The Soveren Agent [consists of](../../architecture/overview/#soveren-agent) two types of components:
+
+* `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+
+* Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
+
+The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
+
+Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
+
+If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of Interceptors to those specific nodes.
+
+First, you'll need to label the nodes that Soveren components will utilize:
+
+```shell
+kubectl label nodes <your-node-name> nodepool=soveren
+```
+
+After labeling, you have two options for directing the deployment of components: using `nodeSelector` or `affinity`.
+
+### `nodeSelector`
+
+!!! info "For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)."
+
+In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+
+```yaml
+nodeSelector:
+  nodepool: soveren
+```
+
+### `affinity`
+
+!!! info "For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)."
+
+In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+
+```yaml
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+        - key: nodepool
+        operator: In
+        values:
+        - soveren
+```
+
+The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
