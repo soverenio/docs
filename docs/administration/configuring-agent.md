@@ -283,15 +283,15 @@ We do not manage the log level for Kafka; it is set to `info` by default.
 
 The Soveren Agent [consists of](../../architecture/overview/#soveren-agent) two types of components:
 
-* Interceptors, which are **distributed to each node** via DaemonSet.
+* `interceptors`, which are **distributed to each node** via DaemonSet.
 
-* Components instantiated only once per cluster; these include Digger, Detection-Tool, Kafka, and Prometheus-Agent. These can be thought of as the **centralized components**.
+* Components instantiated only once per cluster; these include `digger`, `interceptor`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
 
 The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
 
 Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
 
-If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of Interceptors to those specific nodes.
+If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of `interceptors` to those specific nodes.
 
 First, you'll need to label the nodes that Soveren components will utilize:
 
