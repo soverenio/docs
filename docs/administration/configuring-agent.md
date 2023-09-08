@@ -303,7 +303,7 @@ After labeling, you have two options for directing the deployment of components:
 
 ### `nodeSelector`
 
-!!! info For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector).
+!!! info "For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)."
 
 In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
 
@@ -314,7 +314,7 @@ nodeSelector:
 
 ### `affinity`
 
-!!! info For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
+!!! info "For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)."
 
 In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
 
