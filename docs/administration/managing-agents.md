@@ -30,9 +30,7 @@ We [recommend](../configuring-agent/#the-token) adding the `token` to your own c
 
 Ensure the authenticity and integrity of downloaded images by validating their digital signatures.
 
-For image signing, we utilize [Cosign](https://docs.sigstore.dev/signing/quickstart/).
-
-Below is the public key you should employ when verifying the signatures:
+We use [Cosign](https://docs.sigstore.dev/signing/quickstart/) for image signing. Below is the public key you should employ when verifying the signatures:
 
 ```shell
 -----BEGIN PUBLIC KEY-----
