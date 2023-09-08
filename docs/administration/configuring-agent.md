@@ -278,3 +278,56 @@ By default, the log levels for all Soveren Agent components are set to `error`. 
 (You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
 
 We do not manage the log level for Kafka; it is set to `info` by default.
+
+## Binding of components to specific nodes
+
+The Soveren Agent [consists of](../../architecture/overview/#soveren-agent) two types of components:
+
+* Interceptors, which are **distributed to each node** via DaemonSet.
+
+* Components instantiated only once per cluster; these include Digger, Detection-Tool, Kafka, and Prometheus-Agent. These can be thought of as the **centralized components**.
+
+The centralized components [consume](../../administration/configuring-agent/#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
+
+Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
+
+If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of Interceptors to those specific nodes.
+
+First, you'll need to label the nodes that Soveren components will utilize:
+
+```shell
+kubectl label nodes <your-node-name> nodepool=soveren
+```
+
+After labeling, you have two options for directing the deployment of components: using `nodeSelector` or `affinity`.
+
+### `nodeSelector`
+
+!!! info For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector).
+
+In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+
+```yaml
+nodeSelector:
+nodepool: soveren
+```
+
+### `affinity`
+
+!!! info For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
+
+In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+
+```yaml
+affinity:
+nodeAffinity:
+requiredDuringSchedulingIgnoredDuringExecution:
+nodeSelectorTerms:
+- matchExpressions:
+- key: nodepool
+operator: In
+values:
+- soveren
+```
+
+The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
