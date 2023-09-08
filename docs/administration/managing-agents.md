@@ -26,6 +26,19 @@ We [recommend](../configuring-agent/#the-token) adding the `token` to your own c
 
     If you're managing multiple clusters, please create unique Agents for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
 
+## Verifying image signatures
+
+Ensure the authenticity and integrity of downloaded images by validating their digital signatures.
+
+We use [Cosign](https://docs.sigstore.dev/signing/quickstart/) for image signing. Below is the public key you should employ when verifying the signatures:
+
+```shell
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEF5frUnmoziugp0E1uOZJNTzQHJx3
+zf93Qcg/kJO1RpV/2SkVK+u0NH+M1K4ja6nr0pIjIyFwP3L6rpKY9p0Kcg==
+-----END PUBLIC KEY-----
+```
+
 ## Deploying Agents
 
 We utilize Helm for deployment. The installation procedure is as follows:
