@@ -287,7 +287,7 @@ The Soveren Agent [consists of](../../architecture/overview/#soveren-agent) two 
 
 * Components instantiated only once per cluster; these include Digger, Detection-Tool, Kafka, and Prometheus-Agent. These can be thought of as the **centralized components**.
 
-The centralized components [consume](../../administration/configuring-agent/#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
+The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
 
 Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
 
