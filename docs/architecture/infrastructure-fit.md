@@ -44,7 +44,7 @@ The components of the Soveren Agent exhibit diverse resource usage patterns. The
 
 ### Interceptors
 
-[Interceptors](../traffic-interception/) use a significant portion of the allocated CPU [resources](../../administration/configuring-agent/#interceptors) as they aggressively capture all available HTTP traffic. The CPU usage by Interceptors is directly influenced by the requests per second (RPS) of the traffic.
+[Interceptors](../traffic-interception/) use [resources](../../administration/configuring-agent/#interceptors) according to their main goal to aggressively capture all available HTTP traffic. The CPU usage by Interceptors is directly influenced by the requests per second (RPS) of the traffic.
 
 The memory consumed by Interceptors is primarily for storing packets while assembling the request/response pairs. Thus, their MEM usage is tied to the size of requests.
 
@@ -58,7 +58,7 @@ Here's the typical resource usage pattern of Interceptors:
 
 ![Interceptors, 1500Mbit, high RPS](../../img/architecture/interceptors-load-1500mbit-highrps.png "Interceptors, 1500Mbit, high RPS")
 
-So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels.
+So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels. And under no circumstances they will go beyond the assigned `limits` — they rather will skip a portion of the traffic if deprived of resources.
 
 Keep in mind that Interceptors exist on every node as a `DaemonSet`. To understand the complete resource impact, multiply their `requests` (and `limits`) by the total number of nodes in the cluster.
 
