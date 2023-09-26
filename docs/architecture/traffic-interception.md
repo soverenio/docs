@@ -32,7 +32,7 @@ There are several important stages:
 
 * Upon inspecting individual container processes, the Interceptor discerns which pods are running service mesh (Istio or Linkerd). If a mesh is detected, the Interceptor initiates monitoring of the container's `loopback` interface to observe unencrypted traffic. If the mesh is absent, the Interceptor monitors the pod's external network interface.
 
-* The Interceptor observes the `tcp` traffic of the virtual interface until an entire request or response is compiled. At this juncture, the Interceptor discerns whether the traffic comprises HTTP or a different protocol. Non-HTTP data is disregarded by the Interceptor.
+* The Interceptor observes the HTTP traffic of the virtual interface until an entire request or response is compiled. Non-HTTP data is disregarded by the Interceptor.
 
 * If the collected request or response exceeds a predefined size limit (currently 1Mb), it is dismissed and excluded from subsequent analysis.
 
