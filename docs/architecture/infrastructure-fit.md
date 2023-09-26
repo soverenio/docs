@@ -40,16 +40,39 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 ## Resource usage
 
-The components of the Soveren Agent exhibit varied resource usage patterns. Here's the general rule for all of them: the more resources you can allocate, the faster the data map will be built. In extreme cases, there might be restarts of some components, but they only affect the data map building time — not the core functionality of Soveren, and certainly not your cluster's stability.
+The components of the Soveren Agent exhibit diverse resource usage patterns. The guiding principle for all of them is: the more resources allocated, the quicker the data map construction. In extreme scenarios, some components might restart. While this impacts the data map building duration, it doesn't affect the core functionality of Soveren or the stability of your cluster.
 
-* [Interceptors](../traffic-interception/) often utilize 100% of the allocated CPU [resources](../../administration/configuring-agent/#interceptors) as they aggressively attempt to capture all the available traffic. The memory they consume is used for storing the packets while assembling the request/response pairs. However, the amount of resources allocated to the Interceptors only affects the time it takes to capture enough representative traffic to build a comprehensive data map. The more resources you can allocate, the faster the map will be built, and vice versa.
+### Interceptors
 
-Remember that the Interceptors are present on each node (they are a `DaemonSet`). To get the full picture, you need to multiply their `requests` (and `limits`!) by the number of nodes in the cluster. However, the actual load on a particular Interceptor is heavily influenced by the amount of requests and the payloads it is collecting.
+[Interceptors](../traffic-interception/) use a significant portion of the allocated CPU [resources](../../administration/configuring-agent/#interceptors) as they aggressively capture all available HTTP traffic. The CPU usage by Interceptors is directly influenced by the requests per second (RPS) of the traffic.
 
-* [Digger](../traffic-processing/) is usually larger than any of the Interceptors, but there's only one instance of Digger in the cluster. Digger requires memory to read the collected payloads from Kafka, process them, and send the results to the Soveren Cloud. If the cluster is sizable and the load is high, then resource usage will be noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). If this situation persists, we recommend increasing the limits — however, as with the Interceptors, this should only affect the time it takes to build the data map.
+The memory consumed by Interceptors is primarily for storing packets while assembling the request/response pairs. Thus, their MEM usage is tied to the size of requests.
 
-* [Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It is more memory-hungry than Digger because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
+Here's the typical resource usage pattern of Interceptors:
 
-* [Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Agent components can consume even under moderate load.
+320Mbit/sec, low RPS:
+
+![Interceptors, 320Mbit, low RPS](../../img/architecture/interceptors-load-320mbit-lowrps.png "Interceptors, 320Mbit, low RPS")
+
+1500Mbit/sec, high RPS:
+
+![Interceptors, 1500Mbit, high RPS](../../img/architecture/interceptors-load-1500mbit-highrps.png "Interceptors, 1500Mbit, high RPS")
+
+So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels.
+
+Keep in mind that Interceptors exist on every node as a `DaemonSet`. To understand the complete resource impact, multiply their `requests` (and `limits`) by the total number of nodes in the cluster.
+
+
+### Digger
+
+[Digger](../traffic-processing/) is usually larger than any of the Interceptors, but there's only one instance of Digger in the cluster. Digger requires memory to read the collected payloads from Kafka, process them, and send the results to the Soveren Cloud. If the cluster is sizable and the load is high, then resource usage will be noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). If this situation persists, we recommend increasing the limits — however, as with the Interceptors, this should only affect the time it takes to build the data map.
+
+### Kafka
+
+[Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It is more memory-hungry than Digger because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
+
+### Detection-tool
+
+[Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Agent components can consume even under moderate load.
 
 The detection-tool processes only a portion of the traffic — the part that [Digger samples and sends for data detection](../traffic-processing/#url-clustering-sampling-and-data-detection). Because of this, the data map needs some time to build.
