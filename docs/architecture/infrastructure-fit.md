@@ -82,7 +82,21 @@ As you can observe, during the burst, the resources consumed are quite similar i
 
 ### Kafka
 
-[Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It is more memory-hungry than Digger because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
+[Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It pretty memory-hungry because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
+
+Here's the typical resource usage pattern of Kafka:
+
+320Mbit/sec, low RPS:
+
+![Kafka, 320Mbit, low RPS](../../img/architecture/kafka-load-320mbit-lowrps.png "Kafka, 320Mbit, low RPS")
+
+240Mbit/sec, 1500 RPS:
+
+![Kafka, 240Mbit, high RPS](../../img/architecture/kafka-load-240mbit-highrps.png "Kafka, 240Mbit, high RPS")
+
+The resource consumption of Kafka is influenced by both the number of request/response pairs (RPS) and their size (volume). As illustrated above, Kafka consumes more resources in the low volume, high RPS scenario compared to the high volume, low RPS scenario. This is because the number of requests is an order of magnitude higher in the former case. Even though the size of each request is smaller, the cumulative volume of the collected pairs is greater.
+
+It's worth noting that Kafka will always adhere to the pre-set `limits`. Should it approach its capacity threshold, Kafka will trim the topics, discarding the older pairs.
 
 ### Detection-tool
 
