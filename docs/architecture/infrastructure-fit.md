@@ -54,18 +54,31 @@ Here's the typical resource usage pattern of Interceptors:
 
 ![Interceptors, 320Mbit, low RPS](../../img/architecture/interceptors-load-320mbit-lowrps.png "Interceptors, 320Mbit, low RPS")
 
-1500Mbit/sec, high RPS:
+240Mbit/sec, 1500 RPS:
 
-![Interceptors, 1500Mbit, high RPS](../../img/architecture/interceptors-load-1500mbit-highrps.png "Interceptors, 1500Mbit, high RPS")
+![Interceptors, 240Mbit, high RPS](../../img/architecture/interceptors-load-240mbit-highrps.png "Interceptors, 240Mbit, high RPS")
 
 So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels. And under no circumstances they will go beyond the assigned `limits` — they rather will skip a portion of the traffic if deprived of resources.
 
 Keep in mind that Interceptors exist on every node as a `DaemonSet`. To understand the complete resource impact, multiply their `requests` (and `limits`) by the total number of nodes in the cluster.
 
-
 ### Digger
 
-[Digger](../traffic-processing/) is usually larger than any of the Interceptors, but there's only one instance of Digger in the cluster. Digger requires memory to read the collected payloads from Kafka, process them, and send the results to the Soveren Cloud. If the cluster is sizable and the load is high, then resource usage will be noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). If this situation persists, we recommend increasing the limits — however, as with the Interceptors, this should only affect the time it takes to build the data map.
+Digger typically requires [more resources](../../administration/configuring-agent/#digger) than any of the Interceptors, but there's only one instance of Digger in the cluster.
+
+Digger requires memory to read the collected payloads from Kafka, [process](../traffic-processing/) them, and send the results to the Soveren Cloud. If the cluster is large and the load is significant, resource usage will become noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). However, Digger will never breach the assigned `limits`.
+
+Here's the typical resource usage pattern of Digger:
+
+320Mbit/sec, low RPS:
+
+![Digger, 320Mbit, low RPS](../../img/architecture/digger-load-320mbit-lowrps.png "Digger, 320Mbit, low RPS")
+
+240Mbit/sec, 1500 RPS:
+
+![Digger, 240Mbit, high RPS](../../img/architecture/digger-load-240mbit-highrps.png "Digger, 240Mbit, high RPS")
+
+As you can observe, during the burst, the resources consumed are quite similar in both scenarios (higher volume with lower RPS vs. lower volume with higher RPS). This is because Digger's resource usage is more influenced by the number of request/response pairs accumulated in Kafka and their respective sizes than by direct traffic metrics like RPS. During a traffic burst, Digger's consumption will peak, but it will then return to processing the previously collected data.
 
 ### Kafka
 
