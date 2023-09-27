@@ -94,7 +94,9 @@ Here's the typical resource usage pattern of Kafka:
 
 ![Kafka, 240Mbit, high RPS](../../img/architecture/kafka-load-240mbit-highrps.png "Kafka, 240Mbit, high RPS")
 
-The resource consumption of Kafka is more influenced by the size of the request/response pairs than by the RPS. As illustrated above, Kafka consumes more memory in the high volume, low RPS scenario, because the cumulative size of the collected pairs is higher. The CPU consumption does not change dramatically.
+The resource consumption of Kafka is influenced by both the number of request/response pairs (RPS) and their size (volume).
+
+As illustrated above, Kafka consumes more CPU when the RPS is higher because it needs to handle more request/response pairs. But the request sizes are larger in the lower RPS scenario, and the cumulative volume of the collected pairs is greater. This leads to higher MEM usage in that scenario.
 
 It's worth noting that Kafka will always adhere to the [pre-set](../../administration/configuring-agent/#kafka) `limits`. Should it approach its capacity threshold, Kafka will trim the topics, discarding the older pairs.
 
