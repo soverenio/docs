@@ -96,10 +96,24 @@ Here's the typical resource usage pattern of Kafka:
 
 The resource consumption of Kafka is influenced by both the number of request/response pairs (RPS) and their size (volume). As illustrated above, Kafka consumes more resources in the low volume, high RPS scenario compared to the high volume, low RPS scenario. This is because the number of requests is an order of magnitude higher in the former case. Even though the size of each request is smaller, the cumulative volume of the collected pairs is greater.
 
-It's worth noting that Kafka will always adhere to the pre-set `limits`. Should it approach its capacity threshold, Kafka will trim the topics, discarding the older pairs.
+It's worth noting that Kafka will always adhere to the [pre-set](../../administration/configuring-agent/#kafka) `limits`. Should it approach its capacity threshold, Kafka will trim the topics, discarding the older pairs.
 
 ### Detection-tool
 
-[Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Agent components can consume even under moderate load.
+[Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster.
 
 The detection-tool processes only a portion of the traffic — the part that [Digger samples and sends for data detection](../traffic-processing/#url-clustering-sampling-and-data-detection). Because of this, the data map needs some time to build.
+
+Here's the typical resource usage pattern of Detection-tool:
+
+320Mbit/sec, low RPS:
+
+![Detection-tool, 320Mbit, low RPS](../../img/architecture/dt-load-320mbit-lowrps.png "Detection-tool, 320Mbit, low RPS")
+
+240Mbit/sec, 1500 RPS:
+
+![Detection-tool, 240Mbit, high RPS](../../img/architecture/dt-load-240mbit-highrps.png "Detection-tool, 240Mbit, high RPS")
+
+As observed, the resource usage patterns of Detection-tool remain consistent regardless of the traffic load, be it high or low, in terms of both RPS and volume. This consistency arises because Detection-tool continually processes a stream of request/resource pairs managed by Digger. Therefore, its performance isn't swayed by fluctuations in traffic; it solely depends on the presence of unprocessed pairs in the [processing and messaging system](../traffic-processing/).
+
+It is not unusual for Detection-tool to consume 1 CPU and 2 Gb of memory. This marks the peak resource usage for any of the Soveren Agent components, even under moderate load. However, just like other components, it will always respect the [defined](../../administration/configuring-agent/#detection-tool) `limits`.
