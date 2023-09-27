@@ -117,3 +117,4 @@ Here's the typical resource usage pattern of Detection-tool:
 As observed, the resource usage patterns of Detection-tool remain consistent regardless of the traffic load, be it high or low, in terms of both RPS and volume. This consistency arises because Detection-tool continually processes a stream of request/resource pairs managed by Digger. Therefore, its performance isn't swayed by fluctuations in traffic; it solely depends on the presence of unprocessed pairs in the [processing and messaging system](../traffic-processing/).
 
 It is not unusual for Detection-tool to consume 1 CPU and 1+ Gb of memory. This marks the peak resource usage for any of the Soveren Agent components, even under moderate load. However, just like other components, it will always respect the [defined](../../administration/configuring-agent/#detection-tool) `limits`.
+
