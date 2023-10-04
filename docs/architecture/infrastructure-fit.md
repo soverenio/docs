@@ -82,6 +82,20 @@ So basically during the traffic burst Interceptors consume a lot while capturing
 
 Keep in mind that Interceptors exist on every node as a `DaemonSet`. To understand the complete resource impact, multiply their `requests` (and `limits`) by the total number of nodes in the cluster.
 
+### Kafka
+
+[Kafka](../../administration/configuring-agent/#kafka) is set up as one instance for each cluster. It uses a lot of memory since it stores all the traffic Soveren collects until Digger and other parts process it.
+
+Here's how Kafka uses resources in the scenario we talked about:
+
+![Kafka stepped load profile](../../img/architecture/load-kafka.png "Kafka stepped load profile")
+
+Kafka's resource use depends on both how many request/response pairs (RPS) there are and how big they are (volume). Even with low traffic, Kafka keeps some memory ready so it can quickly manage new data coming in.
+
+From the above, we can see that Kafka uses more CPU when there's more RPS, because it has to deal with more request/response pairs. The CPU use is still pretty low overall. Memory use, though, goes up steadily until it has stored all the data. After two hours, any old data that hasn't been processed gets cleared out.
+
+It's important to know that Kafka will stick to its [set](../../administration/configuring-agent/#kafka) `limits`. If it gets close to its max capacity, Kafka will clean up by removing the oldest pairs.
+
 ### Digger
 
 Digger typically requires [more resources](../../administration/configuring-agent/#digger) than any of the Interceptors, but there's only one instance of Digger in the cluster.
@@ -99,26 +113,6 @@ Here's the typical resource usage pattern of Digger:
 ![Digger, 240Mbit, high RPS](../../img/architecture/digger-load-240mbit-highrps.png "Digger, 240Mbit, high RPS")
 
 As you can observe, during the burst, the resources consumed are quite similar in both scenarios (higher volume with lower RPS vs. lower volume with higher RPS). This is because Digger's resource usage is more influenced by the number of request/response pairs accumulated in Kafka and their respective sizes than by direct traffic metrics like RPS. During a traffic burst, Digger's consumption will peak, but it will then return to processing the previously collected data.
-
-### Kafka
-
-[Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It pretty memory-hungry because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
-
-Here's the typical resource usage pattern of Kafka:
-
-320Mbit/sec, low RPS:
-
-![Kafka, 320Mbit, low RPS](../../img/architecture/kafka-load-320mbit-lowrps.png "Kafka, 320Mbit, low RPS")
-
-240Mbit/sec, 1500 RPS:
-
-![Kafka, 240Mbit, high RPS](../../img/architecture/kafka-load-240mbit-highrps.png "Kafka, 240Mbit, high RPS")
-
-The resource consumption of Kafka is influenced by both the number of request/response pairs (RPS) and their size (volume).
-
-As illustrated above, Kafka consumes more CPU when the RPS is higher because it needs to handle more request/response pairs. But the request sizes are larger in the lower RPS scenario, and the cumulative volume of the collected pairs is greater. This leads to higher MEM usage in that scenario.
-
-It's worth noting that Kafka will always adhere to the [pre-set](../../administration/configuring-agent/#kafka) `limits`. Should it approach its capacity threshold, Kafka will trim the topics, discarding the older pairs.
 
 ### Detection-tool
 
