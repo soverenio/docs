@@ -102,17 +102,23 @@ Digger typically requires [more resources](../../administration/configuring-agen
 
 Digger requires memory to read the collected payloads from Kafka, [process](../traffic-processing/) them, and send the results to the Soveren Cloud. If the cluster is large and the load is significant, resource usage will become noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). However, Digger will never breach the assigned `limits`.
 
-Here's the typical resource usage pattern of Digger:
+Here's the resource usage of Digger in the scenario described above:
 
-320Mbit/sec, low RPS:
+![Digger stepped load profile](../../img/architecture/load-digger.png "Digger stepped load profile")
 
-![Digger, 320Mbit, low RPS](../../img/architecture/digger-load-320mbit-lowrps.png "Digger, 320Mbit, low RPS")
+To understand how Digger and the Detection-tool behave as traffic increases, it's essential to consider the [sampling mechanism](.../traffic-processing/#url-clustering-sampling-and-data-detection). In essence, Digger evaluates the frequency of data from a specific URL undergoing data detection and then samples based on the total requests under the given load.
 
-240Mbit/sec, 1500 RPS:
+When traffic for a previously unobserved URL arrives, it goes through the entire pipeline, including detection. Since all the data is unique and requires processing, sampling isn't activated yet. Digger retrieves the data from Kafka, does minimal processing on its end, and forwards the data to the Detection-tool, which handles the more intensive tasks.
 
-![Digger, 240Mbit, high RPS](../../img/architecture/digger-load-240mbit-highrps.png "Digger, 240Mbit, high RPS")
+To break it down:
 
-As you can observe, during the burst, the resources consumed are quite similar in both scenarios (higher volume with lower RPS vs. lower volume with higher RPS). This is because Digger's resource usage is more influenced by the number of request/response pairs accumulated in Kafka and their respective sizes than by direct traffic metrics like RPS. During a traffic burst, Digger's consumption will peak, but it will then return to processing the previously collected data.
+* With unique traffic, Digger does minimal processing. This period lasts until about 07:50, marked by low and consistent CPU usage.
+
+* From around 07:50 to 08:45, the traffic begins to feature recurring URLs. Digger then has the task of categorizing them, activating the sampling mechanism. This task demands more CPU power, leading to spikes up to the predefined limits. Detection-tool receives minimal data during this time.
+
+* After categorizing the recurring URLs, Digger resumes sending data samples to detection, again using minimal CPU.
+
+The resource usage of Digger is influenced more by the number of request/response pairs stored in Kafka, the uniqueness of URLs associated with those pairs, and their sizes, rather than direct traffic metrics like RPS.
 
 ### Detection-tool
 
