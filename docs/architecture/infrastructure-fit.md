@@ -40,7 +40,27 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 ## Resource usage
 
-The components of the Soveren Agent exhibit diverse resource usage patterns. The guiding principle for all of them is: the more resources allocated, the quicker the data map construction. In extreme scenarios, some components might restart. While this impacts the data map building duration, it doesn't affect the core functionality of Soveren or the stability of your cluster.
+The components of the Soveren Agent exhibit diverse resource usage patterns. The guiding principle for all of them is: the more resources allocated, the more efficiently the data map is constructed. In extreme scenarios, some components might restart. While this impacts the duration of data map building, it doesn't affect the core functionality of Soveren or the stability of your cluster.
+
+To better understand how many resources you should allocate to the Soveren Agent, consider the following simple load testing scenario:
+
+Assume the testing dataset consists of relatively small requests (around 8KB each). Send these requests at varying rates to the echo server within the cluster hosting the Soveren Agent.
+
+![Soveren Agent under stepped load](../../img/architecture/load-agent-summary.png "Soveren Agent under stepped load")
+
+First, there is no traffic at all till about 07:30. Then the load increases at the following rate:
+
+* 500 RPS for 20 minutes: 07:30-07:50
+
+* 1500 RPS for 10 minutes: 07:50-08:00
+
+* 3000 RPS for 10 minutes: 08:00-08:10
+
+* 1500 RPS for 20 minutes: 08:10-08:30
+
+After 08:30, the load drops to zero.
+
+Let's examine in detail how the individual components of the Soveren Agent handle this load.
 
 ### Interceptors
 
@@ -48,15 +68,9 @@ The components of the Soveren Agent exhibit diverse resource usage patterns. The
 
 The memory consumed by Interceptors is primarily for storing packets while assembling the request/response pairs. Thus, their MEM usage is tied to the size of requests.
 
-Here's the typical resource usage pattern of Interceptors:
+Based on the scenario described above, here's the pattern we observe:
 
-320Mbit/sec, low RPS:
-
-![Interceptors, 320Mbit, low RPS](../../img/architecture/interceptors-load-320mbit-lowrps.png "Interceptors, 320Mbit, low RPS")
-
-240Mbit/sec, 1500 RPS:
-
-![Interceptors, 240Mbit, high RPS](../../img/architecture/interceptors-load-240mbit-highrps.png "Interceptors, 240Mbit, high RPS")
+![Interceptors stepped load profile](../../img/architecture/load-interceptor.png "Interceptors stepped load profile")
 
 So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels. And under no circumstances they will go beyond the assigned `limits` — they rather will skip a portion of the traffic if deprived of resources.
 
