@@ -120,6 +120,8 @@ To break it down:
 
 The resource usage of Digger is influenced more by the number of request/response pairs stored in Kafka, the uniqueness of URLs associated with those pairs, and their sizes, rather than direct traffic metrics like RPS.
 
+The above scenario really pushes Digger to its limits: with all the traffic repeating at a very high RPS, Digger ends up doing a lot of work. Typically, the mix of unique and non-unique data is more even, leading to steady and moderate CPU usage.
+
 ### Detection-tool
 
 [Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster.
