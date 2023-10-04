@@ -46,6 +46,8 @@ To better understand how many resources you should allocate to the Soveren Agent
 
 Assume the testing dataset consists of relatively small requests (around 8KB each). Send these requests at varying rates to the echo server within the cluster hosting the Soveren Agent.
 
+Below is the resource usage graph for the Soveren Agent components under the described scenario:
+
 ![Soveren Agent under stepped load](../../img/architecture/load-agent-summary.png "Soveren Agent under stepped load")
 
 First, there is no traffic at all till about 07:30. Then the load increases at the following rate:
@@ -71,6 +73,10 @@ The memory consumed by Interceptors is primarily for storing packets while assem
 Based on the scenario described above, here's the pattern we observe:
 
 ![Interceptors stepped load profile](../../img/architecture/load-interceptor.png "Interceptors stepped load profile")
+
+We can see that Interceptors are more affected by RPS than by volume, especially since the volume is small in this test.
+
+When hitting 3000 RPS, the Interceptors start to max out on their resources. There are clear jumps in both CPU and memory use. Also, in very high traffic situations, they might restart.
 
 So basically during the traffic burst Interceptors consume a lot while capturing the traffic, then their usage go back to the low levels. And under no circumstances they will go beyond the assigned `limits` — they rather will skip a portion of the traffic if deprived of resources.
 
