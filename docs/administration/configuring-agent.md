@@ -169,10 +169,10 @@ detectionTool:
   resources:
     requests:
       cpu: "200m"
-      memory: "1680Mi"
+      memory: "768Mi"
     limits:
       cpu: "2200m"
-      memory: "2304Mi"
+      memory: "2048Mi"
       ephemeral-storage: "200Mi"
 ```
 
