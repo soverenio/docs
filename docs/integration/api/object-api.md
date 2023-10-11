@@ -34,7 +34,7 @@ Now you are all set and can start using the [Soveren Object API](../ref/)!
 
 ## Using the API
 
-[Soveren Object API](../ref/) is available at https://api.soveren.io/
+[Soveren Object API](../ref/) is accessible at [https://api.soveren.io/](https://api.soveren.io/).
 
 Object model which is provided by the API is as follows.
 
