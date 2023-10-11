@@ -7,13 +7,6 @@ site_url: https://docs.soveren.io/en/stable/
 nav:
   - Introduction: 'index.md'
   - Quick start: 'getting-started/quick-start.md'
-  - Architecture:
-      - Overview: 'architecture/overview.md'
-      - Requirements and recommendations: 'architecture/infrastructure-fit.md'
-      - Capturing the traffic: 'architecture/traffic-interception.md'
-      - Processing the traffic: 'architecture/traffic-processing.md'
-      - Kubernetes metadata: 'architecture/k8s-metadata.md'
-#      - Sensitive data detection: 'architecture/detection.md'
   - Administration:
       - Managing Users: 'administration/managing-users.md'
       - Managing Agents: 'administration/managing-agents.md'
@@ -28,6 +21,14 @@ nav:
       - Slack: 'integration/slack.md'
       - Webhook: 'integration/webhook.md'
       - Event objects: 'integration/event-objects.md'
+      - Object API: 'integration/api/object-api.md'
+  - Architecture:
+      - Overview: 'architecture/overview.md'
+      - Requirements and recommendations: 'architecture/infrastructure-fit.md'
+      - Capturing the traffic: 'architecture/traffic-interception.md'
+      - Processing the traffic: 'architecture/traffic-processing.md'
+      - Kubernetes metadata: 'architecture/k8s-metadata.md'
+#      - Sensitive data detection: 'architecture/detection.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
