@@ -44,7 +44,7 @@ Soveren represents your infrastructure in terms of Kubernetes `clusters` where y
 
 `Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type, termed "Kubernetes workload."
 
-An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an asset.
+An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an `asset`.
 
 ![Soveren API object model: data flow](../../img/integration/api-logic-data-flow.png "Soveren API object model: data flow")
 
@@ -54,4 +54,4 @@ Multiple `data streams` can exist between two `assets`. If two `assets` share at
 
 Between any two chosen `assets`, there can be two `data flows` — one in each direction (from one `asset` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
 
-Please refer to the [Soveren Object API](../ref/) for a detailed description of each object structure available through the APIs.
+For a comprehensive description of each object structure available through the APIs, please refer to the [Soveren Object API](../ref/).
