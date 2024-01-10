@@ -88,13 +88,14 @@ extra_css:
 # Custom JS scripts
 extra_javascript:
   - js/analytics.js
+  - js/current-year.js
 
-# Disable the "Build with MkDocs Material" line in the footer
 extra:
+  # Disable the "Build with MkDocs Material" line in the footer
   generator: false
 
 # Copyright text in the footer
-copyright: Copyright &copy; 2023 — Soveren, Inc.
+copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.
 
 
 
