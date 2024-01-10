@@ -3,6 +3,9 @@ site_name: Documentation
 site_description: Explore our guides and examples to integrate Soveren with your production environment
 site_url: https://docs.soveren.io/en/stable/
 
+plugins:
+  mkdocs-macros-plugin
+
 # Navigation tree
 nav:
   - Introduction: 'index.md'
@@ -95,7 +98,7 @@ extra:
   build_year: !python "datetime.datetime.now().year"
 
 # Copyright text in the footer
-copyright: <span id="current-year">{{ extra.build_year }}</span> — Soveren, Inc.
+copyright: Copyright &copy; <span id="current-year">{{ extra.build_year }}</span> — Soveren, Inc.
 
 
 
