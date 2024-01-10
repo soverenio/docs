@@ -92,9 +92,10 @@ extra_javascript:
 # Disable the "Build with MkDocs Material" line in the footer
 extra:
   generator: false
+  build_year: !python "datetime.datetime.now().year"
 
 # Copyright text in the footer
-copyright: Copyright &copy; build_date_utc.year — Soveren, Inc.
+copyright: <span id="current-year">{{ extra.build_year }}</span> — Soveren, Inc.
 
 
 
