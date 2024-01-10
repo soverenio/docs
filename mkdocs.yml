@@ -92,10 +92,11 @@ extra_css:
 extra_javascript:
   - js/analytics.js
 
-# Disable the "Build with MkDocs Material" line in the footer
 extra:
-  generator: false
+  # Get the build year
   build_year: !python "datetime.datetime.now().year"
+  # Disable the "Build with MkDocs Material" line in the footer
+  generator: false
 
 # Copyright text in the footer
 copyright: Copyright &copy; <span id="current-year">{{ extra.build_year }}</span> — Soveren, Inc.
