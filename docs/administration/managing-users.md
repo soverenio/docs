@@ -74,7 +74,7 @@ Specifically for ADFS, however, you need to provide more parameters:
 
 ### Configuring the domain
 
-Specify the **Email Domain** to be authenticated through SSO. You can add multiple domains. For example, if you specify `your-domain.io`, all users with an email address in the format `user@your-domain.io` will be authenticated by your IdP through SSO.
+Specify the **Email domain** to be authenticated through SSO. You can add multiple domains. For example, if you specify `your-domain.io`, all users with an email address in the format `user@your-domain.io` will be authenticated by your IdP through SSO.
 
 !!! warning "Personal login credentials will no longer work for users subject to single sign-on"
 
