@@ -94,7 +94,7 @@ extra:
   generator: false
 
 # Copyright text in the footer
-copyright: Copyright &copy; 2023 — Soveren, Inc.
+copyright: Copyright &copy; {{ build_date_utc.year }} — Soveren, Inc.
 
 
 
