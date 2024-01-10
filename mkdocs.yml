@@ -4,7 +4,7 @@ site_description: Explore our guides and examples to integrate Soveren with your
 site_url: https://docs.soveren.io/en/stable/
 
 plugins:
-  - mkdocs-macros-plugin
+  - macros
 
 # Navigation tree
 nav:
