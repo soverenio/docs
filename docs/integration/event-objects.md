@@ -84,7 +84,7 @@ Each JSON message carries significant information about an event and is composed
 
 6. `event_type`: The [specific type](#event-types) of the event. Helps in identifying the concrete nature of the event.
 
-7. `data_types`: An array of strings that specify the [detected data types](../data-model/) involved in the event.
+7. `data_types`: An array of strings that specify the [detected data types](../../user-guide/data-model/) involved in the event.
 
 8.  `event_triggered_by`: A string identifying the asset causing the event due to a policy violation. It can be `sending` or `receiving`.
 
