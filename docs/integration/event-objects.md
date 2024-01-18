@@ -19,6 +19,7 @@ Besides the [UI]((../overview/#events)), Soveren provides you with representatio
     "Person",
     "Email"
   ],
+  "event_triggered_by": "sending",
 
   "sending": {
     "link": "https://app.soveren.io/data-inventory/internal-assets/1",
@@ -84,6 +85,11 @@ Each JSON message carries significant information about an event and is composed
 6. `event_type`: The [specific type](#event-types) of the event. Helps in identifying the concrete nature of the event.
 
 7. `data_types`: An array of strings that specify the [types of data](../data-model/) involved in the event.
+8.  `event_triggered_by`: A string that indicates the asset that violated the policy, resulting in the event. It can be `sending` or `receiving`.
+
+    1. `sending`: The event is triggered by the sender of the data.
+
+    2. `receiving`: The event is triggered by the receiver of the data.
 
 8. `sending` and `receiving`: The assets involved in the event. They each contain the following sub-attributes:
 
@@ -95,11 +101,19 @@ Each JSON message carries significant information about an event and is composed
 
     4. `groups`: A group that the asset belongs to. Each group has a `link` and `name` fields.
 
-9. `endpoint`: An object that represents the endpoint involved in the event, defined by the following attributes: `link`, `URL`, `hostname`, and `method`.
+9. `endpoint`: An object that represents the endpoint involved in the event, defined by the following attributes:
+
+    1. `link`: A URL linking to the endpoint details.
+
+    2. `URL`: A URL that the endpoint is associated with.
+
+    3. `hostname`: A hostname that the endpoint is associated with.
+
+    4. `method`: HTTP method used by the endpoint.
 
 10. `policy`: An object that represents the policy related to the event. It includes a `link` to the policy details and the policy `name`.
 
-11. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy.
+11. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy, containing `link` to the asset details and the asset `name`.
 
 12. `third_party_ip`: The IP address of a third party involved in the event, if relevant.
 
