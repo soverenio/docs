@@ -80,6 +80,9 @@ markdown_extensions:
   - attr_list
   # Write Markdown inside HTML
   - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 # Redefining the theme and other elements, like panels, via custom .css styles
 extra_css:
