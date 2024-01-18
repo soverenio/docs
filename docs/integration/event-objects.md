@@ -87,13 +87,13 @@ Each JSON message carries significant information about an event and is composed
 
 8. `sending` and `receiving`: The assets involved in the event. They each contain the following sub-attributes:
 
-* `link`: A URL linking to the asset details.
+8.1 `link`: A URL linking to the asset details.
 
-* `name`: The name of the asset.
+8.2 `name`: The name of the asset.
 
-* `namespace`: The Kubernetes namespace that the asset belongs to.
+8.3 `namespace`: The Kubernetes namespace that the asset belongs to.
 
-* `groups`: A group that the asset belongs to. Each group has a `link` and `name` fields.
+8.4 `groups`: A group that the asset belongs to. Each group has a `link` and `name` fields.
 
 9. `endpoint`: An object that represents the endpoint involved in the event, defined by the following attributes: `link`, `URL`, `hostname`, and `method`.
 
