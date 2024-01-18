@@ -84,8 +84,9 @@ Each JSON message carries significant information about an event and is composed
 
 6. `event_type`: The [specific type](#event-types) of the event. Helps in identifying the concrete nature of the event.
 
-7. `data_types`: An array of strings that specify the [types of data](../data-model/) involved in the event.
-8.  `event_triggered_by`: A string that indicates the asset that violated the policy, resulting in the event. It can be `sending` or `receiving`.
+7. `data_types`: An array of strings that specify the [detected data types](../data-model/) involved in the event.
+
+8.  `event_triggered_by`: A string identifying the asset causing the event due to a policy violation. It can be `sending` or `receiving`.
 
     1. `sending`: The event is triggered by the sender of the data.
 
@@ -105,7 +106,7 @@ Each JSON message carries significant information about an event and is composed
 
     1. `link`: A URL linking to the endpoint details.
 
-    2. `URL`: A URL that the endpoint is associated with.
+    2. `URL`: The URL associated with the endpoint.
 
     3. `hostname`: A hostname that the endpoint is associated with.
 
@@ -129,7 +130,7 @@ The events that Soveren detects belong to one of following four categories:
 
 3. **Policy Violation**: cover all events triggered by violations of policies configured in the Soveren app.
 
-4. **Other**: this category encompasses a plethora of things not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
+4. **Other**: this category encompasses a variety of aspects not related to detected data types, flow changes or policy violatoins. For example, data map is built and ready for review, misconfiguration of the rules either in Soveren or in your infrastructure.
 
 ## Event types
 
