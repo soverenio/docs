@@ -86,7 +86,7 @@ Each JSON message carries significant information about an event and is composed
 
 7. `data_types`: An array of strings that specify the [detected data types](../../user-guide/data-model/) involved in the event.
 
-8.  `event_triggered_by`: A string identifying the asset causing the event due to a policy violation. It can be `sending` or `receiving`.
+8.  `event_triggered_by`: A string identifying the asset causing the event. It can be `sending` or `receiving`.
 
     1. `sending`: The event is triggered by the sender of the data.
 
@@ -114,7 +114,7 @@ Each JSON message carries significant information about an event and is composed
 
 10. `policy`: An object that represents the policy related to the event. It includes a `link` to the policy details and the policy `name`.
 
-11. `conflicting_assets`: An array of objects where each object represents an asset that is conflicting with the event policy, containing `link` to the asset details and the asset `name`.
+11. `conflicting_assets`: This array comprises objects, each representing an asset that conflicts with the event policy. These objects contain a `link` to the asset details and the asset's `name`. A common example of such a conflict occurs when the same `third_party_ip` address is assigned to multiple custom assets, leading to several policy violations being triggered.
 
 12. `third_party_ip`: The IP address of a third party involved in the event, if relevant.
 
