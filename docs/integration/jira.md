@@ -2,7 +2,7 @@
 
 ## Why use Jira integration
 
-While Soveren provides you with the [nice UI](../overview/) to respond to events which are happening in your infrastructure, sometimes you need to assign actions depending on what you've found. Integration with Jira provides you with this opportunity: you will be able to open a ticket directly from e.g. the policy violation event and populate it with all relevant details.
+While Soveren provides you with the [nice UI](../../user-guide/overview/) to respond to events which are happening in your infrastructure, sometimes you need to assign actions depending on what you've found. Integration with Jira provides you with this opportunity: you will be able to open a ticket directly from e.g. the policy violation event and populate it with all relevant details.
 
 ## Configuring the integration with Jira
 

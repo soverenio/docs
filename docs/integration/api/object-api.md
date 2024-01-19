@@ -40,7 +40,7 @@ Object model which is provided by the API is as follows.
 
 ![Soveren API object model](../../img/integration/api-logic-object-model.png "Soveren API object model")
 
-Soveren represents your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren Agents. Each `cluster` is distinguished by its ID and the name you assign to it.
+Soveren represents your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren Sensors. Each `cluster` is distinguished by its ID and the name you assign to it.
 
 `Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type, termed "Kubernetes workload."
 

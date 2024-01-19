@@ -2,7 +2,7 @@
 
 ## Why use Slack integration
 
-The Slack integration comes in handy when you need to notify certain people right away if something pops up in [Soveren app](../overview/) which requires immediate attention.
+The Slack integration comes in handy when you need to notify certain people right away if something pops up in [Soveren app](../../user-guide/overview/) which requires immediate attention.
 
 ## Configuring the integration with Slack
 

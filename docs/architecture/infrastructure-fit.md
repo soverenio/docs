@@ -4,7 +4,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 !!! danger "Must-haves for Soveren to work are Kubernetes and HTTP/JSON"
 
-    At present, the Soveren Agent only works in Kubernetes and monitors only HTTP traffic with JSON payloads (setting the correct `content-type` is crucial). These are necessities for Soveren to run and start providing insights.
+    At present, the Soveren Sensor only works in Kubernetes and monitors only HTTP traffic with JSON payloads (setting the correct `content-type` is crucial). These are necessities for Soveren to run and start providing insights.
 
 ## Deployment
 
@@ -12,7 +12,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 2. **We use Helm for deployment**. However, clients often adapt our charts to integrate the resulting manifests into their own deployment systems.
 
-3. **4 CPU, 16 Gb nodes**. We [optimized](../../administration/configuring-agent/#resource-limits) our `limits` for nodes of this size. These are standard general-purpose nodes from popular cloud platforms:
+3. **4 CPU, 16 Gb nodes**. We [optimized](../../administration/configuring-sensor/#resource-limits) our `limits` for nodes of this size. These are standard general-purpose nodes from popular cloud platforms:
 
     * Google Cloud: [c3-standard-4](https://cloud.google.com/compute/all-pricing#c3_standard_machine_types);
 
@@ -20,7 +20,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
     * Microsoft Azure: [Standard_D4_v3](https://learn.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dv3-series).
 
-4. The [components of the Soveren Agent](../overview/#soveren-agent) are entirely self-sufficient. For instance, you don't need expertise in Kafka for our [messaging and processing system](../traffic-processing/) to operate; we handle everything.
+4. The [components of the Soveren Sensor](../overview/#soveren-sensor) are entirely self-sufficient. For instance, you don't need expertise in Kafka for our [messaging and processing system](../traffic-processing/) to operate; we handle everything.
 
 ## Traffic analysis
 
@@ -40,16 +40,16 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 ## Resource usage
 
-The components of the Soveren Agent exhibit varied resource usage patterns. Here's the general rule for all of them: the more resources you can allocate, the faster the data map will be built. In extreme cases, there might be restarts of some components, but they only affect the data map building time — not the core functionality of Soveren, and certainly not your cluster's stability.
+The components of the Soveren Sensor exhibit varied resource usage patterns. Here's the general rule for all of them: the more resources you can allocate, the faster the data map will be built. In extreme cases, there might be restarts of some components, but they only affect the data map building time — not the core functionality of Soveren, and certainly not your cluster's stability.
 
-* [Interceptors](../traffic-interception/) often utilize 100% of the allocated CPU [resources](../../administration/configuring-agent/#interceptors) as they aggressively attempt to capture all the available traffic. The memory they consume is used for storing the packets while assembling the request/response pairs. However, the amount of resources allocated to the Interceptors only affects the time it takes to capture enough representative traffic to build a comprehensive data map. The more resources you can allocate, the faster the map will be built, and vice versa.
+* [Interceptors](../traffic-interception/) often utilize 100% of the allocated CPU [resources](../../administration/configuring-sensor/#interceptors) as they aggressively attempt to capture all the available traffic. The memory they consume is used for storing the packets while assembling the request/response pairs. However, the amount of resources allocated to the Interceptors only affects the time it takes to capture enough representative traffic to build a comprehensive data map. The more resources you can allocate, the faster the map will be built, and vice versa.
 
 Remember that the Interceptors are present on each node (they are a `DaemonSet`). To get the full picture, you need to multiply their `requests` (and `limits`!) by the number of nodes in the cluster. However, the actual load on a particular Interceptor is heavily influenced by the amount of requests and the payloads it is collecting.
 
-* [Digger](../traffic-processing/) is usually larger than any of the Interceptors, but there's only one instance of Digger in the cluster. Digger requires memory to read the collected payloads from Kafka, process them, and send the results to the Soveren Cloud. If the cluster is sizable and the load is high, then resource usage will be noticeable, reaching the `limits` that [you've set](../../administration/configuring-agent/#digger). If this situation persists, we recommend increasing the limits — however, as with the Interceptors, this should only affect the time it takes to build the data map.
+* [Digger](../traffic-processing/) is usually larger than any of the Interceptors, but there's only one instance of Digger in the cluster. Digger requires memory to read the collected payloads from Kafka, process them, and send the results to the Soveren Cloud. If the cluster is sizable and the load is high, then resource usage will be noticeable, reaching the `limits` that [you've set](../../administration/configuring-sensor/#digger). If this situation persists, we recommend increasing the limits — however, as with the Interceptors, this should only affect the time it takes to build the data map.
 
-* [Kafka](../../administration/configuring-agent/#kafka) also exists as a single instance per cluster. It is more memory-hungry than Digger because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
+* [Kafka](../../administration/configuring-sensor/#kafka) also exists as a single instance per cluster. It is more memory-hungry than Digger because it needs to hold all the traffic that Soveren collects until it is processed by Digger and other components.
 
-* [Detection-tool](../../administration/configuring-agent/#detection-tool) is the most resource-intensive component of the Soveren Agent because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Agent components can consume even under moderate load.
+* [Detection-tool](../../administration/configuring-sensor/#detection-tool) is the most resource-intensive component of the Soveren Sensor because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Sensor components can consume even under moderate load.
 
 The detection-tool processes only a portion of the traffic — the part that [Digger samples and sends for data detection](../traffic-processing/#url-clustering-sampling-and-data-detection). Because of this, the data map needs some time to build.

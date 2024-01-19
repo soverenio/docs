@@ -1,34 +1,34 @@
-# Configuring the Soveren Agent
+# Configuring the Soveren Sensor
 
-!!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are specifically related to security."
+!!! info "Refer to the [separate guide](../securing-sensor/) for configuration options that are specifically related to security."
 
-We use Helm for managing the deployment of Soveren Agents. To customize values sent to your Soveren Agent, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
+We use Helm for managing the deployment of Soveren Sensors. To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor."
 
-You can change a number of things regarding the Soveren Agent deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Agents](../managing-agents/#updating-agents)).
+You can change a number of things regarding the Soveren Sensor deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Sensors](../managing-sensors/#updating-sensors)).
 
 !!! danger "Only use `values.yaml` to override specific values!"
     Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent). This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
 
 
-## Agent token
+## Sensor token
 
-To save you some keystrokes when installing or updating the Agent, we suggest placing the following snippet into the `values.yaml`:
+To save you some keystrokes when installing or updating the Sensor, we suggest placing the following snippet into the `values.yaml`:
 
 ```yaml
 digger:
   token: <TOKEN>
 ```
 
-!!! danger "Use unique Agents and tokens for different clusters"
-    If you're managing multiple clusters, please create unique Agents for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
+!!! danger "Use unique Sensors and tokens for different clusters"
+    If you're managing multiple clusters, please create unique Sensors for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
 
-Digger is a component of the Agent that actually sends metadata to the Soveren Cloud. Detection-tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection-tool gets the token value from Digger.)
+Digger is a component of the Sensor that actually sends metadata to the Soveren Cloud. Detection-tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection-tool gets the token value from Digger.)
 
 ## Multi-cluster deployment
 
-For each Kubernetes cluster, you'll need a separate Soveren Agent. When deploying Soveren Agents across multiple clusters, they will be identified by the tokens and names assigned during their creation. For more information, refer to [Managing agents](../managing-agents/).
+For each Kubernetes cluster, you'll need a separate Soveren Sensor. When deploying Soveren Sensors across multiple clusters, they will be identified by the tokens and names assigned during their creation. For more information, refer to [Managing sensors](../managing-sensors/).
 
 There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
 
@@ -38,17 +38,17 @@ digger:
     clustername: <NAME>
 ```
 
-Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Agent's name defined in the [Soveren app](https://app.soveren.io/agents).
+Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Sensor's name defined in the [Soveren app](https://app.soveren.io/agents).
 
 ## Resource limits
 
-You can adjust resource usage limits for each of the Soveren Agent's components.
+You can adjust resource usage limits for each of the Soveren Sensor's components.
 
 As a rule of thumb, we **_do not_** recommend to change the `requests` values. They are set with regard to a minimum reasonable functionality that the component can provide given that much resources.
 
-The `limits` however differ widely between Agent's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
+The `limits` however differ widely between Sensor's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
 
-Soveren Agent does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` values are just for making sure that the virtual disk space is not overused.
+Soveren Sensor does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` values are just for making sure that the virtual disk space is not overused.
 
 ### Interceptors
 
@@ -178,7 +178,7 @@ detectionTool:
 
 ### Prometheus-agent
 
-We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Agent. Here are the default resource values:
+We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Sensor. Here are the default resource values:
 
 ```yaml
 prometheusAgent:
@@ -194,7 +194,7 @@ prometheusAgent:
 
 ## Sending metrics to local Prometheus
 
-If you want to monitor the metrics that the Soveren Agent collects, here's how to do that:
+If you want to monitor the metrics that the Soveren Sensor collects, here's how to do that:
 
 ```yaml
 prometheusAgent:
@@ -212,7 +212,7 @@ where:
 
 ## Namespace filtering
 
-At times, you may want to limit the Soveren Agent to specific namespaces for monitoring. You can achieve this by either specifying allowed namespaces (the "allow list") or by excluding particular ones (the "exclude list").
+At times, you may want to limit the Soveren Sensor to specific namespaces for monitoring. You can achieve this by either specifying allowed namespaces (the "allow list") or by excluding particular ones (the "exclude list").
 
 The syntax is as follows:
 
@@ -238,7 +238,7 @@ digger:
 
 When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`, and `devspace-[1-9]`, as defined in the [Go path package](https://pkg.go.dev/path#Match).
 
-The Agent's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
+The Sensor's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
 !!! info "End with `allow *` if you have any `deny` definitions"
     If you've included `deny` definitions in your filter list and want to monitor all other namespaces, make sure to conclude the list with:
@@ -246,13 +246,13 @@ The Agent's default policy is to work only with explicitly mentioned namespaces,
           - namespace: "*"
           action: allow
     ```
-    Failing to do so could result in the Agent not monitoring any namespaces if only `deny` definitions are present.
+    Failing to do so could result in the Sensor not monitoring any namespaces if only `deny` definitions are present.
 
 ## Service mesh and encryption
 
 Soveren can monitor connections encrypted through service meshes like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-The agent will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
+The Sensor will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
 
 For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
@@ -266,7 +266,7 @@ interceptor:
 
 ## Changing the log level
 
-By default, the log levels for all Soveren Agent components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
+By default, the log levels for all Soveren Sensor components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
 
 ```yaml
 [digger|interceptor|detectionTool|prometheusAgent]:
@@ -281,7 +281,7 @@ We do not manage the log level for Kafka; it is set to `info` by default.
 
 ## Binding of components to specific nodes
 
-The Soveren Agent [consists of](../../architecture/overview/#soveren-agent) two types of components:
+The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) two types of components:
 
 * `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
@@ -334,7 +334,7 @@ The `affinity` option is conceptually similar to `nodeSelector` but allows for a
 
 ## Persistent volume for Kafka
 
-The Soveren Agent is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
+The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
 
 `kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all Interceptors before further processing by other components.
 

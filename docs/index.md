@@ -49,7 +49,7 @@ Soveren helps modern tech-focused businesses with Kubernetes-based environments 
 ## Hybrid architecture
 Soveren’s product has a hybrid architecture:
 
-* **Soveren Agent** provides traffic interceptors and data-classification engine installed in the your Kubernetes clusters
+* **Soveren Sensor** provides traffic interceptors and data-classification engine installed in the your Kubernetes clusters
 
 * **Soveren Cloud** offers data and asset map, policy engine, and various statistics and metrics dashboards
 
