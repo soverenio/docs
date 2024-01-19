@@ -9,10 +9,10 @@ nav:
   - Quick start: 'getting-started/quick-start.md'
   - Administration:
       - Managing Users: 'administration/managing-users.md'
-      - Managing Agents: 'administration/managing-agents.md'
-      - Configuring the Agent: 'administration/configuring-agent.md'
-      - Securing the Agent: 'administration/securing-agent.md'
-      - Troubleshooting the Agent: 'administration/troubleshooting-agent.md'
+      - Managing Sensors: 'administration/managing-sensors.md'
+      - Configuring the Sensor: 'administration/configuring-sensor.md'
+      - Securing the Sensor: 'administration/securing-sensor.md'
+      - Troubleshooting the Sensor: 'administration/troubleshooting-sensor.md'
   - User guide:
       - Overview: 'user-guide/overview.md'
       - Sensitive data model: 'user-guide/data-model.md'
