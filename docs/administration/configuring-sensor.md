@@ -1,6 +1,6 @@
 # Configuring the Soveren Sensor
 
-!!! info "Refer to the [separate guide](../configuring-sensor/) for configuration options that are specifically related to security."
+!!! info "Refer to the [separate guide](../securing-sensor/) for configuration options that are specifically related to security."
 
 We use Helm for managing the deployment of Soveren Sensors. To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 

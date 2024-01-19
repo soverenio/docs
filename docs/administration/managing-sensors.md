@@ -4,7 +4,7 @@
 
 For each Kubernetes cluster you want Soveren to monitor, you'll require a Soveren Sensor.
 
-You can create, modify, and delete Sensors via the [sensors page](https://app.soveren.io/agents) in the Soveren app.
+You can create, modify, and delete Sensors via the [sensors page](https://app.soveren.io/sensors) in the Soveren app.
 
 ![Sensors](../../img/administration/sensors.png "Sensors")
 
@@ -20,7 +20,7 @@ You can also automate the naming of your clusters in Soveren [by setting the nam
 
 The `token` allows the Soveren app to identify the Sensor during communication.
 
-We [recommend](../configuring-sensor/#the-token) adding the `token` to your own configuration file, such as `values.yaml`, to simplify operational procedures.
+We [recommend](../configuring-sensor/#sensor-token) adding the `token` to your own configuration file, such as `values.yaml`, to simplify operational procedures.
 
 !!! danger "Use unique Sensors and tokens for different clusters"
 
@@ -49,7 +49,7 @@ helm repo add soveren https://soverenio.github.io/helm-charts
 helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
 ```
 
-We [recommend](../configuring-sensor/#the-token) that instead of adding `<TOKEN>` to the command line, you incorporate the `token` into your own configuration file, such as `values.yaml`. Then, use the following commands instead of the ones above:
+We [recommend](../configuring-sensor/#sensor-token) that instead of adding `<TOKEN>` to the command line, you incorporate the `token` into your own configuration file, such as `values.yaml`. Then, use the following commands instead of the ones above:
 
 ```shell
 kubectl create namespace soverenio
