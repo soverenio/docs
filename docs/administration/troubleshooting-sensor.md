@@ -1,10 +1,10 @@
-# Troubleshooting the Agent
+# Troubleshooting the Sensor
 
-You've deployed the Soveren Agent and everything should be working properly. However, if you don't see any data in the [Soveren app](https://app.soveren.io/), or something seems amiss, here are several troubleshooting steps you can follow.
+You've deployed the Soveren Sensor and everything should be working properly. However, if you don't see any data in the [Soveren app](https://app.soveren.io/), or something seems amiss, here are several troubleshooting steps you can follow.
 
 ## Verifying the deployment
 
-Ensure that you're running the latest version of the Soveren Agent. You can verify this with the following command:
+Ensure that you're running the latest version of the Soveren Sensor. You can verify this with the following command:
 
 ```shell
 helm search repo soveren
@@ -12,16 +12,16 @@ helm search repo soveren
 
 You can then compare the versions listed in the output with our customer success team for confirmation.
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent, and for current images / components versions."
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor, and for current images / components versions."
 
 
-Next, it's advisable to confirm that all Soveren Agent components have been successfully deployed:
+Next, it's advisable to confirm that all Soveren Sensor components have been successfully deployed:
 
 ```shell
 helm -n soverenio list
 ```
 
-In this command, `soverenio` is the namespace where you've [deployed](../../getting-started/quick-start/) the Agent.
+In this command, `soverenio` is the namespace where you've [deployed](../../getting-started/quick-start/) the Sensor.
 
 Ensure you observe _all_ of the following:
 
@@ -29,7 +29,7 @@ Ensure you observe _all_ of the following:
 * `kafka`: Only one instance should exist, which receives traffic from the `interceptors`.
 * `digger`: One instance, reads data from `kafka`, sends it to the `detection-tool`, collects results, and forwards relevant metadata to the Soveren Cloud.
 * `detection-tool`: A single instance, performs the bulk of the work detecting sensitive data.
-* `prometheus-agent`: A single instance, monitors basic metrics from all other Agent components.
+* `prometheus-agent`: A single instance, monitors basic metrics from all other Sensor components.
 
 Additionally, ensure that all custom values specified in your `values.yaml` have been incorporated into the deployment:
 
@@ -37,7 +37,7 @@ Additionally, ensure that all custom values specified in your `values.yaml` have
 helm -n soverenio get values soveren-agent | grep -v token
 ```
 
-!!! warning "These commands offer a basic check of the Soveren Agent setup's consistency"
+!!! warning "These commands offer a basic check of the Soveren Sensor setup's consistency"
     Be prepared to share the output of these commands when discussing issues with our customer success team.
 
 ## Verifying individual components
@@ -98,7 +98,7 @@ kubectl -n soverenio describe pod -l app.kubernetes.io/component=[digger|interce
 
 Repeat the command above for `digger`, `interceptor`, `kafka`, `prometheus-agent` and `detection-tool`.
 
-To view all the Agent's pods:
+To view all the Sensor's pods:
 
 ```shell
 kubectl -n soverenio describe pod -l app.kubernetes.io/name=soveren-agent
@@ -128,4 +128,4 @@ This provides a list of `POD_NAMES` associated with the Interceptors. You can th
 kubectl -n soverenio logs <POD_NAME>
 ```
 
-To enhance log verbosity, you may need to [adjust the log level](../configuring-agent/#changing-the-log-level) for the concerned component.
+To enhance log verbosity, you may need to [adjust the log level](../configuring-sensor/#changing-the-log-level) for the concerned component.

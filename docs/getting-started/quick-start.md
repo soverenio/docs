@@ -2,18 +2,18 @@
 
 !!! warning "Please read through the requirements and recommendations"
 
-    Before you proceed with the installation of the Soveren Agent, we strongly recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)
+    Before you proceed with the installation of the Soveren Sensor, we strongly recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)
 
 Installing Soveren is extremely simple:
 
-1. Install the Soveren Agent in your Kubernetes cluster
+1. Install the Soveren Sensor in your Kubernetes cluster
 
 2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
 
 
-## Installing the Agent
+## Installing the Sensor
 
-1. [Create a new Soveren token](../../administration/managing-agents#create-an-agent) and have it handy for the following steps. The token identifies and authorizes your Agent within the Soveren Cloud.
+1. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. The token identifies and authorizes your Sensor within the Soveren Cloud.
  
 
 2. Create a namespace for Soveren installation:
@@ -28,7 +28,7 @@ Installing Soveren is extremely simple:
     helm repo add soveren https://soverenio.github.io/helm-charts
     ```
 
-5. Install the Soveren Agent using the `<TOKEN>` that you obtained on the step 1:
+5. Install the Soveren Sensor using the `<TOKEN>` that you obtained on the step 1:
     ```shell
     helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
     ```
@@ -37,18 +37,18 @@ Installing Soveren is extremely simple:
 
 7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
 
-For more advanced configuration options please take a look at the [configuration page](../../administration/configuring-agent/).
+For more advanced configuration options please take a look at the [configuration page](../../administration/configuring-sensor/).
 
 ## What happens under the hood
 
-There are several things which happen automatically in the cluster when you install the Soveren Agent:
+There are several things which happen automatically in the cluster when you install the Soveren Sensor:
 
-1. Soveren Agent contains Interceptors, Processing and messaging system, and Sensitive data detector. (More details in the [Architecture section](../../architecture/overview/#soveren-agent)).
+1. Soveren Sensor contains Interceptors, Processing and messaging system, and Sensitive data detector. (More details in the [Architecture section](../../architecture/overview/#soveren-sensor)).
 
-2. All components of Soveren Agent are deployed into the namespace `soverenio`. 
+2. All components of Soveren Sensor are deployed into the namespace `soverenio`. 
 
-3. Soveren Agent subscribes to [a lot of metadata from the Kubernetes API](../../architecture/k8s-metadata/). A dedicated `ServiceAccount` is created. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`.
+3. Soveren Sensor subscribes to [a lot of metadata from the Kubernetes API](../../architecture/k8s-metadata/). A dedicated `ServiceAccount` is created. This `ServiceAccount` is given [cluster-wide permissions](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/templates/digger-rbac.yaml) (`ClusterRoleBinding`) to `get`, `list` and `watch` on several `apiGroups`.
 
 4. Interceptors do not need special Kubernetes RBAC permissions to capture the traffic.
 
-5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require [privileged mode](../../administration/securing-agent/#components-that-do-traffic-interception).
+5. Interceptors read data from virtual network interfaces of the host. For this, the containers in which Interceptors are running require [privileged mode](../../administration/securing-sensor/#components-that-do-traffic-interception).

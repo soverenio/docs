@@ -1,12 +1,12 @@
-# Securing the Agent
+# Securing the Sensor
 
-!!! info "Refer to the [separate guide](../configuring-agent/) for configuration options that are not related to security."
+!!! info "Refer to the [separate guide](../configuring-sensor/) for configuration options that are not related to security."
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Agent."
+!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor."
 
 ## Proxying the Traffic
 
-There may be instances when you want to route the traffic between the Soveren Agent and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
+There may be instances when you want to route the traffic between the Soveren Sensor and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
 
 To do this, simply specify the top-level value in your `values.yaml`:
 
@@ -24,7 +24,7 @@ httpsProxyNoProxy: ""
 
 ## Network policy
 
-You may want to specify the network policy for the Soveren Agent. It is not enabled by default.
+You may want to specify the network policy for the Soveren Sensor. It is not enabled by default.
 
 Here's how to do it:
 
@@ -43,7 +43,7 @@ networkPolicy:
 
 ### Components that don't intercept traffic
 
-All containers of the Soveren Agent, except for the Interceptors, have the following `securityContext` by default:
+All containers of the Soveren Sensor, except for the Interceptors, have the following `securityContext` by default:
 
 ```shell
 securityContext:

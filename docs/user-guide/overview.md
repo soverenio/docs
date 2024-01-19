@@ -44,7 +44,7 @@ You can further dive into individual assets to check the data flows and endpoint
 
 ### Data map
 
-[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Agent are shown together. Those assets are split into the internal and external parts and connected by the flows.
+[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Sensor are shown together. Those assets are split into the internal and external parts and connected by the flows.
 
 ![Data map](../../img/user-guide/data-map-01.png "Data map")
 
@@ -64,7 +64,7 @@ An example of the events view:
 
 ### Data types
 
-[Data types](https://app.soveren.io/pii-types) are a summary of sensitive types that the Soveren Agent has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
+[Data types](https://app.soveren.io/pii-types) are a summary of sensitive types that the Soveren Sensor has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
 
 An example of the data types view:
 
@@ -76,7 +76,7 @@ This part of the product is coming really soon, stay tuned!
 
 ## How Soveren works with your data
 
-* Soveren Agent does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Agent has observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
+* Soveren Sensor does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Sensor has observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
 
 * In the metadata that we show on the dashboards, we mask textual and numerical and complex data types so that you can see what sort of data was actually there from the form of it. This masking is done in your perimeter and sent to the Soveren Cloud as part of the metadata.
 
