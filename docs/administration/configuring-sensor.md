@@ -66,11 +66,11 @@ For `interceptors`:
 interceptor:
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: "50m"
+      memory: "64Mi"
     limits:
       cpu: "1000m"
-      memory: "2048Mi"
+      memory: "1536Mi"
       ephemeral-storage: "100Mi"
 ```
 
