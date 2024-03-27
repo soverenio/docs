@@ -34,8 +34,7 @@ There may be instances where you want to automate the naming process for your cl
 
 ```yaml
 digger:
-  statsclient:
-    clustername: <NAME>
+  clusterName: <NAME>
 ```
 
 Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Sensor's name defined in the [Soveren app](https://app.soveren.io/agents).
