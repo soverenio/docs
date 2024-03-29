@@ -132,11 +132,11 @@ Most information in the activity log is accessible not only through the product'
 
 ## Data types
 
-[Data types](https://app.soveren.io/data-types) are a summary of sensitive types that the Soveren Sensor has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
+[Data types](https://app.soveren.io/data-types) provide a summary of the sensitive data types that the Soveren Sensor has detected in your infrastructure. Soveren [supports numerous data types right out of the box](../data-model/), and the range of supported types is continually expanding.
 
-An example of the data types view:
+Here's an example of what the data types view looks like:
 
-![Data types](../../img/user-guide/data-types-01.png "Data types")
+![Data types](../../img/user-guide/data-types.png "Data types")
 
 ## Violations
 
