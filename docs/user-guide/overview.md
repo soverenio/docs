@@ -14,6 +14,20 @@ The sensitivity of each discovered data type is indicated by color: red signifie
 
 ![Dashboard: services and data type combinations](../../img/user-guide/dashboard-02.png "Dashboard: services and data type combinations")
 
+## Data map
+
+The [data map](https://app.soveren.io/data-map) provides a high-level view of your landscape. It displays all clusters where you've deployed Soveren Sensors, including all [services](#services) that Soveren has identified, as well as external connections.
+
+![Data map](../../img/user-guide/data-map-01.png "Data map")
+
+There are numerous filtering options and toggles on the map, which help in creating focused views of different parts of the infrastructure. Additionally, there is a visual representation of sensitive data types that have been detected in the assets and flows.
+
+![Filtering on the data map](../../img/user-guide/data-map-02.png "Filtering on the data map")
+
+You can also delve into individual services to examine their specific data flows and API endpoints:
+
+![Flows on the data map](../../img/user-guide/data-map-03.png "Flows on the data map")
+
 ## Services
 
 ### Service catalog
@@ -78,19 +92,33 @@ The APIs of individual services are accessible in their detailed views. For conv
 
 ![API endpoints](../../img/user-guide/api-endpoints.png "API endpoints")
 
-## Data map
+You can proceed to view a sample of data flowing to or from the endpoint:
 
-The [data map](https://app.soveren.io/data-map) provides a high-level view of your landscape. It displays all clusters where you've deployed Soveren Sensors, including all services that Soveren has identified, as well as external connections.
+![API endpoint sample: detected types](../../img/user-guide/api-endpoint-sample.png "API endpoint sample: detected types")
 
-![Data map](../../img/user-guide/data-map-01.png "Data map")
+## Data storages
 
-There are numerous filtering options and toggles on the map, which help in creating focused views of different parts of the infrastructure. Additionally, there is a visual representation of sensitive data types that have been detected in the assets and flows.
+Currently, Soveren includes support for S3 buckets as data storage options.
 
-![Filtering on the data map](../../img/user-guide/data-map-02.png "Filtering on the data map")
+Browse the list of S3 buckets that Soveren has identified in your AWS account:
 
-You can also delve into individual services to examine their specific data flows and API endpoints:
+![S3 buckets list](../../img/user-guide/buckets-list.png "S3 buckets list")
 
-![Flows on the data map](../../img/user-guide/data-map-03.png "Flows on the data map")
+Next, you can review the summary information for each bucket:
+
+![S3 bucket summary info](../../img/user-guide/bucket-summary.png "S3 bucket summary info")
+
+Objects stored in the bucket are grouped (or clustered) based on their key names and MIME types:
+
+![S3 objects list](../../img/user-guide/bucket-files-01.png "S3 objects list")
+
+Soveren analyzes samples from the bucket, running detections on their contents:
+
+![S3 object samples](../../img/user-guide/bucket-files-02.png "S3 object samples")
+
+You can then view a sample of the data stored in the bucket:
+
+![S3 object sample: detected types](../../img/user-guide/bucket-sample.png "S3 object sample: detected types")
 
 ## Events
 
@@ -102,7 +130,7 @@ An example of the events view:
 
 ## Data types
 
-[Data types](https://app.soveren.io/pii-types) are a summary of sensitive types that the Soveren Sensor has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
+[Data types](https://app.soveren.io/data-types) are a summary of sensitive types that the Soveren Sensor has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
 
 An example of the data types view:
 
