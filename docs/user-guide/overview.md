@@ -120,13 +120,15 @@ You can then view a sample of the data stored in the bucket:
 
 ![S3 object sample: detected types](../../img/user-guide/bucket-sample.png "S3 object sample: detected types")
 
-## Events
+## Activity log
 
-[Events](https://app.soveren.io/events) are literally some occurrences that Soveren has found and deemed as important. They may or may not lead to some violations of pre-defined rules regarding the sensitive data exchange (more on that later). An example of an event would be the first evidence of a sensitive type found in a particular data flow.
+The [activity log](https://app.soveren.io/activity-log) records significant events identified by Soveren. These events can fall into [several categories](../../integration/event-objects/#event-types), notably including violations of predefined policies related to sensitive data exchanges. An example of such an event is the initial detection of a sensitive data type in a specific data flow.
 
-An example of the events view:
+Here is an example of what the activity log might include:
 
-![Events](../../img/user-guide/events-01.png "Events")
+![Activity log](../../img/user-guide/activity-log.png "Activity log")
+
+Most information in the activity log is accessible not only through the product's user interface but also via [integrations](../../integration/), such as webhooks or Slack alerts.
 
 ## Data types
 
