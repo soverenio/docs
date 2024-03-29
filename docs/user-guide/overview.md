@@ -2,45 +2,81 @@
 
 ## Dashboards summary
 
-Soveren provides [a number of dashboards](https://app.soveren.io/). Most of them should be self explanatory, but in a nutshell here's what you find on them. Pictures below are just to convey the general idea, they are constantly updated along with all the product enhancements that we are doing.
+Soveren provides [several dashboards](https://app.soveren.io/), most of which are self-explanatory. Here is a brief summary of what you can find on them. The pictures below are examples to convey the general idea; they are regularly updated to reflect the ongoing product enhancements.
 
 ### Overview
 
-The [Overview](https://app.soveren.io/overview) provides you with [a 7-day summary stats](#how-soveren-works-with-your-data) about what has happened in your infrastructure. It shows the latest important events, how many events there were during the period, what data types were discovered, the most sensitive [assets](#assets) and the most common [data type](#data-types) combinations.
+The [Overview](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#service-catalog), and the most common [data type](#data-types) combinations.
 
-The numbers show how many events or assets or endpoints and such are there currently, and they also display the changes with respect to the [previous period](#how-soveren-works-with-your-data).
+The statistics show the current counts of events, services, endpoints, etc., and highlight changes compared to the [previous period](#how-soveren-works-with-your-data).
 
-The sensitivity of each found data type is shown with color. Red means pretty sensitive if disclosed, yellow means not so much, green means little to worry about _unless_ combined with some other data types leading to increased sensitivity of a combination.
+The sensitivity of each discovered data type is indicated by color: red signifies high sensitivity, yellow indicates moderate sensitivity, and green suggests low sensitivity — unless combined with other data types, increasing the overall sensitivity.
 
 ![Overview: summary](../../img/user-guide/overview-01.png "Overview: summary")
+
 ![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
 
-### Assets
+### Services, flows and endpoints
 
-[Assets](https://app.soveren.io/data-inventory/) are places of data concentration that Soveren discovers in your infrastructure while looking into the traffic. They are communicating to each other through data flows which may or may not contain some sensitive data in them.
+#### Service catalog
 
-There are several types of assets: internal and external ones, and endpoints. Internal assets are found within your Kubernetes cluster, whereas external ones are located outside of it.
+Soveren builds a [service catalog](https://app.soveren.io/service-catalog/) while scanning traffic. This catalog includes services communicating through data flows, which may contain sensitive information. These services are not only data concentration points but are also actively interacting in real-time.
 
-An example of the internal assets view:
+For instance, within your Kubernetes cluster, you might find services like:
 
-![Internal assets](../../img/user-guide/assets-01.png "Internal assets")
+![Services](../../img/user-guide/services.png "Services")
 
-An example of an external asset would be some third-party data provider or consumer that you communicate with under some data processing agreement. Or they can be robots which are scanning your resources from time to time (e.g. search engine crawlers), or they can be external users looking into your apps from their browsers or (mobile) applications.
+There are also external connections that these services make with third parties, such as data providers or consumers, under data processing agreements. Additionally, there might be bots scanning your resources periodically (e.g., search engine crawlers), or users accessing your applications through web browsers or mobile apps.
 
-An example of the external assets view:
+External connection parties can also be viewed as services, but with different properties:
 
-![External assets](../../img/user-guide/assets-02.png "External assets")
+![External connections](../../img/user-guide/external-connections.png "External connections")
 
-Endpoints are essentially the APIs that are exposed or consumed by some other assets. They are points to which other assets connect and send or get some data, including sentitive data.
+### Services details: summary, flows and endpoints
 
-An example of the endpoints view:
+You can delve into individual services to examine associated data flows and API endpoints.
 
-![Endpoints](../../img/user-guide/assets-03.png "Endpoints")
+The summary provides basic information about the service:
 
-You can further dive into individual assets to check the data flows and endpoints associated with them:
+![Service summary info](../../img/user-guide/service-summary.png "Service summary info")
 
-![Asset flows](../../img/user-guide/assets-04.png "Asset flows")
-![Asset endpoints](../../img/user-guide/assets-05.png "Asset endpoints")
+Data flows represent interactions with other services:
+
+![Service data flows](../../img/user-guide/service-data-flows.png "Service data flows")
+
+Each data flow entails multiple interactions with various API endpoints:
+
+![Service data flow details](../../img/user-guide/service-data-flow-details.png "Service data flow details")
+
+The service lists API endpoints that are actively called by other services:
+
+![Service API endpoints](../../img/user-guide/service-api-endpoints.png "Service API endpoints")
+
+Similar views are available for external connections:
+
+Summary of the external connection:
+
+![External connection summary info](../../img/user-guide/external-connection-summary.png "External connection summary info")
+
+Data flows in the external connection represent its interactions with services:
+
+![External connection data flows](../../img/user-guide/external-connection-data-flows.png "External connection data flows")
+
+Each external connection data flow also involves multiple interactions with different API endpoints:
+
+![External connection data flow details](../../img/user-guide/external-connection-data-flow-details.png "External connection data flow details")
+
+Recipients of the external connection include IP addresses and user agents that facilitate communication between services and the external connection:
+
+![External connection recipients](../../img/user-guide/external-connection-recipients.png "External connection recipients")
+
+### API endpoints
+
+API endpoints are essentially interfaces exposed or utilized by services for data exchange, including sensitive data.
+
+The APIs of individual services are accessible in their detailed views. For convenience, we also present a comprehensive list of all API endpoints identified by Soveren in a separate view:
+
+![API endpoints](../../img/user-guide/api-endpoints.png "API endpoints")
 
 ### Data map
 
