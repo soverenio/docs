@@ -32,7 +32,7 @@ External connection parties can also be viewed as services, but with different p
 
 ### Service details
 
-You can delve into individual services to examine associated data flows and API endpoints.
+You can delve into individual services to examine associated data flows and [API endpoints](#api-endpoints).
 
 The summary provides basic information about the service:
 
@@ -62,7 +62,7 @@ Data flows in the external connection represent its interactions with services:
 
 ![External connection data flows](../../img/user-guide/external-connection-data-flows.png "External connection data flows")
 
-Each external connection data flow also involves multiple interactions with different API endpoints:
+Each external connection data flow also involves multiple interactions with different [API endpoints](#api-endpoints):
 
 ![External connection data flow details](../../img/user-guide/external-connection-data-flow-details.png "External connection data flow details")
 
