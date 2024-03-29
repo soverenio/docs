@@ -155,7 +155,7 @@ You can set up policies to automatically monitor which services or data sources 
 ![Policy configuration, part 1](../../img/user-guide/policy-01.png "Policy configuration, part 1")
 ![Policy configuration, part 2](../../img/user-guide/policy-02.png "Policy configuration, part 2")
 
-# How Soveren works with your data
+## How Soveren works with your data
 
 * The Soveren Sensor does not transmit any personal or sensitive data — in fact, any actual data — outside your environment. What you see on the dashboards is solely metadata about the activities the Sensor has observed. This includes, for example, which service has been communicating with another and what types of sensitive data were present, without including any of the actual data.
 
