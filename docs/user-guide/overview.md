@@ -4,17 +4,17 @@ Soveren provides [several views](https://app.soveren.io/), most of which are sel
 
 ## Dashboard
 
-The overview [Dashboard](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#service-catalog), and the most common [data type](#data-types) combinations.
+The overview [Dashboard](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#services), and the most common [data type](#data-types) combinations.
 
 The statistics show the current counts of events, services, endpoints, etc., and highlight changes compared to the [previous period](#how-soveren-works-with-your-data).
 
 The sensitivity of each discovered data type is indicated by color: red signifies high sensitivity, yellow indicates moderate sensitivity, and green suggests low sensitivity — unless combined with other data types, increasing the overall sensitivity.
 
-![Overview: summary](../../img/user-guide/overview-01.png "Overview: summary")
+![Dashboard: summary](../../img/user-guide/dashboard-01.png "Dashboard: summary")
 
-![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
+![Dashboard: services and data type combinations](../../img/user-guide/dashboard-02.png "Dashboard: services and data type combinations")
 
-## Services, flows and endpoints
+## Services
 
 ### Service catalog
 
