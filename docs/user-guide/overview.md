@@ -6,7 +6,7 @@ Soveren provides [several dashboards](https://app.soveren.io/), most of which ar
 
 ### Overview
 
-The [Overview](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#service-catalog), and the most common [data type](#data-types) combinations.
+The overview [Dashboard](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#service-catalog), and the most common [data type](#data-types) combinations.
 
 The statistics show the current counts of events, services, endpoints, etc., and highlight changes compared to the [previous period](#how-soveren-works-with-your-data).
 
@@ -32,7 +32,7 @@ External connection parties can also be viewed as services, but with different p
 
 ![External connections](../../img/user-guide/external-connections.png "External connections")
 
-### Services details: summary, flows and endpoints
+#### Services details: summary, flows and endpoints
 
 You can delve into individual services to examine associated data flows and API endpoints.
 
