@@ -80,15 +80,17 @@ The APIs of individual services are accessible in their detailed views. For conv
 
 ## Data map
 
-[Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Sensor are shown together. Those assets are split into the internal and external parts and connected by the flows.
+[Data map](https://app.soveren.io/data-map) provides a high-level view into your landscape. All clusters where you've deployed Soveren Sensors are show here, with all services that Soveren has found are shown together with external connections.
 
 ![Data map](../../img/user-guide/data-map-01.png "Data map")
 
 There are a number of filtering options and toggles on the map which help making focused views into different parts of the infrastructure. There is also a visual notion of sensitive data types that have been found in the assets and in the flows.
 
-![Flow on the data map](../../img/user-guide/data-map-02.png "Flow on the data map")
+![Filtering on the data map](../../img/user-guide/data-map-02.png "Filtering on the data map")
 
-You can also dive into individual assets to check their specific data flows and endpoints.
+You can also dive into individual services to check their specific data flows and API endpoints:
+
+![Flows on the data map](../../img/user-guide/data-map-03.png "Flows on the data map")
 
 ## Events
 
