@@ -78,8 +78,6 @@ markdown_extensions:
   - pymdownx.inlinehilite
   # Add HTML attributes and CSS classes to any Markdown element
   - attr_list
-  # Privacy plugin, in particular to open external links in a new tab
-  - privacy
   # Write Markdown inside HTML
   - md_in_html
   - def_list
@@ -104,6 +102,8 @@ copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="yea
 
 plugins:
   - glightbox
+  # Privacy plugin, in particular to open external links in a new tab
+  - privacy
 
 # Good MkDocs config file references:
 # 1. https://facelessuser.github.io/pymdown-extensions/extensions/superfences/ > https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml
