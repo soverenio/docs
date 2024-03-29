@@ -78,6 +78,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   # Add HTML attributes and CSS classes to any Markdown element
   - attr_list
+  # Privacy plugin, in particular to open external links in a new tab
+  - privacy
   # Write Markdown inside HTML
   - md_in_html
   - def_list
