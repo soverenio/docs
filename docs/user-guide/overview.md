@@ -30,7 +30,7 @@ External connection parties can also be viewed as services, but with different p
 
 ![External connections](../../img/user-guide/external-connections.png "External connections")
 
-### Services details: summary, flows and endpoints
+### Service details
 
 You can delve into individual services to examine associated data flows and API endpoints.
 
@@ -49,6 +49,8 @@ Each data flow entails multiple interactions with various API endpoints:
 The service lists API endpoints that are actively called by other services:
 
 ![Service API endpoints](../../img/user-guide/service-api-endpoints.png "Service API endpoints")
+
+### External connection details
 
 Similar views are available for external connections:
 
