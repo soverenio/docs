@@ -1,10 +1,8 @@
-# Overview
+# Overview of Soveren's functionality
 
-## Dashboards summary
+Soveren provides [several views](https://app.soveren.io/), most of which are self-explanatory. Here is a brief summary of what you can find on them. The pictures below are examples to convey the general idea; they are regularly updated to reflect the ongoing product enhancements.
 
-Soveren provides [several dashboards](https://app.soveren.io/), most of which are self-explanatory. Here is a brief summary of what you can find on them. The pictures below are examples to convey the general idea; they are regularly updated to reflect the ongoing product enhancements.
-
-### Overview
+## Dashboard
 
 The overview [Dashboard](https://app.soveren.io/overview) offers a [7-day summary of statistics](#how-soveren-works-with-your-data), highlighting recent activities in your infrastructure. It displays important recent events, the number of events during the period, discovered data types, the most sensitive [services](#service-catalog), and the most common [data type](#data-types) combinations.
 
@@ -16,9 +14,9 @@ The sensitivity of each discovered data type is indicated by color: red signifie
 
 ![Overview: assets and type combinations](../../img/user-guide/overview-02.png "Overview: assets and type combinations")
 
-### Services, flows and endpoints
+## Services, flows and endpoints
 
-#### Service catalog
+### Service catalog
 
 Soveren builds a [service catalog](https://app.soveren.io/service-catalog/) while scanning traffic. This catalog includes services communicating through data flows, which may contain sensitive information. These services are not only data concentration points but are also actively interacting in real-time.
 
@@ -32,7 +30,7 @@ External connection parties can also be viewed as services, but with different p
 
 ![External connections](../../img/user-guide/external-connections.png "External connections")
 
-#### Services details: summary, flows and endpoints
+### Services details: summary, flows and endpoints
 
 You can delve into individual services to examine associated data flows and API endpoints.
 
@@ -70,7 +68,7 @@ Recipients of the external connection include IP addresses and user agents that 
 
 ![External connection recipients](../../img/user-guide/external-connection-recipients.png "External connection recipients")
 
-### API endpoints
+## API endpoints
 
 API endpoints are essentially interfaces exposed or utilized by services for data exchange, including sensitive data.
 
@@ -78,7 +76,7 @@ The APIs of individual services are accessible in their detailed views. For conv
 
 ![API endpoints](../../img/user-guide/api-endpoints.png "API endpoints")
 
-### Data map
+## Data map
 
 [Data map](https://app.soveren.io/data-map) provides a view into your landscape, where all assets that have been found by the Soveren Sensor are shown together. Those assets are split into the internal and external parts and connected by the flows.
 
@@ -90,7 +88,7 @@ There are a number of filtering options and toggles on the map which help making
 
 You can also dive into individual assets to check their specific data flows and endpoints.
 
-### Events
+## Events
 
 [Events](https://app.soveren.io/events) are literally some occurrences that Soveren has found and deemed as important. They may or may not lead to some violations of pre-defined rules regarding the sensitive data exchange (more on that later). An example of an event would be the first evidence of a sensitive type found in a particular data flow.
 
@@ -98,7 +96,7 @@ An example of the events view:
 
 ![Events](../../img/user-guide/events-01.png "Events")
 
-### Data types
+## Data types
 
 [Data types](https://app.soveren.io/pii-types) are a summary of sensitive types that the Soveren Sensor has observed in your infrastructure. Soveren [suppors a number of data types out of the box](../data-model/), and the set of supported types is constantly growing.
 
@@ -106,11 +104,11 @@ An example of the data types view:
 
 ![Data types](../../img/user-guide/data-types-01.png "Data types")
 
-### Violations
+## Violations
 
 This part of the product is coming really soon, stay tuned!
 
-## How Soveren works with your data
+# How Soveren works with your data
 
 * Soveren Sensor does not send any personal or sentive data — in fact _any_ actual data — outside your environment. Everything that you see on the dashboards is just metadata about what the Sensor has observed. For example, which service has been calling what other service, which sensitive data types were present — without any actual data.
 
