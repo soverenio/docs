@@ -102,6 +102,8 @@ extra_javascript:
 extra:
   # Disable the "Build with MkDocs Material" line in the footer
   generator: false
+  version:
+    provider: mike
 
 # Copyright text in the footer
 copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.
