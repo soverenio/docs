@@ -104,7 +104,7 @@ extra:
   generator: false
 
 # Copyright text in the footer
-copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.<div id="#readthedocs-embed-flyout"></div>
+copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.<div id="readthedocs-embed-flyout"></div>
 
 plugins:
   - search
