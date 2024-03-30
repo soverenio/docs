@@ -117,6 +117,6 @@ pre {
 /* Custom stuff by Vladimir Stepanov, Architect */
 
 /* Attempt to hide the version flyout menu of RTD because apparently NO other fix in Mar 2024 */
-#readthedocs-embed-flyout {
+.injected {
     display: none;
 }
