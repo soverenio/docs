@@ -102,8 +102,6 @@ extra_javascript:
 extra:
   # Disable the "Build with MkDocs Material" line in the footer
   generator: false
-  version:
-    provider: mike
 
 # Copyright text in the footer
 copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.
@@ -112,8 +110,7 @@ plugins:
   - search
   - glightbox
   - open-in-new-tab
-  - mike:
-     version_selector: false
+
 
 # Good MkDocs config file references:
 # 1. https://facelessuser.github.io/pymdown-extensions/extensions/superfences/ > https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml
