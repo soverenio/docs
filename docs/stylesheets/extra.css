@@ -113,3 +113,10 @@ pre {
 .md-nav--secondary .md-nav__item {
     padding: 0.2rem 0.6rem;
 }
+
+/* Custom stuff by Vladimir Stepanov, Architect */
+
+/* Attempt to hide the version flyout menu of RTD because apparently NO other fix in Mar 2024 */
+#readthedocs-embed-flyout {
+    display: none;
+}
