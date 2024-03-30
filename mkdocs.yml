@@ -52,6 +52,8 @@ theme:
   favicon: img/favicons/favicon-app-black.svg
   features:
     - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
     # Tabs allow horizontal nav menu: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
     #  - navigation.tabs
     - navigation.top
@@ -73,9 +75,13 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   # Highlight code blocks; to highlight, refer to https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlight
-  - pymdownx.highlight
-  # Highlight inline code blocks in text:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   # Add HTML attributes and CSS classes to any Markdown element
   - attr_list
   # Write Markdown inside HTML
