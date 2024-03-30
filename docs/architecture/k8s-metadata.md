@@ -20,4 +20,4 @@ In more detail:
 
 3. Upon receiving a new entity in the notifications from Kubernetes, Digger processes the metadata, such as the name, namespace, labels, and annotations, storing these in the cache.
 
-5. Digger also identifies the higher-level Kubernetes construct that created this entity, in other words, the workload resource (such as `DaemonSet`, `ReplicaSet`, or `Deployment`, among others) that serves as the actual owner of this entity. This gives a broader context, for instance, to the pod name (which could be quite cryptic in isolation) of the discovered asset.
+5. Digger also identifies the higher-level Kubernetes construct that created this entity, in other words, the workload resource (such as `DaemonSet`, `ReplicaSet`, or `Deployment`, among others) that serves as the actual owner of this entity. This gives a broader context, for instance, to the pod name (which could be quite cryptic in isolation) of the discovered service.

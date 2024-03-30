@@ -2,7 +2,7 @@
 
 ## What are event objects in Soveren?
 
-Besides the [UI]((../overview/#events)), Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own [SIEM](https://en.wikipedia.org/wiki/Security_information_and_event_management) or process management software, as well as create customized alerts in the messaging apps.
+Besides the [UI](../../user-guide/overview/#activity-log), Soveren provides you with representations of events as structured JSON messages. You can use those messages in your own [SIEM](https://en.wikipedia.org/wiki/Security_information_and_event_management) or process management software, as well as create customized alerts in the messaging apps.
 
 <details>
   <summary>Example of an event JSON object</summary>
@@ -86,21 +86,21 @@ Each JSON message carries significant information about an event and is composed
 
 7. `data_types`: An array of strings that specify the [detected data types](../../user-guide/data-model/) involved in the event.
 
-8.  `event_triggered_by`: A string identifying the asset causing the event. It can be `sending` or `receiving`.
+8.  `event_triggered_by`: A string identifying the service causing the event. It can be `sending` or `receiving`.
 
     1. `sending`: The event is triggered by the sender of the data.
 
     2. `receiving`: The event is triggered by the receiver of the data.
 
-8. `sending` and `receiving`: The assets involved in the event. They each contain the following sub-attributes:
+8. `sending` and `receiving`: The services involved in the event. They each contain the following sub-attributes:
 
-    1. `link`: URL linking to the asset's details.
+    1. `link`: URL linking to the service's details.
 
-    2. `name`: The name of the asset.
+    2. `name`: The name of the service.
 
-    3. `namespace`: The Kubernetes namespace to which the asset belongs.
+    3. `namespace`: The Kubernetes namespace to which the service belongs.
 
-    4. `groups`: Groups to which the asset belongs, each with `link` and `name` attributes.
+    4. `groups`: Groups to which the service belongs, each with `link` and `name` attributes.
 
 9. `endpoint`: An object that represents the endpoint involved in the event, defined by the following attributes:
 
@@ -114,7 +114,7 @@ Each JSON message carries significant information about an event and is composed
 
 10. `policy`: An object that represents the policy related to the event. It includes a `link` to the policy details and the policy `name`.
 
-11. `conflicting_assets`: This array comprises objects, each representing an asset that conflicts with the event policy. These objects contain a `link` to the asset details and the asset's `name`. A common example of such a conflict occurs when the same `third_party_ip` address is assigned to multiple custom assets, leading to several policy violations being triggered.
+11. `conflicting_assets`: This array comprises objects, each representing a service that conflicts with the event policy. These objects contain a `link` to the service details and the service's `name`. A common example of such a conflict occurs when the same `third_party_ip` address is assigned to multiple external connections, leading to several policy violations being triggered.
 
 12. `third_party_ip`: The IP address of a third party involved in the event, if relevant.
 
@@ -126,7 +126,7 @@ The events that Soveren detects belong to one of following four categories:
 
 1. **New Data Type**: events of this type are recorded whenever Soveren observes a data type for the first time in your infrastructure.
 
-2. **Data Flow Change**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new assets (senders or receivers), detection of previously unobserved data types in them.
+2. **Data Flow Change**: this category encapsulates all changes related to both internal and external senders and receivers: introduction of new services or external connections (senders or receivers), detection of previously unobserved data types in them.
 
 3. **Policy Violation**: cover all events triggered by violations of policies configured in the Soveren app.
 
@@ -138,19 +138,19 @@ Besides being broadly categorized, the events in Soveren are also fine-grained i
 
 Here's the list of the event types by category. Your can use `event_type` and event `category` to build automation around specific cases when getting event messages through integrations with Soveren.
 
-| Event category (`category`) | Event type (`event_type`) | Triggered when  |
-|-------------------  |----------------------------------- |----------------|
-| `new_data_types`    | `new_data_type`                    | A new data type is observed for the first time.|
-| `data_flow_changes` | `new_internal_receiver`            | An internal asset is newly registered to receive data. |
-|                     | `new_internal_sender`              | An internal asset is newly registered to send data. |
-|                     | `updated_internal_receiver`        | An existing internal asset (data receiver) starts receiving new data type. |
-|                     | `updated_internal_sender`          | An existing internal asset (data sender) starts sending new data type. |
-|                     | `new_external_receiver`            | A new external asset is registered to receive data. |
-|                     | `updated_external_receiver`        | An existing external asset (data receiver) starts receiving new data type. |
-|                     | `updated_enduser_receiver`         | An existing end-user (external data receiver) starts receiving new data type. |
-|                     | `updated_robot_receiver`           | An existing robot (external data receiver) starts receiving new data type. |
-| `policy_violations` | `policy_violation`                 | A violation of policy configured within the Soveren app is detected. |
-|                     | `3rd_party_policy_violation`       | A violation of a third-party policy (sending data to 3rd party) is detected. |
-| `others`            | `discovery_complete`               | A discovery process concludes, all assets are present on the data map. |
-|                     | `custom_asset_rule_conflict`       | A rule conflict related to a custom asset arises. |
-|                     | `email_clustered`                  | There are actual emails used in your URLs, Soveren detected & masked them in those URLs in Soveren app. |
+| Event category (`category`) | Event type (`event_type`) | Triggered when                                                                                                  |
+|-------------------  |----------------------------------- |-----------------------------------------------------------------------------------------------------------------|
+| `new_data_types`    | `new_data_type`                    | A new data type is observed for the first time.                                                                 |
+| `data_flow_changes` | `new_internal_receiver`            | A service is newly registered to receive data.                                                                  |
+|                     | `new_internal_sender`              | An service is newly registered to send data.                                                                    |
+|                     | `updated_internal_receiver`        | An existing service (data receiver) starts receiving new data type.                                             |
+|                     | `updated_internal_sender`          | An existing service (data sender) starts sending new data type.                                                 |
+|                     | `new_external_receiver`            | A new external connection is registered to receive data.                                                        |
+|                     | `updated_external_receiver`        | An existing external connection (data receiver) starts receiving new data type.                                 |
+|                     | `updated_enduser_receiver`         | An existing end-user (external data receiver) starts receiving new data type.                                   |
+|                     | `updated_robot_receiver`           | An existing robot (external data receiver) starts receiving new data type.                                      |
+| `policy_violations` | `policy_violation`                 | A violation of policy configured within the Soveren app is detected.                                            |
+|                     | `3rd_party_policy_violation`       | A violation of a third-party policy (sending data to 3rd party) is detected.                                    |
+| `others`            | `discovery_complete`               | A discovery process concludes, all services, external connections and data sources are present on the data map. |
+|                     | `custom_asset_rule_conflict`       | A rule conflict related to a custom external connection arises.                                                 |
+|                     | `email_clustered`                  | There are actual emails used in your URLs, Soveren detected & masked them in those URLs in Soveren app.         |

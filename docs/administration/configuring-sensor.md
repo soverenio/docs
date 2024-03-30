@@ -141,7 +141,7 @@ The rule of thumb is this: if you increased the `limits` `memory` value for the 
 
 Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Detection-tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
 
-Digger employs all sorts of data sampling algorithms to make sure that all endpoints and assets in the data map are uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
+Digger employs all sorts of data sampling algorithms to make sure that the data map is uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
 
 The resource defaults for Digger are:
 

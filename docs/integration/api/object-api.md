@@ -2,7 +2,7 @@
 
 ## Why use the API
 
-Soveren provides the Object API to allow users to extract information about all discovered assets, the flows between them, and the detected data types.
+Soveren provides the Object API to allow users to extract information about all discovered services, the flows between them, and the detected data types.
 
 A popular use case for the Soveren Object API is to automatically keep your inventory updated and enriched with metadata such as live descriptions, service owners, and instances of actual activity (e.g., sending or receiving data). Additionally, you can track real-time data streams between services and pinpoint where sensitive data is detected.
 
@@ -42,16 +42,16 @@ Object model which is provided by the API is as follows.
 
 Soveren represents your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren Sensors. Each `cluster` is distinguished by its ID and the name you assign to it.
 
-`Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type, termed "Kubernetes workload."
+`Services` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `services`, currently, Soveren supports only one type, termed "Kubernetes workload."
 
-An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an `asset`.
+An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an `service`.
 
 ![Soveren API object model: data flow](../../img/integration/api-logic-data-flow.png "Soveren API object model: data flow")
 
-Communication channels between `assets`, where sensitive `data types` have been detected, are termed `data streams`. For instance, when one `asset` calls another, this establishes a `data stream`.
+Communication channels between `services`, where sensitive `data types` have been detected, are termed `data streams`. For instance, when one `service` calls another, this establishes a `data stream`.
 
-Multiple `data streams` can exist between two `assets`. If two `assets` share at least one `data stream`, Soveren determines that there's a `data flow` between them.
+Multiple `data streams` can exist between two `services`. If two `services` share at least one `data stream`, Soveren determines that there's a `data flow` between them.
 
-Between any two chosen `assets`, there can be two `data flows` — one in each direction (from one `asset` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
+Between any two chosen `services`, there can be two `data flows` — one in each direction (from one `service` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
 
 For a comprehensive description of each object structure available through the APIs, please refer to the [Soveren Object API](../ref/).

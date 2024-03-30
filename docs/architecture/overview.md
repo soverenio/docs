@@ -11,7 +11,7 @@ The Soveren Sensor comprises several key parts:
 
 * [**Interceptors**](../traffic-interception/): Distributed across all nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
 * [**Processing and messaging system**](../traffic-processing/): This system includes a [Kafka](https://kafka.apache.org/) instance that stores request/response data and a component called Digger which forwards data for detection and eventually to the Soveren Cloud.
-* **Sensitive data detector** (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
+* [**Sensitive data detector**](../detection/) (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
 
 In Kubernetes terms, the Soveren Sensor introduces the following pods to the cluster:
 
@@ -38,7 +38,7 @@ The Soveren Sensor follows this sequence of operations:
 
 5. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC protocol and protobuf.
 
-[The Kubernetes API provides pod names and other metadata to the Digger](../k8s-metadata/). Consequently, Soveren Cloud identifies assets by their Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
+[The Kubernetes API provides pod names and other metadata to the Digger](../k8s-metadata/). Consequently, Soveren Cloud identifies services by their Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
 
 ## Soveren Cloud
 
