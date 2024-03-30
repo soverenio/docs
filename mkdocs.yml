@@ -1,6 +1,6 @@
 # General MkDocs project settings
 site_name: Documentation
-site_description: Explore our guides and examples to integrate Soveren with your production environment
+site_description: Explore our guides and examples for integrating Soveren into your production environment
 site_url: https://docs.soveren.io/en/stable/
 
 # Navigation tree
@@ -52,6 +52,8 @@ theme:
   favicon: img/favicons/favicon-app-black.svg
   features:
     - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
     # Tabs allow horizontal nav menu: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
     #  - navigation.tabs
     - navigation.top
@@ -73,9 +75,13 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   # Highlight code blocks; to highlight, refer to https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlight
-  - pymdownx.highlight
-  # Highlight inline code blocks in text:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   # Add HTML attributes and CSS classes to any Markdown element
   - attr_list
   # Write Markdown inside HTML
@@ -98,12 +104,13 @@ extra:
   generator: false
 
 # Copyright text in the footer
-copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.
+copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.<div id="readthedocs-embed-flyout"></div>
 
 plugins:
   - search
   - glightbox
   - open-in-new-tab
+
 
 # Good MkDocs config file references:
 # 1. https://facelessuser.github.io/pymdown-extensions/extensions/superfences/ > https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml

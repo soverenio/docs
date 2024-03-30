@@ -20,7 +20,7 @@ The [data map](https://app.soveren.io/data-map) provides a high-level view of yo
 
 ![Data map](../../img/user-guide/data-map-01.png "Data map")
 
-There are numerous filtering options and toggles on the map, which help in creating focused views of different parts of the infrastructure. Additionally, there is a visual representation of sensitive data types that have been detected in the assets and flows.
+There are numerous filtering options and toggles on the map, which help in creating focused views of different parts of the infrastructure. Additionally, there is a visual representation of sensitive data types that have been detected in the services and flows.
 
 ![Filtering on the data map](../../img/user-guide/data-map-02.png "Filtering on the data map")
 

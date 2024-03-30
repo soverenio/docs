@@ -113,3 +113,10 @@ pre {
 .md-nav--secondary .md-nav__item {
     padding: 0.2rem 0.6rem;
 }
+
+/* Stuff added by Vladimir Stepanov, Architect */
+
+/* Hacking out the flyout menu */
+#readthedocs-embed-flyout {
+    display: none;
+}
