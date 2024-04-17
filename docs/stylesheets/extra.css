@@ -121,6 +121,6 @@ pre {
     display: none;
 }
 
-readthedocs-flyout, readthedocs-notification {
+readthedocs-flyout, readthedocs-notification, .raised {
     display: none;
 }
