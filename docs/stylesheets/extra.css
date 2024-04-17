@@ -124,3 +124,7 @@ pre {
 body > readthedocs-notification.raised.floating {
     display: none;
 }
+
+body > readthedocs-flyout.div.floating.container.bottom-right {
+    display: none;
+}
