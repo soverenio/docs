@@ -121,6 +121,6 @@ pre {
     display: none;
 }
 
-div > div.title, div > div.content {
+body > readthedocs-notification.raised.floating {
     display: none;
 }
