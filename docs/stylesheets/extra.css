@@ -125,10 +125,6 @@ body > readthedocs-notification.raised.floating {
     display: none;
 }
 
-body > div.floating.container.bottom-right {
-    display: none;
-}
-
-body > readthedocs-flyout {
+body > readthedocs-flyout.floating.container.bottom-right {
     display: none;
 }
