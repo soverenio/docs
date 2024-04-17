@@ -120,3 +120,7 @@ pre {
 #readthedocs-embed-flyout {
     display: none;
 }
+
+readthedocs-flyout, readthedocs-notification {
+    display: none;
+}
