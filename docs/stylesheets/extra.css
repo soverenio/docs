@@ -128,3 +128,7 @@ body > readthedocs-notification.raised.floating {
 body > readthedocs-flyout.floating.container.bottom-right {
     display: none;
 }
+
+#shadow-root {
+    display: none;
+}
