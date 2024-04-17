@@ -121,6 +121,6 @@ pre {
     display: none;
 }
 
-readthedocs-flyout > div, readthedocs-notification > div {
+div > div.title, div > div.content {
     display: none;
 }
