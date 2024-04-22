@@ -23,17 +23,17 @@ More detailed step-by-step procedure:
 
 2. Create a namespace for Soveren installation:
 
-    === Data-in-motion (DIM)
+=== Data-in-motion (DIM)
 
-    ```shell
-    kubectl create namespace soverenio
-    ```
+```shell
+kubectl create namespace soverenio
+```
 
-    === Data-at-rest (DAR)
+=== Data-at-rest (DAR)
 
-    ```shell
-    kubectl create namespace soverenio
-    ```
+```shell
+ kubectl create namespace soverenio
+```
 
    You can use any other valid namespace name instead of `soverenio`.
 
