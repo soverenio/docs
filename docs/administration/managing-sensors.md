@@ -8,15 +8,11 @@
 
     Data-in-motion (DIM) sensor discovers services in your Kubernetes clusters and identifies sensitive data in data flows between them
 
-    [:octicons-arrow-right-24: DIM sensor management](dim/)
-
 -   __Data-at-rest (DAR) sensor__
 
     ---
 
     Data-at-rest (DAR) sensor monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within
-
-    [:octicons-arrow-right-24: DAR sensor management](dar/)
 
 </div>
 
