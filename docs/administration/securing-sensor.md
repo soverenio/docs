@@ -8,7 +8,7 @@ Please also refer to the [separate guide](../configuring-sensor/) for configurat
 
 The Sovereign Data-in-motion (DIM) Sensor subscribes to a significant amount of metadata from the Kubernetes API. A dedicated `ServiceAccount` is created for this purpose. This `ServiceAccount` is granted cluster-wide permissions (`ClusterRoleBinding`) to `get`, `list`, and `watch` several `apiGroups`.
 
-## Proxying the Traffic
+## Proxying the traffic
 
 There may be instances when you want to route the traffic between the Soveren Sensor and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
 
