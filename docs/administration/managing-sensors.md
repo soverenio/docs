@@ -18,6 +18,10 @@
 
     [:octicons-arrow-right-24: DAR sensor management](dar/)
 
+</div>
+
+<div class="grid cards" markdown>
+
 -   __Common__
 
     ---
