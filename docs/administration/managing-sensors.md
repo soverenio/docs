@@ -1,5 +1,21 @@
 # Managing Sensors
 
+<div class="grid cards" markdown>
+
+-   __Data-in-motion (DIM) sensor__
+
+    ---
+
+    Data-in-motion (DIM) sensor discovers services in your Kubernetes clusters and identifies sensitive data in data flows between them
+
+-   __Data-at-rest (DAR) sensor__
+
+    ---
+
+    Data-at-rest (DAR) sensor monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within
+
+</div>
+
 ## Creating Sensors
 
 For each Kubernetes cluster you want Soveren to monitor, you'll require a Soveren Sensor.
