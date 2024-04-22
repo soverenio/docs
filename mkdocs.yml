@@ -5,7 +5,7 @@ site_url: https://docs.soveren.io/en/stable/
 
 # Navigation tree
 nav:
-  - Introduction: 'index.md'
+  - Home: 'index.md'
   - Quick start: 'getting-started/quick-start.md'
   - Administration:
       - Managing Users: 'administration/managing-users.md'
