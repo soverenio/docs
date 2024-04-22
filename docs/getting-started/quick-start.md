@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Quick start
 
 !!! info "Please check our requirements and recommendations"
