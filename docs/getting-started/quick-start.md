@@ -1,22 +1,24 @@
----
-hide:
-  - navigation
-  - toc
----
-
 # Quick start
+
+## Overview
+
+Installing Soveren is extremely simple:
+
+1. Deploy the Soveren Sensor in your Kubernetes cluster using [our Helm chart](https://github.com/soverenio/helm-charts/).
+
+2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
+
+Soveren Sensors come in two basic variants:
+
+1. Data-in-motion (DIM) sensor that discovers services in your Kubernetes clusters and identifies sensitive data in data flows between them.
+
+2. Data-at-rest (DAR) sensor that monitors data sources like S3 buckets, databases and Kafka clusters, and uncovers sensitive data in their contents.
 
 !!! info "Please check our requirements and recommendations"
 
     Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)
 
-In a nutshell, installing Soveren is extremely simple:
-
-1. Install the Soveren Sensor in your Kubernetes cluster.
-
-2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
-
-More detailed step-by-step procedure:
+## Step-by-step procedure
 
 1. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. The token identifies and authorizes your Sensor within the Soveren Cloud.
 
@@ -54,7 +56,9 @@ More detailed step-by-step procedure:
         helm install -n soverenio-dar-sensor soveren-dar-sensor soveren/soveren-dar-sensor --set crawler.token="<TOKEN>"
         ```
 
-   You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
+    You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
+
+    More convenient way of dealing with tokens is specifying them in the values.yaml as described in the [configuration gude](../../administration/configuring-sensor/#sensor-token).
 
 
 5. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
