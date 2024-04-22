@@ -12,7 +12,13 @@ For monitoring your data sources such as S3 buckets, databases and Kafka cluster
 
     ![Data-in-motion (DIM) Sensors](../../img/administration/sensors-dim.png "Data-in-motion (DIM) Sensors")
 
-    Each Sensor is characterized by its `name` and `token`. You can also specify a region where your cluster is situated.
+    Each Sensor is characterized by its `name` and `token`. You can also specify the `region` where your cluster is situated.
+
+    ### Name
+
+    If you have multiple clusters, and thus multiple Sensors, Soveren will display them separately on the [data map](https://app.soveren.io/data-map). The Sensor's name will define the name of the cluster on the data map.
+
+    You can also automate the naming of your clusters in Soveren [by setting the names of the clusters](../configuring-sensor/#multi-cluster-deployment) in your configuration files.
 
 === "Data-at-rest (DAR)"
 
@@ -22,11 +28,9 @@ For monitoring your data sources such as S3 buckets, databases and Kafka cluster
 
     Each Sensor is characterized by its `name` and `token`.
 
-### Name
+    ### Name
 
-If you have multiple clusters, and thus multiple Sensors, Soveren will display them separately on the [data map](https://app.soveren.io/data-map). The Sensor's name will define the name of the cluster on the data map.
-
-You can also automate the naming of your clusters in Soveren [by setting the names of the clusters](../configuring-sensor/#multi-cluster-deployment) in your configuration files.
+    This will be something else
 
 ### Token
 
