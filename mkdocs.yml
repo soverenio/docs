@@ -60,6 +60,7 @@ theme:
     - toc.integrate
     - content.code.copy
     - content.code.annotate
+    - content.tabs.link
 
 # Extensions
 markdown_extensions:
