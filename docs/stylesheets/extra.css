@@ -117,6 +117,12 @@ pre {
 /* Stuff added by Vladimir Stepanov, Architect */
 
 /* Hacking out the flyout menu */
+/*
 #readthedocs-embed-flyout {
     display: none;
 }
+
+body > readthedocs-notification.raised.floating {
+    display: none;
+}
+*/
