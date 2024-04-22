@@ -28,7 +28,6 @@ More detailed step-by-step procedure:
     ```shell
     kubectl create namespace soverenio
     ```
-
     === "Data-at-rest (DAR)"
 
     ```shell
