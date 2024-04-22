@@ -18,14 +18,6 @@
 
     [:octicons-arrow-right-24: DAR sensor management](dar/)
 
--   __Common__
-
-    ---
-
-    Common section
-
-    [:octicons-arrow-right-24: Common section](#)
-
 </div>
 
 ## Creating Sensors
