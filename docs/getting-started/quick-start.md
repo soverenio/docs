@@ -56,10 +56,12 @@ Soveren Sensors are available in two variants:
 
     You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
 
-   A more convenient way to manage tokens is by specifying them in `values.yaml` as described in our [configuration gude](../../administration/configuring-sensor/#sensor-token).
+    A more convenient way to manage tokens is by specifying them in `values.yaml` as described in our [configuration gude](../../administration/configuring-sensor/#sensor-token).
 
 
 5. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
 
+
+## Fine print
 
 For more advanced configuration options please take a look at the [configuration page](../../administration/configuring-sensor/). There is also a separate description of the [security options](../../administration/securing-sensor/).
