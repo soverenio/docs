@@ -55,7 +55,7 @@ theme:
     - navigation.indexes
     - navigation.prune
     - navigation.tabs
-    - navigation.tracking
+#    - navigation.tracking
     - toc.follow
     - toc.integrate
     - content.code.copy
