@@ -14,9 +14,7 @@ Soveren Sensors come in two basic variants:
 
 2. Data-at-rest (DAR) sensor that monitors data sources like S3 buckets, databases and Kafka clusters, and uncovers sensitive data in their contents.
 
-!!! info "Please check our requirements and recommendations"
-
-    Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)
+!!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)"
 
 ## Step-by-step procedure
 
