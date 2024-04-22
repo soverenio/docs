@@ -30,10 +30,10 @@ More detailed step-by-step procedure:
 
     === "Data-at-rest (DAR)"
         ```shell
-        kubectl create namespace soverenio
+        kubectl create namespace soverenio-dar-sensor
         ```
 
-    You can use any other valid namespace name instead of `soverenio`.
+    You can use any other valid namespace name instead of `soverenio` or `soverenio-dar-sensor`.
 
 
 3. Add the Soveren Helm repository:
@@ -43,10 +43,18 @@ More detailed step-by-step procedure:
 
 
 4. Install the Soveren Sensor using the `<TOKEN>` that you obtained in step 1:
-    ```shell
-    helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
-    ```
-   You can use any other valid release name instead of `soveren-agent`.
+
+    === "Data-in-motion (DIM)"
+        ```shell
+        helm install -n soverenio soveren-agent soveren/soveren-agent --set digger.token="<TOKEN>"
+        ```
+
+    === "Data-at-rest (DAR)"
+        ```shell
+        helm install -n soverenio-dar-sensor soveren-dar-sensor soveren/soveren-dar-sensor --set crawler.token="<TOKEN>"
+        ```
+
+   You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
 
 
 5. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
