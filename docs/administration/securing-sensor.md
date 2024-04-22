@@ -1,24 +1,28 @@
 # Securing the Sensor
 
-!!! info "Refer to the [separate guide](../configuring-sensor/) for configuration options that are not related to security."
+Sovereign Data-in-motion (DIM) and Data-at-rest (DAR) Sensors are currently deployed in a Kubernetes environment. Below is a description of specific security aspects and configuration options that you might want to consider.
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor."
+Please also refer to the [separate guide](../configuring-sensor/) for configuration options that are not related to security. You may also want to check [our current helm chart](https://github.com/soverenio/helm-charts/) for all values that can be tuned for the Sovereign Sensors.
 
-## Proxying the Traffic
+## Access to Kubernetes API
+
+The Sovereign Data-in-motion (DIM) Sensor subscribes to a significant amount of metadata from the Kubernetes API. A dedicated `ServiceAccount` is created for this purpose. This `ServiceAccount` is granted cluster-wide permissions (`ClusterRoleBinding`) to `get`, `list`, and `watch` several `apiGroups`.
+
+## Proxying the traffic
 
 There may be instances when you want to route the traffic between the Soveren Sensor and the Cloud through a proxy. This could be for reasons such as gaining additional control over the traffic leaving your cluster.
 
 To do this, simply specify the top-level value in your `values.yaml`:
 
-```shell
-httpsProxy: <PROXY_ADDRESS>:<PROXY_PORT>
+```yaml
+httpsProxy: "<PROXY_ADDRESS>:<PROXY_PORT>"
 ```
 
 Here, `<PROXY_ADDRESS>` and `<PROXY_PORT>` represent the address of your proxy service and the dedicated listening port, respectively.
 
 You can also specify the `NO_PROXY` top-level variable to allow some of your traffic to bypass the proxy:
 
-```shell
+```yaml
 httpsProxyNoProxy: ""
 ```
 
@@ -28,24 +32,25 @@ You may want to specify the network policy for the Soveren Sensor. It is not ena
 
 Here's how to do it:
 
-```shell
+```yaml
 networkPolicy:
   # -- Specifies whether Network Policies should be created
   enabled: false
   # -- Specify when the httpsProxy is enabled
   proxyIp: ""
+  # -- The below is specific to Data-in-motion (DIM) sensor
   k8sApi:
-    # -- Specify the k8s API endpoint port
+    # -- The k8s API endpoint port
     port: 443
 ```
 
-## Container security
+## Container privileges
 
-### Components that don't intercept traffic
+### Generic container privileges
 
-All containers of the Soveren Sensor, except for the Interceptors, have the following `securityContext` by default:
+All containers of the Soveren Sensors, except for the [Interceptors](#interceptors-privileges), have the following `securityContext` by default:
 
-```shell
+```yaml
 securityContext:
   runAsUser: 1000 # 65534 for prometheusAgent
   runAsGroup: 1000 # 65534 for prometheusAgent
@@ -53,7 +58,7 @@ securityContext:
   runAsNonRoot: true
 ```
 
-### Components that do traffic interception
+### Interceptors privileges
 
 Interceptors capture traffic by monitoring the virtual interfaces of the host.
 
@@ -61,17 +66,30 @@ In each Interceptor pod, there are two containers: the `rpcapd`, which handles t
 
 To allow Interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
 
-```shell
+```yaml
 securityContext:
   privileged: true
 ```
 
 Additionally, the `interceptor` container requires the following:
 
-```shell
+```yaml
 dnsPolicy: ClusterFirstWithHostNet
 hostNetwork: true
 hostPID: true
 ```
 
 Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.
+
+## Verifying image signatures
+
+Ensure the authenticity and integrity of downloaded images by validating their digital signatures.
+
+We use [Cosign](https://docs.sigstore.dev/signing/quickstart/) for image signing. Below is the public key you should use when verifying the signatures:
+
+```shell
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEF5frUnmoziugp0E1uOZJNTzQHJx3
+zf93Qcg/kJO1RpV/2SkVK+u0NH+M1K4ja6nr0pIjIyFwP3L6rpKY9p0Kcg==
+-----END PUBLIC KEY-----
+```

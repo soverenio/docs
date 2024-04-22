@@ -1,11 +1,11 @@
 # General MkDocs project settings
-site_name: Documentation
+site_name: Soveren Documentation
 site_description: Explore our guides and examples for integrating Soveren into your production environment
 site_url: https://docs.soveren.io/en/stable/
 
 # Navigation tree
 nav:
-  - Introduction: 'index.md'
+  - Home: 'index.md'
   - Quick start: 'getting-started/quick-start.md'
   - Administration:
       - Managing Users: 'administration/managing-users.md'
@@ -51,30 +51,28 @@ theme:
   logo: img/logos/logo-simple-white.svg
   favicon: img/favicons/favicon-app-black.svg
   features:
+    - navigation.top
     - navigation.indexes
+    - navigation.prune
+    - navigation.tabs
+    - navigation.tracking
+    - toc.follow
+    - toc.integrate
     - content.code.copy
     - content.code.annotate
-    # Tabs allow horizontal nav menu: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
-    #  - navigation.tabs
-    - navigation.top
+    - content.tabs.link
 
 # Extensions
 markdown_extensions:
   # Hover-overs for abbreviation for context-like glossary
   - abbr
-  # tables
   - tables
   # Notes, tips, warnings, etc.
   - admonition
-  # Make admonitions collapsable
-  # - pymdownx.details
   - pymdownx.blocks.details
-  # Allow nesting code and content blocks in admonitions and tabs; for details, refer to https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  - pymdownx.superfences
   # Content tabs
   - pymdownx.tabbed:
       alternate_style: true
-  # Highlight code blocks; to highlight, refer to https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlight
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -82,13 +80,13 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
   # Add HTML attributes and CSS classes to any Markdown element
   - attr_list
   # Write Markdown inside HTML
   - md_in_html
   - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
 
 # Redefining the theme and other elements, like panels, via custom .css styles
 extra_css:
@@ -104,15 +102,9 @@ extra:
   generator: false
 
 # Copyright text in the footer
-copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.<div id="readthedocs-embed-flyout"></div>
+copyright: Copyright &copy; <span id="current-year">2023 —</span><span id="year-dash"></span> Soveren, Inc.<div id="readthedocs-embed-flyout">&nbsp;</div>
 
 plugins:
   - search
   - glightbox
   - open-in-new-tab
-
-
-# Good MkDocs config file references:
-# 1. https://facelessuser.github.io/pymdown-extensions/extensions/superfences/ > https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml
-# 2. https://fastapi.tiangolo.com/ > https://github.com/tiangolo/fastapi/blob/master/docs/en/mkdocs.yml (multilanguage included)
-
