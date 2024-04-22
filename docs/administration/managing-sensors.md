@@ -2,13 +2,25 @@
 
 ## Creating Sensors
 
-For each Kubernetes cluster you want Soveren to monitor, you'll require a Soveren Sensor.
+You need to create separate Data-in-motion (DIM) Sensors for each Kubernetes cluster you want to monitor.
 
-You can create, modify, and delete Sensors via the [sensors page](https://app.soveren.io/sensors) in the Soveren app.
+For monitoring your data sources such as S3 buckets, databases and Kafka clusters, you will need at least one Data-at-rest (DAR) Sensor.
 
-![Sensors](../../img/administration/sensors.png "Sensors")
+=== "Data-in-motion (DIM)"
 
-Each Sensor is characterized by its `name` and `token`.
+    You can create DIM Sensors via the [sensors page](https://app.soveren.io/sensors/data-in-motion) in the Soveren app.
+
+    ![Data-in-motion (DIM) Sensors](../../img/administration/sensors-dim.png "Data-in-motion (DIM) Sensors")
+
+    Each Sensor is characterized by its `name` and `token`. You can also specify a region where your cluster is situated.
+
+=== "Data-at-rest (DAR)"
+
+    You can create DAR Sensors via the [sensors page](https://app.soveren.io/sensors/data-at-rest) in the Soveren app.
+
+    ![Data-at-rest (DAR) Sensors](../../img/administration/sensors-dar.png "Data-at-rest (DAR) Sensors")
+
+    Each Sensor is characterized by its `name` and `token`.
 
 ### Name
 
