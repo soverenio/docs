@@ -4,21 +4,21 @@
 
 Installing Soveren is extremely simple:
 
-1. Deploy the Soveren Sensor in your Kubernetes cluster using [our Helm chart](https://github.com/soverenio/helm-charts/).
+1. Deploy the Soveren Sensor in your Kubernetes cluster using our [Helm chart](https://github.com/soverenio/helm-charts/).
 
 2. [Go to the Soveren app](https://app.soveren.io/) in the Soveren Cloud and start getting insights!
 
-Soveren Sensors come in two basic variants:
+Soveren Sensors are available in two variants:
 
-1. Data-in-motion (DIM) sensor that discovers services in your Kubernetes clusters and identifies sensitive data in data flows between them.
+1. Data-in-motion (DIM) sensor: Discovers services in your Kubernetes clusters and identifies sensitive data in data flows between them.
 
-2. Data-at-rest (DAR) sensor that monitors data sources like S3 buckets, databases and Kafka clusters, and uncovers sensitive data in their contents.
+2. Data-at-rest (DAR) sensor: Monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within.
 
 !!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)"
 
 ## Step-by-step procedure
 
-1. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. The token identifies and authorizes your Sensor within the Soveren Cloud.
+1. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
 
 
 2. Create a namespace for Soveren installation:
@@ -56,7 +56,7 @@ Soveren Sensors come in two basic variants:
 
     You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
 
-    More convenient way of dealing with tokens is specifying them in the values.yaml as described in the [configuration gude](../../administration/configuring-sensor/#sensor-token).
+   A more convenient way to manage tokens is by specifying them in `values.yaml` as described in our [configuration gude](../../administration/configuring-sensor/#sensor-token).
 
 
 5. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
