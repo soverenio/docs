@@ -28,7 +28,7 @@ First you need to decide which type of Sensor do you need: a Data-in-motion (DIM
 
     ![Data-at-rest (DAR) Sensors](../../img/administration/sensors-dar.png "Data-at-rest (DAR) Sensors")
 
-    For monitoring your data sources such as S3 buckets, databases and Kafka clusters, you will need at least one Data-at-rest (DAR) Sensor. Although it's not mandatory, we recommend creating separate sensors for different types of data sources.
+    To monitor your data sources, such as S3 buckets, databases, and Kafka clusters, you will need at least one Data-at-rest (DAR) Sensor. While not mandatory, we recommend deploying separate sensors for different types of data sources to optimize monitoring efficiency.
 
     Each Sensor is characterized by its `name` and `token`.
 
