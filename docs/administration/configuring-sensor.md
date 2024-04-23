@@ -87,7 +87,7 @@ detectionTool:
     args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
 ```
 
-### Resource limits
+### Resources
 
 As a rule of thumb, we do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
 
@@ -164,7 +164,7 @@ The `affinity` option is conceptually similar to `nodeSelector` but allows for a
 
 ### Kafka
 
-#### Heap usage
+#### Heap
 
 In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
 
@@ -180,9 +180,7 @@ The rule of thumb is this: if you increased the `limits` `memory` value for the 
 
 #### Persistent volume
 
-The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
-
-`kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all Interceptors before further processing by other components.
+The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage. `kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds collected information before further processing by other components.
 
 There may be scenarios where you'd want to use `persistentVolume` for `kafka`. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
 
