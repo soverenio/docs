@@ -112,22 +112,14 @@ kubectl label nodes <your-node-name> nodepool=soveren
 
 After labeling, you have two options for directing the deployment of components: using `nodeSelector` or `affinity`.
 
-#### `nodeSelector`
-
-!!! info "For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)."
-
-In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+To use [`nodeSelector`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), specify the following for each component you wish to bind to designated nodes:
 
 ```yaml
 nodeSelector:
   nodepool: soveren
 ```
 
-#### `affinity`
-
-!!! info "For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)."
-
-In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+To use [`affinity`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity), specify the following:
 
 ```yaml
 affinity:
@@ -193,29 +185,38 @@ The rule of thumb is this: if you increased the `limits` `memory` value for the 
 
 #### Persistent volume
 
-The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage. `kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds collected information before further processing by other components.
+The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage. Kafka is a significant consumer of `ephemeral-storage` as it temporarily holds collected information before further processing by other components.
 
-There may be scenarios where you'd want to use `persistentVolume` for `kafka`. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
+There may be scenarios where you'd want to use `persistentVolume` for Kafka. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
 
 To enable `persistentVolume` for `kafka`, include the following section in your `values.yaml` file and adjust the settings as needed:
+
+<details>
+    <summary>How to enable `persistentVolume` for Kafka in `values.yaml`</summary>
 
 ```yaml
 kafka:
   embedded:
     persistentVolume:
-      # -- Create/use Persistent Volume Claim for server component. Uses empty dir if set to false.
+      # -- Create/use Persistent Volume Claim for server component.
+      # -- Uses empty dir if set to false.
       enabled: false
-      # -- Array of access modes. Must match those of existing PV or dynamic provisioner. Ref: [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
+      # -- Array of access modes.
+      # -- Must match those of existing PV or dynamic provisioner.
+      # -- Ref: [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
       accessModes:
         - ReadWriteOnce
       annotations: {}
-      # -- Specify the StorageClass for the persistent volume.
       storageClass: ""
-      # -- Bind the Persistent Volume using labels. Must match all labels of the targeted PV.
+      # -- Bind the Persistent Volume using labels.
+      # -- Must match all labels of the targeted PV.
       matchLabels: {}
-      # -- Size of the volume. The size should be determined based on the metrics you collect and the retention policy you set.
+      # -- Size of the volume.
+      # -- The size should be determined based on the metrics you collect and the retention policy you set.
       size: 10Gi
 ```
+
+</details>
 
 ### Local metrics
 
@@ -236,15 +237,15 @@ prometheusAgent:
 By default, the log levels for all Soveren Sensor components are set to `error`. To tailor the verbosity of the logs to your monitoring needs, you can specify different log levels for individual components:
 
 ```yaml
-[digger|crawler|interceptor|detectionTool|prometheusAgent]:
+digger:
   cfg:
     log:
       level: info
 ```
 
-We do not manage the log level for Kafka components; they are set to `info` by default.
+You can adjust the log level for all components except Kafka, those are set to `info` by default.
 
-## Data-in-motoin (DIM) configuration
+## Data-in-motion (DIM) configuration
 
 ### Multi-cluster deployment
 
@@ -318,4 +319,16 @@ interceptor:
     # if the port of Linkerd differs from the default (4140)
     conntracker:
       linkerdPort: <PORT>
+```
+
+### updateStrategy
+
+You can adjust the update strategy of the DaemonSet:
+
+```yaml
+interceptor:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
 ```
