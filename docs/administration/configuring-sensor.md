@@ -44,7 +44,8 @@ The token value is used to send metadata to the Soveren Cloud and to check for o
 
 You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level `useVault` to `true` in your `values.yaml`. Then, establish communication with the Vault and export the necessary environment variables.
 
-Below is an example of how you could implement this:
+<details>
+    <summary>An example of how you could implement integration with Vault</summary>
 
 ```yaml
 useVault: true
@@ -86,6 +87,8 @@ detectionTool:
     command: [ '/bin/bash', '-c' ]
     args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
 ```
+
+</details>
 
 ### Binding components to nodes
 
@@ -142,9 +145,9 @@ The `affinity` option is conceptually similar to `nodeSelector` but allows for a
 
 ### Resources
 
-As a rule of thumb, we do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
+We do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
 
-On the other hand, the `limits` for different components of the Sensor can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
+On the other hand, the `limits` for different containers can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
 
 It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
 
@@ -160,6 +163,7 @@ It's important to note that the Soveren Sensor does not persist any data. It is 
     | `kafka-exporter` |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
     | `prometheus`     |          `75m` |        `75m` |        `192Mi` |      `400Mi` |                    `100Mi` |
 
+    Pods containing `interceptor` and `rpcapd` are deployed as a DaemonSet. To estimate the required resources, you will need to multiply the values by the number of nodes. 
 
 === "Data-at-rest (DAR)"
 
