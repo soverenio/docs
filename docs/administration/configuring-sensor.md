@@ -148,6 +148,76 @@ On the other hand, the `limits` for different components of the Sensor can vary 
 
 It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
 
+=== "Data-in-motion (DIM)"
+
+    CPU:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `interceptor`    |      `50m` |  `1000m` |
+    | `rpcapd`         |     `100m` |   `250m` |
+    | `digger`         |     `100m` |  `1500m` |
+    | `detection-tool` |     `200m` |  `2200m` |
+    | `kafka`          |     `100m` |   `400m` |
+    | `kafka-exporter` |     `100m` |   `400m` |
+    | `prometheus`     |      `75m` |    `75m` |
+
+    Memory:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `interceptor`    |     `64Mi` | `1536Mi` |
+    | `rpcapd`         |     `64Mi` |  `256Mi` |
+    | `digger`         |    `100Mi` |  `768Mi` |
+    | `detection-tool` |   `2252Mi` | `2764Mi` |
+    | `kafka`          |    `650Mi` | `1024Mi` |
+    | `kafka-exporter` |    `650Mi` | `1024Mi` |
+    | `prometheus`     |    `192Mi` |  `400Mi` |
+
+    Ephemeral storage:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `interceptor`    |          — |  `100Mi` |
+    | `rpcapd`         |          — |  `100Mi` |
+    | `digger`         |          — |  `100Mi` |
+    | `detection-tool` |          — |  `200Mi` |
+    | `kafka`          |      `5Gi` |   `10Gi` |
+    | `kafka-exporter` |      `5Gi` |   `10Gi` |
+    | `prometheus`     |          — |  `100Mi` |
+
+=== "Data-at-rest (DAR)"
+
+    CPU:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `crawler`        |     `100m` |  `1500m` |
+    | `detection-tool` |     `200m` |  `2200m` |
+    | `kafka`          |     `100m` |   `400m` |
+    | `kafka-exporter` |     `100m` |   `400m` |
+    | `prometheus`     |      `75m` |    `75m` |
+
+    Memory:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `crawler`        |    `100Mi` |  `768Mi` |
+    | `detection-tool` |   `2252Mi` | `4000Mi` |
+    | `kafka`          |    `650Mi` | `1024Mi` |
+    | `kafka-exporter` |    `650Mi` | `1024Mi` |
+    | `prometheus`     |    `192Mi` |  `400Mi` |
+
+    Ephemeral storage:
+
+    | Container        | `requests` | `limits` |
+    |:-----------------|-----------:|---------:|
+    | `crawler`        |          — |  `100Mi` |
+    | `detection-tool` |          — |  `200Mi` |
+    | `kafka`          |      `5Gi` |   `10Gi` |
+    | `kafka-exporter` |      `5Gi` |   `10Gi` |
+    | `prometheus`     |          — |  `100Mi` |
+
 ### Kafka
 
 #### Heap
