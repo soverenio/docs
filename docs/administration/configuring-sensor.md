@@ -189,10 +189,8 @@ The Soveren Sensor is designed to avoid persisting any information during runtim
 
 There may be scenarios where you'd want to use `persistentVolume` for Kafka. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
 
-To enable `persistentVolume` for `kafka`, include the following section in your `values.yaml` file and adjust the settings as needed:
-
 <details>
-    <summary>How to enable `persistentVolume` for Kafka in `values.yaml`</summary>
+    <summary>Enabling  persistent volume for Kafka</summary>
 
 ```yaml
 kafka:
