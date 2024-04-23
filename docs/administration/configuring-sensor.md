@@ -1,6 +1,6 @@
-# Configuring Sensors
+# Configuring the Sensor
 
-## Common considerations and fine-tuning
+## Common configuration
 
 !!! info "Refer to the [separate guide](../securing-sensor/) for security-related configuration options."
 
@@ -243,7 +243,7 @@ digger:
 
 You can adjust the log level for all components except Kafka, those are set to `info` by default.
 
-## Data-in-motion (DIM) configuration
+## DIM configuration
 
 ### Multi-cluster deployment
 
@@ -330,3 +330,71 @@ interceptor:
     rollingUpdate:
       maxUnavailable: 1
 ```
+
+## DAR configuration
+
+### S3 buckets
+
+To enable S3 bucket discovery and scanning, you must provide the sensor with credentials for access. This can be done either directly by providing an access key or by configuring a specific role that the sensor will assume at runtime.
+
+<details>
+    <summary>The S3 scanning configuration</summary>
+
+```yaml
+crawler:
+  cfg:
+    s3:
+      enabled: true
+      accessKeyId: "<YOUR S3 ACCESS KEY ID>"
+      secretAccessKey: "<YOUR S3 ACCESS KEY>"
+      # -- Interval between scans
+      checkinterval: "12h"
+      # -- Number of retries if the scan fails
+      retrymaxattempts: 5
+      # -- Delay between retries
+      retrymaxbackoffdelay: "20s"
+      s3role:
+        # -- Assume the role to access S3 storage
+        enabled: false
+        # -- The Amazon Resource Name (ARN) of the role to assume.
+        rolearn: ""
+        # -- An identifier for the assumed role session.
+        rolesessionname: SoverenCrawlerSession
+        # -- The duration of the role session.
+		# -- Min: 15 minutes.
+		# -- Max: max session duration set for the role in the IAM.
+		# -- If you specify a value higher than Max, the operation fails.
+        duration: 15m0s # Duration
+```
+
+</details>
+
+### Kafka
+
+To enable Kafka scanning, you must provide the sensor with the instance name and address, as well as the necessary access credentials.
+
+<details>
+    <summary>The Kafka scanning configuration</summary>
+
+```yaml
+crawler:
+  cfg:
+    s3:	kafka:
+      enabled: true
+      elements:
+	    # -- Name of the Kafka instance
+        - instancename: "<YOUR KAFKA INSTANCE NAME>"
+		  # -- Kafka broker network addresses
+          brokers: ["<YOUR KAFKA INSTANCE BROKER 1>", "<YOUR KAFKA INSTANCE BROKER 2>", ..., "<YOUR KAFKA INSTANCE BROKER N>"]
+		  # -- Message read timeout
+          readtimeout: "60s"
+          tls: false # bool
+          tlsconfig:
+            # -- Skip server certificate verification
+            insecureskipverify: true
+          sasl: false
+          user: "<YOUR SASL USER>"
+          password: "<YOUR SASL PASSWORD>"
+```
+
+</details>
