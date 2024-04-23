@@ -379,7 +379,7 @@ To enable Kafka scanning, you must provide the sensor with the instance name and
 ```yaml
 crawler:
   cfg:
-    s3:	kafka:
+    kafka:
       enabled: true
       elements:
 	    # -- Name of the Kafka instance

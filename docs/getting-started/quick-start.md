@@ -50,11 +50,11 @@ Installing Soveren is extremely simple:
 
     === "Data-in-motion (DIM)"
 
-        For DIM sensors, this step is optional. However, you might want to explore the [configuration](../../administration/configuring-sensor/) or [security](../../administration/securing-sensor/) options to ensure optimal performance and protection.  
+        For DIM sensors, this step is optional. However, you might want to explore the [configuration](../../administration/configuring-sensor/#dim-configuration) or [security](../../administration/securing-sensor/) options to ensure optimal performance and protection.  
 
     === "Data-at-rest (DAR)"
 
-        For DAR sensors, you must explicitly configure connectivity for S3, Kafka, or databases (availability coming soon).
+        For DAR sensors, you must explicitly [configure connectivity for S3 and Kafka](../../administration/configuring-sensor/#dar-configuration).
 
         Additionally, you might want to review the [configuration](../../administration/configuring-sensor/) and [security](../../administration/securing-sensor/) options to enhance functionality and ensure data protection.
 
