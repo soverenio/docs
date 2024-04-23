@@ -1,30 +1,42 @@
-# Configuring the Soveren Sensor
+# Configuring Sensors
 
-!!! info "Refer to the [separate guide](../securing-sensor/) for configuration options that are specifically related to security."
+!!! info "Refer to the [separate guide](../securing-sensor/) for security-related configuration options."
 
-We use Helm for managing the deployment of Soveren Sensors. To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
+We use Helm for managing the deployment of Soveren Sensors. Refer to [our Helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor.
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor."
+To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
-You can change a number of things regarding the Soveren Sensor deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Sensors](../managing-sensors/#updating-sensors)).
+Don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see the [updating guide](../managing-sensors/#update)).
 
 !!! danger "Only use `values.yaml` to override specific values!"
-    Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent). This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
+    
+    Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/). This can lead to numerous issues in production that are difficult and time-consuming to resolve.
 
 
 ## Sensor token
 
 To save you some keystrokes when installing or updating the Sensor, we suggest placing the following snippet into the `values.yaml`:
 
-```yaml
-digger:
-  token: <TOKEN>
-```
+=== "Data-in-motion (DIM)"
 
-!!! danger "Use unique Sensors and tokens for different clusters"
-    If you're managing multiple clusters, please create unique Sensors for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
+    ```yaml
+    digger:
+      token: <TOKEN>
+    ```
 
-Digger is a component of the Sensor that actually sends metadata to the Soveren Cloud. Detection-tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection-tool gets the token value from Digger.)
+=== "Data-at-rest (DAR)"
+
+    ```yaml
+    crawler:
+      token: <TOKEN>
+    ```
+
+!!! danger "Use unique tokens for different deployments"
+
+    If you're managing multiple Soveren deployments, please create unique tokens for each one. Using the same token across different deployments can result in data being mixed and lead to interpretation errors that are difficult to track.
+
+The token value is used to send metadata to the Soveren Cloud and to check for over-the-air updates of the detection model.
+
 
 ## Multi-cluster deployment
 

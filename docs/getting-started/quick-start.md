@@ -8,7 +8,7 @@ Installing Soveren is extremely simple:
 
 ## Step-by-step procedure
 
-!!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)"
+!!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)."
 
 1. Decide which type of Soveren Sensor you need:
 
