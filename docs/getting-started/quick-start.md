@@ -38,8 +38,6 @@ Installing Soveren is extremely simple:
         kubectl create namespace soverenio-dar-sensor
         ```
 
-    You can use any other valid namespace name instead of `soverenio` or `soverenio-dar-sensor`.
-
 
 4. Add the Soveren Helm repository:
 
@@ -74,10 +72,6 @@ Installing Soveren is extremely simple:
         ```shell
         helm install -n soverenio-dar-sensor soveren-dar-sensor soveren/soveren-dar-sensor --set crawler.token="<TOKEN>"
         ```
-
-    You can use any other valid release name instead of `soveren-agent` or `soveren-dar-sensor`.
-
-    A more convenient way to manage tokens is by specifying them in `values.yaml` as described in our [configuration gude](../../administration/configuring-sensor/#sensor-token).
 
 
 7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
