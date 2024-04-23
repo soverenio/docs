@@ -20,6 +20,7 @@ Installing Soveren is extremely simple:
 
         Monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within.
 
+
 2. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
 
 
@@ -47,7 +48,20 @@ Installing Soveren is extremely simple:
     ```
 
 
-5. Install the Soveren Sensor using the `<TOKEN>` that you obtained in step 1:
+5. Configure the Sensor
+
+   === "Data-in-motion (DIM)"
+
+        For DIM sensors, this step is optional. However, you might want to explore the [configuration](../../administration/configuring-sensor/) or [security](../../administration/securing-sensor/) options to ensure optimal performance and protection.  
+
+   === "Data-at-rest (DAR)"
+
+        For DAR sensors, you must explicitly configure connectivity for S3, Kafka, or databases (availability coming soon).
+
+        Additionally, you might want to review the [configuration](../../administration/configuring-sensor/) and [security](../../administration/securing-sensor/) options to enhance functionality and ensure data protection.
+
+
+6. Install the Soveren Sensor using the `<TOKEN>` that you obtained in step 2:
 
     === "Data-in-motion (DIM)"
 
@@ -66,7 +80,7 @@ Installing Soveren is extremely simple:
     A more convenient way to manage tokens is by specifying them in `values.yaml` as described in our [configuration gude](../../administration/configuring-sensor/#sensor-token).
 
 
-6. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
+7. That's it! You may [go to the Soveren app](https://app.soveren.io/) now and check [the dashboards](../../user-guide/overview/).
 
 
 ## Fine print

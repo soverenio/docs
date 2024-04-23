@@ -6,7 +6,7 @@ Soveren Sensors are available in two variants:
 
 2. Data-at-rest (DAR) sensor: Monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within.
 
-## Creating Sensors
+## Create
 
 First you need to decide which type of Sensor do you need: a Data-in-motion (DIM) or Data-at-rest (DAR).
 
@@ -48,7 +48,7 @@ We [recommend](../configuring-sensor/#sensor-token) adding the `token` to your o
 
     If you're managing multiple Soveren deployments, please create unique tokens for each one. Using the same token across different deployments can result in data being mixed and lead to interpretation errors that are difficult to track.
 
-## Deploying Sensors
+## Deploy
 
 We utilize Helm for deployment. The installation procedure is as follows:
 
@@ -86,7 +86,7 @@ We [recommend](../configuring-sensor/#sensor-token) that instead of adding `<TOK
     helm install -n soverenio-dar-sensor soverenio-dar-sensor soveren/soverenio-dar-sensor -f path_to/values.yaml
     ```
 
-## Updating Sensors
+## Update
 
 Updating the Sensor to the latest version is straightforward:
 
@@ -106,7 +106,7 @@ Updating the Sensor to the latest version is straightforward:
 
 You can check the latest version information [in our Helm chart](https://github.com/soverenio/helm-charts/).
 
-## Scaling down or removing Sensors
+## Scale down or remove
 
 To completely uninstall the Sensor, use the following command:
 
