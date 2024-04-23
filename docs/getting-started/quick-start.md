@@ -8,7 +8,7 @@ Installing Soveren is extremely simple:
 
 ## Step-by-step procedure
 
-!!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)"
+!!! info "Before you proceed with the installation, we recommend reviewing our [requirements and recommendations page](../../architecture/infrastructure-fit/)."
 
 1. Decide which type of Soveren Sensor you need:
 
@@ -21,7 +21,7 @@ Installing Soveren is extremely simple:
         Monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within.
 
 
-2. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
+2. [Create a new Soveren token](../../administration/managing-sensors/#create) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
 
 
 3. Create a namespace for Soveren installation:
@@ -50,11 +50,11 @@ Installing Soveren is extremely simple:
 
     === "Data-in-motion (DIM)"
 
-        For DIM sensors, this step is optional. However, you might want to explore the [configuration](../../administration/configuring-sensor/) or [security](../../administration/securing-sensor/) options to ensure optimal performance and protection.  
+        For DIM sensors, this step is optional. However, you might want to explore the [configuration](../../administration/configuring-sensor/#dim-configuration) or [security](../../administration/securing-sensor/) options to ensure optimal performance and protection.  
 
     === "Data-at-rest (DAR)"
 
-        For DAR sensors, you must explicitly configure connectivity for S3, Kafka, or databases (availability coming soon).
+        For DAR sensors, you must explicitly [configure connectivity for S3 and Kafka](../../administration/configuring-sensor/#dar-configuration).
 
         Additionally, you might want to review the [configuration](../../administration/configuring-sensor/) and [security](../../administration/securing-sensor/) options to enhance functionality and ensure data protection.
 

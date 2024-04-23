@@ -1,129 +1,175 @@
-# Configuring the Soveren Sensor
+# Configuring the Sensor
 
-!!! info "Refer to the [separate guide](../securing-sensor/) for configuration options that are specifically related to security."
+## Common configuration
 
-We use Helm for managing the deployment of Soveren Sensors. To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
+!!! info "Refer to the [separate guide](../securing-sensor/) for security-related configuration options."
 
-!!! info "Refer to [our current helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor."
+We use Helm for managing the deployment of Soveren Sensors. Refer to [our Helm chart](https://github.com/soverenio/helm-charts/) for all values that can be tuned up for the Soveren Sensor.
 
-You can change a number of things regarding the Soveren Sensor deployment. But don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see [Updating Sensors](../managing-sensors/#updating-sensors)).
+To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
+
+Don't forget to run a `helm upgrade` command after you've updated the `values.yaml` file, providing the `-f path_to/values.yaml` as a command line option (see the [updating guide](../managing-sensors/#update)).
 
 !!! danger "Only use `values.yaml` to override specific values!"
-    Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent). This can lead to numerous issues in production that are difficult and time-consuming to resolve. Use `values.yaml` only for overriding specific values.
+    
+    Avoid using a complete copy of our `values.yaml` from the [repository](https://github.com/soverenio/helm-charts/). This can lead to numerous issues in production that are difficult and time-consuming to resolve.
 
+### Sensor token
 
-## Sensor token
+#### Use `values.yaml`
 
 To save you some keystrokes when installing or updating the Sensor, we suggest placing the following snippet into the `values.yaml`:
 
+=== "Data-in-motion (DIM)"
+
+    ```yaml
+    digger:
+      token: <TOKEN>
+    ```
+
+=== "Data-at-rest (DAR)"
+
+    ```yaml
+    crawler:
+      token: <TOKEN>
+    ```
+
+!!! danger "Use unique tokens for different deployments"
+
+    If you're managing multiple Soveren deployments, please create unique tokens for each one. Using the same token across different deployments can result in data being mixed and lead to interpretation errors that are difficult to track.
+
+The token value is used to send metadata to the Soveren Cloud and to check for over-the-air updates of the detection model.
+
+#### HashiCorp Vault
+
+You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level `useVault` to `true` in your `values.yaml`. Then, establish communication with the Vault and export the necessary environment variables.
+
+<details>
+    <summary>An example of how you could implement integration with Vault</summary>
+
 ```yaml
+useVault: true
+
 digger:
-  token: <TOKEN>
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: info
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # -- Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DIGGER_STATSCLIENT_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # -- Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
+    # -- Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && /usr/local/bin/digger --config /etc/config.yaml' ]
+
+
+detectionTool:
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: debug
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # -- Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # -- Default entrypoint for detection-tool: './entrypoint.sh'
+    # -- Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
 ```
 
-!!! danger "Use unique Sensors and tokens for different clusters"
-    If you're managing multiple clusters, please create unique Sensors for each one, with distinct tokens. Using the same token for different clusters will result in them appearing as a single deployment perimeter on the data map, making it challenging to discern which flow belongs to which cluster.
+</details>
 
-Digger is a component of the Sensor that actually sends metadata to the Soveren Cloud. Detection-tool gets over-the-air updates of the part of the model from the Soveren Cloud. These are the places where the token value is used. (Detection-tool gets the token value from Digger.)
+### Binding components to nodes
 
-## Multi-cluster deployment
+The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) two types of components:
 
-For each Kubernetes cluster, you'll need a separate Soveren Sensor. When deploying Soveren Sensors across multiple clusters, they will be identified by the tokens and names assigned during their creation. For more information, refer to [Managing sensors](../managing-sensors/).
+* `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Interceptors are exclusively used by the Data-in-motion (DIM) sensors.
 
-There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
+* Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `crawler`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
+
+The centralized components [consume](#resources) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
+
+Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
+
+If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of Interceptors to those specific nodes.
+
+First, you'll need to label the nodes that Soveren components will utilize:
+
+```shell
+kubectl label nodes <your-node-name> nodepool=soveren
+```
+
+After labeling, you have two options for directing the deployment of components: using `nodeSelector` or `affinity`.
+
+To use [`nodeSelector`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), specify the following for each component you wish to bind to designated nodes:
 
 ```yaml
-digger:
-  clusterName: <NAME>
+nodeSelector:
+  nodepool: soveren
 ```
 
-Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Sensor's name defined in the [Soveren app](https://app.soveren.io/agents).
-
-## Resource limits
-
-You can adjust resource usage limits for each of the Soveren Sensor's components.
-
-As a rule of thumb, we **_do not_** recommend to change the `requests` values. They are set with regard to a minimum reasonable functionality that the component can provide given that much resources.
-
-The `limits` however differ widely between Sensor's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
-
-Soveren Sensor does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` values are just for making sure that the virtual disk space is not overused.
-
-### Interceptors
-
-The Interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how many resources they are allowed to use.
-
-Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs (read more in the [Interceptors: capturing the traffic](../../architecture/traffic-interception/)). Thus, the memory they use is directly proportional to how large those `JSON`s are.
-
-The reading is done in a non-blocking fashion, leveraging the [`libpcap`](https://www.tcpdump.org/) library, or more precisely the `rpcapd` fork. So in effect each Interceptor pod hosts two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` which processes the captured data.
-
-The default configuration is the following:
-
-For `interceptors`:
+To use [`affinity`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity), specify the following:
 
 ```yaml
-interceptor:
-  resources:
-    requests:
-      cpu: "50m"
-      memory: "64Mi"
-    limits:
-      cpu: "1000m"
-      memory: "1536Mi"
-      ephemeral-storage: "100Mi"
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: nodepool
+          operator: In
+          values:
+          - soveren
 ```
 
-For `rpcapd`:
+The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
 
-```yaml
-rpcapd:
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "64Mi"
-    limits:
-      cpu: "250m"
-      memory: "256Mi"
-      ephemeral-storage: "100Mi"
-```
+### Resources
 
-You are encouraged to observe the actual usage for a while and tune the `limits` for the `interceptors` containers up or down. If there is not enough CPU the Interceptors may not have enough time to read the traffic and build enough request/response pairs relevant for building the data map.
+We do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
 
-You will most probably not need to tune anything for the `rpcapd` container.
+On the other hand, the `limits` for different containers can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
+
+It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
+
+=== "Data-in-motion (DIM)"
+
+    | Container        | CPU `requests` | CPU `limits` | MEM `requests` | MEM `limits` | Ephemeral storage `limits` |
+    |:-----------------|---------------:|-------------:|---------------:|-------------:|---------------------------:|
+    | `interceptor`    |          `50m` |      `1000m` |         `64Mi` |     `1536Mi` |                    `100Mi` |
+    | `rpcapd`         |         `100m` |       `250m` |         `64Mi` |      `256Mi` |                    `100Mi` |
+    | `digger`         |         `100m` |      `1500m` |        `100Mi` |      `768Mi` |                    `100Mi` |
+    | `detection-tool` |         `200m` |      `2200m` |       `2252Mi` |     `2764Mi` |                    `200Mi` |
+    | `kafka`          |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
+    | `kafka-exporter` |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
+    | `prometheus`     |          `75m` |        `75m` |        `192Mi` |      `400Mi` |                    `100Mi` |
+
+    Pods containing `interceptor` and `rpcapd` are deployed as a DaemonSet. To estimate the required resources, you will need to multiply the values by the number of nodes. 
+
+=== "Data-at-rest (DAR)"
+
+    | Container        | CPU `requests` | CPU `limits` | MEM `requests` | MEM `limits` | Ephemeral storage `limits` |
+    |:-----------------|---------------:|-------------:|---------------:|-------------:|---------------------------:|
+    | `crawler`        |         `100m` |      `1500m` |        `100Mi` |      `768Mi` |                    `100Mi` |
+    | `detection-tool` |         `200m` |      `2200m` |       `2252Mi` |     `4000Mi` |                    `200Mi` |
+    | `kafka`          |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
+    | `kafka-exporter` |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
+    | `prometheus`     |          `75m` |        `75m` |        `192Mi` |      `400Mi` |                    `100Mi` |
 
 ### Kafka
 
-[Kafka](https://kafka.apache.org/) is the component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
-
-There is also a `kafka-exporter` container in the Kafka pod for sending metrics to Prometheus Agent.
-
-The default values for `kafka` and `kafka-exporter` containers are as follows (`kafka-exporter` is in the metrics section):
-
-```yaml
-kafka:
-  embedded:
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "650Mi"
-        ephemeral-storage: "5Gi"
-      limits:
-        cpu: "400m"
-        memory: "1024Mi"
-        ephemeral-storage: "10Gi"
-    metrics:
-      resources:
-        requests:
-          cpu: "100m"
-          memory: "650Mi"
-          ephemeral-storage: "5Gi"
-        limits:
-          cpu: "400m"
-          memory: "1024Mi"
-          ephemeral-storage: "10Gi"
-```
-
-#### Heap usage by Kafka
+#### Heap
 
 In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
 
@@ -137,79 +183,86 @@ kafka:
 
 The rule of thumb is this: if you increased the `limits` `memory` value for the `kafka` container ×N-fold, also increase the heap ×N-fold.
 
-### Digger
+#### Persistent volume
 
-Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Detection-tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
+The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage. Kafka is a significant consumer of `ephemeral-storage` as it temporarily holds collected information before further processing by other components.
 
-Digger employs all sorts of data sampling algorithms to make sure that the data map is uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
+There may be scenarios where you'd want to use `persistentVolume` for Kafka. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
 
-The resource defaults for Digger are:
-
-```yaml
-digger:
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "100Mi"
-    limits:
-      cpu: "1500m"
-      memory: "768Mi"
-      ephemeral-storage: "100Mi"
-```
-
-### Detection-tool
-
-The Detection-tool does all the heavy lifting when it comes to detecting data types in the flows and their sensitivity. It runs a custom-built machine learning models using Python for that.
-
-The values for the Detection-tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the `limits`, so we encourage you to monitor the actual usage and adjust accordingly.
+<details>
+    <summary>Enabling  persistent volume for Kafka</summary>
 
 ```yaml
-detectionTool:
-  resources:
-    requests:
-      cpu: "200m"
-      memory: "2252Mi"
-    limits:
-      cpu: "2200m"
-      memory: "2764Mi"
-      ephemeral-storage: "200Mi"
+kafka:
+  embedded:
+    persistentVolume:
+      # -- Create/use Persistent Volume Claim for server component.
+      # -- Uses empty dir if set to false.
+      enabled: false
+      # -- Array of access modes.
+      # -- Must match those of existing PV or dynamic provisioner.
+      # -- Ref: [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
+      accessModes:
+        - ReadWriteOnce
+      annotations: {}
+      storageClass: ""
+      # -- Bind the Persistent Volume using labels.
+      # -- Must match all labels of the targeted PV.
+      matchLabels: {}
+      # -- Size of the volume.
+      # -- The size should be determined based on the metrics you collect and the retention policy you set.
+      size: 10Gi
 ```
 
-### Prometheus-agent
+</details>
 
-We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Sensor. Here are the default resource values:
+### Local metrics
 
-```yaml
-prometheusAgent:
-  resources: 
-    requests:
-      memory: "192Mi"
-      cpu: "75m"
-    limits:
-      memory: "400Mi"
-      cpu: "75m"
-      ephemeral-storage: "100Mi"
-```
-
-## Sending metrics to local Prometheus
-
-If you want to monitor the metrics that the Soveren Sensor collects, here's how to do that:
+If you wish to collect metrics from the Soveren Sensor locally and create your own dashboards, follow these steps:
 
 ```yaml
 prometheusAgent:
   additionalMetrics: 
     enabled: "true"
+    # -- The name that you want to assign to your local Prometheus
     name: "<PROMETHEUS_NAME>"
+    # -- The URL which will be receiving the metrics
     url: "<PROMETHEUS_URL>"
 ```
 
-where:
+### Log level
 
-* `<PROMETHEUS_NAME>` is the name that you want to give here to your local Prometheus,
+By default, the log levels for all Soveren Sensor components are set to `error`. To tailor the verbosity of the logs to your monitoring needs, you can specify different log levels for individual components:
 
-* `<PROMETHEUS_URL>` is the URL which will be receiving the metrics.
+```yaml
+digger:
+  cfg:
+    log:
+      level: info
+```
 
-## Namespace filtering
+You can adjust the log level for all components except Kafka, those are set to `info` by default.
+
+## DIM configuration
+
+### Multi-cluster deployment
+
+For each Kubernetes cluster, you'll need a separate DIM sensor. When deploying DIM sensors across multiple clusters, they will be identified by the tokens and names assigned during their [creation](../managing-sensors/#create).
+
+There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
+
+```yaml
+digger:
+  clusterName: <NAME>
+```
+
+Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data map information. If `<NAME>` isn't specified, Soveren will default to using the Sensor's name defined in the [Soveren app](https://app.soveren.io/agents).
+
+### Interceptors
+
+The Interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how many resources they are allowed to use.
+
+### Namespace filtering
 
 At times, you may want to limit the Soveren Sensor to specific namespaces for monitoring. You can achieve this by either specifying allowed namespaces (the "allow list") or by excluding particular ones (the "exclude list").
 
@@ -240,18 +293,21 @@ When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`,
 The Sensor's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
 !!! info "End with `allow *` if you have any `deny` definitions"
+
     If you've included `deny` definitions in your filter list and want to monitor all other namespaces, make sure to conclude the list with:
-    ```shell
+
+    ```yaml
           - namespace: "*"
           action: allow
     ```
+
     Failing to do so could result in the Sensor not monitoring any namespaces if only `deny` definitions are present.
 
-## Service mesh and encryption
+### Service mesh and encryption
 
 Soveren can monitor connections encrypted through service meshes like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-The Sensor will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
+The Sensor will automatically detect if a service mesh is deployed on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
 
 For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
@@ -263,98 +319,82 @@ interceptor:
       linkerdPort: <PORT>
 ```
 
-## Changing the log level
+### updateStrategy
 
-By default, the log levels for all Soveren Sensor components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
+You can adjust the update strategy of the DaemonSet:
 
 ```yaml
-[digger|interceptor|detectionTool|prometheusAgent]:
+interceptor:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+```
+
+## DAR configuration
+
+### S3 buckets
+
+To enable S3 bucket discovery and scanning, you must provide the sensor with credentials for access. This can be done either directly by providing an access key or by configuring a specific role that the sensor will assume at runtime.
+
+<details>
+    <summary>The S3 scanning configuration</summary>
+
+```yaml
+crawler:
   cfg:
-    log:
-      level: error
+    s3:
+      enabled: true
+      accessKeyId: "<YOUR S3 ACCESS KEY ID>"
+      secretAccessKey: "<YOUR S3 ACCESS KEY>"
+      # -- Interval between scans
+      checkinterval: "12h"
+      # -- Number of retries if the scan fails
+      retrymaxattempts: 5
+      # -- Delay between retries
+      retrymaxbackoffdelay: "20s"
+      s3role:
+        # -- Assume the role to access S3 storage
+        enabled: false
+        # -- The Amazon Resource Name (ARN) of the role to assume.
+        rolearn: ""
+        # -- An identifier for the assumed role session.
+        rolesessionname: SoverenCrawlerSession
+        # -- The duration of the role session.
+		# -- Min: 15 minutes.
+		# -- Max: max session duration set for the role in the IAM.
+		# -- If you specify a value higher than Max, the operation fails.
+        duration: 15m0s # Duration
 ```
 
-(You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
+</details>
 
-We do not manage the log level for Kafka; it is set to `info` by default.
+### Kafka
 
-## Binding of components to specific nodes
+To enable Kafka scanning, you must provide the sensor with the instance name and address, as well as the necessary access credentials.
 
-The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) two types of components:
-
-* `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
-
-* Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
-
-The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
-
-Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
-
-If you know exactly which nodes host the workloads you wish to monitor with Soveren, you can also limit the deployment of Interceptors to those specific nodes.
-
-First, you'll need to label the nodes that Soveren components will utilize:
-
-```shell
-kubectl label nodes <your-node-name> nodepool=soveren
-```
-
-After labeling, you have two options for directing the deployment of components: using `nodeSelector` or `affinity`.
-
-### `nodeSelector`
-
-!!! info "For more information, consult the Kubernetes documentation on `nodeSelector` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)."
-
-In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
+<details>
+    <summary>The Kafka scanning configuration</summary>
 
 ```yaml
-nodeSelector:
-  nodepool: soveren
+crawler:
+  cfg:
+    kafka:
+      enabled: true
+      elements:
+	    # -- Name of the Kafka instance
+        - instancename: "<YOUR KAFKA INSTANCE NAME>"
+		  # -- Kafka broker network addresses
+          brokers: ["<YOUR KAFKA INSTANCE BROKER 1>", "<YOUR KAFKA INSTANCE BROKER 2>", ..., "<YOUR KAFKA INSTANCE BROKER N>"]
+		  # -- Message read timeout
+          readtimeout: "60s"
+          tls: false
+          tlsconfig:
+            # -- Skip server certificate verification
+            insecureskipverify: true
+          sasl: false
+          user: "<YOUR SASL USER>"
+          password: "<YOUR SASL PASSWORD>"
 ```
 
-### `affinity`
-
-!!! info "For more information, consult the Kubernetes documentation on `affinity` [here](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)."
-
-In your `values.yaml` file, specify the following for each component you wish to bind to designated nodes:
-
-```yaml
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: nodepool
-          operator: In
-          values:
-          - soveren
-```
-
-The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
-
-## Persistent volume for Kafka
-
-The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
-
-`kafka` is a significant consumer of `ephemeral-storage` as it temporarily holds information collected by all Interceptors before further processing by other components.
-
-There may be scenarios where you'd want to use `persistentVolume` for `kafka`. For instance, the disk space might be shared among various workloads running on the same node, and your cloud provider may not differentiate between persistent and ephemeral storage usage.
-
-To enable `persistentVolume` for `kafka`, include the following section in your `values.yaml` file and adjust the settings as needed:
-
-```yaml
-kafka:
-  embedded:
-    persistentVolume:
-      # -- Create/use Persistent Volume Claim for server component. Uses empty dir if set to false.
-      enabled: false
-      # -- Array of access modes. Must match those of existing PV or dynamic provisioner. Ref: [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
-      accessModes:
-        - ReadWriteOnce
-      annotations: {}
-      # -- Specify the StorageClass for the persistent volume.
-      storageClass: ""
-      # -- Bind the Persistent Volume using labels. Must match all labels of the targeted PV.
-      matchLabels: {}
-      # -- Size of the volume. The size should be determined based on the metrics you collect and the retention policy you set.
-      size: 10Gi
-```
+</details>

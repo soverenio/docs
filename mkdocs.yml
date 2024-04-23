@@ -10,9 +10,9 @@ nav:
   - Administration:
       - Managing Users: 'administration/managing-users.md'
       - Managing Sensors: 'administration/managing-sensors.md'
-      - Configuring the Sensor: 'administration/configuring-sensor.md'
-      - Securing the Sensor: 'administration/securing-sensor.md'
-      - Troubleshooting the Sensor: 'administration/troubleshooting-sensor.md'
+      - Configuring Sensors: 'administration/configuring-sensor.md'
+      - Securing Sensors: 'administration/securing-sensor.md'
+      - Troubleshooting Sensors: 'administration/troubleshooting-sensor.md'
   - User guide:
       - Overview: 'user-guide/overview.md'
       - Sensitive data model: 'user-guide/data-model.md'
@@ -55,7 +55,7 @@ theme:
     - navigation.indexes
     - navigation.prune
     - navigation.tabs
-    - navigation.tracking
+    #- navigation.tracking
     - toc.follow
     - toc.integrate
     - content.code.copy
