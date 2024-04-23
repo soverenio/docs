@@ -87,28 +87,6 @@ detectionTool:
     args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
 ```
 
-### Resources
-
-As a rule of thumb, we do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
-
-On the other hand, the `limits` for different components of the Sensor can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
-
-It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
-
-### Local metrics
-
-If you wish to collect metrics from the Soveren Sensor locally and create your own dashboards, follow these steps:
-
-```yaml
-prometheusAgent:
-  additionalMetrics: 
-    enabled: "true"
-    # -- The name that you want to assign to your local Prometheus
-    name: "<PROMETHEUS_NAME>"
-    # -- The URL which will be receiving the metrics
-    url: "<PROMETHEUS_URL>"
-```
-
 ### Binding components to nodes
 
 The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) two types of components:
@@ -117,7 +95,7 @@ The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) tw
 
 * Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `crawler`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
 
-The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
+The centralized components [consume](#resources) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
 
 Given these considerations, it may be beneficial to isolate the centralized components on specific nodes. For example, you might choose nodes that are more focused on infrastructure monitoring rather than on business processes. Alternatively, you could select nodes that offer more resources than the average node.
 
@@ -162,6 +140,14 @@ affinity:
 
 The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
 
+### Resources
+
+As a rule of thumb, we do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
+
+On the other hand, the `limits` for different components of the Sensor can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
+
+It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
+
 ### Kafka
 
 #### Heap
@@ -203,6 +189,21 @@ kafka:
       # -- Size of the volume. The size should be determined based on the metrics you collect and the retention policy you set.
       size: 10Gi
 ```
+
+### Local metrics
+
+If you wish to collect metrics from the Soveren Sensor locally and create your own dashboards, follow these steps:
+
+```yaml
+prometheusAgent:
+  additionalMetrics: 
+    enabled: "true"
+    # -- The name that you want to assign to your local Prometheus
+    name: "<PROMETHEUS_NAME>"
+    # -- The URL which will be receiving the metrics
+    url: "<PROMETHEUS_URL>"
+```
+
 ### Log level
 
 By default, the log levels for all Soveren Sensor components are set to `error`. To tailor the verbosity of the logs to your monitoring needs, you can specify different log levels for individual components:
@@ -220,7 +221,7 @@ We do not manage the log level for Kafka components; they are set to `info` by d
 
 ### Multi-cluster deployment
 
-For each Kubernetes cluster, you'll need a separate Soveren Sensor. When deploying Soveren Sensors across multiple clusters, they will be identified by the tokens and names assigned during their creation. For more information, refer to [Managing sensors](../managing-sensors/).
+For each Kubernetes cluster, you'll need a separate DIM sensor. When deploying DIM sensors across multiple clusters, they will be identified by the tokens and names assigned during their [creation](../managing-sensors/#create).
 
 There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
 
