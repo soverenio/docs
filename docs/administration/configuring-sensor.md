@@ -2,7 +2,7 @@
 
 !!! info "Refer to the [separate guide](../securing-sensor/) for security-related configuration options."
 
-We use Helm for managing the deployment of Soveren Sensors. Refer to [our Helm chart](https://github.com/soverenio/helm-charts/tree/master/charts/soveren-agent) for all values that can be tuned up for the Soveren Sensor.
+We use Helm for managing the deployment of Soveren Sensors. Refer to [our Helm chart](https://github.com/soverenio/helm-charts/) for all values that can be tuned up for the Soveren Sensor.
 
 To customize values sent to your Soveren Sensor, you need to create the `values.yaml` file in the folder that you use for custom Helm configuration.
 
@@ -14,6 +14,8 @@ Don't forget to run a `helm upgrade` command after you've updated the `values.ya
 
 
 ## Sensor token
+
+### Use `values.yaml`
 
 To save you some keystrokes when installing or updating the Sensor, we suggest placing the following snippet into the `values.yaml`:
 
@@ -37,6 +39,56 @@ To save you some keystrokes when installing or updating the Sensor, we suggest p
 
 The token value is used to send metadata to the Soveren Cloud and to check for over-the-air updates of the detection model.
 
+### HashiCorp Vault
+
+You can store the token value in HashiCorp Vault and use various techniques to obtain the value at runtime. You will need to set the top-level `useVault` to `true` and then set up the communication with the Vault and setting of the environment variables.
+
+Here's one example how you could do it:
+
+You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level useVault to true in your configuration. Then, establish communication with the Vault and configure the necessary environment variables.
+
+Below is an example of how you could implement this:
+
+```yaml
+useVault: true
+
+digger:
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: info
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DIGGER_STATSCLIENT_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
+    # Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && /usr/local/bin/digger --config /etc/config.yaml' ]
+
+
+detectionTool:
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: debug
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # Default entrypoint for detection-tool: './entrypoint.sh'
+    # Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
+```
 
 ## Multi-cluster deployment
 
