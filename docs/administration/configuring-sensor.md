@@ -101,89 +101,18 @@ Here, Soveren will use `<NAME>` as the cluster's identifier when presenting data
 
 ## Resource limits
 
-You can adjust resource usage limits for each of the Soveren Sensor's components.
+As a rule of thumb, we do not recommend changing the `requests` values. They are calibrated to ensure the minimum functionality required by the component with the allocated resources.
 
-As a rule of thumb, we **_do not_** recommend to change the `requests` values. They are set with regard to a minimum reasonable functionality that the component can provide given that much resources.
+On the other hand, the `limits` for different components of the Sensor can vary significantly and are dependent on the volume of collected data. There is no one-size-fits-all approach to determining them, but it's crucial to monitor actual usage and observe how quickly the data map is constructed by the product. The general trade-off here is: the more resources you allocate, the quicker the map is built.
 
-The `limits` however differ widely between Sensor's components, and are heavily traffic dependent. There is no universal recipe for determining them, except to keep an eye on the actual usage and check how fast the data map is built by the product. General tradeoff here is this: the more resources you allow, the faster the map is built.
-
-Soveren Sensor does not persist any data, it is completely normal if any component restarts and virtual storage is flushed. The `ephemeral-storage` values are just for making sure that the virtual disk space is not overused.
+It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
 
 ### Interceptors
 
 The Interceptors are placed on each node of the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Their ability to collect the traffic is proportional to how many resources they are allowed to use.
 
-Interceptors collect `HTTP` requests and responses with `Content-type: application/json`, reading from virtual network interfaces of the host and building request/response pairs (read more in the [Interceptors: capturing the traffic](../../architecture/traffic-interception/)). Thus, the memory they use is directly proportional to how large those `JSON`s are.
 
-The reading is done in a non-blocking fashion, leveraging the [`libpcap`](https://www.tcpdump.org/) library, or more precisely the `rpcapd` fork. So in effect each Interceptor pod hosts two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` which processes the captured data.
-
-The default configuration is the following:
-
-For `interceptors`:
-
-```yaml
-interceptor:
-  resources:
-    requests:
-      cpu: "50m"
-      memory: "64Mi"
-    limits:
-      cpu: "1000m"
-      memory: "1536Mi"
-      ephemeral-storage: "100Mi"
-```
-
-For `rpcapd`:
-
-```yaml
-rpcapd:
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "64Mi"
-    limits:
-      cpu: "250m"
-      memory: "256Mi"
-      ephemeral-storage: "100Mi"
-```
-
-You are encouraged to observe the actual usage for a while and tune the `limits` for the `interceptors` containers up or down. If there is not enough CPU the Interceptors may not have enough time to read the traffic and build enough request/response pairs relevant for building the data map.
-
-You will most probably not need to tune anything for the `rpcapd` container.
-
-### Kafka
-
-[Kafka](https://kafka.apache.org/) is the component not built by Soveren and used pretty much as is. It can grow very large in terms of the `ephemeral-storage`.
-
-There is also a `kafka-exporter` container in the Kafka pod for sending metrics to Prometheus Agent.
-
-The default values for `kafka` and `kafka-exporter` containers are as follows (`kafka-exporter` is in the metrics section):
-
-```yaml
-kafka:
-  embedded:
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "650Mi"
-        ephemeral-storage: "5Gi"
-      limits:
-        cpu: "400m"
-        memory: "1024Mi"
-        ephemeral-storage: "10Gi"
-    metrics:
-      resources:
-        requests:
-          cpu: "100m"
-          memory: "650Mi"
-          ephemeral-storage: "5Gi"
-        limits:
-          cpu: "400m"
-          memory: "1024Mi"
-          ephemeral-storage: "10Gi"
-```
-
-#### Heap usage by Kafka
+### Heap usage by Kafka
 
 In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
 
@@ -196,60 +125,6 @@ kafka:
 ```
 
 The rule of thumb is this: if you increased the `limits` `memory` value for the `kafka` container ×N-fold, also increase the heap ×N-fold.
-
-### Digger
-
-Digger is a component which reads the data from Kafka, sends relevant requests and responses to the Detection-tool and collect the results. Then it forms a metadata packet and sends it to the Soveren Cloud which creates all those beautiful product dashboards.
-
-Digger employs all sorts of data sampling algorithms to make sure that the data map is uniformly covered. In particular, Digger looks into the Kafka topics and moves offsets in there according to what has already been covered.
-
-The resource defaults for Digger are:
-
-```yaml
-digger:
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "100Mi"
-    limits:
-      cpu: "1500m"
-      memory: "768Mi"
-      ephemeral-storage: "100Mi"
-```
-
-### Detection-tool
-
-The Detection-tool does all the heavy lifting when it comes to detecting data types in the flows and their sensitivity. It runs a custom-built machine learning models using Python for that.
-
-The values for the Detection-tool resource consumption are adjusted for optimal performance regardless of the traffic nature. However, in some cases with a lot of heavy traffic it might make sense to increase the `limits`, so we encourage you to monitor the actual usage and adjust accordingly.
-
-```yaml
-detectionTool:
-  resources:
-    requests:
-      cpu: "200m"
-      memory: "2252Mi"
-    limits:
-      cpu: "2200m"
-      memory: "2764Mi"
-      ephemeral-storage: "200Mi"
-```
-
-### Prometheus-agent
-
-We run a Prometheus Agent to collect some metrics to check basic performance of the Soveren Sensor. Here are the default resource values:
-
-```yaml
-prometheusAgent:
-  resources: 
-    requests:
-      memory: "192Mi"
-      cpu: "75m"
-    limits:
-      memory: "400Mi"
-      cpu: "75m"
-      ephemeral-storage: "100Mi"
-```
 
 ## Sending metrics to local Prometheus
 
@@ -311,7 +186,7 @@ The Sensor's default policy is to work only with explicitly mentioned namespaces
 
 Soveren can monitor connections encrypted through service meshes like [Linkerd](https://linkerd.io/) or [Istio](https://istio.io/).
 
-The Sensor will automatically detect if a service mesh is deployed in the cluster or on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
+The Sensor will automatically detect if a service mesh is deployed on the node. Fine-tuning is only necessary if your mesh implementation uses non-standard ports.
 
 For instance, with Linkerd, you may need to include the following in your `values.yaml`:
 
