@@ -21,7 +21,7 @@ Installing Soveren is extremely simple:
         Monitors data sources such as S3 buckets, databases, and Kafka clusters, and uncovers sensitive data stored within.
 
 
-2. [Create a new Soveren token](../../administration/managing-sensors#creating-sensors) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
+2. [Create a new Soveren token](../../administration/managing-sensors/#create) and have it handy for the following steps. This token identifies and authorizes your Sensor within the Soveren Cloud.
 
 
 3. Create a namespace for Soveren installation:

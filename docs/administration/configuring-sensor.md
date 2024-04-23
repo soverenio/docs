@@ -388,7 +388,7 @@ crawler:
           brokers: ["<YOUR KAFKA INSTANCE BROKER 1>", "<YOUR KAFKA INSTANCE BROKER 2>", ..., "<YOUR KAFKA INSTANCE BROKER N>"]
 		  # -- Message read timeout
           readtimeout: "60s"
-          tls: false # bool
+          tls: false
           tlsconfig:
             # -- Skip server certificate verification
             insecureskipverify: true
