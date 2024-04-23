@@ -56,14 +56,14 @@ digger:
     vault.hashicorp.com/log-level: info
     vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
     vault.hashicorp.com/agent-run-as-same-user: 'true'
-    # Environment variable export template
+    # -- Environment variable export template
     vault.hashicorp.com/agent-inject-template-soverentokens: |
       {{ with secret "secret/data/digger/token" -}}
         export SVRN_DIGGER_STATSCLIENT_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
       {{- end }}
   image:
-    # Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
-    # Example for hashcorp/vault:
+    # -- Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
+    # -- Example for hashcorp/vault:
     command: [ '/bin/bash', '-c' ]
     args: [ 'source /vault/secrets/soverentokens && /usr/local/bin/digger --config /etc/config.yaml' ]
 
@@ -75,14 +75,14 @@ detectionTool:
     vault.hashicorp.com/log-level: debug
     vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
     vault.hashicorp.com/agent-run-as-same-user: 'true'
-    # Environment variable export template
+    # -- Environment variable export template
     vault.hashicorp.com/agent-inject-template-soverentokens: |
       {{ with secret "secret/data/digger/token" -}}
         export SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
       {{- end }}
   image:
-    # Default entrypoint for detection-tool: './entrypoint.sh'
-    # Example for hashcorp/vault:
+    # -- Default entrypoint for detection-tool: './entrypoint.sh'
+    # -- Example for hashcorp/vault:
     command: [ '/bin/bash', '-c' ]
     args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
 ```
@@ -95,31 +95,27 @@ On the other hand, the `limits` for different components of the Sensor can vary 
 
 It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
 
-### Sending metrics to local Prometheus
+### Local metrics
 
-If you want to monitor the metrics that the Soveren Sensor collects, here's how to do that:
+If you wish to collect metrics from the Soveren Sensor locally and create your own dashboards, follow these steps:
 
 ```yaml
 prometheusAgent:
   additionalMetrics: 
     enabled: "true"
+    # -- The name that you want to assign to your local Prometheus
     name: "<PROMETHEUS_NAME>"
+    # -- The URL which will be receiving the metrics
     url: "<PROMETHEUS_URL>"
 ```
 
-where:
-
-* `<PROMETHEUS_NAME>` is the name that you want to give here to your local Prometheus,
-
-* `<PROMETHEUS_URL>` is the URL which will be receiving the metrics.
-
-### Binding of components to specific nodes
+### Binding components to nodes
 
 The Soveren Sensor [consists of](../../architecture/overview/#soveren-sensor) two types of components:
 
-* `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+* `Interceptors`, which are **distributed to each node** via [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). Interceptors are exclusively used by the Data-in-motion (DIM) sensors.
 
-* Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
+* Components instantiated only once per cluster via [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/); these include `digger`, `crawler`, `kafka`, `detectionTool` and `prometheusAgent`. These can be thought of as the **centralized components**.
 
 The centralized components [consume](#resource-limits) a relatively large yet steady amount of resources. Their resource consumption is not significantly affected by variations in traffic volume and patterns. In contrast, the resource requirements for Interceptors can vary depending on traffic.
 
@@ -209,20 +205,18 @@ kafka:
       # -- Size of the volume. The size should be determined based on the metrics you collect and the retention policy you set.
       size: 10Gi
 ```
-### Changing the log level
+### Log level
 
-By default, the log levels for all Soveren Sensor components are set to `error`. You can modify this by specifying different log levels for individual components, as shown below:
+By default, the log levels for all Soveren Sensor components are set to `error`. To tailor the verbosity of the logs to your monitoring needs, you can specify different log levels for individual components:
 
 ```yaml
-[digger|interceptor|detectionTool|prometheusAgent]:
+[digger|crawler|interceptor|detectionTool|prometheusAgent]:
   cfg:
     log:
-      level: error
+      level: info
 ```
 
-(You'll need to create separate config sections for different components — `digger`, `interceptor`, `detectionTool` or `prometheusAgent` — but the syntax remains the same.)
-
-We do not manage the log level for Kafka; it is set to `info` by default.
+We do not manage the log level for Kafka components; they are set to `info` by default.
 
 ## Data-in-motoin (DIM) configuration
 
@@ -274,11 +268,14 @@ When defining names, you can use wildcards and globs such as `foo*`, `/dev/sd?`,
 The Sensor's default policy is to work only with explicitly mentioned namespaces, ignoring all others.
 
 !!! info "End with `allow *` if you have any `deny` definitions"
+
     If you've included `deny` definitions in your filter list and want to monitor all other namespaces, make sure to conclude the list with:
-    ```shell
+
+    ```yaml
           - namespace: "*"
           action: allow
     ```
+
     Failing to do so could result in the Sensor not monitoring any namespaces if only `deny` definitions are present.
 
 ### Service mesh and encryption
