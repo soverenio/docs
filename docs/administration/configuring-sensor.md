@@ -95,21 +95,7 @@ On the other hand, the `limits` for different components of the Sensor can vary 
 
 It's important to note that the Soveren Sensor does not persist any data. It is normal for components to restart and virtual storage to be flushed. The `ephemeral-storage` values are set to prevent the overuse of virtual disk space.
 
-### Heap usage by Kafka
-
-In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
-
-```yaml
-kafka:
-  embedded:
-    env:
-    - name: KAFKA_HEAP_OPTS
-      value: -Xmx512m -Xms512m
-```
-
-The rule of thumb is this: if you increased the `limits` `memory` value for the `kafka` container ×N-fold, also increase the heap ×N-fold.
-
-## Sending metrics to local Prometheus
+### Sending metrics to local Prometheus
 
 If you want to monitor the metrics that the Soveren Sensor collects, here's how to do that:
 
@@ -180,7 +166,23 @@ affinity:
 
 The `affinity` option is conceptually similar to `nodeSelector` but allows for a broader set of constraints.
 
-### Persistent volume for Kafka
+### Kafka
+
+#### Heap usage
+
+In our testing, Kafka was found to be somewhat heap-hungry. That's why we limited the heap usage separately from the main memory usage limits. Here's what is set as the default:
+
+```yaml
+kafka:
+  embedded:
+    env:
+    - name: KAFKA_HEAP_OPTS
+      value: -Xmx512m -Xms512m
+```
+
+The rule of thumb is this: if you increased the `limits` `memory` value for the `kafka` container ×N-fold, also increase the heap ×N-fold.
+
+#### Persistent volume
 
 The Soveren Sensor is designed to avoid persisting any information during runtime or between restarts. All containers are allocated a certain amount of `ephemeral-storage` to limit potential disk usage.
 
