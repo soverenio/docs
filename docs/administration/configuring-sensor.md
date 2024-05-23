@@ -249,6 +249,8 @@ You can adjust the log level for all components except Kafka, those are set to `
 
 For each Kubernetes cluster, you'll need a separate DIM sensor. When deploying DIM sensors across multiple clusters, they will be identified by the tokens and names assigned during their [creation](../managing-sensors/#create).
 
+!!! danger "Use a separate sensor for each cluster"
+
 There may be instances where you want to automate the naming process for your clusters in Soveren during deployment. In this case, you can specify the following in your `values.yaml` file:
 
 ```yaml
@@ -329,9 +331,11 @@ interceptor:
 
 ## DAR configuration
 
-### Recommended way of sensor deployment
+### Deployment
 
 We recommend [creating a separate sensor](../managing-sensors/#data-at-rest-dar) for each type of asset that you want to monitor. For example, one sensor for S3 buckets, one for Kafka, and one for each database type.
+
+!!! warn "We recommend using a separate sensor for each asset type"
 
 You can also have multiple sensors covering the same type of asset, for performance reasons. While it is possible to use one sensor for all types, this approach can complicate the resolution of potential performance bottlenecks and other issues. 
 
