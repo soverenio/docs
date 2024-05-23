@@ -353,12 +353,6 @@ crawler:
       enabled: true
       accessKeyId: "<YOUR S3 ACCESS KEY ID>"
       secretAccessKey: "<YOUR S3 ACCESS KEY>"
-      # -- Interval between scans
-      checkinterval: "12h"
-      # -- Number of retries if the scan fails
-      retrymaxattempts: 5
-      # -- Delay between retries
-      retrymaxbackoffdelay: "20s"
       s3role:
         # -- Assume the role to access S3 storage
         enabled: false
