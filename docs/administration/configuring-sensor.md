@@ -329,6 +329,12 @@ interceptor:
 
 ## DAR configuration
 
+### Recommended way of sensor deployment
+
+We recommend [creating a separate sensor](../managing-sensors/#data-at-rest-dar) for each type of asset that you want to monitor. For example, one sensor for S3 buckets, one for Kafka, and one for each database type.
+
+You can also have multiple sensors covering the same type of asset, for performance reasons. While it is possible to use one sensor for all types, this approach can complicate the resolution of potential performance bottlenecks and other issues. 
+
 ### S3 buckets
 
 To enable S3 bucket discovery and scanning, you must provide the sensor with credentials for access. This can be done either directly by providing an access key or by configuring a specific role that the sensor will assume at runtime.
@@ -391,6 +397,27 @@ crawler:
           sasl: false
           user: "<YOUR SASL USER>"
           password: "<YOUR SASL PASSWORD>"
+```
+
+</details>
+
+### Databases
+
+To enable database scanning, you must provide the sensor with the instance name and the connection string containing necessary access credentials.
+
+<details>
+    <summary>Database scanning configuration</summary>
+
+```yaml
+crawler:
+  cfg:
+    database:
+      postgres:
+        enabled: true
+        elements:
+          - name: "<YOUR POSTGRESQL INSTANCE NAME>"
+            # -- postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
+            connectionString: "<YOUR POSTGRESQL INSTANCE CONNECTION STRING>"
 ```
 
 </details>
