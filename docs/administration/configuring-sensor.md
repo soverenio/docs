@@ -386,8 +386,6 @@ crawler:
         - instancename: "<YOUR KAFKA INSTANCE NAME>"
 		  # -- Kafka broker network addresses
           brokers: ["<YOUR KAFKA INSTANCE BROKER 1>", "<YOUR KAFKA INSTANCE BROKER 2>", ..., "<YOUR KAFKA INSTANCE BROKER N>"]
-		  # -- Message read timeout
-          readtimeout: "60s"
           tls: false
           tlsconfig:
             # -- Skip server certificate verification
