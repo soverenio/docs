@@ -54,7 +54,7 @@ Installing Soveren is extremely simple:
 
     === "Data-at-rest (DAR)"
 
-        For DAR sensors, you must explicitly [configure connectivity for S3 and Kafka](../../administration/configuring-sensor/#dar-configuration).
+        For DAR sensors, you must explicitly [configure connectivity for S3, Kafka and databases](../../administration/configuring-sensor/#dar-configuration).
 
         Additionally, you might want to review the [configuration](../../administration/configuring-sensor/) and [security](../../administration/securing-sensor/) options to enhance functionality and ensure data protection.
 
