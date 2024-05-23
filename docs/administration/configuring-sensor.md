@@ -410,7 +410,7 @@ crawler:
 To enable database scanning, you must provide the sensor with the instance name and the connection string containing necessary access credentials.
 
 <details>
-    <summary>Database scanning configuration</summary>
+    <summary>The database scanning configuration</summary>
 
 ```yaml
 crawler:
