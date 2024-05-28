@@ -358,8 +358,6 @@ crawler:
         enabled: false
         # -- The Amazon Resource Name (ARN) of the role to assume.
         rolearn: ""
-        # -- An identifier for the assumed role session.
-        rolesessionname: SoverenCrawlerSession
         # -- The duration of the role session.
 		# -- Min: 15 minutes.
 		# -- Max: max session duration set for the role in the IAM.
