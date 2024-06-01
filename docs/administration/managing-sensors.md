@@ -96,6 +96,7 @@ Updating the Sensor to the latest version is straightforward:
     helm repo update soveren
     helm upgrade soveren-agent soveren/soveren-agent -n soverenio -f path_to/values.yaml
     ```
+    You can check the latest version information [in our Helm chart](https://github.com/soverenio/helm-charts/) and in the [release notes](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-agent/release-notes.md).
 
 === "Data-at-rest (DAR)"
 
@@ -103,8 +104,7 @@ Updating the Sensor to the latest version is straightforward:
     helm repo update soveren
     helm upgrade soverenio-dar-sensor soveren/soverenio-dar-sensor -n soverenio-dar-sensor -f path_to/values.yaml
     ```
-
-You can check the latest version information [in our Helm chart](https://github.com/soverenio/helm-charts/).
+    You can check the latest version information [in our Helm chart](https://github.com/soverenio/helm-charts/) and in the [release notes](https://github.com/soverenio/helm-charts/blob/master/charts/soveren-dar-sensor/release-notes.md).
 
 ## Scale down or remove
 
