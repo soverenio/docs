@@ -23,7 +23,7 @@ nav:
       - Event objects: 'integration/event-objects.md'
       - Object API: 'integration/api/object-api.md'
   - Architecture:
-      - 'architecture/overview.md'
+      - Overview: 'architecture/overview.md'
       - Requirements and recommendations: 'architecture/infrastructure-fit.md'
       - Capturing the traffic: 'architecture/traffic-interception.md'
       - Processing the traffic: 'architecture/traffic-processing.md'
@@ -54,12 +54,12 @@ theme:
     - navigation.top
     - navigation.indexes
     - navigation.prune
-#    - navigation.tabs
-#    - navigation.tracking
     - navigation.instant
     - navigation.instant.progress
-    - toc.follow
+# Tabbed navigation with page TOC embedded in the left nav tree
+#    - navigation.tabs
 #    - toc.integrate
+    - toc.follow
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
