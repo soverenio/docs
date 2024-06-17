@@ -57,7 +57,7 @@ theme:
   features:
     - navigation.top
 # The first page in the list becomes the section's "index"
-#    - navigation.indexes # incompatible with toc.integrate!
+    - navigation.indexes # incompatible with toc.integrate!
     - navigation.prune
     - navigation.instant
     - navigation.instant.progress
