@@ -52,7 +52,8 @@ theme:
   favicon: img/favicons/favicon-app-black.svg
   features:
     - navigation.top
-    - navigation.indexes
+# The first page in the list becomes the section's "index"
+#    - navigation.indexes # incompatible with toc.integrate!
     - navigation.prune
     - navigation.instant
     - navigation.instant.progress
