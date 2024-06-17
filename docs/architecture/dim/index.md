@@ -2,7 +2,7 @@
 
 Soveren DIM Sensor intercepts and analyzes structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services.
 
-Soveren DIM Sensor comprises several key partsЖ
+Soveren DIM Sensor comprises several key parts:
 
 * [**Interceptors**](traffic-interception/): Distributed across all nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod’s virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
 
