@@ -6,7 +6,7 @@ Soveren DAR Sensor comprises the following parts, they are deployed once per clu
 
 * _Crawler_: The core component. _Crawler_ collects samples from data sources, forwards them for detection and sends the resulting metadata to the Soveren Cloud.
 
-* _Sensitive data detector (Detector)_: Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
+* _Detection-tool_ (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
 
 * _Kafka_: Aggregates logs of task processing by _Crawler_ or _Detector_.
 
@@ -22,7 +22,7 @@ The Soveren DAR Sensor follows this sequence of operations:
 
 * Based on the current enumeration results and previously processed data, the Soveren Cloud forms processing tasks for the _Crawler_. An example of such a task would be analyzing a particular object (e.g. CSV file) in an S3 bucket.
 
-* _Crawler_ processes the tasks received from the Soveren Cloud; specifically, it retrieves data samples from the sources and forwards them to the _Detector_.
+* _Crawler_ processes the tasks received from the Soveren Cloud; specifically, it retrieves data samples from the sources and forwards them to the _Detection-tool_.
 
 * _Crawler_ then collects the detection results, forms a metadata package, and transmits it to the Soveren Cloud using the gRPC protocol and protobuf.
 
