@@ -25,9 +25,13 @@ nav:
   - Architecture:
       - Overview: 'architecture/overview.md'
       - Requirements and recommendations: 'architecture/infrastructure-fit.md'
-      - Capturing the traffic: 'architecture/traffic-interception.md'
-      - Processing the traffic: 'architecture/traffic-processing.md'
-      - Kubernetes metadata: 'architecture/k8s-metadata.md'
+      - DIM sensor architecture:
+          - 'architecture/dim/index.md'
+          - Capturing the traffic: 'architecture/dim/traffic-interception.md'
+          - Processing the traffic: 'architecture/dim/traffic-processing.md'
+          - Kubernetes metadata: 'architecture/dim/k8s-metadata.md'
+      - DAR sensor architecture:
+          - 'architecture/dar/index.md'
       - Sensitive data detection: 'architecture/detection.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
