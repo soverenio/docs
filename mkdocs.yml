@@ -54,8 +54,8 @@ theme:
     - navigation.top
     - navigation.indexes
     - navigation.prune
-    - navigation.tabs
-    #- navigation.tracking
+#    - navigation.tabs
+#    - navigation.tracking
     - navigation.instant
     - navigation.instant.progress
     - toc.follow
