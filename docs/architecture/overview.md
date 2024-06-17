@@ -25,7 +25,7 @@ There are two types of Soveren Sensors:
 
     ---
 
-    Data-at-rest (DAR) Sensor monitors data sources such as S3 buckets, Kafka clusters or databases like PostgreSQL.
+    Data-at-rest (DAR) Sensor monitors data sources such as S3 buckets, Kafka clusters, or databases like PostgreSQL.
 
     [:octicons-arrow-right-24: DAR Sensor architecture](../dar/)
 
