@@ -26,4 +26,4 @@ The Soveren DAR Sensor follows this sequence of operations:
 
 * _Crawler_ then collects the detection results, forms a metadata package, and transmits it to the Soveren Cloud using the gRPC protocol and protobuf.
 
-When available, the Crawler obtains data source metadata from the cloud provider (e.g. AWS) and sends it to the Soveren Cloud, thus enhancing data comprehensibility in the Soveren app.
+When available, the _Crawler_ obtains data source metadata from the cloud provider (e.g. AWS) and sends it to the Soveren Cloud, thus enhancing data comprehensibility in the Soveren app.
