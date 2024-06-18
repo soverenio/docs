@@ -2,10 +2,6 @@
 
 How well will Soveren fit into your technical infrastructure? There are several key aspects that you need to consider when evaluating Soveren.
 
-!!! danger "Must-haves for Soveren to work are Kubernetes and HTTP/JSON"
-
-    At present, the Soveren Sensor only works in Kubernetes and monitors only HTTP traffic with JSON payloads (setting the correct `content-type` is crucial). These are necessities for Soveren to run and start providing insights.
-
 ## Deployment
 
 1. **Kubernetes version 1.21 and higher**: these are the versions that Soveren has been tested with. It can operate on older versions, but functionality may be suboptimal.
@@ -22,7 +18,13 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 4. The [components of the Soveren Sensor](../overview/#soveren-sensor) are entirely self-sufficient. For instance, you don't need expertise in Kafka for our [messaging and processing system](../traffic-processing/) to operate; we handle everything.
 
-## Traffic analysis
+## DIM Sensor specifics
+
+### Traffic analysis
+
+!!! danger "Must-haves for Soveren to work are Kubernetes and HTTP/JSON"
+
+    At present, the Soveren Sensor only works in Kubernetes and monitors only HTTP traffic with JSON payloads (setting the correct `content-type` is crucial). These are necessities for Soveren to run and start providing insights.
 
 1. We exclusively analyze HTTP traffic.
 
@@ -38,7 +40,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 5. It's acceptable for JSON or form payloads to be compressed (e.g., gzipped), provided the resulting size doesn't exceed 1 Mb (otherwise, they're also not processed).
 
-## Resource usage
+### Resource usage
 
 The components of the Soveren Sensor exhibit varied resource usage patterns. Here's the general rule for all of them: the more resources you can allocate, the faster the data map will be built. In extreme cases, there might be restarts of some components, but they only affect the data map building time — not the core functionality of Soveren, and certainly not your cluster's stability.
 
@@ -53,3 +55,23 @@ Remember that the Interceptors are present on each node (they are a `DaemonSet`)
 * [Detection-tool](../../administration/configuring-sensor/#detection-tool) is the most resource-intensive component of the Soveren Sensor because it hosts the data detection model. There is also one instance per cluster. It's not unusual for it to consume 1 CPU and 2 Gb of memory — this is the benchmark for the most resources that any of the Soveren Sensor components can consume even under moderate load.
 
 The detection-tool processes only a portion of the traffic — the part that [Digger samples and sends for data detection](../traffic-processing/#url-clustering-sampling-and-data-detection). Because of this, the data map needs some time to build.
+
+## DAR Sensor specifics
+
+Currently, Soveren DAR Sensor supports AWS S3, Kafka and PostgreSQL (both cloud-based and on-premise). Some metadata may not be available depending on the cloud where your infrastructure is located.
+
+For S3, sensitive data detection is available for the following formats:
+
+* JSON
+
+* NDJSON
+
+* CSV
+
+* YAML
+
+* Text-based logs
+
+GZipped JSON and logs are also supported.
+
+For Kafka, sensitive data detection is available for JSON messages.
