@@ -3,8 +3,7 @@ hide:
   - toc
 ---
 
-# Page title
-...# Soveren Data-in-Motion (DIM) Sensor
+# Soveren Data-in-Motion (DIM) Sensor
 
 Soveren DIM Sensor intercepts and analyzes structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services.
 
