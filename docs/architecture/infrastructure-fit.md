@@ -22,7 +22,7 @@ How well will Soveren fit into your technical infrastructure? There are several 
 
 ### Traffic analysis
 
-!!! danger "Must-haves for Soveren to work are Kubernetes and HTTP/JSON"
+!!! danger "Must-haves for Soveren DIM Sensor to work are Kubernetes and HTTP/JSON"
 
     At present, Soveren DIM Sensor only works in Kubernetes and monitors only HTTP traffic with JSON payloads (setting the correct `content-type` is crucial). These are necessities for Soveren to run and start providing insights.
 
@@ -58,7 +58,7 @@ The detection-tool processes only a portion of the traffic — the part that [Di
 
 ## DAR Sensor specifics
 
-Currently, Soveren DAR Sensor [supports](../administration/configuring-sensor/#dar-configuration) AWS S3, Kafka and PostgreSQL (both cloud-based and on-premise). Some metadata may not be available depending on the cloud where your infrastructure is located.
+Currently, Soveren DAR Sensor [supports](../../administration/configuring-sensor/#dar-configuration) AWS S3, Kafka and PostgreSQL (both cloud-based and on-premise). Some metadata may not be available depending on the cloud where your infrastructure is located.
 
 For S3, sensitive data detection is available for the following formats:
 
