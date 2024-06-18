@@ -24,6 +24,12 @@ The Soveren DAR Sensor follows this sequence of operations:
 
 * _Crawler_ processes the tasks received from the Soveren Cloud; specifically, it retrieves data samples from the sources and forwards them to the _Detection-tool_.
 
-* _Crawler_ then collects the detection results, forms a metadata package, and transmits it to the Soveren Cloud using the gRPC protocol and protobuf.
+* _Crawler_ then collects the detection results and replaces actual values with placeholders (`*` for letters, `1` for digits) while punctuation symbols like commas and special symbols such as `@` remain intact. This approach maintains the value formatting while eliminating all actual data.
 
-When available, the _Crawler_ obtains data source metadata from the cloud provider (e.g. AWS) and sends it to the Soveren Cloud, thus enhancing data comprehensibility in the Soveren app.
+* _Crawler_ forms a metadata package, and transmits it to the Soveren Cloud using the gRPC protocol and protobuf.
+
+* The transmission occurs over the connection established and maintained by _Crawler_.
+
+When available, _Crawler_ obtains data source metadata from the cloud provider (e.g. AWS) and sends it to the Soveren Cloud, thus enhancing data comprehensibility in the Soveren app.
+
+Crawler also dispatches a stream of heartbeats from the Soveren DAR Sensor components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Sensor.
