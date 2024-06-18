@@ -46,4 +46,4 @@ The processed pair is serialized into protobuf and delivered to the Soveren Clou
 
 #### Transmitting metrics and health checks
 
-Digger also dispatches a stream of heartbeats from the Soveren Sensor components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Sensor.
+Digger also dispatches a stream of heartbeats from the Soveren DIM Sensor components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Sensor.

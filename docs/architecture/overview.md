@@ -1,45 +1,46 @@
 # Architecture
 
-Soveren is composed of two primary components:
+Soveren is composed of two primary parts:
 
-* **Soveren Sensor**: Deployed within your Kubernetes cluster, the Sensor intercepts and analyzes structured HTTP JSON traffic. It collects metadata about data flows, identifying field structures, detected sensitive data types, and involved services. Importantly, the metadata **does not include any actual payload values**. The collected information is then relayed to the Soveren Cloud.
-* **Soveren Cloud**: Hosted and managed by Soveren, this cloud platform presents user-friendly dashboards that provide visualization of sensitive data flows and summary statistics and metrics.
+* **Soveren Sensor**: Deployed within the customer’s Kubernetes cluster, the sensors monitor and analyze calls between services for sensitive data, or connect to the customer’s S3 buckets, Kafka clusters, or database instances to detect the presence of sensitive data.
+* **Soveren Cloud**: Hosted and managed by Soveren, this cloud platform offers user-friendly dashboards that visualize sensitive data flows and provide summary statistics and metrics.
+
+Soveren Sensors collect metadata about data flows and data sources contents. The collected information is then relayed to the Soveren Cloud. Importantly, **the metadata does not include any actual values from payloads or data sources, i.e. no sensitive data is shared outside of the customer’s infrastructure**.
 
 ## Soveren Sensor
 
-The Soveren Sensor comprises several key parts:
+There are two types of Soveren Sensors:
 
-* [**Interceptors**](../traffic-interception/): Distributed across all nodes in the cluster via a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), Interceptors capture traffic from pod virtual interfaces using a [packet capturing](https://www.tcpdump.org/) mechanism.
-* [**Processing and messaging system**](../traffic-processing/): This system includes a [Kafka](https://kafka.apache.org/) instance that stores request/response data and a component called Digger which forwards data for detection and eventually to the Soveren Cloud.
-* [**Sensitive data detector**](../detection/) (Detector): Employs proprietary machine learning algorithms to identify data types and gauge their sensitivity.
+<div class="grid cards" markdown>
 
-In Kubernetes terms, the Soveren Sensor introduces the following pods to the cluster:
+-   :material-clock-fast:{ .lg .middle } __Data-in-motion (DIM) Sensor__
 
-* _Interceptors_: One per worker node;
-* _Kafka_: Part of the Processing and messaging system, deployed once per setup;
-* _Digger_: Another component of the Processing and messaging system, deployed once per setup;
-* _Detection-tool_ (Detector): Deployed once per setup.
+    ---
 
-We also employ Prometheus Agent for metrics collection, this component is not shown here.
+    Data-in-motion (DIM) Sensor monitors calls between services by intercepting and analyzing structured HTTP JSON traffic.
 
-Let's delve deeper into the main components' operations and communications.
+    [:octicons-arrow-right-24: DIM Sensor architecture](../dim/)
 
-![The end-to-end flow of the Soveren Sensor](../../img/architecture/sensor-flow.png "The end-to-end flow of the Soveren Sensor")
+-   :material-database-search-outline:{ .lg .middle } __Data-at-rest (DAR) Sensor__
 
-The Soveren Sensor follows this sequence of operations:
+    ---
 
-1. Interceptors collect relevant traffic from pods, focusing on HTTP requests with the `Content-Type: application/json` header.
+    Data-at-rest (DAR) Sensor monitors data sources such as S3 buckets, Kafka clusters, or databases like PostgreSQL.
 
-2. Interceptors pair requests to individual endpoints with their respective responses, creating request/response pairs.
+    [:octicons-arrow-right-24: DAR Sensor architecture](../dar/)
 
-3. Interceptors transfer these pairs to Kafka using the [binary Kafka protocol](https://kafka.apache.org/protocol.html).
-
-4. Digger reads the request/response pair from Kafka, evaluates it for detailed analysis of data types and their sensitivity (employing intelligent sampling for high load scenarios). If necessary, Digger forwards the pair to the Detection-tool and retrieves the result.
-
-5. Digger assembles a metadata package describing the processed request/response pair and transmits it to the Soveren Cloud using gRPC protocol and protobuf.
-
-[The Kubernetes API provides pod names and other metadata to the Digger](../k8s-metadata/). Consequently, Soveren Cloud identifies services by their Kubernetes names rather than IP addresses, enhancing data comprehensibility in the [Soveren app](https://app.soveren.io/).
+</div>
 
 ## Soveren Cloud
 
-[Soveren Cloud](https://app.soveren.io/) is a Software as a Service (SaaS) managed by Soveren. It provides [a suite of dashboards](../../user-guide/overview/) displaying diverse views into the metadata collected by the Soveren Sensor. Users can view statistics and analytics on observed data types, their sensitivity, involved services, and any violations of predefined policies and configurations for allowed data types.
+[Soveren Cloud](https://app.soveren.io/) is a Software as a Service (SaaS) managed by Soveren. It provides a suite of dashboards displaying various views of the metadata collected by Soveren Sensors. Users can view statistics and analytics on observed data types, their sensitivity, involved services and data stores, and any violations of predefined policies and configurations for allowed data types.
+
+For Kubernetes clusters, Soveren discovers and builds a catalog of services running within the cluster, detailing their API endpoints and the flows through which they interact with each other. It also provides a list of external services communicating with the cluster. Each discovered service retains its Kubernetes metadata, enabling customers to filter and group by familiar elements such as namespaces and labels.
+
+For data stores (S3, Kafka, or databases), Soveren discovers and catalogs the list of stored buckets, topics, or tables, along with metadata available from the provider (e.g., AWS), including location and security attributes.
+
+Additionally, Soveren provides options to set up and maintain ownership and high-level grouping of services and data stores. For all services and data stores, Soveren identifies the list of data types discovered in the flows or in the storage. With this rich set of available metadata, customers can define policies regarding which services and data flows are permitted to work with particular data types. This capability unlocks a wide range of business cases in areas such as security, compliance, and engineering.
+
+All data discovered and systematized by Soveren is available both in the UI and via integrations, allowing customers to monitor and automate their business scenarios.
+
+The overview of the dashboards provided by Soveren Cloud is available [in the User Guide](../../user-guide/).

@@ -25,10 +25,15 @@ nav:
   - Architecture:
       - Overview: 'architecture/overview.md'
       - Requirements and recommendations: 'architecture/infrastructure-fit.md'
-      - Capturing the traffic: 'architecture/traffic-interception.md'
-      - Processing the traffic: 'architecture/traffic-processing.md'
-      - Kubernetes metadata: 'architecture/k8s-metadata.md'
       - Sensitive data detection: 'architecture/detection.md'
+      - DIM Sensor:
+          - 'architecture/dim/index.md'
+          - Capturing the traffic: 'architecture/dim/traffic-interception.md'
+          - Processing the traffic: 'architecture/dim/traffic-processing.md'
+          - Kubernetes metadata: 'architecture/dim/k8s-metadata.md'
+      - DAR Sensor:
+          - 'architecture/dar/index.md'
+          - Processing the data: 'architecture/dar/data-processing.md'
 
 # Theme settings, refer to https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
@@ -52,12 +57,15 @@ theme:
   favicon: img/favicons/favicon-app-black.svg
   features:
     - navigation.top
-    - navigation.indexes
+# The first page in the list becomes the section's "index"
+    - navigation.indexes # incompatible with toc.integrate!
     - navigation.prune
-    - navigation.tabs
-    #- navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+# Tabbed navigation with page TOC embedded in the left nav tree
+#    - navigation.tabs
+#    - toc.integrate
     - toc.follow
-    - toc.integrate
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
