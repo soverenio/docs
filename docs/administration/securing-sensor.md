@@ -1,12 +1,12 @@
 # Securing the Sensor
 
-Sovereign Data-in-motion (DIM) and Data-at-rest (DAR) Sensors are currently deployed in a Kubernetes environment. Below is a description of specific security aspects and configuration options that you might want to consider.
+Soveren Data-in-motion (DIM) and Data-at-rest (DAR) Sensors are currently deployed in a Kubernetes environment. Below is a description of specific security aspects and configuration options that you might want to consider.
 
-Please also refer to the [separate guide](../configuring-sensor/) for configuration options that are not related to security. You may also want to check [our current helm chart](https://github.com/soverenio/helm-charts/) for all values that can be tuned for the Sovereign Sensors.
+Please also refer to the [separate guide](../configuring-sensor/) for configuration options that are not related to security. You may also want to check [our current helm chart](https://github.com/soverenio/helm-charts/) for all values that can be tuned for the Soveren Sensors.
 
 ## Access to Kubernetes API
 
-The Sovereign Data-in-motion (DIM) Sensor subscribes to a significant amount of metadata from the Kubernetes API. A dedicated `ServiceAccount` is created for this purpose. This `ServiceAccount` is granted cluster-wide permissions (`ClusterRoleBinding`) to `get`, `list`, and `watch` several `apiGroups`.
+The Soveren Data-in-motion (DIM) Sensor subscribes to a significant amount of metadata from the Kubernetes API. A dedicated `ServiceAccount` is created for this purpose. This `ServiceAccount` is granted cluster-wide permissions (`ClusterRoleBinding`) to `get`, `list`, and `watch` several `apiGroups`.
 
 ## Proxying the traffic
 

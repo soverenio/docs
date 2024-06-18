@@ -60,7 +60,7 @@ There are several important stages:
 
 ### Sending request/response pairs for further processing
 
-* The compiled pairs are stored in a buffer. Eventually, the Interceptor forwards them to a dedicated Kafka topic. In this context, Kafka is a standalone component of the Soveren Sensor, an integral part of the [processing and messaging system](../traffic-processing/).
+* The compiled pairs are stored in a buffer. Eventually, the Interceptor forwards them to a dedicated Kafka topic. In this context, Kafka is a standalone component of the Soveren DIM Sensor, an integral part of the [processing and messaging system](../traffic-processing/).
 
 * If Kafka is unavailable for a significant period, the Interceptor purges the buffer, thereby losing some collected data.
 

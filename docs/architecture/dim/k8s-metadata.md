@@ -10,7 +10,7 @@ Here's how the communication between Digger and the Kubernetes API is structured
 
 In more detail:
 
-1. During the initiation phase of the Sensor, Digger conducts three `list` calls to collect initial data on [collections](https://kubernetes.io/docs/reference/using-api/api-concepts/#collections) of `pods`, `endpoints`, and `services`.
+1. During the initiation phase of the DIM Sensor, Digger conducts three `list` calls to collect initial data on [collections](https://kubernetes.io/docs/reference/using-api/api-concepts/#collections) of `pods`, `endpoints`, and `services`.
 
 2. Subsequently, Digger initiates three `watch` calls, essentially subscribing to notifications about configuration modifications in entities of these three types.
 
