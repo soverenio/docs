@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Soveren Data-at-Rest (DAR) Sensor
 
 Soveren DAR Sensor is specifically [configured](../../administration/configuring-sensor/#dar-configuration) to connect to the Customer’s S3 buckets, Kafka clusters, or database instances.
