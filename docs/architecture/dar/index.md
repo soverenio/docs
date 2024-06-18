@@ -32,4 +32,4 @@ The Soveren DAR Sensor follows this sequence of operations:
 
 When available, _Crawler_ obtains data source metadata from the cloud provider (e.g. AWS) and sends it to the Soveren Cloud, thus enhancing data comprehensibility in the Soveren app.
 
-Crawler also dispatches a stream of heartbeats from the Soveren DAR Sensor components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Sensor.
+_Crawler_ also dispatches a stream of heartbeats from the Soveren DAR Sensor components to the Cloud, in addition to metrics collected from all of them. This provides visibility into the health and performance of the Sensor.
