@@ -8,7 +8,7 @@ The primary objective of Interceptors is to intercept and monitor the network tr
 
 Interceptors are deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and by default, exist as pods on all nodes in the cluster.
 
-Pods with Interceptors have `hostNetwork` set to `true` and run in a privileged mode ([see more on this](../../../administration/securing-sensor/#container-security)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
+Pods with Interceptors have `hostNetwork` set to `true` and run in a privileged mode ([see more on this](../../../administration/securing-sensor/#container-privileges)), granting them access to the host machine. Thus, Interceptors can read data from the host's network namespaces and virtual interfaces using the [PCAP library](https://www.tcpdump.org/).
 
 Interceptors read data from the virtual interfaces in a non-blocking manner. If the host is engaged with higher priority tasks, the OS may limit resources for the Interceptor, possibly resulting in partial traffic coverage.
 
