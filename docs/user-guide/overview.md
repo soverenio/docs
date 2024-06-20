@@ -102,7 +102,7 @@ You can proceed to view a sample of data flowing to or from the endpoint:
 
 ## Data storages
 
-Currently, Soveren includes support for S3 buckets, Kafka clusters and PostgreSQL databases.
+Currently, Soveren works with S3 buckets, Kafka clusters and PostgreSQL databases.
 
 ### S3 buckets
 
@@ -138,15 +138,47 @@ Browse the list of Kafka clusters that you've [configured for monitoring](../../
 
 ![Kafka clusters list](../../img/user-guide/kafka-clusters-list.png "Kafka clusters list")
 
+Next, you can review the summary information for each cluster:
+
+![Kafka cluster summary info](../../img/user-guide/kafka-cluster-summary.png "Kafka cluster summary info")
+
 Browse the list of topics that are available in the cluster:
 
 ![Kafka topics list](../../img/user-guide/kafka-topics-list.png "Kafka topics list")
+
+Review the summary information for each topic:
+
+![Kafka topic summary info](../../img/user-guide/kafka-topic-summary.png "Kafka topic summary info")
+
+Messages stored within the topic are grouped (or clustered) based on their schemas:
+
+![Kafka topic message schema clusters](../../img/user-guide/kafka-message-schema-clusters.png "Kafka topic message schema clusters")
+
+Then you can look into the individual schema clusters:
+
+![Kafka topic schema cluster](../../img/user-guide/kafka-schema-cluster.png "Kafka topic schema cluster")
+
+And then you can dive into individual message samples:
+
+![Kafka topic schema message sample](../../img/user-guide/kafka-schema-sample.png "Kafka topic schema message sample")
 
 ### Databases
 
 Browse the list of databases that you've [configured for monitoring](../../administration/configuring-sensor/#databases):
 
 ![Databases list](../../img/user-guide/databases-list.png "Databases list")
+
+Next, you can review the summary information for each database:
+
+![Database summary info](../../img/user-guide/database-summary.png "Database summary info")
+
+Further, there are tables in each database:
+
+![Database tables](../../img/user-guide/database-tables.png "Database tables")
+
+And for each table, you can check the sample:
+
+![Database table sample](../../img/user-guide/database-table-sample.png "Database table  sample")
 
 ## Activity log
 
