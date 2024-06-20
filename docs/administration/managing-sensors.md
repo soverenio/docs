@@ -12,7 +12,7 @@ First you need to decide which type of Sensor do you need: a Data-in-motion (DIM
 
 === "Data-in-motion (DIM)"
 
-    You can create DIM Sensors via the [sensors page](https://app.soveren.io/sensors/data-in-motion) in the Soveren app.
+    You can create DIM Sensors via the [sensors page](https://app.soveren.io/infrastructure-access/data-in-motion) in the Soveren app.
 
     ![Data-in-motion (DIM) Sensors](../../img/administration/sensors-dim.png "Data-in-motion (DIM) Sensors")
 
@@ -24,7 +24,7 @@ First you need to decide which type of Sensor do you need: a Data-in-motion (DIM
 
 === "Data-at-rest (DAR)"
 
-    You can create DAR Sensors via the [sensors page](https://app.soveren.io/sensors/data-at-rest) in the Soveren app.
+    You can create DAR Sensors via the [sensors page](https://app.soveren.io/infrastructure-access/data-at-rest) in the Soveren app.
 
     ![Data-at-rest (DAR) Sensors](../../img/administration/sensors-dar.png "Data-at-rest (DAR) Sensors")
 
