@@ -114,6 +114,10 @@ Next, you can review the summary information for each bucket:
 
 ![S3 bucket summary info](../../img/user-guide/bucket-summary.png "S3 bucket summary info")
 
+If you have both DIM and DAR sensors installed, connections between services in your Kubernetes clusters and your S3 buckets will be available on the data map and in the bucket information: 
+
+![S3 bucket connections](../../img/user-guide/bucket-connections.png "S3 bucket connections")
+
 Objects stored in the bucket are grouped (or clustered) based on their key names and MIME types:
 
 ![S3 objects list](../../img/user-guide/bucket-files-01.png "S3 objects list")
