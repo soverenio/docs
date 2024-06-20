@@ -102,7 +102,9 @@ You can proceed to view a sample of data flowing to or from the endpoint:
 
 ## Data storages
 
-Currently, Soveren includes support for S3 buckets as data storage options.
+Currently, Soveren includes support for S3 buckets, Kafka clusters and PostgreSQL databases.
+
+### S3 buckets
 
 Browse the list of S3 buckets that Soveren has identified in your AWS account:
 
@@ -111,6 +113,10 @@ Browse the list of S3 buckets that Soveren has identified in your AWS account:
 Next, you can review the summary information for each bucket:
 
 ![S3 bucket summary info](../../img/user-guide/bucket-summary.png "S3 bucket summary info")
+
+If you have both DIM and DAR sensors installed, connections between services in your Kubernetes clusters and your S3 buckets will be available on the data map and in the bucket information: 
+
+![S3 bucket connections](../../img/user-guide/bucket-connections.png "S3 bucket connections")
 
 Objects stored in the bucket are grouped (or clustered) based on their key names and MIME types:
 
@@ -122,7 +128,25 @@ Soveren analyzes samples from the bucket, running detections on their contents:
 
 You can then view a sample of the data stored in the bucket:
 
-![S3 object sample: detected types](../../img/user-guide/bucket-sample.png "S3 object sample: detected types")
+![S3 object sample: detected types, JSON](../../img/user-guide/bucket-sample-01.png "S3 object sample: detected types, JSON")
+
+![S3 object sample: detected types, CSV](../../img/user-guide/bucket-sample-02.png "S3 object sample: detected types, CSV")
+
+### Kafka
+
+Browse the list of Kafka clusters that you've [configured for monitoring](../../administration/configuring-sensor/#kafka_1):
+
+![Kafka clusters list](../../img/user-guide/kafka-clusters-list.png "Kafka clusters list")
+
+Browse the list of topics that are available in the cluster:
+
+![Kafka topics list](../../img/user-guide/kafka-topics-list.png "Kafka topics list")
+
+### Databases
+
+Browse the list of databases that you've [configured for monitoring](../../administration/configuring-sensor/#databases):
+
+![Databases list](../../img/user-guide/databases-list.png "Databases list")
 
 ## Activity log
 
