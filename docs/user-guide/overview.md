@@ -130,7 +130,7 @@ You can then view a sample of the data stored in the bucket:
 
 ### Kafka
 
-Browse the list of Kafka clusters that you've [configured for monitoring](../administration/configuring-sensor/#kafka_1):
+Browse the list of Kafka clusters that you've [configured for monitoring](../../administration/configuring-sensor/#kafka_1):
 
 ![Kafka clusters list](../../img/user-guide/kafka-clusters-list.png "Kafka clusters list")
 
@@ -140,7 +140,7 @@ Browse the list of topics that are available in the cluster:
 
 ### Databases
 
-Browse the list of databases that you've [configured for monitoring](../administration/configuring-sensor/#databases):
+Browse the list of databases that you've [configured for monitoring](../../administration/configuring-sensor/#databases):
 
 ![Databases list](../../img/user-guide/databases-list.png "Databases list")
 
