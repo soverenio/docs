@@ -17,6 +17,7 @@ nav:
       - Overview: 'user-guide/overview.md'
       - Sensitive data model: 'user-guide/data-model.md'
   - Integration:
+      - 'integration/index.md'
       - Jira: 'integration/jira.md'
       - Slack: 'integration/slack.md'
       - Webhook: 'integration/webhook.md'
