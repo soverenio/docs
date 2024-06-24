@@ -1,6 +1,6 @@
 # Integrating with Soveren
 
-Soveren provides a number of integration options: creating tasks in Jira, sending alerts to Slack or webhooks, and 
+Soveren provides a number of integration options: creating tasks in Jira, sending alerts to Slack or webhooks, and Object API.
 
 # Jira, Slack and webhooks
 
@@ -18,7 +18,7 @@ Soveren provides a number of integration options: creating tasks in Jira, sendin
 
 <div class="grid cards" markdown>
 
--   :material-mdi--jira:{ .lg .middle } __Jira__
+-   :material-mdi-jira:{ .lg .middle } __Jira__
 
     ---
 
@@ -26,7 +26,7 @@ Soveren provides a number of integration options: creating tasks in Jira, sendin
 
     [:octicons-arrow-right-24: Integrating with Jira](jira/)
 
--   :material--mdi--slack:{ .lg .middle } __Slack__
+-   :material--mdi-slack:{ .lg .middle } __Slack__
 
     ---
 
