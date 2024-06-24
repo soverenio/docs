@@ -81,7 +81,6 @@ markdown_extensions:
   # Content tabs
   - pymdownx.tabbed:
       alternate_style: true
-      combine_header_slug: true
       # Readable tab ids
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
