@@ -1,6 +1,6 @@
 # Sample testing environment for Soveren
 
-You can give Soveren a try in an artificial setup before deploying it in your production or development environment. There are several ways of doing that.
+What Soveren provides is described in our [User guide](../../user-guide/overview/). However, to get a live experience, you can give Soveren a try in an artificial setup before deploying it in your production or development environment. There are several ways of doing that.
 
 ## Try Soveren Data-in-motion (DIM) Sensor
 
