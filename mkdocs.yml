@@ -7,6 +7,7 @@ site_url: https://docs.soveren.io/en/stable/
 nav:
   - Home: 'index.md'
   - Quick start: 'getting-started/quick-start.md'
+  - Try Soveren: 'getting-started/try-sandbox.md'
   - Administration:
       - Managing Users: 'administration/managing-users.md'
       - Managing Sensors: 'administration/managing-sensors.md'
