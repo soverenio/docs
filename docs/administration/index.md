@@ -22,11 +22,7 @@
 
     [:octicons-arrow-right-24: Managing sensors](managing-sensor/)
 
-</div>
-
-<div class="grid cards" markdown>
-
--   :material-settings:{ .lg .middle } __Fine-tuning the Sensor__
+-   :material-cog-outline:{ .lg .middle } __Fine-tuning the Sensor__
 
     ---
 
@@ -41,5 +37,13 @@
     This section describes various security aspects important for deploying and managing Soveren DIM and DAR sensors.
 
     [:octicons-arrow-right-24: Securing sensors](securing-sensor/)
+
+-   :material-shield-bug-outline:{ .lg .middle } __Troubleshooting the Sensor__
+
+    ---
+
+    Sometimes they misbehave. Here's how to diagnose and fix issues with Soveren DIM and DAR sensors.
+
+    [:octicons-arrow-right-24: Troubleshooting sensors](troubleshooting-sensor/)
 
 </div>
