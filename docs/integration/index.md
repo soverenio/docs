@@ -18,7 +18,7 @@ Soveren provides a number of integration options: creating tasks in Jira, sendin
 
 <div class="grid cards" markdown>
 
--   :material-mdi-jira:{ .lg .middle } __Jira__
+-   :material-jira:{ .lg .middle } __Jira__
 
     ---
 
@@ -26,7 +26,7 @@ Soveren provides a number of integration options: creating tasks in Jira, sendin
 
     [:octicons-arrow-right-24: Integrating with Jira](jira/)
 
--   :material--mdi-slack:{ .lg .middle } __Slack__
+-   :material-slack:{ .lg .middle } __Slack__
 
     ---
 
