@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Managing Soveren installation
 
 <div class="grid cards" markdown>
