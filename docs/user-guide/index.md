@@ -15,6 +15,10 @@ hide:
 
     [:octicons-arrow-right-24: Functionality overview](overview/)
 
+</div>
+
+<div class="grid cards" markdown>
+
 -   :material-badge-account-alert-outline:{ .lg .middle } __Sensitive data model__
 
     ---
