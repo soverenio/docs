@@ -2,7 +2,7 @@
 
 <div class="grid cards" markdown>
 
--   :material-user-group-outline:{ .lg .middle } __User and team management__
+-   :material-account-group-outline:{ .lg .middle } __User and team management__
 
     ---
 
@@ -18,7 +18,7 @@
 
     ---
 
-    Learn how to create or update Soveren Data-in-motion (DIM) and Data-at-rest (DAR) sensors.
+    Learn how to create, deploy and update Soveren Data-in-motion (DIM) and Data-at-rest (DAR) sensors.
 
     [:octicons-arrow-right-24: Managing sensors](managing-sensor/)
 
@@ -26,7 +26,7 @@
 
 <div class="grid cards" markdown>
 
--   :material-settings-outline:{ .lg .middle } __Fine-tuning the Sensor__
+-   :material-settings:{ .lg .middle } __Fine-tuning the Sensor__
 
     ---
 
