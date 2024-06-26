@@ -8,6 +8,7 @@ nav:
   - Home: 'index.md'
   - Quick start: 'getting-started/quick-start.md'
   - Administration:
+      - 'administration/index.md'
       - Managing Users: 'administration/managing-users.md'
       - Managing Sensors: 'administration/managing-sensors.md'
       - Configuring Sensors: 'administration/configuring-sensor.md'
