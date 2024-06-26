@@ -2,7 +2,7 @@
 
 Soveren provides a number of integration options: creating tasks in Jira, sending alerts to Slack or webhooks, and Object API.
 
-# Event based integrations 
+## Event based integrations 
 
 Integrations with Jira, Slack and webhooks are all based on events produced by Soveren.
 
@@ -24,7 +24,7 @@ Integrations with Jira, Slack and webhooks are all based on events produced by S
 
     ---
 
-    Integration with Jira allows you to open a ticket directly from e.g. the policy violation event and populate it with all relevant details.
+    Integration with Jira allows you to open a ticket directly from an event, such as a policy violation, and populate it with all relevant details.
 
     [:octicons-arrow-right-24: Integrating with Jira](jira/)
 
@@ -35,5 +35,13 @@ Integrations with Jira, Slack and webhooks are all based on events produced by S
     Integration with Slack comes in handy when you need to notify certain people right away if something requires immediate attention.
 
     [:octicons-arrow-right-24: Integrating with Slack](slack/)
+
+-   :material-webhook:{ .lg .middle } __Webhook__
+
+    ---
+
+    Webhooks allow you to use information from Soveren events in other automation tools, such as process management or risk management systems.
+
+    [:octicons-arrow-right-24: Webhook](webhook/)
 
 </div>
