@@ -18,15 +18,15 @@
 
     ---
 
-    Learn how to create, deploy and update Soveren Data-in-motion (DIM) and Data-at-rest (DAR) sensors.
+    Learn how to create, deploy and update Soveren Data-in-motion (DIM) and Data-at-rest (DAR) Sensors.
 
-    [:octicons-arrow-right-24: Managing sensors](managing-sensor/)
+    [:octicons-arrow-right-24: Managing sensors](managing-sensors/)
 
 -   :material-cog-outline:{ .lg .middle } __Fine-tuning the Sensor__
 
     ---
 
-    Sometimes Soveren DIM and DAR sensors require additional configuration. Here, we explain the different aspects of it.
+    Sometimes Soveren DIM and DAR Sensors require additional configuration. Here, we explain the different aspects of it.
 
     [:octicons-arrow-right-24: Configuring sensors](configuring-sensor/)
 
@@ -34,7 +34,7 @@
 
     ---
 
-    This section describes various security aspects important for deploying and managing Soveren DIM and DAR sensors.
+    This section describes various security aspects important for deploying and managing Soveren DIM and DAR Sensors.
 
     [:octicons-arrow-right-24: Securing sensors](securing-sensor/)
 
@@ -42,7 +42,7 @@
 
     ---
 
-    Sometimes they misbehave. Here's how to diagnose and fix issues with Soveren DIM and DAR sensors.
+    Sometimes they misbehave. Here's how to diagnose and fix issues with Soveren DIM and DAR Sensors.
 
     [:octicons-arrow-right-24: Troubleshooting sensors](troubleshooting-sensor/)
 
