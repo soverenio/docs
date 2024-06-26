@@ -8,7 +8,7 @@ Integrations with Jira, Slack and webhooks are all based on events produced by S
 
 <div class="grid cards" markdown>
 
--   :material-code-json:{ .lg .middle } __Event objects__
+-   :material-application-braces-outline:{ .lg .middle } __Event objects__
 
     ---
 
@@ -43,5 +43,21 @@ Integrations with Jira, Slack and webhooks are all based on events produced by S
     Webhooks allow you to use information from Soveren events in other automation tools, such as process management or risk management systems.
 
     [:octicons-arrow-right-24: Webhook](webhook/)
+
+</div>
+
+## API based integrations
+
+In addition to events, Soveren provides an API that allows direct interaction with various aspects of the product without using the UI.
+
+<div class="grid cards" markdown>
+
+-   :material-api:{ .lg .middle } __Object API__
+
+    ---
+
+    The Object API allows users to extract information about all discovered services, the flows between them, and the detected data types.
+
+    [:octicons-arrow-right-24: Object API](api/object-api/)
 
 </div>
