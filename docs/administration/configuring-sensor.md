@@ -48,7 +48,7 @@ You can store the token value in HashiCorp Vault and retrieve it at runtime usin
     <summary>An example of how you could implement integration with Vault</summary>
 
 ```yaml
-useVault: true
+useExternalSecrets: true
 
 digger:
   podAnnotations:
