@@ -68,9 +68,11 @@ To summarize, our dataset is derived from the following major sources:
 
 Our dataset is divided into two parts: training and holdout. We use the former for model training, and the latter is used for consistency and quality evaluation between model versions retrained on an updated training dataset. Cross-validation is employed during training.
 
-When we receive detection results from our customers, we conduct spot testing for false positives (FP) and false negatives (FN). We can conduct these checks efficiently because, although the actual values are not accessible to us, format-preserving placeholders are used. Utilizing these placeholders, along with information about the data's structure and composition, enables us to apply various heuristics to infer data types with a high degree of confidence. Additionally, we carry out pseudo-random manual checks, which are guided by the historical frequency of detected FPs and FNs associated with specific data types.
+For **structured** data detection, when we receive detection results from our customers, we conduct spot testing for false positives (FP) and false negatives (FN). We can conduct these checks efficiently because, although the actual values are not accessible to us, format-preserving placeholders are used. Utilizing these placeholders, along with information about the data's structure and composition, enables us to apply various heuristics to infer data types with a high degree of confidence. Additionally, we carry out pseudo-random manual checks, which are guided by the historical frequency of detected FPs and FNs associated with specific data types.
 
 In addition to monitoring model quality on the holdout dataset, we use the results of the spot checks to assess quality in production. [Our primary quality metric is Fß](https://en.wikipedia.org/wiki/F-score#F%CE%B2_score), with ß set to 0.5, to prioritize precision over recall.
+
+For **unstructured** data detection, we measure quality using only a holdout dataset.
 
 ### Model training and improvements
 
@@ -95,3 +97,5 @@ Periodically, the detection tool checks with the Soveren cloud to determine if a
 Currently, the process of introducing new data types to the model is not automated. This requires manual incorporation of the new types into all models, construction of necessary synthetic generators, updates to the training and holdout datasets, and subsequent retraining of the models.
 
 If an updated model version incorporates a new data type, it cannot be updated via over-the-air (OtA) methods.
+
+However, for each customer, we provide the option to configure custom rule-based data types using regular expressions (e.g., for field name and field value). The results of applying such rules override the results of our regular detection pipeline.
