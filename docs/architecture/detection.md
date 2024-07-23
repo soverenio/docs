@@ -4,19 +4,41 @@
 
 Our detection tool operates within the customer's perimeter, enabling it to utilize both the structure and values of the observed data when running the detection model. However, it's crucial to emphasize that when detection results are transmitted to Soveren's cloud, they do not include any actual data values; these are substituted with format-preserving placeholders.
 
-The detection tool employs a staged approach to detection.
+Soveren offers [two types of sensors](../overview/#soveren-sensor): Data-in-motion (DIM) and Data-at-rest (DAR). Additionally, the detection mechanism incorporates distinct approaches for structured and unstructured data, employing a staged process for detection in both categories.
+
+### The two types of detection
+
+Soveren offers two modes of detection:
+
+1. **Structured data**: This includes support of many structured data formats such as JSON, YAML, CSV, DB tables, XLS. The model is implemented using gradient boosting for the final classifier, with neural network models employed as inputs to generate features.
+
+2. **Unstructured data**: This includes texts, logs, etc. The model is based on pre-trained and distilled LLM, specifically BERT.
+
+For Data-in-motion, only detection in structured data is used. For Data-at-rest, both structured and unstructured detectors are employed.
+
+### The three stages of detection
+
+Soveren employs a staged approach to detection.
 
 ![The three stages of detection](../../img/architecture/3-stage-detection.png "The three stages of detection")
 
-In the first stage, we run the rule-based engine that we call the LITE model. This includes matching based on regular expressions, as well as functions that operate on top of one or several detections to check complex rules which cannot be reduced to simple or efficient regex patterns. The LITE model is optimized for precision.
+The three stages of the detection process are as follows:
 
-Secondly, we run a classifier that examines the entire payload to determine if there's a non-zero probability that the payload could contain sensitive data. We refer to this as the none-detector. If the answer is yes, then the ML (Machine Learning) model is run as the third step. This third stage consumes considerably more resources than the previous two stages.
+1. **Stage 1**: We run a rule-based engine called the LITE model. This includes matching based on regular expressions, as well as functions that operate on one or several detections to check complex rules that cannot be reduced to simple or efficient regex patterns.
+
+    The LITE model is optimized for precision and is effective for both structured and unstructured data:
+
+        * **Structured**: LITE uses key, value, and adjacent fields.
+
+        * **Unstructured**: LITE uses only the word and its context, i.e., the surrounding words.
+
+2. **Stage 2**: For structured data detection, we run a classifier that examines the entire payload to determine if there is a non-zero probability that the payload could contain sensitive data. This is referred to as the none-detector. If the answer is yes, then the Machine Learning (ML) model is run as the third step.
+
+3. **Stage 3**: This stage involves running the ML model, which is different for structured and unstructured data, and consumes considerably more resources than the previous two stages.
 
 Before running any stage, we trim very large payloads to a sensible size. For example, for JSON payloads, arrays are reduced to the first ten elements, and the number of keys is trimmed to a certain (large) number. If the payload is indeed large, then only the LITE model is employed.
 
 This approach allows us to balance the load versus detection quality, in terms of both coverage and precision/recall.
-
-Currently, the detection is designed to support structured data formats such as JSON, YAML, and CSV.
 
 ## Dataset and training
 
