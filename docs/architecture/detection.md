@@ -28,9 +28,9 @@ The three stages of the detection process are as follows:
 
     The LITE model is optimized for precision and is effective for both structured and unstructured data:
 
-        * **Structured**: LITE uses key, value, and adjacent fields.
+    * **Structured**: LITE uses key, value, and adjacent fields.
 
-        * **Unstructured**: LITE uses only the word and its context, i.e., the surrounding words.
+    * **Unstructured**: LITE uses only the word and its context, i.e., the surrounding words.
 
 2. **Stage 2**: For structured data detection, we run a classifier that examines the entire payload to determine if there is a non-zero probability that the payload could contain sensitive data. This is referred to as the none-detector. If the answer is yes, then the Machine Learning (ML) model is run as the third step.
 
