@@ -32,7 +32,7 @@ The three stages of the detection process are as follows:
 
     * **Unstructured**: LITE uses only the word and its context, i.e., the surrounding words.
 
-2. **Stage 2**: For structured data detection, we run a classifier that examines the entire payload to determine if there is a non-zero probability that the payload could contain sensitive data. This is referred to as the none-detector. If the answer is yes, then the Machine Learning (ML) model is run as the third step.
+2. **Stage 2**: For **structured** data detection only, we run a classifier that examines the entire payload to determine if there is a non-zero probability that the payload could contain sensitive data. This is referred to as the none-detector. If the answer is yes, then the Machine Learning (ML) model is run as the third step.
 
 3. **Stage 3**: This stage involves running the ML model, which is different for structured and unstructured data, and consumes considerably more resources than the previous two stages.
 
@@ -48,15 +48,19 @@ The primary challenge in building our detection model was the need to identify s
 
 We address this challenge by generating synthetic data that mimics real-world scenarios.
 
-To bootstrap the learning process, we have collected JSON schemas and examples from legally accessible, publicly available sources, such as APIs on Github from various projects. We've marked those schemas with data types using our own judgment and different models, particularly BERT. Currently, we also use GPT, which was not available at the time of bootstrapping with a sufficient performance level. We then created a series of examples populated with synthetic values, utilizing our custom-built generators, which often incorporate dictionary-based methods.
+To bootstrap the learning process for **structured** data formats, we have collected JSON schemas and examples from legally accessible, publicly available sources, such as APIs on Github from various projects. We've marked those schemas with data types using our own judgment and different models, particularly BERT. Currently, we also use GPT, which was not available at the time of bootstrapping with a sufficient performance level. We then created a series of examples populated with synthetic values, utilizing our custom-built generators, which often incorporate dictionary-based methods.
 
 Additionally, we gather example structured data schemas (such as JSON schemas) from our customers. These schemas are utilized in a manner similar to our initial bootstrapping: populating them with synthetic data from our custom-built generators.
 
 We periodically seek new data sources to enrich our dataset, which continually grows with each new customer as the model improves with every additional schema available.
 
-To summarize, our dataset is derived from two major conceptual sources:
+In the case of **unstructured** formats, we use a dataset that is partially generated and partially collected from open-source datasets, which we have re-labeled to identify the required types of personal data.
+
+To summarize, our dataset is derived from the following major sources:
 
 * Legally available public sources
+
+* Generated with LLM
 
 * Structured data schemas from our customers, such as JSON schemas
 
