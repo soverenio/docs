@@ -36,12 +36,35 @@ Here's how to do it:
 networkPolicy:
   # -- Specifies whether Network Policies should be created
   enabled: false
-  # -- Specify when the httpsProxy is enabled
+  # -- Specify IP or IP/MASK when the httpsProxy is enabled
   proxyIp: ""
+```
+
+### DIM specific policies
+
+You might need to specify the relevant port for the K8s API endpoint:
+
+```yaml
   # -- The below is specific to Data-in-motion (DIM) sensor
   k8sApi:
     # -- The k8s API endpoint port
     port: 443
+```
+
+### DAR specific policies
+
+You might need to explicitly allow the DAR sensor to access data sources.
+
+For `name`, use the `instancename` for Kafka or the database's `name` as you've [configured](../configuring-sensor/#dar-configuration) when deploying the sensor.
+
+```yaml
+  # -- Specify IP/MASK, PORT, PROTOCOL for additional IP whitelist egress
+  #  crawlerAdditionalEgress:
+  #      - name: postgres
+  #        host: 192.168.1.1/32
+  #        port: 5432
+  #        protocol: TCP
+  crawlerAdditionalEgress: []
 ```
 
 ## Container privileges

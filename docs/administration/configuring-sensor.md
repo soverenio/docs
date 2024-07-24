@@ -335,7 +335,7 @@ interceptor:
 
 We recommend [creating a separate sensor](../managing-sensors/#data-at-rest-dar) for each type of asset that you want to monitor. For example, one sensor for S3 buckets, one for Kafka, and one for each database type.
 
-!!! warn "We recommend using a separate sensor for each asset type"
+!!! warning "We recommend using a separate sensor for each asset type"
 
 You can also have multiple sensors covering the same type of asset, for performance reasons. While it is possible to use one sensor for all types, this approach can complicate the resolution of potential performance bottlenecks and other issues. 
 
