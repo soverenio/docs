@@ -36,15 +36,38 @@ Here's how to do it:
 networkPolicy:
   # -- Specifies whether Network Policies should be created
   enabled: false
-  # -- Specify when the httpsProxy is enabled
+  # -- Specify IP or IP/MASK when the httpsProxy is enabled
   proxyIp: ""
+```
+
+### DIM specific policies
+
+You might need to specify the relevant port for the K8s API endpoint:
+
+```yaml
   # -- The below is specific to Data-in-motion (DIM) sensor
   k8sApi:
     # -- The k8s API endpoint port
     port: 443
 ```
 
-## Container privileges
+### DAR specific policies
+
+You might need to explicitly allow the DAR sensor to access data sources.
+
+As `name`, use any generic label to mark the combination of `host`+`port`+`protocol`.
+
+```yaml
+  # -- Specify IP/MASK, PORT, PROTOCOL for additional IP whitelist egress
+  #  crawlerAdditionalEgress:
+  #      - name: postgres
+  #        host: 192.168.1.1/32
+  #        port: 5432
+  #        protocol: TCP
+  crawlerAdditionalEgress: []
+```
+
+## Containers
 
 ### Generic container privileges
 
@@ -81,7 +104,7 @@ hostPID: true
 
 Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.
 
-## Verifying image signatures
+### Verifying image signatures
 
 Ensure the authenticity and integrity of downloaded images by validating their digital signatures.
 
@@ -92,4 +115,12 @@ We use [Cosign](https://docs.sigstore.dev/signing/quickstart/) for image signing
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEF5frUnmoziugp0E1uOZJNTzQHJx3
 zf93Qcg/kJO1RpV/2SkVK+u0NH+M1K4ja6nr0pIjIyFwP3L6rpKY9p0Kcg==
 -----END PUBLIC KEY-----
+```
+
+### imagePullSecrets
+
+If you store our images in your own private repository, you may want to use `imagePullSecrets` for each container:
+
+```yaml
+  imagePullSecrets: []
 ```
