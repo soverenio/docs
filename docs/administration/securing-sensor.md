@@ -55,7 +55,7 @@ You might need to specify the relevant port for the K8s API endpoint:
 
 You might need to explicitly allow the DAR sensor to access data sources.
 
-For `name`, use the `instancename` for Kafka or the database's `name` as you've [configured](../configuring-sensor/#dar-configuration) when deploying the sensor.
+As `name`, use any generic label to mark the combination of `host`+`port`+`protocol`.
 
 ```yaml
   # -- Specify IP/MASK, PORT, PROTOCOL for additional IP whitelist egress
