@@ -42,7 +42,7 @@ The token value is used to send metadata to the Soveren Cloud and to check for o
 
 #### HashiCorp Vault
 
-You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level `useVault` to `true` in your `values.yaml`. Then, establish communication with the Vault and export the necessary environment variables.
+You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level `useExternalSecrets` to `true` in your `values.yaml`. Then, establish communication with the Vault and export the necessary environment variables.
 
 <details>
     <summary>An example of how you could implement integration with Vault</summary>

@@ -124,3 +124,40 @@ If you store our images in your own private repository, you may want to use `ima
 ```yaml
   imagePullSecrets: []
 ```
+
+## Using secrets
+
+To use Kubernetes secrets with Soveren, you need to pass their values via environment variables. There are several ways to do that.
+
+First, you need to set the top-level `useExternalSecrets` to true:
+
+```yaml
+useExternalSecrets: true
+```
+
+By doing this, you are instructing Soveren to honor the environment variables set externally.
+
+One way of setting the environment variables from secrets is via the containers' `env[]` sections of the chart, as described in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data):
+
+```yaml
+    env:
+      - name: ENV_VARIABLE_NAME
+        valueFrom:
+          secretKeyRef:
+            name: SECRET_NAME
+            key: SECRET_VALUE_KEY
+```
+
+Another way is by executing a script and exporting the relevant variables before the container starts. This can be illustrated by the [example of getting the DIM sensor token from HashiCorp Vault](../configuring-sensor/#hashicorp-vault).
+
+Good candidates for using secrets are the following environment variables:
+
+* `SVRN_DIGGER_STATSCLIENT_TOKEN`: token for the DIM sensor;
+
+* `SVRN_CRAWLER_STATSCLIENT_TOKEN`: token for the DAR sensor;
+
+* `SVRN_CRAWLER_CRAWL_S3`: S3 connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#s3-buckets))
+
+* `SVRN_CRAWLER_CRAWL_KAFKA`: Kafka connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#kafka_1))
+
+* `SVRN_CRAWLER_CRAWL_DATABASE_POSTGRES`: database connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#databases))
