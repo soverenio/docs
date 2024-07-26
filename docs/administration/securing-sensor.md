@@ -191,7 +191,7 @@ The relevant environment variables to manage the DAR sensor connections are:
 You can store the secrets in a secrets management system like HashiCorp Vault and retrieve their values at runtime using various techniques. To do this, establish communication with the Vault and export the necessary environment variables:
 
 <details>
-    <summary>An example of how you could retrieve the tokens Vault</summary>
+    <summary>An example of how you could retrieve the tokens from Vault</summary>
 
 ```yaml
 useExternalSecrets: true
