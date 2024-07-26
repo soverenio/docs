@@ -127,15 +127,17 @@ If you store our images in your own private repository, you may want to use `ima
 
 ## Using secrets
 
-To use Kubernetes secrets with Soveren, you need to pass their values via environment variables. There are several ways to do that.
+### Secrets basics 
 
-First, you need to set the top-level `useExternalSecrets` to true:
+To use secrets with Soveren, you need to set the top-level `useExternalSecrets` to true:
 
 ```yaml
 useExternalSecrets: true
 ```
 
-By doing this, you are instructing Soveren to honor the environment variables set externally.
+By doing this, you are instructing Soveren to prioritize the environment variables set externally over those set by Soveren components themselves.
+
+You can pass secrets to Soveren via environment variables. There are several ways to do this.
 
 One way of setting the environment variables from secrets is via the containers' `env[]` sections of the chart, as described in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data):
 
@@ -148,16 +150,84 @@ One way of setting the environment variables from secrets is via the containers'
             key: SECRET_VALUE_KEY
 ```
 
-Another way is by executing a script and exporting the relevant variables before the container starts. This can be illustrated by the [example of getting the DIM sensor token from HashiCorp Vault](../configuring-sensor/#hashicorp-vault).
+Another way is by executing a script and exporting the relevant variables before the container starts. 
 
-Good candidates for using secrets are the following environment variables:
+### DIM and DAR tokens
 
-* `SVRN_DIGGER_STATSCLIENT_TOKEN`: token for the DIM sensor;
+Good candidates for using secrets are the tokens of the sensors.
 
-* `SVRN_CRAWLER_STATSCLIENT_TOKEN`: token for the DAR sensor;
+If you decide to store the token in a secret, keep in mind that you need to set both `digger`/`crawler` token and `detectionTool` token. They use the same token value for accessing the Soveren Cloud. By default Soveren takes care of both, but when you want to use secrets, there is no good way to sync the `detectionTool` token with the `digger` or `crawler` token, so you must define them both manually:
 
-* `SVRN_CRAWLER_CRAWL_S3`: S3 connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#s3-buckets))
+* For the DIM sensor:
 
-* `SVRN_CRAWLER_CRAWL_KAFKA`: Kafka connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#kafka_1))
+    * `SVRN_DIGGER_STATSCLIENT_TOKEN`: token for the `digger`
 
-* `SVRN_CRAWLER_CRAWL_DATABASE_POSTGRES`: database connectivity configuration for DAR sensor (see the [configuration guide](../configuring-sensor/#databases))
+* For the DAR sensor:
+
+    * `SVRN_CRAWLER_STATSCLIENT_TOKEN`: token for the `crawler`
+
+* For the `detectionTool`, both for DIM and DAR sensors:
+
+    * `SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN`: token for the `detectionTool`
+
+### DAR data sources
+
+Soveren Data-at-rest (DAR) sensor requires you to set up connections to data sources for monitoring. These connections usually include access credentials, so it is a good idea to store them in secrets.
+
+The relevant environment variables to manage the DAR sensor connections are:
+
+* `SVRN_CRAWLER_CRAWL_S3`: S3 connectivity configuration for the DAR sensor (see the [configuration guide](../configuring-sensor/#s3-buckets))
+
+* `SVRN_CRAWLER_CRAWL_KAFKA`: Kafka connectivity configuration for the DAR sensor (see the [configuration guide](../configuring-sensor/#kafka_1))
+
+* `SVRN_CRAWLER_CRAWL_DATABASE_POSTGRES`: database connectivity configuration for the DAR sensor (see the [configuration guide](../configuring-sensor/#databases))
+
+### Secrets management systems
+
+You can store the secrets in a secrets management system like HashiCorp Vault and retrieve their values at runtime using various techniques. To do this, establish communication with the Vault and export the necessary environment variables:
+
+<details>
+    <summary>An example of how you could retrieve the tokens Vault</summary>
+
+```yaml
+useExternalSecrets: true
+
+digger:
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: info
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # -- Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DIGGER_STATSCLIENT_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # -- Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
+    # -- Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && /usr/local/bin/digger --config /etc/config.yaml' ]
+
+
+detectionTool:
+  podAnnotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: soveren-app
+    vault.hashicorp.com/log-level: debug
+    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
+    vault.hashicorp.com/agent-run-as-same-user: 'true'
+    # -- Environment variable export template
+    vault.hashicorp.com/agent-inject-template-soverentokens: |
+      {{ with secret "secret/data/digger/token" -}}
+        export SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
+      {{- end }}
+  image:
+    # -- Default entrypoint for detection-tool: './entrypoint.sh'
+    # -- Example for hashcorp/vault:
+    command: [ '/bin/bash', '-c' ]
+    args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
+```
+
+</details>
