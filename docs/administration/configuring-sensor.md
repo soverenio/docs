@@ -42,53 +42,7 @@ The token value is used to send metadata to the Soveren Cloud and to check for o
 
 #### HashiCorp Vault
 
-You can store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. To do this, set the top-level `useExternalSecrets` to `true` in your `values.yaml`. Then, establish communication with the Vault and export the necessary environment variables.
-
-<details>
-    <summary>An example of how you could implement integration with Vault</summary>
-
-```yaml
-useExternalSecrets: true
-
-digger:
-  podAnnotations:
-    vault.hashicorp.com/agent-inject: 'true'
-    vault.hashicorp.com/role: soveren-app
-    vault.hashicorp.com/log-level: info
-    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
-    vault.hashicorp.com/agent-run-as-same-user: 'true'
-    # -- Environment variable export template
-    vault.hashicorp.com/agent-inject-template-soverentokens: |
-      {{ with secret "secret/data/digger/token" -}}
-        export SVRN_DIGGER_STATSCLIENT_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
-      {{- end }}
-  image:
-    # -- Default entrypoint for digger: '/usr/local/bin/digger --config /etc/config.yaml'
-    # -- Example for hashcorp/vault:
-    command: [ '/bin/bash', '-c' ]
-    args: [ 'source /vault/secrets/soverentokens && /usr/local/bin/digger --config /etc/config.yaml' ]
-
-
-detectionTool:
-  podAnnotations:
-    vault.hashicorp.com/agent-inject: 'true'
-    vault.hashicorp.com/role: soveren-app
-    vault.hashicorp.com/log-level: debug
-    vault.hashicorp.com/agent-inject-secret-soverentokens: secret/data/digger/token
-    vault.hashicorp.com/agent-run-as-same-user: 'true'
-    # -- Environment variable export template
-    vault.hashicorp.com/agent-inject-template-soverentokens: |
-      {{ with secret "secret/data/digger/token" -}}
-        export SVRN_DETECTION_TOOL_OTAREGISTRY_AUTH_TOKEN="{{ .Data.data.SVRN_DIGGER_STATSCLIENT_TOKEN }}"
-      {{- end }}
-  image:
-    # -- Default entrypoint for detection-tool: './entrypoint.sh'
-    # -- Example for hashcorp/vault:
-    command: [ '/bin/bash', '-c' ]
-    args: [ 'source /vault/secrets/soverentokens && ./entrypoint.sh' ]
-```
-
-</details>
+You can use Kubernetes secrets or store the token value in HashiCorp Vault and retrieve it at runtime using various techniques. Check the [Securing Sensors page](../securing-sensor/#using-secrets) for instructions on how to do this.
 
 ### Binding components to nodes
 

@@ -156,7 +156,11 @@ Another way is by executing a script and exporting the relevant variables before
 
 Good candidates for using secrets are the tokens of the sensors.
 
-If you decide to store the token in a secret, keep in mind that you need to set both `digger`/`crawler` token and `detectionTool` token. They use the same token value for accessing the Soveren Cloud. By default Soveren takes care of both, but when you want to use secrets, there is no good way to sync the `detectionTool` token with the `digger` or `crawler` token, so you must define them both manually:
+If you decide to store the token in a secret, keep in mind that you need to set both `digger`/`crawler` token and `detectionTool` token. They use the same token value for accessing the Soveren Cloud.
+
+!!! danger "When using secrets for tokens, define both the `digger`/`crawler` token and the `detectionTool` token" 
+
+By default Soveren takes care of both, but when you want to use secrets, there is no good way to sync the `detectionTool` token with the `digger` or `crawler` token, so you must define them both manually:
 
 * For the DIM sensor:
 
