@@ -129,7 +129,9 @@ If you store our images in your own private repository, you may want to use `ima
 
 ### Secrets basics 
 
-To use secrets with Soveren, you need to set the top-level `useExternalSecrets` to true:
+Under the hood, Soveren uses Kubernetes secrets to manage the deployment of components.
+
+To use your own secrets with Soveren, you need to set the top-level `useExternalSecrets` to true:
 
 ```yaml
 useExternalSecrets: true
@@ -186,7 +188,7 @@ The relevant environment variables to manage the DAR sensor connections are:
 
 * `SVRN_CRAWLER_CRAWL_DATABASE_POSTGRES`: database connectivity configuration for the DAR sensor (see the [configuration guide](../configuring-sensor/#databases))
 
-### Secrets management systems
+### Example: secrets from Vault
 
 You can store the secrets in a secrets management system like HashiCorp Vault and retrieve their values at runtime using various techniques. To do this, establish communication with the Vault and export the necessary environment variables:
 
