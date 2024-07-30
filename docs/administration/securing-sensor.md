@@ -104,6 +104,19 @@ hostPID: true
 
 Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.
 
+#### Capabilities
+
+You can use capabilities instead of the privileged mode. That heavily depends on how is the underlying operating system is protected, e.g. is there AppArmor or special settings for SELinux, or the like.
+
+Define the `securityContext` for `interceptors` and `rpcapd` like this:
+
+```yaml
+securityContext:
+  capabilities:
+    drop: [ "ALL" ]
+    add: [ "NET_ADMIN", "SYS_ADMIN", "BPF", "NET_BIND_SERVICE", "NET_RAW", "SYS_PTRACE" ]
+```
+
 ### Verifying image signatures
 
 Ensure the authenticity and integrity of downloaded images by validating their digital signatures.
