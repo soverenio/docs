@@ -106,7 +106,7 @@ Modifying these settings for `interceptor` and `rpcapd` containers will disrupt 
 
 #### Capabilities
 
-You can use capabilities instead of the privileged mode. That heavily depends on how is the underlying operating system is protected, e.g. is there AppArmor or special settings for SELinux, or the like.
+You can use capabilities instead of the privileged mode. This heavily depends on how the underlying operating system is protected, e.g., whether there is AppArmor, special settings for SELinux, or similar protections.
 
 Define the `securityContext` for `interceptors` and `rpcapd` like this:
 
