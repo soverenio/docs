@@ -24,13 +24,15 @@ Soveren helps modern tech-focused businesses with Kubernetes-based environments 
 
 ## How Soveren works
 
-**Soveren seamlessly maps assets and data in Kubernetes**
+**Soveren seamlessly maps assets and data**
 
 * [Native Kubernetes deployment (via Helm)](getting-started/quick-start/) that takes 15 mins or less
 
 * Automatically discovers all services deployed in Kubernetes
 
-* Has zero impact on application performance (by mirroring the traffic)
+* Automatically monitors data sources like S3 buckets, databases and Kafka clusters 
+
+* Has zero impact on application performance, by mirroring the traffic and intelligently sampling from data sources and service calls
 
 * No sensitive data is transmitted outside of your environment
 
@@ -47,9 +49,10 @@ Soveren helps modern tech-focused businesses with Kubernetes-based environments 
 * Supports detection of 45+ data types and 20+ languages
 
 ## Hybrid architecture
+
 Soveren’s product has a hybrid architecture:
 
-* **Soveren Sensor** provides traffic interceptors and data-classification engine installed in the your Kubernetes clusters
+* **Soveren Sensor** provides traffic interceptors and data-classification engine installed in your Kubernetes clusters
 
 * **Soveren Cloud** offers data and asset map, policy engine, and various statistics and metrics dashboards
 
