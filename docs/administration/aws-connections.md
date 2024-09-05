@@ -38,7 +38,7 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
 
     * Check that the **Trust policy** looks like below. It’s essential that the `Soveren AWS account ID` is in the **Principal**.
 
-        ```json
+        ```json nowrap
         {
             "Version": "2012-10-17",
             "Statement": [
