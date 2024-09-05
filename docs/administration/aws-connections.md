@@ -64,7 +64,7 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
 
     2.6. Save the role.
 
-    2.7. If you have not picked the existing policy on the step 4 above, then go to the Permissions tab and input our defaults:
+    2.7. If you have not picked the existing policy on the step 2.4 above, then go to the Permissions tab, input our defaults and save the role again:
 
     ```json
     {
