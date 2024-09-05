@@ -34,25 +34,25 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
 
     * Pick a suitable policy that has minimum required permissions for Soveren to discover your data sources, or use our defaults from below:
 
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "ec2:DescribeRegions",
-                    "rds:DescribeDBInstances",
-                    "rds:DescribeDBClusters",
-                    "rds:DescribeDBClusterEndpoints",
-                    "kafka:ListClustersV2",
-                    "ec2:DescribeSecurityGroups",
-                    "kafka:GetBootstrapBrokers"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            }
-        ]
-    }
-    ```
+        ```json
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:DescribeRegions",
+                        "rds:DescribeDBInstances",
+                        "rds:DescribeDBClusters",
+                        "rds:DescribeDBClusterEndpoints",
+                        "kafka:ListClustersV2",
+                        "ec2:DescribeSecurityGroups",
+                        "kafka:GetBootstrapBrokers"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                }
+            ]
+        }
+        ```
