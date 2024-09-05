@@ -28,15 +28,15 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
 
 2. Create a new role:
 
-    1. **Trusted entity type**: AWS account
+    2.1. **Trusted entity type**: AWS account
 
-    2. **Another AWS account**: the `Soveren AWS account ID`, i.e. `579178354807`
+    2.2. **Another AWS account**: the `Soveren AWS account ID`, i.e. `579178354807`
 
-    3. Check the **Require external ID** in Options and input the `AWS external ID` which you've generated in the **New AWS connection** dialog
+    2.3. Check the **Require external ID** in Options and input the `AWS external ID` which you've generated in the **New AWS connection** dialog
 
-    4. Pick a suitable policy that has minimum required permissions for Soveren to discover your data sources. You can skip this step if there's no appropriate policy: you will create the permissions later (see below).
+    2.4. Pick a suitable policy that has minimum required permissions for Soveren to discover your data sources. You can skip this step if there's no appropriate policy: you will create the permissions later (see below).
 
-    5. Check that the **Trust policy** looks like below. It’s essential that you see the `Soveren AWS account ID` is in the **Principal** block.
+    2.5. Check that the **Trust policy** looks like below. It’s essential that you see the `Soveren AWS account ID` is in the **Principal** block.
 
         ```json
         {
@@ -60,9 +60,11 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
         }
         ```
 
-    6. Save the role.
+        !!! info "At the Preview phase, the Principal may look just like `"AWS": "579178354807"`. But it will be stored as `arn:aws:iam::579178354807:root`, so that's ok."
 
-    7. If you have not picked the existing policy on the step 4 above, then go to the Permissions tab and input our defaults:
+    2.6. Save the role.
+
+    2.7. If you have not picked the existing policy on the step 4 above, then go to the Permissions tab and input our defaults:
 
         ```json
         {
@@ -86,8 +88,9 @@ You will need to create a new role in AWS IAM. To do this, proceed with the foll
             ]
         }
         ```
-    8. Now copy the ARN of the created role, go back to the [AWS connection setup in the Soveren app](https://app.soveren.io/infrastructure-access/aws) and paste it into the **Role ARN** field.
 
-   9. Click Run test, it should display a positive result. (If it does not then send us the error message.)
+    2.8. Now copy the ARN of the created role, go back to the [AWS connection setup in the Soveren app](https://app.soveren.io/infrastructure-access/aws) and paste it into the **Role ARN** field.
 
-   10. Save the connection.
+    2.9. Click Run test, it should display a positive result. (If it does not then send us the error message.)
+
+    2.10. Save the connection.
