@@ -5,6 +5,8 @@ hide:
 
 # Managing Soveren installation
 
+## Users
+
 <div class="grid cards" markdown>
 
 -   :material-account-group-outline:{ .lg .middle } __User and team management__
@@ -16,6 +18,10 @@ hide:
     [:octicons-arrow-right-24: Managing users](managing-users/)
 
 </div>
+
+## Infrastructure access
+
+### Sensors
 
 <div class="grid cards" markdown>
 
@@ -50,5 +56,19 @@ hide:
     Sometimes they misbehave. Here's how to diagnose and fix issues with Soveren DIM and DAR Sensors.
 
     [:octicons-arrow-right-24: Troubleshooting Sensors](troubleshooting-sensor/)
+
+</div>
+
+### Cloud autodiscovery
+
+<div class="grid cards" markdown>
+
+-   :material-aws:{ .lg .middle } __AWS connections__
+
+    ---
+
+    Learn how to connect Soveren to your AWS account so that we can automatically discover your data storages.
+
+    [:octicons-arrow-right-24: AWS connections](aws-connections/)
 
 </div>
