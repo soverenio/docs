@@ -38,7 +38,7 @@ You will need to create a new role in AWS IAM. To do this, follow these steps:
 
    2.5. Ensure that the **Trust policy** appears as shown below. It is essential that you see the `Soveren AWS Account ID` in the **Principal** block.
 
-        ```json
+    ```json
         {
             "Version": "2012-10-17",
             "Statement": [
@@ -58,9 +58,9 @@ You will need to create a new role in AWS IAM. To do this, follow these steps:
                 }
             ]
         }
-        ```
+    ```
 
-       !!! info "During the preview phase, the Principal may appear as `"AWS": "579178354807"`. However, it will be stored as `arn:aws:iam::579178354807:root`, which is expected."
+   !!! info "During the preview phase, the Principal may appear as `"AWS": "579178354807"`. However, it will be stored as `arn:aws:iam::579178354807:root`, which is expected."
 
    2.6. Save the role.
 
