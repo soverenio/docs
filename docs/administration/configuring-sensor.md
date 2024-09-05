@@ -250,7 +250,7 @@ The Sensor's default policy is to work only with explicitly mentioned namespaces
 
     ```yaml
           - namespace: "*"
-          action: allow
+            action: allow
     ```
 
     Failing to do so could result in the Sensor not monitoring any namespaces if only `deny` definitions are present.

@@ -18,6 +18,8 @@ There are several important parameters in the **New AWS connection** dialog that
 
 * `Role ARN`: the role that you will need to configure in AWS IAM.
 
+!!! info "`AWS external ID` and `Soveren AWS account ID` should be used and shared carefully, but they are not considered secret, sensitive, or confidential information."
+
 ## Role in AWS IAM
 
 You will need to create a new role in AWS IAM. To do this, proceed with the following steps:
