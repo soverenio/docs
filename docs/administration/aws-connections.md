@@ -89,7 +89,7 @@ You will need to create a new role in AWS IAM. To do this, follow these steps:
     }
     ```
 
-    2.8. Copy the ARN of the created role, return to the [AWS connection setup in the Soveren app](https://app.soveren.io/infrastructure-access/aws), and paste it into the **Role ARN** field.
+    2.8. Copy the ARN of the created role, return to the [AWS connection setup in the Soveren app](https://app.soveren.io/infrastructure-access/aws), and paste it into the **Role ARN** field. The **Role ARN** should look like this: `arn:aws:iam::654654342127:role/env`.
 
     2.9. Click **Run test**. It should display a positive result. (If not, please send us the error message.)
 
