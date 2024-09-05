@@ -54,7 +54,7 @@
 
 </div>
 
-### Cloud autodiscovery
+### Autodiscovery in cloud environments
 
 <div class="grid cards" markdown>
 
