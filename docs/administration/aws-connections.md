@@ -8,7 +8,7 @@ You will need to create a new AWS connection [in the Soveren app](https://app.so
 
 ![AWS connections](../../img/administration/aws-connections.png "AWS connections")
 
-There are several important parameters in the **New AWS Connection** dialog that you will need to configure for the AWS IAM role:
+There are several important parameters in the **New AWS connection** dialog that you will need to configure for the AWS IAM role:
 
 ![New AWS connection](../../img/administration/new-aws-connection.png "New AWS connection")
 
@@ -32,7 +32,7 @@ You will need to create a new role in AWS IAM. To do this, follow these steps:
 
    2.2. **Another AWS account**: Enter the `Soveren AWS Account ID`, i.e., `579178354807`.
 
-   2.3. In the Options, check **Require external ID** and input the `AWS External ID` that you've generated in the **New AWS Connection** dialog.
+   2.3. In the Options, check **Require external ID** and input the `AWS External ID` that you've generated in the **New AWS connection** dialog.
 
    2.4. Select a suitable policy with the minimum required permissions for Soveren to discover your data sources. If no appropriate policy exists, you can skip this step and create the permissions later (see below).
 
