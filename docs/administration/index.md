@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 # Managing Soveren installation
 
 ## Users
@@ -67,7 +62,7 @@ hide:
 
     ---
 
-    Learn how to connect Soveren to your AWS account so that we can automatically discover your data storages.
+    Learn how to connect Soveren to your AWS account for automatic discovery of your data storages.
 
     [:octicons-arrow-right-24: AWS connections](aws-connections/)
 
