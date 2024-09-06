@@ -1,6 +1,6 @@
 # AWS Connections
 
-You can configure Soveren to access your AWS account for automatic discovery of your data storage, including managed Kafka clusters and databases.
+You can configure Soveren to access your AWS account for automatic discovery of your data storages, including managed databases and Kafka clusters.
 
 ## New AWS Connection
 
