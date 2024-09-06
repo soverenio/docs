@@ -9,11 +9,14 @@ nav:
   - Quick start: 'getting-started/quick-start.md'
   - Administration:
       - 'administration/index.md'
-      - Managing Users: 'administration/managing-users.md'
-      - Managing Sensors: 'administration/managing-sensors.md'
-      - Configuring Sensors: 'administration/configuring-sensor.md'
-      - Securing Sensors: 'administration/securing-sensor.md'
-      - Troubleshooting Sensors: 'administration/troubleshooting-sensor.md'
+      - Users and SSO: 'administration/managing-users.md'
+      - Sensors:
+          - Managing: 'administration/managing-sensors.md'
+          - Configuring: 'administration/configuring-sensor.md'
+          - Securing: 'administration/securing-sensor.md'
+          - Troubleshooting: 'administration/troubleshooting-sensor.md'
+      - Cloud auto-discovery:
+          - AWS connections: 'administration/aws-connections.md'
   - User guide:
       - 'user-guide/index.md'
       - Overview: 'user-guide/overview.md'
