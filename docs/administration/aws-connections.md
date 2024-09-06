@@ -12,13 +12,13 @@ There are several important parameters in the **New AWS connection** dialog that
 
 ![New AWS connection](../../img/administration/new-aws-connection.png "New AWS connection")
 
-* `AWS External ID`: A randomly generated identifier that should be associated with the role you configure in AWS IAM to provide Soveren with appropriate access rights.
+* `AWS external ID`: A randomly generated identifier that should be associated with the role you configure in AWS IAM to provide Soveren with appropriate access rights.
 
 * `Soveren AWS Account ID`: The account ID of Soveren. You will need to configure the role in AWS IAM to grant this ID the appropriate access rights.
 
 * `Role ARN`: The role that you will need to configure in AWS IAM (see below).
 
-!!! info "`AWS External ID` and `Soveren AWS Account ID` should be handled carefully, but they are not considered secret, sensitive, or confidential information."
+!!! info "`AWS external ID` and `Soveren AWS Account ID` should be handled carefully, but they are not considered secret, sensitive, or confidential information."
 
 ## Role in AWS IAM
 
@@ -32,7 +32,7 @@ You will need to create a new role in AWS IAM. To do this, follow these steps:
 
     2.2. **Another AWS account**: Enter the `Soveren AWS Account ID`, i.e., `579178354807`.
 
-    2.3. In the Options, check **Require external ID** and input the `AWS External ID` that you've generated in the **New AWS connection** dialog.
+    2.3. In the Options, check **Require external ID** and input the `AWS external ID` that you've generated in the **New AWS connection** dialog.
 
     2.4. Select a suitable policy with the minimum required permissions for Soveren to discover your data sources. If no appropriate policy exists, you can skip this step and create the permissions later (see below).
 
