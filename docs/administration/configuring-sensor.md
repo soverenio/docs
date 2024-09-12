@@ -361,7 +361,7 @@ To enable database scanning, you must provide the sensor with the instance name 
 
 You can also [use secrets to pass the configuration](../securing-sensor/#using-secrets) to the sensor.
 
-Currently we support PostgreSQL, MS SQL and MySQL.
+Currently we support PostgreSQL, MS SQL (SQL Server) and MySQL.
 
 Please note that the `dbname` is optional. If the `dbname` is provided, the sensor will scan only the specified database. Otherwise, it will enumerate and scan all databases available on the instance.
 
@@ -383,7 +383,7 @@ crawler:
 </details>
 
 <details>
-    <summary>MS SQL configuration</summary>
+    <summary>MS SQL / SQL Server configuration</summary>
 
 ```yaml
 crawler:
