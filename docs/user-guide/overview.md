@@ -102,7 +102,7 @@ You can proceed to view a sample of data flowing to or from the endpoint:
 
 ## Data storages
 
-Currently, Soveren works with S3 buckets, Kafka clusters and PostgreSQL databases.
+Currently, Soveren works with S3 buckets, Kafka clusters and SQL databases.
 
 ### S3 buckets
 

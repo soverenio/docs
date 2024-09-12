@@ -58,7 +58,7 @@ The detection-tool processes only a portion of the traffic — the part that [Di
 
 ## DAR Sensor specifics
 
-Currently, Soveren DAR Sensor [supports](../../administration/configuring-sensor/#dar-configuration) AWS S3, Kafka and PostgreSQL (both cloud-based and on-premise). Some metadata may not be available depending on the cloud where your infrastructure is located.
+Currently, Soveren DAR Sensor [supports](../../administration/configuring-sensor/#dar-configuration) AWS S3, Kafka and SQL databases (both cloud-based and on-premise). Some metadata may not be available depending on the cloud where your infrastructure is located.
 
 For S3, sensitive data detection is available for the following formats:
 
