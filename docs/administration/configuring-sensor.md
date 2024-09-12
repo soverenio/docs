@@ -393,7 +393,7 @@ crawler:
         enabled: true
         elements:
           - name: "<YOUR MS SQL INSTANCE NAME>"
-            # -- mssql://[user[:password]@][netloc][:port][/dbname]
+            # -- sqlserver://[user[:password]@][netloc][:port][/dbname]
             connectionString: "<YOUR MS SQL INSTANCE CONNECTION STRING>"
 ```
 
