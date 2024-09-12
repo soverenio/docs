@@ -41,5 +41,3 @@ Currently, sensitive data detection is available for JSON messages.
 ### Databases
 
 Soveren discovers and periodically rescans the list of available databases and their tables. From the tables, a random number of rows is periodically selected from different parts of the table and sent for sensitive data detection. The Soveren Cloud is responsible for forming the analysis tasks based on the database and schema information obtained from the Crawler.
-
-Currently, Soveren DAR Sensor supports PostgreSQL.
