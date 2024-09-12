@@ -289,13 +289,17 @@ interceptor:
 
 We recommend [creating a separate sensor](../managing-sensors/#data-at-rest-dar) for each type of asset that you want to monitor. For example, one sensor for S3 buckets, one for Kafka, and one for each database type.
 
-!!! warning "We recommend using a separate sensor for each asset type"
+!!! warning "We recommend using a separate sensor for each asset type (S3, or Kafka, or a database variant)"
 
-You can also have multiple sensors covering the same type of asset, for performance reasons. While it is possible to use one sensor for all types, this approach can complicate the resolution of potential performance bottlenecks and other issues. 
+You can also have multiple sensors covering the same type of asset, for performance reasons. While it is possible to use one sensor for all types, this approach can complicate the resolution of potential performance bottlenecks and other issues.
+
+Instead of passing the credentials directly, you can [use secrets to pass the whole connection string or configuration section](../securing-sensor/#using-secrets). 
 
 ### S3 buckets
 
 To enable S3 bucket discovery and scanning, you must provide the sensor with credentials for access. This can be done either directly by providing an access key or by configuring a specific role that the sensor will assume at runtime.
+
+You can also [use secrets to pass the configuration](../securing-sensor/#using-secrets) to the sensor.
 
 <details>
     <summary>The S3 scanning configuration</summary>
@@ -325,6 +329,8 @@ crawler:
 
 To enable Kafka scanning, you must provide the sensor with the instance name and address, as well as the necessary access credentials.
 
+You can also [use secrets to pass the configuration](../securing-sensor/#using-secrets) to the sensor.
+
 <details>
     <summary>The Kafka scanning configuration</summary>
 
@@ -353,8 +359,14 @@ crawler:
 
 To enable database scanning, you must provide the sensor with the instance name and the connection string containing necessary access credentials.
 
+You can also [use secrets to pass the configuration](../securing-sensor/#using-secrets) to the sensor.
+
+Currently we support PostgreSQL, MS SQL and MySQL.
+
+Please note that the `dbname` is optional. If the `dbname` is provided, the sensor will scan only the specified database. Otherwise, it will enumerate and scan all databases available on the instance.
+
 <details>
-    <summary>The database scanning configuration</summary>
+    <summary>PostgreSQL configuration</summary>
 
 ```yaml
 crawler:
@@ -364,8 +376,42 @@ crawler:
         enabled: true
         elements:
           - name: "<YOUR POSTGRESQL INSTANCE NAME>"
-            # -- postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
+            # -- postgresql://[user[:password]@][netloc][:port][/dbname]
             connectionString: "<YOUR POSTGRESQL INSTANCE CONNECTION STRING>"
+```
+
+</details>
+
+<details>
+    <summary>MS SQL configuration</summary>
+
+```yaml
+crawler:
+  cfg:
+    database:
+      mssql:
+        enabled: true
+        elements:
+          - name: "<YOUR MS SQL INSTANCE NAME>"
+            # -- mssql://[user[:password]@][netloc][:port][/dbname]
+            connectionString: "<YOUR MS SQL INSTANCE CONNECTION STRING>"
+```
+
+</details>
+
+<details>
+    <summary>MySQL configuration</summary>
+
+```yaml
+crawler:
+  cfg:
+    database:
+      mysql:
+        enabled: true
+        elements:
+          - name: "<YOUR MYSQL INSTANCE NAME>"
+            # -- mysql://[user[:password]@][netloc][:port][/dbname]
+            connectionString: "<YOUR MYSQL INSTANCE CONNECTION STRING>"
 ```
 
 </details>
