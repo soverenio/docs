@@ -30,28 +30,30 @@ And the list of tokens will now be non-emtpy:
 
 ![API Token list](../../img/integration/api-config-token-list.png "API Token list")
 
-Now you are all set and can start using the [Soveren Object API](../ref/)!
+Now you are all set and can start using the [Soveren Object API](../ref/)! It is accessible at [https://api.soveren.io/](https://api.soveren.io/).
 
 ## Using the API
 
-[Soveren Object API](../ref/) is accessible at [https://api.soveren.io/](https://api.soveren.io/).
-
-Object model which is provided by the API is as follows.
+Object model which is provided by the API is schematically shown below:
 
 ![Soveren API object model](../../img/integration/api-logic-object-model.png "Soveren API object model")
 
+For a comprehensive description of each object structure available through the APIs, please refer to the [Soveren Object API](../ref/).
+
+### Data-in-motion (DIM) API
+
 Soveren represents your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren Sensors. Each `cluster` is distinguished by its ID and the name you assign to it.
 
-`Services` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `services`, currently, Soveren supports only one type, termed "Kubernetes workload."
+`Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type, termed "Kubernetes workload."
 
-An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an `service`.
+!!! info "Assets are essentially services which constitute your applications running in the cluster"
 
-![Soveren API object model: data flow](../../img/integration/api-logic-data-flow.png "Soveren API object model: data flow")
+An `endpoint` is a distinct combination of a hostname, method, and URL discovered on an `asset`.
 
-Communication channels between `services`, where sensitive `data types` have been detected, are termed `data streams`. For instance, when one `service` calls another, this establishes a `data stream`.
+Communication channels between `assets`, where sensitive `data types` have been detected, are termed `data streams`. For instance, when one `asset` calls another, this establishes a `data stream`.
 
-Multiple `data streams` can exist between two `services`. If two `services` share at least one `data stream`, Soveren determines that there's a `data flow` between them.
+Multiple `data streams` can exist between two `assets`. If two `assets` share at least one `data stream`, Soveren determines that there's a `data flow` between them.
 
-Between any two chosen `services`, there can be two `data flows` — one in each direction (from one `service` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
+Between any two chosen `assets`, there can be two `data flows` — one in each direction (from one `asset` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
 
-For a comprehensive description of each object structure available through the APIs, please refer to the [Soveren Object API](../ref/).
+### Data-at-rest (DAR) API

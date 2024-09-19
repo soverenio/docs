@@ -1,0 +1,116 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+
+class "Data Types" as Types {
+	id
+	name
+	sensitivity
+}
+
+package "Data in motion" as DIM <<Rectangle>> {
+
+	class Cluster {
+		name
+	}
+	together {
+		class Asset {
+			name
+			description
+			owner
+			[] data types
+		}
+		class Endpoint {
+			asset
+			hostname
+			method
+			url
+			[] data types
+			[] masked data fields
+		}
+	}
+	together {
+		class "Data Flow" as DF {
+			asset
+			counterparty asset
+			[] data types
+		}
+		class "Data Stream" as DS {
+			requester asset
+			responder asset
+			endpoint
+			[] data types
+		}
+	}
+
+	Cluster "1" --o "*" Asset
+	Asset "1" --* "1..n" DF
+	DF "1" --* "1..n" DS
+
+	Asset "1" --o "*" Endpoint
+	DS "1" --o "1" Endpoint
+
+}
+
+package "Data at rest" as DAR <<Rectangle>> {
+	together {
+		class S3
+		class Bucket {
+			name
+			description
+			owner
+			region
+			[] data types
+		}
+	}
+	together {
+		class Kafka
+		class "Instance" as KI {
+			name
+			description
+			owner
+			region
+			[] data types
+		}
+		class Topic {
+			name
+			description
+			owner
+			[] data types
+		}
+	}
+	together {
+		class Databases
+		class "Instance" as DBI {
+			name
+			description
+			owner
+			region
+			engine
+			[] data types
+		}
+		class "Database" as DB {
+			name
+			description
+			owner
+			[] data types
+		}
+		class Table {
+			name
+			schema
+			[] data types
+		}
+	}
+	
+	S3 -- Bucket
+	
+	Kafka -- KI
+	KI "1" --* "*" Topic
+	
+	Databases -- DBI
+	DBI "1" --* "*" DB
+	DB "1" --* "*" Table
+}
+
+@enduml
