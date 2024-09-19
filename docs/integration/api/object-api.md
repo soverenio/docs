@@ -32,6 +32,10 @@ And the list of tokens will now be non-emtpy:
 
 Now you are all set and can start using the [Soveren Object API](../ref/)! It is accessible at [https://api.soveren.io/](https://api.soveren.io/).
 
+## API specification
+
+The Soveren Object API specification is available [here](../ref/).
+
 ## Using the API
 
 Object model which is provided by the API is schematically shown below:
@@ -42,9 +46,9 @@ For a comprehensive description of each object structure available through the A
 
 ### Data-in-motion (DIM) API
 
-Soveren represents your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren Sensors. Each `cluster` is distinguished by its ID and the name you assign to it.
+Soveren represents a part of your infrastructure in terms of Kubernetes `clusters` where you deploy Soveren DIM Sensors. Each `cluster` is distinguished by its ID and the name you assign to it.
 
-`Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type, termed "Kubernetes workload."
+`Assets` refer to deployments that Soveren identifies within the `cluster`. More precisely, they represent an aggregate based on either the source IP or destination IP from web service calls. Although there can be various types of `assets`, currently, Soveren supports only one type: "Kubernetes workload."
 
 !!! info "Assets are essentially services which constitute your applications running in the cluster"
 
@@ -57,3 +61,7 @@ Multiple `data streams` can exist between two `assets`. If two `assets` share at
 Between any two chosen `assets`, there can be two `data flows` — one in each direction (from one `asset` to the other and vice versa). A single `data flow` can encompass multiple `data streams`.
 
 ### Data-at-rest (DAR) API
+
+There are APIs for data sources, that is, S3, Kafka and databases. 
+
+The S3 part of the API is concerned with buckets. For Kafka and databases, the API interacts with instances, and within each instance, it retrieves information on topics (in the case of Kafka), databases, and tables. At each level, the API provides data types detected in the respective data source.
