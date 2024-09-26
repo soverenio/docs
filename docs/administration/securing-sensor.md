@@ -26,6 +26,14 @@ You can also specify the `NO_PROXY` top-level variable to allow some of your tra
 httpsProxyNoProxy: ""
 ```
 
+Soveren sensors require access to the following addresses:
+
+* `stats.soveren.io:443`: The main endpoint for sending data to Soveren Cloud from `digger` or `crawler`;
+
+* `updates.soveren.io:443`: The endpoint that provides information about ML model updates to `detectionTool`;
+
+*  `https://storage.googleapis.com`: The S3 bucket containing ML model updates, which `detectionTool` downloads when they become available.
+
 ## Network policy
 
 You may want to specify the network policy for the Soveren Sensor. It is not enabled by default.
