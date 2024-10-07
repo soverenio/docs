@@ -26,7 +26,7 @@ You can also specify the `NO_PROXY` top-level variable to allow some of your tra
 httpsProxyNoProxy: ""
 ```
 
-Soveren sensors require access to the following addresses:
+Soveren Sensors require access to the following addresses:
 
 * `stats.soveren.io:443`: The main endpoint for sending data to Soveren Cloud from `digger` or `crawler`;
 
@@ -93,9 +93,7 @@ securityContext:
 
 Interceptors capture traffic by monitoring the virtual interfaces of the host.
 
-In each Interceptor pod, there are two containers: the `rpcapd`, which handles the actual traffic capturing, and the `interceptor` itself, which processes the captured data.
-
-To allow Interceptors to read from the host, both the `interceptor` and `rpcapd` containers need to run in privileged mode. Hence, they are assigned the following `securityContext`:
+To allow Interceptors to read from the host, the `interceptor` container needs to run in privileged mode. Hence, it is assigned the following `securityContext`:
 
 ```yaml
 securityContext:
@@ -110,13 +108,13 @@ hostNetwork: true
 hostPID: true
 ```
 
-Modifying these settings for `interceptor` and `rpcapd` containers will disrupt traffic interception.
+Modifying these settings will disrupt traffic interception.
 
 #### Capabilities
 
 You can use capabilities instead of the privileged mode. This heavily depends on how the underlying operating system is protected, e.g., whether there is AppArmor, special settings for SELinux, or similar protections.
 
-Define the `securityContext` for `interceptors` and `rpcapd` like this:
+Define the `securityContext` for `interceptors` like this:
 
 ```yaml
 securityContext:

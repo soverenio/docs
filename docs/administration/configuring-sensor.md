@@ -102,14 +102,13 @@ It's important to note that the Soveren Sensor does not persist any data. It is 
     | Container        | CPU `requests` | CPU `limits` | MEM `requests` | MEM `limits` | Ephemeral storage `limits` |
     |:-----------------|---------------:|-------------:|---------------:|-------------:|---------------------------:|
     | `interceptor`    |          `50m` |      `1000m` |         `64Mi` |     `1536Mi` |                    `100Mi` |
-    | `rpcapd`         |         `100m` |       `250m` |         `64Mi` |      `256Mi` |                    `100Mi` |
     | `digger`         |         `100m` |      `1500m` |        `100Mi` |      `768Mi` |                    `100Mi` |
     | `detection-tool` |         `200m` |      `2200m` |       `2252Mi` |     `2764Mi` |                    `200Mi` |
     | `kafka`          |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
     | `kafka-exporter` |         `100m` |       `400m` |        `650Mi` |     `1024Mi` |                     `10Gi` |
     | `prometheus`     |          `75m` |        `75m` |        `192Mi` |      `400Mi` |                    `100Mi` |
 
-    Pods containing `interceptor` and `rpcapd` are deployed as a DaemonSet. To estimate the required resources, you will need to multiply the values by the number of nodes. 
+    Pods containing `interceptor` are deployed as a DaemonSet. To estimate the required resources, you will need to multiply the values by the number of nodes. 
 
 === "Data-at-rest (DAR)"
 
