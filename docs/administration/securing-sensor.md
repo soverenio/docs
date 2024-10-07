@@ -26,7 +26,7 @@ You can also specify the `NO_PROXY` top-level variable to allow some of your tra
 httpsProxyNoProxy: ""
 ```
 
-Soveren sensors require access to the following addresses:
+Soveren Sensors require access to the following addresses:
 
 * `stats.soveren.io:443`: The main endpoint for sending data to Soveren Cloud from `digger` or `crawler`;
 
