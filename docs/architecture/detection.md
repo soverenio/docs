@@ -94,8 +94,8 @@ Periodically, the detection tool checks with the Soveren cloud to determine if a
 
 ## Adding new data types
 
-Currently, the process of introducing new data types to the model is not automated. This requires manual incorporation of the new types into all models, construction of necessary synthetic generators, updates to the training and holdout datasets, and subsequent retraining of the models.
+Currently, the process of introducing new generic data types to the model is not automated. This requires manual incorporation of the new types into all models, construction of necessary synthetic generators, updates to the training and holdout datasets, and subsequent retraining of the models.
 
 If an updated model version incorporates a new data type, it cannot be updated via over-the-air (OtA) methods.
 
-However, for each customer, we provide the option to configure custom rule-based data types using regular expressions (e.g., for field name and field value). The results of applying such rules override the results of our regular detection pipeline.
+However, for each customer, we provide the [option to configure custom rule-based data types using regular expressions](../../user-guide/data-model/#custom-data-types) (e.g., for field name and field value). The results of applying such rules override the results of our regular detection pipeline.
