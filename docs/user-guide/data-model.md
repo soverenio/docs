@@ -10,7 +10,7 @@ On top of that, the model assigns different weights or _sensitivities_ to differ
 
 ## Recognised sensitive data types
 
-Right now Soveren works with the following data types:
+Right now Soveren detects the following [data types](https://app.soveren.io/data-types):
 
 | Name                 | Kind              | Sensitivity   | Comment                                                                                                                                                                                                                                   |
 |:---------------------|:------------------|:--------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -47,6 +47,13 @@ Right now Soveren works with the following data types:
 | `Developer secrets`  | Developer secrets | High          | Generic developer secrets.                                                                                                                                                                                                                |
 
  The list of supported data types is ever-growing. [Drop us a line](mailto:support@soveren.io) if you think that we should support some particular data type which you'd use as PII or consider otherwise sensitive. 
+
+## Custom data types
+
+You can [add your own custom data types](https://app.soveren.io/data-types/new) using regular expressions to match the field (key) name and it's value:
+
+![Creating custom data type](../../img/user-guide/data-types-custom.png "Creating custom data type")
+
 
 ## The sensitivity model
 
